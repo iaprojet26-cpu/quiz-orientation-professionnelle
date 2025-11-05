@@ -1,0 +1,9 @@
+# Robots.txt pour quizorientation.online
+# Permet à tous les moteurs de recherche d'indexer le site
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://quizorientation.online/sitemap.xml
+
