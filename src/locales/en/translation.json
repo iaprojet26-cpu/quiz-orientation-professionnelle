@@ -1,0 +1,57 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "retry": "Retry",
+    "next": "Next",
+    "previous": "Previous",
+    "finish": "Finish",
+    "restart": "Restart Quiz"
+  },
+  "header": {
+    "title": "🎯 Career Orientation Quiz",
+    "subtitle": "Discover your professional profile and the careers that match you"
+  },
+  "quiz": {
+    "loading": "Loading quiz...",
+    "error": "Error loading questions",
+    "no_questions": "No questions available",
+    "question_count": "Question {{current}} of {{total}}",
+    "progress": "{{percent}}%"
+  },
+  "results": {
+    "title": "🎉 Your Professional Profile",
+    "recommended_jobs": "💼 Recommended Careers",
+    "recommended_formations": "📚 Recommended Training",
+    "studies_level": "📚 Education Level:",
+    "key_skills": "Key Skills:"
+  },
+  "share": {
+    "title": "📢 Share Your Results!",
+    "description": "Share this quiz with your friends and colleagues",
+    "message": "🎯 I discovered my professional profile! {{profile}} Discover yours too!"
+  },
+  "profiles": {
+    "creative": {
+      "name": "Creative Profile",
+      "description": "You are attracted to innovation, art and creation. You like to express your ideas and work on original projects."
+    },
+    "technical": {
+      "name": "Technical Profile",
+      "description": "You excel at solving complex problems, logic and technology. You are methodical and precise."
+    },
+    "social": {
+      "name": "Social Profile",
+      "description": "You have a strong interest in helping others, communicating and working in teams. You are empathetic and a good listener."
+    },
+    "organizational": {
+      "name": "Organizational Profile",
+      "description": "You are organized, like to manage projects and lead teams. You have a sense of responsibility."
+    },
+    "entrepreneurial": {
+      "name": "Entrepreneurial Profile",
+      "description": "You are independent, like to take calculated risks and create your own path. You are visionary."
+    }
+  }
+}
+

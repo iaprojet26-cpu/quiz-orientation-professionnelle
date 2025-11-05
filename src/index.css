@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors duration-200 shadow-md hover:shadow-lg;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-200 text-gray-800 px-6 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-colors duration-200;
+  }
+  
+  .card {
+    @apply bg-white rounded-xl shadow-md p-6 border border-gray-100;
+  }
+}
+
+/* ============================================
+   SUPPORT RTL (Right-to-Left) pour l'arabe
+   ============================================ */
+.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+.rtl .card {
+  text-align: right;
+}
+
+.rtl .btn-primary,
+.rtl .btn-secondary {
+  text-align: center;
+}
+
+/* Ajustements pour les éléments flex en RTL */
+.rtl .flex {
+  flex-direction: row-reverse;
+}
+
+/* Ajustement pour les marges et paddings en RTL */
+.rtl .ml-auto {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.rtl .mr-auto {
+  margin-right: 0;
+  margin-left: auto;
+}
+
+/* Ajustement pour les textes alignés */
+.rtl .text-left {
+  text-align: right;
+}
+
+.rtl .text-right {
+  text-align: left;
+}
+
+/* Ajustement pour les bordures */
+.rtl .border-l-4 {
+  border-left: 0;
+  border-right: 4px solid;
+}
+
+.rtl .pl-4 {
+  padding-left: 0;
+  padding-right: 1rem;
+}
+
+/* Ajustement pour les gaps dans les flex */
+.rtl .gap-2 > * + * {
+  margin-left: 0;
+  margin-right: 0.5rem;
+}
+
+.rtl .gap-4 > * + * {
+  margin-left: 0;
+  margin-right: 1rem;
+}
+

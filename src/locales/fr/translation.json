@@ -1,0 +1,57 @@
+{
+  "common": {
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "retry": "Réessayer",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "finish": "Terminer",
+    "restart": "Recommencer le quiz"
+  },
+  "header": {
+    "title": "🎯 Quiz d'Orientation Professionnelle",
+    "subtitle": "Découvrez votre profil professionnel et les métiers qui vous correspondent"
+  },
+  "quiz": {
+    "loading": "Chargement du quiz...",
+    "error": "Erreur lors du chargement des questions",
+    "no_questions": "Aucune question disponible",
+    "question_count": "Question {{current}} sur {{total}}",
+    "progress": "{{percent}}%"
+  },
+  "results": {
+    "title": "🎉 Votre Profil Professionnel",
+    "recommended_jobs": "💼 Métiers Recommandés",
+    "recommended_formations": "📚 Formations Recommandées",
+    "studies_level": "📚 Niveau d'études :",
+    "key_skills": "Compétences clés :"
+  },
+  "share": {
+    "title": "📢 Partagez vos résultats !",
+    "description": "Faites découvrir ce quiz à vos amis et collègues",
+    "message": "🎯 J'ai découvert mon profil professionnel ! {{profile}} Découvrez le vôtre aussi !"
+  },
+  "profiles": {
+    "creative": {
+      "name": "Profil Créatif",
+      "description": "Vous êtes attiré par l'innovation, l'art et la création. Vous aimez exprimer vos idées et travailler sur des projets originaux."
+    },
+    "technical": {
+      "name": "Profil Technique",
+      "description": "Vous excellez dans la résolution de problèmes complexes, la logique et les technologies. Vous êtes méthodique et précis."
+    },
+    "social": {
+      "name": "Profil Social",
+      "description": "Vous avez un fort intérêt pour aider les autres, communiquer et travailler en équipe. Vous êtes empathique et à l'écoute."
+    },
+    "organizational": {
+      "name": "Profil Organisationnel",
+      "description": "Vous êtes organisé, aimez gérer des projets et diriger des équipes. Vous avez le sens des responsabilités."
+    },
+    "entrepreneurial": {
+      "name": "Profil Entrepreneurial",
+      "description": "Vous êtes indépendant, aimez prendre des risques calculés et créer votre propre voie. Vous êtes visionnaire."
+    }
+  }
+}
+
