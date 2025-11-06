@@ -9,6 +9,7 @@ import {
   loadJobsFromSupabase,
   saveQuizAttempt 
 } from '../services/quizService'
+import { trackQuizStart, trackQuizQuestion, trackQuizComplete } from '../utils/analytics'
 
 function Quiz({ onComplete }) {
   const { t } = useTranslation()
@@ -58,6 +59,8 @@ function Quiz({ onComplete }) {
   useEffect(() => {
     loadQuestions()
     loadProfiles()
+    // Tracker le début du quiz
+    trackQuizStart()
   }, [])
 
   // Recharger les questions et profils quand la langue change
@@ -75,6 +78,8 @@ function Quiz({ onComplete }) {
       ...answers,
       [questionId]: optionId
     })
+    // Tracker la réponse à la question
+    trackQuizQuestion(currentQuestionIndex + 1, questions.length)
   }
 
   const handleNext = () => {
@@ -115,6 +120,9 @@ function Quiz({ onComplete }) {
     } catch (err) {
       console.warn('Impossible de sauvegarder la tentative:', err)
     }
+    
+    // Tracker la complétion du quiz
+    trackQuizComplete(profile?.nom || 'Unknown')
     
     onComplete({
       answers,

@@ -150,4 +150,49 @@
     <priority>0.7</priority>
   </url>
   
+  <!-- Pages légales -->
+  <url>
+    <loc>https://quizorientation.online/mentions-legales</loc>
+    <lastmod>2025-11-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/fr/mentions-legales" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/mentions-legales" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/mentions-legales" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quizorientation.online/mentions-legales" />
+  </url>
+  
+  <url>
+    <loc>https://quizorientation.online/politique-confidentialite</loc>
+    <lastmod>2025-11-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/fr/politique-confidentialite" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/politique-confidentialite" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/politique-confidentialite" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quizorientation.online/politique-confidentialite" />
+  </url>
+  
+  <url>
+    <loc>https://quizorientation.online/a-propos</loc>
+    <lastmod>2025-11-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/fr/a-propos" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/a-propos" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/a-propos" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quizorientation.online/a-propos" />
+  </url>
+  
+  <url>
+    <loc>https://quizorientation.online/contact</loc>
+    <lastmod>2025-11-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/contact" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quizorientation.online/contact" />
+  </url>
+  
 </urlset>

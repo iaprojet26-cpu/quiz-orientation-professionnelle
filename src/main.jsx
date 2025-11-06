@@ -4,6 +4,10 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './App.jsx'
 import './i18n/config' // Initialise i18next
 import './index.css'
+import { initGA } from './utils/analytics' // Google Analytics
+
+// Initialiser Google Analytics
+initGA()
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

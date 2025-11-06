@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { getAllArticles } from '../services/blogService'
 import SEOHead from '../components/SEOHead'
-import LanguageSelector from '../components/LanguageSelector'
+import OptimizedImage from '../components/OptimizedImage'
 
 function BlogList() {
   const { t, i18n } = useTranslation()
@@ -23,11 +23,6 @@ function BlogList() {
       <SEOHead page="blog" />
       
       <div className="container mx-auto px-4 py-8">
-        {/* Sélecteur de langue en haut à droite */}
-        <div className="flex justify-end mb-4">
-          <LanguageSelector />
-        </div>
-        
         <header className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-primary-900 mb-4">
             {t('blog.title', { defaultValue: 'Blog - Conseils d\'Orientation Professionnelle' })}
@@ -44,8 +39,17 @@ function BlogList() {
               to={`/blog/${article.slug}`}
               className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
             >
-              <div className="h-48 bg-gradient-to-br from-primary-100 to-primary-200 flex items-center justify-center">
-                <span className="text-6xl">📚</span>
+              <div className="h-48 bg-gradient-to-br from-primary-100 to-primary-200 flex items-center justify-center overflow-hidden">
+                {article.image ? (
+                  <OptimizedImage
+                    src={article.image}
+                    alt={article.title}
+                    className="w-full h-full object-cover"
+                    lazy={true}
+                  />
+                ) : (
+                  <span className="text-6xl">📚</span>
+                )}
               </div>
               <div className="p-6">
                 <div className="text-sm text-gray-500 mb-2">

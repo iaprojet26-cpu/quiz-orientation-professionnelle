@@ -1,7 +1,13 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
+import Header from './components/Header'
+import Footer from './components/Footer'
 import Home from './pages/Home'
 import BlogList from './pages/BlogList'
 import BlogArticle from './pages/BlogArticle'
+import MentionsLegales from './pages/MentionsLegales'
+import PolitiqueConfidentialite from './pages/PolitiqueConfidentialite'
+import APropos from './pages/APropos'
+import Contact from './pages/Contact'
 import AdminLogin from './pages/AdminLogin'
 import AdminDashboard from './pages/AdminDashboard'
 import { isAdminAuthenticated } from './services/adminService'
@@ -16,11 +22,17 @@ function ProtectedAdminRoute({ children }) {
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/blog" element={<BlogList />} />
-      <Route path="/blog/:slug" element={<BlogArticle />} />
-      <Route path="/admin/login" element={<AdminLogin />} />
+    <>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/blog" element={<BlogList />} />
+        <Route path="/blog/:slug" element={<BlogArticle />} />
+        <Route path="/mentions-legales" element={<MentionsLegales />} />
+        <Route path="/politique-confidentialite" element={<PolitiqueConfidentialite />} />
+        <Route path="/a-propos" element={<APropos />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/admin/login" element={<AdminLogin />} />
       <Route
         path="/admin"
         element={
@@ -29,7 +41,9 @@ function App() {
           </ProtectedAdminRoute>
         }
       />
-    </Routes>
+      </Routes>
+      <Footer />
+    </>
   )
 }
 

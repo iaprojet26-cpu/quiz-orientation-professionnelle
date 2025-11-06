@@ -5,7 +5,7 @@ import { getHomepageSEO, getResultPageSEO, getOGTags, getTwitterTags, getHomepag
 /**
  * Composant pour gérer les meta tags SEO dynamiques
  */
-function SEOHead({ page = 'homepage', profileName = '', articleTitle = '' }) {
+function SEOHead({ page = 'homepage', profileName = '', articleTitle = '', customTitle = '', customDescription = '' }) {
   const { i18n } = useTranslation()
   const language = i18n.language || 'fr'
 
@@ -33,6 +33,13 @@ function SEOHead({ page = 'homepage', profileName = '', articleTitle = '' }) {
         description: 'Découvrez nos articles sur l\'orientation professionnelle, les métiers et les carrières'
       }
       schemaData = {}
+    } else if (customTitle && customDescription) {
+      // Pages personnalisées (legal, contact, etc.)
+      seoData = {
+        title: customTitle,
+        description: customDescription
+      }
+      schemaData = {}
     } else {
       seoData = getHomepageSEO(language)
       schemaData = getHomepageSchema(language)
@@ -42,7 +49,7 @@ function SEOHead({ page = 'homepage', profileName = '', articleTitle = '' }) {
     const twitterTags = getTwitterTags(language)
 
     // Mettre à jour le titre
-    document.title = seoData.title
+    document.title = customTitle || seoData.title
 
     // Mettre à jour la meta description
     let metaDescription = document.querySelector('meta[name="description"]')
@@ -51,7 +58,7 @@ function SEOHead({ page = 'homepage', profileName = '', articleTitle = '' }) {
       metaDescription.setAttribute('name', 'description')
       document.head.appendChild(metaDescription)
     }
-    metaDescription.setAttribute('content', seoData.description)
+    metaDescription.setAttribute('content', customDescription || seoData.description)
 
     // Mettre à jour ou créer les balises Open Graph
     const ogTagsToUpdate = [
@@ -132,7 +139,7 @@ function SEOHead({ page = 'homepage', profileName = '', articleTitle = '' }) {
       document.documentElement.setAttribute('dir', 'ltr')
     }
 
-  }, [language, page, profileName, articleTitle])
+  }, [language, page, profileName, articleTitle, customTitle, customDescription])
 
   return null // Ce composant ne rend rien visuellement
 }

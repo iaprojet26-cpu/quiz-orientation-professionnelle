@@ -5,7 +5,8 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { getArticleBySlug } from '../services/blogService'
 import SEOHead from '../components/SEOHead'
-import LanguageSelector from '../components/LanguageSelector'
+import OptimizedImage from '../components/OptimizedImage'
+import { trackArticleView } from '../utils/analytics'
 
 function BlogArticle() {
   const { slug } = useParams()
@@ -18,6 +19,11 @@ function BlogArticle() {
     const loadArticle = async () => {
       const articleData = await getArticleBySlug(slug, language)
       setArticle(articleData)
+      
+      // Tracker la vue de l'article
+      if (articleData?.title) {
+        trackArticleView(articleData.title)
+      }
 
       // Si l'article vient de Supabase, utiliser le contenu directement
       if (articleData?.content) {
@@ -63,11 +69,6 @@ function BlogArticle() {
       <SEOHead page="blog-article" articleTitle={article.title} />
       
       <article className="container mx-auto px-4 py-8 max-w-4xl">
-        {/* Sélecteur de langue en haut à droite */}
-        <div className="flex justify-end mb-4">
-          <LanguageSelector />
-        </div>
-        
         <Link to="/blog" className="text-primary-600 hover:underline mb-6 inline-block">
           ← {t('blog.back_to_blog', { defaultValue: 'Retour au blog' })}
         </Link>

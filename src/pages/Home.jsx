@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import Quiz from '../components/Quiz'
 import Results from '../components/Results'
-import LanguageSelector from '../components/LanguageSelector'
 import SEOHead from '../components/SEOHead'
 import { getHomepageContent } from '../services/seoService'
 import { getRecentArticles } from '../services/blogService'
 import { Link } from 'react-router-dom'
+import OptimizedImage from '../components/OptimizedImage'
 
 function Home() {
   const { t, i18n } = useTranslation()
@@ -54,10 +54,6 @@ function Home() {
       />
       
       <div className="container mx-auto px-4 py-8">
-        {/* Sélecteur de langue en haut à droite */}
-        <div className="flex justify-end mb-4">
-          <LanguageSelector />
-        </div>
 
         {!quizCompleted && (
           <header className="text-center mb-8">
@@ -124,8 +120,17 @@ function Home() {
                     to={`/blog/${article.slug}`}
                     className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
                   >
-                    <div className="h-40 bg-gradient-to-br from-primary-100 to-primary-200 flex items-center justify-center">
-                      <span className="text-5xl">📚</span>
+                    <div className="h-40 bg-gradient-to-br from-primary-100 to-primary-200 flex items-center justify-center overflow-hidden">
+                      {article.image ? (
+                        <OptimizedImage
+                          src={article.image}
+                          alt={article.title}
+                          className="w-full h-full object-cover"
+                          lazy={true}
+                        />
+                      ) : (
+                        <span className="text-5xl">📚</span>
+                      )}
                     </div>
                     <div className="p-5">
                       <div className="text-xs text-gray-500 mb-2">
