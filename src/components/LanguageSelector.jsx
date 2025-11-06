@@ -11,9 +11,9 @@ function LanguageSelector() {
 
   // Liste des langues disponibles avec leurs drapeaux
   const languages = [
-    { code: 'fr', flag: '🇫🇷', name: 'Français' },
-    { code: 'en', flag: '🇬🇧', name: 'English' },
-    { code: 'ar', flag: '🇲🇦', name: 'العربية' }
+    { code: 'fr', flag: '🇫🇷', name: 'Français', flagUnicode: '\u{1F1EB}\u{1F1F7}' },
+    { code: 'en', flag: '🇬🇧', name: 'English', flagUnicode: '\u{1F1EC}\u{1F1E7}' },
+    { code: 'ar', flag: '🇲🇦', name: 'العربية', flagUnicode: '\u{1F1F2}\u{1F1E6}' }
   ]
 
   /**
@@ -32,7 +32,7 @@ function LanguageSelector() {
           key={lang.code}
           onClick={() => changeLanguage(lang.code)}
           className={`
-            flex items-center gap-1 px-3 py-2 rounded-md transition-all duration-200
+            flex items-center gap-1.5 px-3 py-2 rounded-md transition-all duration-200
             ${i18n.language === lang.code
               ? 'bg-primary-600 text-white shadow-md scale-105'
               : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:scale-105'
@@ -41,8 +41,20 @@ function LanguageSelector() {
           title={lang.name}
           aria-label={`Change language to ${lang.name}`}
         >
-          <span className="text-xl">{lang.flag}</span>
-          <span className="font-medium text-sm hidden sm:inline">
+          <span 
+            className="text-2xl" 
+            style={{ 
+              fontSize: '1.5rem', 
+              lineHeight: '1',
+              display: 'inline-block',
+              fontFamily: 'Apple Color Emoji, Segoe UI Emoji, Noto Color Emoji, sans-serif'
+            }}
+            role="img"
+            aria-label={lang.name}
+          >
+            {lang.flag}
+          </span>
+          <span className="font-medium text-sm">
             {lang.code.toUpperCase()}
           </span>
         </button>

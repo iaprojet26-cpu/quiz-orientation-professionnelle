@@ -5,7 +5,7 @@ import { getHomepageSEO, getResultPageSEO, getOGTags, getTwitterTags, getHomepag
 /**
  * Composant pour gérer les meta tags SEO dynamiques
  */
-function SEOHead({ page = 'homepage', profileName = '' }) {
+function SEOHead({ page = 'homepage', profileName = '', articleTitle = '' }) {
   const { i18n } = useTranslation()
   const language = i18n.language || 'fr'
 
@@ -17,6 +17,22 @@ function SEOHead({ page = 'homepage', profileName = '' }) {
     if (page === 'result' && profileName) {
       seoData = getResultPageSEO(language, profileName)
       schemaData = getResultPageSchema(language, profileName)
+    } else if (page === 'blog-article' && articleTitle) {
+      seoData = {
+        title: `${articleTitle} | QuizOrientation Blog`,
+        description: `Découvrez notre article : ${articleTitle}`
+      }
+      schemaData = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": articleTitle
+      }
+    } else if (page === 'blog') {
+      seoData = {
+        title: 'Blog - Conseils d\'Orientation Professionnelle | QuizOrientation',
+        description: 'Découvrez nos articles sur l\'orientation professionnelle, les métiers et les carrières'
+      }
+      schemaData = {}
     } else {
       seoData = getHomepageSEO(language)
       schemaData = getHomepageSchema(language)
@@ -84,6 +100,30 @@ function SEOHead({ page = 'homepage', profileName = '' }) {
     }
     schemaScript.textContent = JSON.stringify(schemaData)
 
+    // Ajouter ou mettre à jour la balise canonical
+    const baseUrl = 'https://quizorientation.online'
+    let canonicalUrl = baseUrl
+    
+    // Construire l'URL canonical selon la page et la langue
+    if (language !== 'fr') {
+      canonicalUrl = `${baseUrl}/${language}/`
+    } else {
+      canonicalUrl = `${baseUrl}/`
+    }
+    
+    if (page === 'result' && profileName) {
+      const slug = profileName.toLowerCase().replace(/\s+/g, '-')
+      canonicalUrl = `${baseUrl}/${language}/result/${slug}`
+    }
+    
+    let canonicalLink = document.querySelector('link[rel="canonical"]')
+    if (!canonicalLink) {
+      canonicalLink = document.createElement('link')
+      canonicalLink.setAttribute('rel', 'canonical')
+      document.head.appendChild(canonicalLink)
+    }
+    canonicalLink.setAttribute('href', canonicalUrl)
+
     // Mettre à jour la langue du document
     document.documentElement.setAttribute('lang', language)
     if (language === 'ar') {
@@ -92,7 +132,7 @@ function SEOHead({ page = 'homepage', profileName = '' }) {
       document.documentElement.setAttribute('dir', 'ltr')
     }
 
-  }, [language, page, profileName])
+  }, [language, page, profileName, articleTitle])
 
   return null // Ce composant ne rend rien visuellement
 }
