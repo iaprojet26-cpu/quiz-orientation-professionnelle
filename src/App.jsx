@@ -8,6 +8,7 @@ import MentionsLegales from './pages/MentionsLegales'
 import PolitiqueConfidentialite from './pages/PolitiqueConfidentialite'
 import APropos from './pages/APropos'
 import Contact from './pages/Contact'
+import TopMetiersFutur from './pages/TopMetiersFutur'
 import AdminLogin from './pages/AdminLogin'
 import AdminDashboard from './pages/AdminDashboard'
 import { isAdminAuthenticated } from './services/adminService'
@@ -32,6 +33,7 @@ function App() {
         <Route path="/politique-confidentialite" element={<PolitiqueConfidentialite />} />
         <Route path="/a-propos" element={<APropos />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/top-metiers-futur" element={<TopMetiersFutur />} />
         <Route path="/admin/login" element={<AdminLogin />} />
       <Route
         path="/admin"

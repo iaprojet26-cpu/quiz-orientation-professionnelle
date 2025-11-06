@@ -39,20 +39,20 @@ export const getHomepageContent = (language = 'fr') => {
   // Extraire les textes du content_html pour chaque langue
   const texts = {
     fr: {
-      intro1: "Vous vous interrogez sur votre avenir professionnel ? Notre quiz d'orientation gratuit vous aide à identifier votre profil professionnel parmi 5 profils distincts : Créatif, Technique, Social, Organisationnel ou Entrepreneurial.",
-      intro2: "En répondant à 10-12 questions simples sur vos centres d'intérêt, compétences et préférences de travail, vous obtiendrez un profil personnalisé accompagné de 5 métiers recommandés, leurs descriptions, niveaux d'études requis et formations possibles.",
-      whyTitle: "Pourquoi Faire Ce Quiz ?",
-      whyText: "Ce test d'orientation professionnelle est conçu pour vous guider dans vos choix de carrière. Que vous soyez étudiant, en reconversion ou simplement curieux, découvrez les métiers qui correspondent à votre personnalité et vos aspirations.",
-      howTitle: "Comment Ça Marche ?",
-      howText: "Le quiz prend moins de 10 minutes. Répondez honnêtement aux questions, et notre algorithme analysera vos réponses pour déterminer votre profil professionnel. Les résultats sont instantanés et incluent des recommandations détaillées."
+      intro1: "Vous vous interrogez sur votre avenir professionnel ? Notre **test d'orientation gratuit** vous aide à identifier votre profil professionnel parmi 5 profils distincts : Créatif, Technique, Social, Organisationnel ou Entrepreneurial. Ce **quiz d'orientation professionnelle** est conçu pour vous aider à **trouver votre métier idéal**.",
+      intro2: "En répondant à 10-12 questions simples sur vos centres d'intérêt, compétences et préférences de travail, vous obtiendrez un profil personnalisé accompagné de 5 métiers recommandés, leurs descriptions, niveaux d'études requis et **formations adaptées à votre profil**. Un véritable **bilan d'orientation en ligne** en quelques minutes.",
+      whyTitle: "Pourquoi Faire Ce Test d'Orientation Gratuit ?",
+      whyText: "Ce **test d'orientation professionnelle** est conçu pour vous guider dans vos choix de carrière. Que vous soyez étudiant, en reconversion ou simplement curieux, découvrez les métiers qui correspondent à votre personnalité et vos aspirations. Notre **quiz d'orientation professionnelle** vous permet d'obtenir un **bilan d'orientation en ligne** complet et personnalisé.",
+      howTitle: "Comment Fonctionne Notre Quiz d'Orientation ?",
+      howText: "Le **quiz d'orientation professionnelle** prend moins de 10 minutes. Répondez honnêtement aux questions, et notre algorithme analysera vos réponses pour déterminer votre profil professionnel. Les résultats sont instantanés et incluent des recommandations détaillées de métiers et **formations adaptées à votre profil**. Un **bilan d'orientation en ligne** rapide et efficace."
     },
     en: {
-      intro1: "Wondering about your professional future? Our free orientation quiz helps you identify your professional profile among 5 distinct profiles: Creative, Technical, Social, Organizational, or Entrepreneurial.",
-      intro2: "By answering 10-12 simple questions about your interests, skills, and work preferences, you'll get a personalized profile along with 5 recommended careers, their descriptions, required education levels, and possible training programs.",
-      whyTitle: "Why Take This Quiz?",
-      whyText: "This career orientation test is designed to guide you in your career choices. Whether you're a student, in career transition, or simply curious, discover the careers that match your personality and aspirations.",
-      howTitle: "How It Works?",
-      howText: "The quiz takes less than 10 minutes. Answer honestly, and our algorithm will analyze your responses to determine your professional profile. Results are instant and include detailed recommendations."
+      intro1: "Wondering about your professional future? Our **free career orientation test** helps you identify your professional profile among 5 distinct profiles: Creative, Technical, Social, Organizational, or Entrepreneurial. This **professional orientation quiz** is designed to help you **find your ideal career**.",
+      intro2: "By answering 10-12 simple questions about your interests, skills, and work preferences, you'll get a personalized profile along with 5 recommended careers, their descriptions, required education levels, and **training programs adapted to your profile**. A complete **online career assessment** in just a few minutes.",
+      whyTitle: "Why Take This Free Career Orientation Test?",
+      whyText: "This **career orientation test** is designed to guide you in your career choices. Whether you're a student, in career transition, or simply curious, discover the careers that match your personality and aspirations. Our **professional orientation quiz** allows you to get a complete and personalized **online career assessment**.",
+      howTitle: "How Does Our Career Orientation Quiz Work?",
+      howText: "The **professional orientation quiz** takes less than 10 minutes. Answer honestly, and our algorithm will analyze your responses to determine your professional profile. Results are instant and include detailed career recommendations and **training programs adapted to your profile**. A quick and effective **online career assessment**."
     },
     ar: {
       intro1: "هل تتساءل عن مستقبلك المهني؟ يساعدك اختبار التوجيه المجاني لدينا على تحديد ملفك المهني من بين 5 ملفات متميزة: الإبداعي، التقني، الاجتماعي، التنظيمي، أو الريادي.",

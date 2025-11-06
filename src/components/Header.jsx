@@ -12,18 +12,21 @@ function Header() {
   const menuItems = {
     fr: [
       { path: '/', label: 'Accueil' },
+      { path: '/top-metiers-futur', label: 'Top Métiers' },
       { path: '/blog', label: 'Blog' },
       { path: '/a-propos', label: 'À Propos' },
       { path: '/contact', label: 'Contact' }
     ],
     en: [
       { path: '/', label: 'Home' },
+      { path: '/top-metiers-futur', label: 'Top Careers' },
       { path: '/blog', label: 'Blog' },
       { path: '/a-propos', label: 'About' },
       { path: '/contact', label: 'Contact' }
     ],
     ar: [
       { path: '/', label: 'الرئيسية' },
+      { path: '/top-metiers-futur', label: 'أفضل المهن' },
       { path: '/blog', label: 'المدونة' },
       { path: '/a-propos', label: 'من نحن' },
       { path: '/contact', label: 'اتصل بنا' }

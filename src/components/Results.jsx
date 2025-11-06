@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import i18n from '../i18n/config'
 import { loadProfilesFromSupabase, loadJobsFromSupabase } from '../services/quizService'
@@ -104,6 +105,34 @@ function Results({ results, onRestart }) {
           </div>
         </div>
       )}
+
+      {/* Contenu SEO supplémentaire */}
+      <div className="card bg-gradient-to-br from-primary-50 to-primary-100">
+        <h2 className="text-2xl font-bold text-primary-900 mb-4">
+          {t('results.next_steps_title', { defaultValue: 'Prochaines Étapes' })}
+        </h2>
+        <div className="space-y-4 text-gray-700">
+          <p>
+            {t('results.next_steps_text', { 
+              defaultValue: 'Vous avez obtenu votre profil professionnel grâce à notre test d\'orientation gratuit. Pour approfondir votre réflexion, explorez nos articles de blog sur l\'orientation professionnelle et découvrez comment trouver votre métier idéal.' 
+            })}
+          </p>
+          <div className="flex flex-wrap gap-3 mt-4">
+            <Link 
+              to="/blog" 
+              className="btn-primary inline-block"
+            >
+              {t('results.explore_blog', { defaultValue: '📚 Explorer nos articles' })}
+            </Link>
+            <Link 
+              to="/top-metiers-futur" 
+              className="btn-secondary inline-block"
+            >
+              {t('results.top_jobs', { defaultValue: '🚀 Top métiers du futur' })}
+            </Link>
+          </div>
+        </div>
+      </div>
 
       {/* Partage social */}
       <div className="card">

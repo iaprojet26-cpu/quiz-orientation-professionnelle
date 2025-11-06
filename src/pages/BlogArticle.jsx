@@ -105,10 +105,35 @@ function BlogArticle() {
           </ReactMarkdown>
         </div>
 
+        {/* Liens internes SEO */}
         <div className="mt-12 pt-8 border-t border-gray-200">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">
-            {t('blog.related_articles', { defaultValue: 'Articles Similaires' })}
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            {language === 'fr' ? 'Explorez Plus' : language === 'en' ? 'Explore More' : 'استكشف المزيد'}
           </h2>
+          <div className="grid md:grid-cols-2 gap-4 mb-6">
+            <Link
+              to="/"
+              className="card hover:shadow-lg transition-shadow bg-gradient-to-br from-primary-50 to-primary-100"
+            >
+              <h3 className="text-xl font-bold text-primary-900 mb-2">
+                {language === 'fr' ? '🎯 Test d\'Orientation Gratuit' : language === 'en' ? '🎯 Free Orientation Test' : '🎯 اختبار التوجيه المجاني'}
+              </h3>
+              <p className="text-gray-700">
+                {language === 'fr' ? 'Découvrez votre profil professionnel en 10 minutes avec notre quiz d\'orientation professionnelle.' : language === 'en' ? 'Discover your professional profile in 10 minutes with our career orientation quiz.' : 'اكتشف ملفك المهني في 10 دقائق مع اختبار التوجيه المهني لدينا.'}
+              </p>
+            </Link>
+            <Link
+              to="/top-metiers-futur"
+              className="card hover:shadow-lg transition-shadow bg-gradient-to-br from-primary-50 to-primary-100"
+            >
+              <h3 className="text-xl font-bold text-primary-900 mb-2">
+                {language === 'fr' ? '🚀 Top Métiers du Futur' : language === 'en' ? '🚀 Top Future Careers' : '🚀 أفضل المهن المستقبلية'}
+              </h3>
+              <p className="text-gray-700">
+                {language === 'fr' ? 'Découvrez les métiers les plus prometteurs pour 2025-2030 et trouvez votre métier idéal.' : language === 'en' ? 'Discover the most promising careers for 2025-2030 and find your ideal career.' : 'اكتشف المهن الأكثر وعداً لعام 2025-2030 واعثر على مهنتك المثالية.'}
+              </p>
+            </Link>
+          </div>
           <Link
             to="/blog"
             className="inline-block bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors"

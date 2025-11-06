@@ -49,6 +49,11 @@ function Footer() {
                 </Link>
               </li>
               <li>
+                <Link to="/top-metiers-futur" className="text-gray-300 hover:text-white transition-colors">
+                  {language === 'fr' ? 'Top Métiers' : language === 'en' ? 'Top Careers' : 'أفضل المهن'}
+                </Link>
+              </li>
+              <li>
                 <Link to="/blog" className="text-gray-300 hover:text-white transition-colors">
                   {pageContent.blog}
                 </Link>
