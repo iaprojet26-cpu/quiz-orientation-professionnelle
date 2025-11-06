@@ -2,12 +2,19 @@ import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import i18n from '../i18n/config'
 import { loadProfilesFromSupabase, loadJobsFromSupabase } from '../services/quizService'
+import { getResultPageSEO } from '../services/seoService'
 import ShareButtons from './ShareButtons'
 
 function Results({ results, onRestart }) {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const [jobs, setJobs] = useState(results?.jobs || [])
   const [profile, setProfile] = useState(results?.profile)
+  const [seoResult, setSeoResult] = useState(getResultPageSEO(i18n.language || 'fr', profile?.nom || ''))
+  
+  // Mettre à jour le contenu SEO quand la langue ou le profil change
+  useEffect(() => {
+    setSeoResult(getResultPageSEO(i18n.language || 'fr', profile?.nom || ''))
+  }, [i18n.language, profile?.nom])
 
   // Recharger les traductions quand la langue change
   useEffect(() => {
@@ -39,12 +46,12 @@ function Results({ results, onRestart }) {
       {/* Profil */}
       <div className="card text-center" style={{ borderTop: `4px solid ${profile?.couleur || '#0ea5e9'}` }}>
         <div className="text-6xl mb-4">{profile?.icone || '🎯'}</div>
-        <h2 className="text-3xl font-bold text-primary-900 mb-4">
-          {t('results.title')}
-        </h2>
-        <h3 className="text-2xl font-semibold mb-3" style={{ color: profile?.couleur }}>
+        <h1 className="text-3xl font-bold text-primary-900 mb-4">
+          {seoResult.h1 || `Félicitations ! Votre Profil : ${profile?.nom || ''}`}
+        </h1>
+        <h2 className="text-2xl font-semibold mb-3" style={{ color: profile?.couleur }}>
           {profile?.nom || 'Profil en cours de calcul...'}
-        </h3>
+        </h2>
         <p className="text-gray-600 text-lg max-w-2xl mx-auto mb-6">
           {profile?.description || ''}
         </p>

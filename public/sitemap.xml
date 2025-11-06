@@ -2,18 +2,152 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
-  <!-- Page d'accueil principale -->
+  <!-- Page d'accueil - Français -->
   <url>
-    <loc>https://quizorientation.online</loc>
-    <lastmod>2025-11-05</lastmod>
+    <loc>https://quizorientation.online/fr/</loc>
+    <lastmod>2025-11-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <!-- Variantes linguistiques -->
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://quizorientation.online" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/fr/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quizorientation.online/" />
+  </url>
+  
+  <!-- Page d'accueil - Anglais -->
+  <url>
+    <loc>https://quizorientation.online/en/</loc>
+    <lastmod>2025-11-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/fr/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quizorientation.online/" />
+  </url>
+  
+  <!-- Page d'accueil - Arabe -->
+  <url>
+    <loc>https://quizorientation.online/ar/</loc>
+    <lastmod>2025-11-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/fr/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quizorientation.online/" />
+  </url>
+  
+  <!-- Page Quiz - Français -->
+  <url>
+    <loc>https://quizorientation.online/fr/quiz</loc>
+    <lastmod>2025-11-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Page Quiz - Anglais -->
+  <url>
+    <loc>https://quizorientation.online/en/quiz</loc>
+    <lastmod>2025-11-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Page Quiz - Arabe -->
+  <url>
+    <loc>https://quizorientation.online/ar/quiz</loc>
+    <lastmod>2025-11-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Pages de résultats - Profil Créatif -->
+  <url>
+    <loc>https://quizorientation.online/fr/result/creatif</loc>
+    <lastmod>2025-11-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://quizorientation.online/en/result/creative</loc>
+    <lastmod>2025-11-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://quizorientation.online/ar/result/creatif</loc>
+    <lastmod>2025-11-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Pages de résultats - Profil Technique -->
+  <url>
+    <loc>https://quizorientation.online/fr/result/technique</loc>
+    <lastmod>2025-11-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://quizorientation.online/en/result/technical</loc>
+    <lastmod>2025-11-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://quizorientation.online/ar/result/technique</loc>
+    <lastmod>2025-11-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Pages de résultats - Profil Social -->
+  <url>
+    <loc>https://quizorientation.online/fr/result/social</loc>
+    <lastmod>2025-11-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://quizorientation.online/en/result/social</loc>
+    <lastmod>2025-11-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://quizorientation.online/ar/result/social</loc>
+    <lastmod>2025-11-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Pages Blog -->
+  <url>
+    <loc>https://quizorientation.online/fr/blog</loc>
+    <lastmod>2025-11-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://quizorientation.online/en/blog</loc>
+    <lastmod>2025-11-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://quizorientation.online/ar/blog</loc>
+    <lastmod>2025-11-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
   
 </urlset>
-
