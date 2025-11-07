@@ -93,10 +93,33 @@ const staticArticles = [
   }
 ]
 
+const mapStaticArticle = (article, language = 'fr') => ({
+  slug: article.slug,
+  title: article.title[language] || article.title.fr,
+  description: article.description[language] || article.description.fr,
+  date: article.date,
+  image: article.image,
+  keywords: article.keywords[language] || article.keywords.fr,
+  category: article.category
+})
+
+const mapSupabaseArticle = (article, language = 'fr') => ({
+  slug: article.slug,
+  title: article[`title_${language}`] || article.title_fr,
+  description: article[`description_${language}`] || article.description_fr,
+  date: article.published_at || article.created_at,
+  image: article.image,
+  keywords: article[`keywords_${language}`] || article.keywords_fr || [],
+  category: article.category
+})
+
 /**
- * Obtenir tous les articles (depuis Supabase ou fallback)
+ * Obtenir tous les articles (depuis Supabase + fallback statique)
  */
 export const getAllArticles = async (language = 'fr') => {
+  const combinedArticles = []
+  const slugSet = new Set()
+
   // Essayer de charger depuis Supabase
   if (supabase) {
     try {
@@ -107,31 +130,29 @@ export const getAllArticles = async (language = 'fr') => {
         .order('published_at', { ascending: false })
 
       if (!error && data && data.length > 0) {
-        return data.map(article => ({
-          slug: article.slug,
-          title: article[`title_${language}`] || article.title_fr,
-          description: article[`description_${language}`] || article.description_fr,
-          date: article.published_at || article.created_at,
-          image: article.image,
-          keywords: article[`keywords_${language}`] || article.keywords_fr || [],
-          category: article.category
-        }))
+        data.forEach(article => {
+          const mapped = mapSupabaseArticle(article, language)
+          combinedArticles.push(mapped)
+          slugSet.add(mapped.slug)
+        })
       }
     } catch (error) {
       console.error('Erreur lors du chargement des articles depuis Supabase:', error)
     }
   }
 
-  // Fallback sur articles statiques
-  return staticArticles.map(article => ({
-    slug: article.slug,
-    title: article.title[language] || article.title.fr,
-    description: article.description[language] || article.description.fr,
-    date: article.date,
-    image: article.image,
-    keywords: article.keywords[language] || article.keywords.fr,
-    category: article.category
-  }))
+  // Ajouter les articles statiques manquants
+  staticArticles.forEach(article => {
+    if (!slugSet.has(article.slug)) {
+      combinedArticles.push(mapStaticArticle(article, language))
+    }
+  })
+
+  if (combinedArticles.length === 0) {
+    return staticArticles.map(article => mapStaticArticle(article, language))
+  }
+
+  return combinedArticles.sort((a, b) => new Date(b.date) - new Date(a.date))
 }
 
 /**
