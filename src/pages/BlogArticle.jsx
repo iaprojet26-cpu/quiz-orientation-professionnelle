@@ -55,6 +55,27 @@ function BlogArticle() {
     return { frontMatter: data, body }
   }
 
+  const fetchMarkdownContent = async (slugToFetch) => {
+    const basePath = (import.meta.env?.BASE_URL || '/').replace(/\/$/, '')
+    const candidatePaths = [
+      `${basePath}/articles/${slugToFetch}.md`,
+      `${basePath}/blog/${slugToFetch}.md`
+    ]
+
+    for (const path of candidatePaths) {
+      try {
+        const response = await fetch(path, { cache: 'no-cache' })
+        if (response.ok) {
+          return await response.text()
+        }
+      } catch (err) {
+        console.warn('Échec chargement markdown:', path, err)
+      }
+    }
+
+    throw new Error('Article markdown introuvable')
+  }
+
   useEffect(() => {
     const loadArticle = async () => {
       try {
@@ -67,11 +88,7 @@ function BlogArticle() {
 
         if (!articleData || !articleData.content) {
           // Charger le fichier markdown en fallback
-          const response = await fetch(`/blog/${slug}.md`)
-          if (!response.ok) {
-            throw new Error('Article markdown introuvable')
-          }
-          const rawText = await response.text()
+          const rawText = await fetchMarkdownContent(slug)
           const { frontMatter, body } = parseFrontMatter(rawText)
           markdownContent = body
 
