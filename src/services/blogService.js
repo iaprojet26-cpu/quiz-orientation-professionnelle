@@ -20,7 +20,7 @@ const staticArticles = [
       ar: 'اكتشف المهارات التقنية والناعمة الضرورية في عام 2025 لتعزيز قابليتك للتوظيف وجذب أصحاب العمل.'
     },
     date: '2025-11-07',
-    image: '/assets/blog/competences-2025.webp',
+    image: '/assets/blog/competences-2025-data.svg',
     keywords: {
       fr: ['compétences 2025', 'employabilité', 'soft skills', 'métiers du futur'],
       en: ['skills 2025', 'employability', 'soft skills', 'future jobs'],
