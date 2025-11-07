@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="675" viewBox="0 0 1200 675" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="675" rx="32" fill="#0EA5E9"/>
+  <rect x="72" y="96" width="1056" height="483" rx="28" fill="white" opacity="0.9"/>
+  <path d="M210 492C262 408 351 348 456 348C561 348 650 408 702 492" stroke="#0EA5E9" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" opacity="0.45"/>
+  <path d="M456 492C504 420 579 372 666 372C753 372 828 420 876 492" stroke="#0EA5E9" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" opacity="0.65"/>
+  <rect x="300" y="216" width="180" height="120" rx="16" fill="#E0F2FE"/>
+  <rect x="510" y="216" width="180" height="120" rx="16" fill="#E0F2FE"/>
+  <rect x="720" y="216" width="180" height="120" rx="16" fill="#E0F2FE"/>
+  <text x="390" y="270" text-anchor="middle" font-family="'Segoe UI', Arial" font-size="32" font-weight="600" fill="#0EA5E9">DATA</text>
+  <text x="600" y="270" text-anchor="middle" font-family="'Segoe UI', Arial" font-size="32" font-weight="600" fill="#0EA5E9">IA</text>
+  <text x="810" y="270" text-anchor="middle" font-family="'Segoe UI', Arial" font-size="32" font-weight="600" fill="#0EA5E9">AUTOMATION</text>
+  <text x="600" y="420" text-anchor="middle" font-family="'Segoe UI', Arial" font-size="64" font-weight="700" fill="#0EA5E9">Compétences 2025</text>
+  <text x="600" y="484" text-anchor="middle" font-family="'Segoe UI', Arial" font-size="32" font-weight="500" fill="#0369A1">Analysez – Automatisez – Protégez</text>
+</svg>
+

@@ -15,37 +15,87 @@ function BlogArticle() {
   const [content, setContent] = useState('')
   const language = i18n.language || 'fr'
 
-  useEffect(() => {
-    const loadArticle = async () => {
-      const articleData = await getArticleBySlug(slug, language)
-      setArticle(articleData)
-      
-      // Tracker la vue de l'article
-      if (articleData?.title) {
-        trackArticleView(articleData.title)
+  const parseFrontMatter = (rawText) => {
+    const match = rawText.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/)
+    if (!match) {
+      return { frontMatter: {}, body: rawText.trim() }
+    }
+
+    const frontMatterText = match[1]
+    const lines = frontMatterText.split(/\r?\n/)
+    const data = {}
+    let currentKey = null
+
+    lines.forEach(line => {
+      if (!line.trim()) return
+
+      // Gestion des listes (ex: keywords)
+      const listMatch = line.match(/^\s*-\s+(.*)$/)
+      if (listMatch && currentKey) {
+        if (!Array.isArray(data[currentKey])) {
+          data[currentKey] = []
+        }
+        data[currentKey].push(listMatch[1].replace(/^"|"$/g, '').trim())
+        return
       }
 
-      // Si l'article vient de Supabase, utiliser le contenu directement
-      if (articleData?.content) {
-        setContent(articleData.content)
-      } else if (slug) {
-        // Fallback : charger depuis fichier Markdown
-        fetch(`/blog/${slug}.md`)
-          .then(res => {
-            if (!res.ok) throw new Error('Article non trouvé')
-            return res.text()
-          })
-          .then(text => {
-            const contentMatch = text.match(/^---\n[\s\S]*?\n---\n([\s\S]*)$/)
-            if (contentMatch) {
-              setContent(contentMatch[1])
-            } else {
-              setContent(text)
+      const [key, ...rest] = line.split(':')
+      if (!key) return
+      currentKey = key.trim()
+      const value = rest.join(':').trim()
+
+      if (!value) {
+        data[currentKey] = []
+      } else {
+        data[currentKey] = value.replace(/^"|"$/g, '').trim()
+      }
+    })
+
+    const body = rawText.slice(match[0].length).trim()
+    return { frontMatter: data, body }
+  }
+
+  useEffect(() => {
+    const loadArticle = async () => {
+      try {
+        let articleData = await getArticleBySlug(slug, language)
+        let markdownContent = ''
+
+        if (articleData?.title) {
+          trackArticleView(articleData.title)
+        }
+
+        if (!articleData || !articleData.content) {
+          // Charger le fichier markdown en fallback
+          const response = await fetch(`/blog/${slug}.md`)
+          if (!response.ok) {
+            throw new Error('Article markdown introuvable')
+          }
+          const rawText = await response.text()
+          const { frontMatter, body } = parseFrontMatter(rawText)
+          markdownContent = body
+
+          if (!articleData) {
+            articleData = {
+              slug,
+              title: frontMatter.title || slug,
+              description: frontMatter.description || '',
+              date: frontMatter.date || new Date().toISOString(),
+              image: frontMatter.image || null,
+              keywords: frontMatter.keywords || [],
+              category: frontMatter.category || 'blog'
             }
-          })
-          .catch(() => {
-            setContent(`# ${articleData?.title || 'Article'}\n\nContenu de l'article à venir...`)
-          })
+          }
+        } else {
+          markdownContent = articleData.content
+        }
+
+        setArticle(articleData)
+        setContent(markdownContent || `# ${articleData?.title || 'Article'}\n\nContenu en cours de rédaction.`)
+      } catch (error) {
+        console.error('Erreur de chargement article:', error)
+        setArticle(null)
+        setContent('')
       }
     }
     loadArticle()

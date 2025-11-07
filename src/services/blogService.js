@@ -8,6 +8,27 @@ import { supabase } from '../lib/supabase'
 // Articles statiques (fallback si Supabase non disponible)
 const staticArticles = [
   {
+    slug: 'competences-cles-2025',
+    title: {
+      fr: 'Compétences Clés à Maîtriser en 2025',
+      en: 'Key Skills to Master in 2025',
+      ar: 'المهارات الأساسية لإتقانها في 2025'
+    },
+    description: {
+      fr: 'Identifiez les compétences techniques et soft skills indispensables en 2025 pour booster votre employabilité et attirer les recruteurs.',
+      en: 'Identify the technical and soft skills you need in 2025 to boost your employability and attract recruiters.',
+      ar: 'اكتشف المهارات التقنية والناعمة الضرورية في عام 2025 لتعزيز قابليتك للتوظيف وجذب أصحاب العمل.'
+    },
+    date: '2025-11-07',
+    image: '/assets/blog/competences-2025.webp',
+    keywords: {
+      fr: ['compétences 2025', 'employabilité', 'soft skills', 'métiers du futur'],
+      en: ['skills 2025', 'employability', 'soft skills', 'future jobs'],
+      ar: ['مهارات 2025', 'قابلية التوظيف', 'المهارات الناعمة', 'مهن المستقبل']
+    },
+    category: 'competences'
+  },
+  {
     slug: 'comment-choisir-sa-voie-professionnelle',
     title: {
       fr: 'Comment Choisir Sa Voie Professionnelle : Guide Complet 2025',
