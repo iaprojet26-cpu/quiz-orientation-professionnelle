@@ -7,6 +7,7 @@ import { getHomepageContent } from '../services/seoService'
 import { getRecentArticles } from '../services/blogService'
 import { Link } from 'react-router-dom'
 import OptimizedImage from '../components/OptimizedImage'
+import MonetagAdZone from '../components/MonetagAdZone'
 
 function Home() {
   const { t, i18n } = useTranslation()
@@ -54,6 +55,10 @@ function Home() {
       />
       
       <div className="container mx-auto px-4 py-8">
+        {/* Zone publicitaire Monetag - En haut de page */}
+        <div className="mb-8 flex justify-center">
+          <MonetagAdZone zoneId="10282723" position="top" className="w-full max-w-4xl" />
+        </div>
 
         {!quizCompleted && (
           <header className="text-center mb-8">
@@ -90,6 +95,13 @@ function Home() {
           <Quiz onComplete={handleQuizComplete} />
         ) : (
           <Results results={quizResults} onRestart={handleRestart} />
+        )}
+
+        {/* Zone publicitaire Monetag - Entre contenu et articles */}
+        {!quizCompleted && (
+          <div className="my-12 flex justify-center">
+            <MonetagAdZone zoneId="10282723" position="middle" className="w-full max-w-4xl" />
+          </div>
         )}
 
         {/* Section Articles Récents - Toujours affichée en bas de page */}

@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { getAllArticles } from '../services/blogService'
 import SEOHead from '../components/SEOHead'
 import OptimizedImage from '../components/OptimizedImage'
+import MonetagAdZone from '../components/MonetagAdZone'
 
 function BlogList() {
   const { t, i18n } = useTranslation()
@@ -31,6 +32,11 @@ function BlogList() {
             {t('blog.subtitle', { defaultValue: 'Découvrez nos articles sur l\'orientation professionnelle, les métiers et les carrières' })}
           </p>
         </header>
+
+        {/* Zone publicitaire Monetag - En haut de la liste */}
+        <div className="mb-8 flex justify-center">
+          <MonetagAdZone zoneId="10282723" position="top" className="w-full max-w-4xl" />
+        </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {articles.map((article) => (

@@ -7,6 +7,7 @@ import { getArticleBySlug } from '../services/blogService'
 import SEOHead from '../components/SEOHead'
 import OptimizedImage from '../components/OptimizedImage'
 import { trackArticleView } from '../utils/analytics'
+import MonetagAdZone from '../components/MonetagAdZone'
 
 function BlogArticle() {
   const { slug } = useParams()
@@ -166,10 +167,20 @@ function BlogArticle() {
           </div>
         </header>
 
+        {/* Zone publicitaire Monetag - Avant le contenu */}
+        <div className="mb-8 flex justify-center">
+          <MonetagAdZone zoneId="10282723" position="top" className="w-full max-w-4xl" />
+        </div>
+
         <div className="bg-white rounded-lg shadow-md p-8 prose prose-lg max-w-none">
           <ReactMarkdown remarkPlugins={[remarkGfm]}>
             {content || 'Chargement du contenu...'}
           </ReactMarkdown>
+        </div>
+
+        {/* Zone publicitaire Monetag - Après le contenu */}
+        <div className="my-8 flex justify-center">
+          <MonetagAdZone zoneId="10282723" position="bottom" className="w-full max-w-4xl" />
         </div>
 
         {/* Liens internes SEO */}
