@@ -300,6 +300,636 @@ const staticArticles = [
       ar: ['مهارات الغد', 'مستقبل العمل', 'مهارات 2030', 'مهن المستقبل']
     },
     category: 'competences'
+  },
+  {
+    slug: 'strategie-cv-2025-recrutement',
+    title: {
+      fr: 'Stratégie CV 2025 : Comment rédiger un CV qui attire les recruteurs',
+      en: 'CV Strategy 2025: How to Write a CV That Attracts Recruiters',
+      ar: 'استراتيجية السيرة الذاتية 2025: كيفية كتابة سيرة ذاتية تجذب أصحاب العمل'
+    },
+    description: {
+      fr: 'Guide complet pour rédiger un CV efficace en 2025 : format, contenu, mots-clés, ATS. Découvrez les meilleures pratiques pour décrocher des entretiens.',
+      en: 'Complete guide to writing an effective CV in 2025: format, content, keywords, ATS. Discover best practices to land interviews.',
+      ar: 'دليل شامل لكتابة سيرة ذاتية فعالة في عام 2025: التنسيق، المحتوى، الكلمات المفتاحية، أنظمة التتبع. اكتشف أفضل الممارسات للحصول على المقابلات.'
+    },
+    date: '2025-01-25',
+    image: '/assets/blog/cv-2025.svg',
+    keywords: {
+      fr: ['CV 2025', 'rédaction CV', 'curriculum vitae', 'recrutement'],
+      en: ['CV 2025', 'CV writing', 'curriculum vitae', 'recruitment'],
+      ar: ['السيرة الذاتية 2025', 'كتابة السيرة الذاتية', 'السيرة الذاتية', 'التوظيف']
+    },
+    category: 'recrutement'
+  },
+  {
+    slug: 'lettre-motivation-2025',
+    title: {
+      fr: 'Lettre de Motivation 2025 : Guide pour rédiger une candidature qui marque',
+      en: 'Cover Letter 2025: Guide to Writing an Impactful Application',
+      ar: 'رسالة التحفيز 2025: دليل لكتابة طلب ترشح مؤثر'
+    },
+    description: {
+      fr: 'Comment rédiger une lettre de motivation efficace en 2025 ? Techniques, structure, erreurs à éviter. Guide complet pour décrocher des entretiens.',
+      en: 'How to write an effective cover letter in 2025? Techniques, structure, mistakes to avoid. Complete guide to land interviews.',
+      ar: 'كيف تكتب رسالة تحفيز فعالة في عام 2025؟ التقنيات، الهيكل، الأخطاء التي يجب تجنبها. دليل شامل للحصول على المقابلات.'
+    },
+    date: '2025-01-26',
+    image: '/assets/blog/lettre-motivation-2025.svg',
+    keywords: {
+      fr: ['lettre de motivation', 'candidature', 'recherche d\'emploi', 'rédaction lettre'],
+      en: ['cover letter', 'application', 'job search', 'letter writing'],
+      ar: ['رسالة التحفيز', 'الترشح', 'البحث عن عمل', 'كتابة الرسالة']
+    },
+    category: 'recrutement'
+  },
+  {
+    slug: 'entretien-embauche-reussir-2025',
+    title: {
+      fr: 'Entretien d\'Embauche 2025 : Comment réussir votre entretien et décrocher le poste',
+      en: 'Job Interview 2025: How to Succeed in Your Interview and Land the Job',
+      ar: 'مقابلة التوظيف 2025: كيفية النجاح في مقابلتك والحصول على الوظيفة'
+    },
+    description: {
+      fr: 'Guide complet pour réussir vos entretiens d\'embauche en 2025 : préparation, questions fréquentes, techniques, erreurs à éviter. Conseils pratiques.',
+      en: 'Complete guide to succeed in your job interviews in 2025: preparation, common questions, techniques, mistakes to avoid. Practical advice.',
+      ar: 'دليل شامل للنجاح في مقابلات التوظيف في عام 2025: التحضير، الأسئلة الشائعة، التقنيات، الأخطاء التي يجب تجنبها. نصائح عملية.'
+    },
+    date: '2025-01-27',
+    image: '/assets/blog/entretien-embauche-2025.svg',
+    keywords: {
+      fr: ['entretien d\'embauche', 'réussir entretien', 'préparation entretien', 'questions entretien'],
+      en: ['job interview', 'succeed interview', 'interview preparation', 'interview questions'],
+      ar: ['مقابلة التوظيف', 'النجاح في المقابلة', 'تحضير المقابلة', 'أسئلة المقابلة']
+    },
+    category: 'recrutement'
+  },
+  {
+    slug: 'linkedin-optimisation-profil-2025',
+    title: {
+      fr: 'LinkedIn 2025 : Comment optimiser votre profil pour attirer les recruteurs',
+      en: 'LinkedIn 2025: How to Optimize Your Profile to Attract Recruiters',
+      ar: 'لينكد إن 2025: كيفية تحسين ملفك الشخصي لجذب أصحاب العمل'
+    },
+    description: {
+      fr: 'Guide complet pour optimiser votre profil LinkedIn en 2025 : titre, résumé, expériences, recommandations. Techniques pour être visible des recruteurs.',
+      en: 'Complete guide to optimize your LinkedIn profile in 2025: title, summary, experiences, recommendations. Techniques to be visible to recruiters.',
+      ar: 'دليل شامل لتحسين ملفك الشخصي على لينكد إن في عام 2025: العنوان، الملخص، الخبرات، التوصيات. تقنيات للظهور أمام أصحاب العمل.'
+    },
+    date: '2025-01-28',
+    image: '/assets/blog/linkedin-2025.svg',
+    keywords: {
+      fr: ['LinkedIn', 'optimisation profil LinkedIn', 'réseau professionnel', 'recrutement LinkedIn'],
+      en: ['LinkedIn', 'LinkedIn profile optimization', 'professional network', 'LinkedIn recruitment'],
+      ar: ['لينكد إن', 'تحسين ملف لينكد إن', 'الشبكة المهنية', 'التوظيف على لينكد إن']
+    },
+    category: 'réseau'
+  },
+  {
+    slug: 'reconversion-professionnelle-guide-2025',
+    title: {
+      fr: 'Reconversion Professionnelle 2025 : Guide complet pour changer de carrière',
+      en: 'Career Change 2025: Complete Guide to Change Careers',
+      ar: 'إعادة التوجيه المهني 2025: دليل شامل لتغيير المسيرة المهنية'
+    },
+    description: {
+      fr: 'Comment réussir sa reconversion professionnelle en 2025 ? Étapes, formations, financement, erreurs à éviter. Guide pratique pour changer de métier.',
+      en: 'How to succeed in your career change in 2025? Steps, training, funding, mistakes to avoid. Practical guide to change careers.',
+      ar: 'كيف تنجح في إعادة توجيهك المهني في عام 2025؟ الخطوات، التدريب، التمويل، الأخطاء التي يجب تجنبها. دليل عملي لتغيير المهنة.'
+    },
+    date: '2025-01-29',
+    image: '/assets/blog/reconversion-2025.svg',
+    keywords: {
+      fr: ['reconversion professionnelle', 'changement de carrière', 'changer de métier', 'formation reconversion'],
+      en: ['career change', 'career transition', 'change careers', 'career change training'],
+      ar: ['إعادة التوجيه المهني', 'تغيير المسيرة المهنية', 'تغيير المهنة', 'تدريب إعادة التوجيه']
+    },
+    category: 'orientation'
+  },
+  {
+    slug: 'teletravail-productivite-2025',
+    title: {
+      fr: 'Télétravail et Productivité 2025 : Comment réussir le travail à distance',
+      en: 'Remote Work and Productivity 2025: How to Succeed in Remote Work',
+      ar: 'العمل عن بعد والإنتاجية 2025: كيفية النجاح في العمل عن بعد'
+    },
+    description: {
+      fr: 'Guide complet sur le télétravail en 2025 : organisation, productivité, outils, équilibre vie pro/perso. Conseils pratiques pour réussir le travail à distance.',
+      en: 'Complete guide on remote work in 2025: organization, productivity, tools, work-life balance. Practical advice to succeed in remote work.',
+      ar: 'دليل شامل حول العمل عن بعد في عام 2025: التنظيم، الإنتاجية، الأدوات، التوازن بين العمل والحياة. نصائح عملية للنجاح في العمل عن بعد.'
+    },
+    date: '2025-01-30',
+    image: '/assets/blog/teletravail-2025.svg',
+    keywords: {
+      fr: ['télétravail', 'travail à distance', 'productivité', 'organisation télétravail'],
+      en: ['remote work', 'work from home', 'productivity', 'remote work organization'],
+      ar: ['العمل عن بعد', 'العمل من المنزل', 'الإنتاجية', 'تنظيم العمل عن بعد']
+    },
+    category: 'télétravail'
+  },
+  {
+    slug: 'negociation-salaire-2025',
+    title: {
+      fr: 'Négociation Salariale 2025 : Comment négocier son salaire avec succès',
+      en: 'Salary Negotiation 2025: How to Successfully Negotiate Your Salary',
+      ar: 'تفاوض الراتب 2025: كيفية التفاوض بنجاح على راتبك'
+    },
+    description: {
+      fr: 'Guide complet pour négocier son salaire en 2025 : préparation, techniques, timing, erreurs à éviter. Conseils pratiques pour obtenir la rémunération méritée.',
+      en: 'Complete guide to negotiate your salary in 2025: preparation, techniques, timing, mistakes to avoid. Practical advice to get the compensation you deserve.',
+      ar: 'دليل شامل للتفاوض على راتبك في عام 2025: التحضير، التقنيات، التوقيت، الأخطاء التي يجب تجنبها. نصائح عملية للحصول على التعويض الذي تستحقه.'
+    },
+    date: '2025-02-01',
+    image: '/assets/blog/negociation-salaire-2025.svg',
+    keywords: {
+      fr: ['négociation salaire', 'rémunération', 'salaire', 'augmentation salaire'],
+      en: ['salary negotiation', 'compensation', 'salary', 'salary increase'],
+      ar: ['تفاوض الراتب', 'التعويض', 'الراتب', 'زيادة الراتب']
+    },
+    category: 'carrière'
+  },
+  {
+    slug: 'burn-out-prevention-2025',
+    title: {
+      fr: 'Burn-out et Prévention 2025 : Comment préserver son bien-être au travail',
+      en: 'Burnout and Prevention 2025: How to Preserve Your Well-being at Work',
+      ar: 'الإرهاق والوقاية 2025: كيفية الحفاظ على رفاهيتك في العمل'
+    },
+    description: {
+      fr: 'Guide complet sur le burn-out : signes, causes, prévention, solutions. Conseils pratiques pour préserver son bien-être et sa santé mentale au travail.',
+      en: 'Complete guide on burnout: signs, causes, prevention, solutions. Practical advice to preserve your well-being and mental health at work.',
+      ar: 'دليل شامل حول الإرهاق: العلامات، الأسباب، الوقاية، الحلول. نصائح عملية للحفاظ على رفاهيتك وصحتك العقلية في العمل.'
+    },
+    date: '2025-02-02',
+    image: '/assets/blog/burnout-2025.svg',
+    keywords: {
+      fr: ['burn-out', 'épuisement professionnel', 'bien-être au travail', 'santé mentale'],
+      en: ['burnout', 'professional exhaustion', 'well-being at work', 'mental health'],
+      ar: ['الإرهاق', 'الإرهاق المهني', 'الرفاهية في العمل', 'الصحة العقلية']
+    },
+    category: 'bien-être'
+  },
+  {
+    slug: 'leadership-management-2025',
+    title: {
+      fr: 'Leadership et Management 2025 : Les compétences essentielles pour diriger',
+      en: 'Leadership and Management 2025: Essential Skills to Lead',
+      ar: 'القيادة والإدارة 2025: المهارات الأساسية للقيادة'
+    },
+    description: {
+      fr: 'Guide complet sur le leadership moderne en 2025 : styles de leadership, compétences clés, gestion d\'équipe, développement des talents. Conseils pratiques.',
+      en: 'Complete guide on modern leadership in 2025: leadership styles, key skills, team management, talent development. Practical advice.',
+      ar: 'دليل شامل حول القيادة الحديثة في عام 2025: أنماط القيادة، المهارات الأساسية، إدارة الفريق، تطوير المواهب. نصائح عملية.'
+    },
+    date: '2025-02-03',
+    image: '/assets/blog/leadership-2025.svg',
+    keywords: {
+      fr: ['leadership', 'management', 'gestion d\'équipe', 'compétences leadership'],
+      en: ['leadership', 'management', 'team management', 'leadership skills'],
+      ar: ['القيادة', 'الإدارة', 'إدارة الفريق', 'مهارات القيادة']
+    },
+    category: 'leadership'
+  },
+  {
+    slug: 'entrepreneuriat-startup-2025',
+    title: {
+      fr: 'Entrepreneuriat et Startup 2025 : Guide pour lancer votre projet',
+      en: 'Entrepreneurship and Startup 2025: Guide to Launch Your Project',
+      ar: 'ريادة الأعمال والشركات الناشئة 2025: دليل لإطلاق مشروعك'
+    },
+    description: {
+      fr: 'Comment créer une startup en 2025 ? Étapes, financement, erreurs à éviter, compétences nécessaires. Guide complet pour réussir votre projet entrepreneurial.',
+      en: 'How to create a startup in 2025? Steps, funding, mistakes to avoid, necessary skills. Complete guide to succeed in your entrepreneurial project.',
+      ar: 'كيف تنشئ شركة ناشئة في عام 2025؟ الخطوات، التمويل، الأخطاء التي يجب تجنبها، المهارات اللازمة. دليل شامل للنجاح في مشروعك الريادي.'
+    },
+    date: '2025-02-04',
+    image: '/assets/blog/entrepreneuriat-2025.svg',
+    keywords: {
+      fr: ['entrepreneuriat', 'startup', 'création d\'entreprise', 'lancement startup'],
+      en: ['entrepreneurship', 'startup', 'company creation', 'startup launch'],
+      ar: ['ريادة الأعمال', 'الشركات الناشئة', 'إنشاء الشركة', 'إطلاق الشركة الناشئة']
+    },
+    category: 'entrepreneuriat'
+  },
+  {
+    slug: 'networking-professionnel-2025',
+    title: {
+      fr: 'Networking Professionnel 2025 : Comment construire un réseau efficace',
+      en: 'Professional Networking 2025: How to Build an Effective Network',
+      ar: 'الشبكات المهنية 2025: كيفية بناء شبكة فعالة'
+    },
+    description: {
+      fr: 'Guide complet sur le networking en 2025 : stratégies, événements, réseaux sociaux, erreurs à éviter. Conseils pratiques pour développer votre réseau professionnel.',
+      en: 'Complete guide on networking in 2025: strategies, events, social networks, mistakes to avoid. Practical advice to develop your professional network.',
+      ar: 'دليل شامل حول الشبكات في عام 2025: الاستراتيجيات، الأحداث، الشبكات الاجتماعية، الأخطاء التي يجب تجنبها. نصائح عملية لتطوير شبكتك المهنية.'
+    },
+    date: '2025-02-05',
+    image: '/assets/blog/networking-2025.svg',
+    keywords: {
+      fr: ['networking', 'réseau professionnel', 'réseautage', 'développement réseau'],
+      en: ['networking', 'professional network', 'networking', 'network development'],
+      ar: ['الشبكات', 'الشبكة المهنية', 'التشبيك', 'تطوير الشبكة']
+    },
+    category: 'réseau'
+  },
+  {
+    slug: 'formation-continue-2025',
+    title: {
+      fr: 'Formation Continue 2025 : Investir dans son développement professionnel',
+      en: 'Continuing Education 2025: Investing in Your Professional Development',
+      ar: 'التدريب المستمر 2025: الاستثمار في تطويرك المهني'
+    },
+    description: {
+      fr: 'Guide complet sur la formation continue en 2025 : CPF, financement, types de formations, choix. Conseils pratiques pour développer ses compétences tout au long de sa carrière.',
+      en: 'Complete guide on continuing education in 2025: CPF, funding, types of training, choice. Practical advice to develop your skills throughout your career.',
+      ar: 'دليل شامل حول التدريب المستمر في عام 2025: الحساب الشخصي للتدريب، التمويل، أنواع التدريب، الاختيار. نصائح عملية لتطوير مهاراتك طوال مسيرتك المهنية.'
+    },
+    date: '2025-02-06',
+    image: '/assets/blog/formation-continue-2025.svg',
+    keywords: {
+      fr: ['formation continue', 'développement professionnel', 'CPF', 'formation'],
+      en: ['continuing education', 'professional development', 'CPF', 'training'],
+      ar: ['التدريب المستمر', 'التطوير المهني', 'الحساب الشخصي للتدريب', 'التدريب']
+    },
+    category: 'formation'
+  },
+  {
+    slug: 'diversite-inclusion-entreprise-2025',
+    title: {
+      fr: 'Diversité et Inclusion en Entreprise 2025 : Enjeux et Bonnes Pratiques',
+      en: 'Diversity and Inclusion in Companies 2025: Challenges and Best Practices',
+      ar: 'التنوع والشمول في الشركات 2025: التحديات وأفضل الممارسات'
+    },
+    description: {
+      fr: 'Guide complet sur la diversité et l\'inclusion en entreprise : enjeux, bénéfices, mise en œuvre. Comment créer un environnement de travail inclusif et performant.',
+      en: 'Complete guide on diversity and inclusion in companies: challenges, benefits, implementation. How to create an inclusive and high-performing work environment.',
+      ar: 'دليل شامل حول التنوع والشمول في الشركات: التحديات، الفوائد، التنفيذ. كيفية خلق بيئة عمل شاملة وعالية الأداء.'
+    },
+    date: '2025-02-07',
+    image: '/assets/blog/diversite-inclusion-2025.svg',
+    keywords: {
+      fr: ['diversité', 'inclusion', 'diversité entreprise', 'inclusion entreprise'],
+      en: ['diversity', 'inclusion', 'company diversity', 'company inclusion'],
+      ar: ['التنوع', 'الشمول', 'تنوع الشركة', 'شمول الشركة']
+    },
+    category: 'rh'
+  },
+  {
+    slug: 'innovation-creativite-entreprise-2025',
+    title: {
+      fr: 'Innovation et Créativité en Entreprise 2025 : Comment favoriser l\'innovation',
+      en: 'Innovation and Creativity in Companies 2025: How to Foster Innovation',
+      ar: 'الابتكار والإبداع في الشركات 2025: كيفية تعزيز الابتكار'
+    },
+    description: {
+      fr: 'Guide complet sur l\'innovation en entreprise : processus, culture, outils, obstacles. Comment développer la créativité et l\'innovation dans votre organisation.',
+      en: 'Complete guide on innovation in companies: process, culture, tools, obstacles. How to develop creativity and innovation in your organization.',
+      ar: 'دليل شامل حول الابتكار في الشركات: العملية، الثقافة، الأدوات، العقبات. كيفية تطوير الإبداع والابتكار في مؤسستك.'
+    },
+    date: '2025-02-08',
+    image: '/assets/blog/innovation-2025.svg',
+    keywords: {
+      fr: ['innovation', 'créativité', 'innovation entreprise', 'culture innovation'],
+      en: ['innovation', 'creativity', 'company innovation', 'innovation culture'],
+      ar: ['الابتكار', 'الإبداع', 'ابتكار الشركة', 'ثقافة الابتكار']
+    },
+    category: 'innovation'
+  },
+  {
+    slug: 'gestion-stress-travail-2025',
+    title: {
+      fr: 'Gestion du Stress au Travail 2025 : Techniques et Stratégies Efficaces',
+      en: 'Stress Management at Work 2025: Effective Techniques and Strategies',
+      ar: 'إدارة الإجهاد في العمل 2025: تقنيات واستراتيجيات فعالة'
+    },
+    description: {
+      fr: 'Guide complet sur la gestion du stress professionnel : causes, symptômes, techniques de gestion, prévention. Conseils pratiques pour préserver votre bien-être.',
+      en: 'Complete guide on professional stress management: causes, symptoms, management techniques, prevention. Practical advice to preserve your well-being.',
+      ar: 'دليل شامل حول إدارة الإجهاد المهني: الأسباب، الأعراض، تقنيات الإدارة، الوقاية. نصائح عملية للحفاظ على رفاهيتك.'
+    },
+    date: '2025-02-09',
+    image: '/assets/blog/gestion-stress-2025.svg',
+    keywords: {
+      fr: ['gestion stress', 'stress professionnel', 'stress au travail', 'techniques relaxation'],
+      en: ['stress management', 'professional stress', 'work stress', 'relaxation techniques'],
+      ar: ['إدارة الإجهاد', 'الإجهاد المهني', 'الإجهاد في العمل', 'تقنيات الاسترخاء']
+    },
+    category: 'bien-être'
+  },
+  {
+    slug: 'communication-professionnelle-2025',
+    title: {
+      fr: 'Communication Professionnelle 2025 : Maîtriser l\'art de communiquer efficacement',
+      en: 'Professional Communication 2025: Mastering the Art of Effective Communication',
+      ar: 'التواصل المهني 2025: إتقان فن التواصل الفعال'
+    },
+    description: {
+      fr: 'Guide complet sur la communication professionnelle : techniques, outils, erreurs à éviter. Comment communiquer efficacement au travail et développer votre influence.',
+      en: 'Complete guide on professional communication: techniques, tools, mistakes to avoid. How to communicate effectively at work and develop your influence.',
+      ar: 'دليل شامل حول التواصل المهني: التقنيات، الأدوات، الأخطاء التي يجب تجنبها. كيفية التواصل بفعالية في العمل وتطوير نفوذك.'
+    },
+    date: '2025-02-10',
+    image: '/assets/blog/communication-2025.svg',
+    keywords: {
+      fr: ['communication professionnelle', 'communication', 'communication efficace', 'communication orale'],
+      en: ['professional communication', 'communication', 'effective communication', 'oral communication'],
+      ar: ['التواصل المهني', 'التواصل', 'التواصل الفعال', 'التواصل الشفهي']
+    },
+    category: 'compétences'
+  },
+  {
+    slug: 'equilibre-vie-pro-perso-2025',
+    title: {
+      fr: 'Équilibre Vie Professionnelle / Personnelle 2025 : Guide Complet',
+      en: 'Work-Life Balance 2025: Complete Guide',
+      ar: 'التوازن بين الحياة المهنية والشخصية 2025: دليل شامل'
+    },
+    description: {
+      fr: 'Comment trouver l\'équilibre entre vie professionnelle et personnelle en 2025 ? Stratégies, techniques, erreurs à éviter. Conseils pour préserver votre bien-être.',
+      en: 'How to find balance between professional and personal life in 2025? Strategies, techniques, mistakes to avoid. Advice to preserve your well-being.',
+      ar: 'كيف تجد التوازن بين الحياة المهنية والشخصية في عام 2025؟ الاستراتيجيات، التقنيات، الأخطاء التي يجب تجنبها. نصائح للحفاظ على رفاهيتك.'
+    },
+    date: '2025-02-11',
+    image: '/assets/blog/equilibre-vie-2025.svg',
+    keywords: {
+      fr: ['équilibre vie pro perso', 'work life balance', 'bien-être', 'qualité de vie'],
+      en: ['work-life balance', 'work life balance', 'well-being', 'quality of life'],
+      ar: ['التوازن بين العمل والحياة', 'التوازن بين العمل والحياة', 'الرفاهية', 'جودة الحياة']
+    },
+    category: 'bien-être'
+  },
+  {
+    slug: 'mentorat-coaching-carriere-2025',
+    title: {
+      fr: 'Mentorat et Coaching de Carrière 2025 : Accélérer votre développement',
+      en: 'Mentoring and Career Coaching 2025: Accelerate Your Development',
+      ar: 'الإرشاد والتدريب المهني 2025: تسريع تطويرك'
+    },
+    description: {
+      fr: 'Guide complet sur le mentorat et le coaching : trouver un mentor, devenir mentor, bénéfices, mise en œuvre. Comment accélérer votre développement professionnel.',
+      en: 'Complete guide on mentoring and coaching: finding a mentor, becoming a mentor, benefits, implementation. How to accelerate your professional development.',
+      ar: 'دليل شامل حول الإرشاد والتدريب: العثور على مرشد، أن تصبح مرشداً، الفوائد، التنفيذ. كيفية تسريع تطويرك المهني.'
+    },
+    date: '2025-02-12',
+    image: '/assets/blog/mentorat-2025.svg',
+    keywords: {
+      fr: ['mentorat', 'coaching', 'coaching carrière', 'mentor'],
+      en: ['mentoring', 'coaching', 'career coaching', 'mentor'],
+      ar: ['الإرشاد', 'التدريب', 'التدريب المهني', 'المرشد']
+    },
+    category: 'développement'
+  },
+  {
+    slug: 'gestion-projet-professionnel-2025',
+    title: {
+      fr: 'Gestion de Projet Professionnel 2025 : Méthodes et Outils Efficaces',
+      en: 'Professional Project Management 2025: Effective Methods and Tools',
+      ar: 'إدارة المشاريع المهنية 2025: الطرق والأدوات الفعالة'
+    },
+    description: {
+      fr: 'Guide complet sur la gestion de projet : méthodes agiles, outils, compétences, erreurs à éviter. Comment réussir vos projets professionnels en 2025.',
+      en: 'Complete guide on project management: agile methods, tools, skills, mistakes to avoid. How to succeed in your professional projects in 2025.',
+      ar: 'دليل شامل حول إدارة المشاريع: الطرق الرشيقة، الأدوات، المهارات، الأخطاء التي يجب تجنبها. كيفية النجاح في مشاريعك المهنية في عام 2025.'
+    },
+    date: '2025-02-13',
+    image: '/assets/blog/gestion-projet-2025.svg',
+    keywords: {
+      fr: ['gestion de projet', 'project management', 'méthodes agiles', 'chef de projet'],
+      en: ['project management', 'project management', 'agile methods', 'project manager'],
+      ar: ['إدارة المشاريع', 'إدارة المشاريع', 'الطرق الرشيقة', 'مدير المشروع']
+    },
+    category: 'compétences'
+  },
+  {
+    slug: 'performance-evaluation-2025',
+    title: {
+      fr: 'Évaluation de Performance 2025 : Guide Complet pour Managers et Employés',
+      en: 'Performance Evaluation 2025: Complete Guide for Managers and Employees',
+      ar: 'تقييم الأداء 2025: دليل شامل للمديرين والموظفين'
+    },
+    description: {
+      fr: 'Guide complet sur l\'évaluation de performance : processus, objectifs, feedback, développement. Comment mener des évaluations efficaces et constructives.',
+      en: 'Complete guide on performance evaluation: process, objectives, feedback, development. How to conduct effective and constructive evaluations.',
+      ar: 'دليل شامل حول تقييم الأداء: العملية، الأهداف، الملاحظات، التطوير. كيفية إجراء تقييمات فعالة وبناءة.'
+    },
+    date: '2025-02-14',
+    image: '/assets/blog/evaluation-performance-2025.svg',
+    keywords: {
+      fr: ['évaluation performance', 'évaluation professionnelle', 'entretien annuel', 'feedback'],
+      en: ['performance evaluation', 'professional evaluation', 'annual review', 'feedback'],
+      ar: ['تقييم الأداء', 'التقييم المهني', 'المراجعة السنوية', 'الملاحظات']
+    },
+    category: 'rh'
+  },
+  {
+    slug: 'branding-personnel-marque-2025',
+    title: {
+      fr: 'Personal Branding 2025 : Construire votre marque personnelle professionnelle',
+      en: 'Personal Branding 2025: Build Your Professional Personal Brand',
+      ar: 'العلامة الشخصية 2025: بناء علامتك الشخصية المهنية'
+    },
+    description: {
+      fr: 'Guide complet sur le personal branding : stratégie, réseaux sociaux, contenu, visibilité. Comment construire une marque personnelle forte et influente.',
+      en: 'Complete guide on personal branding: strategy, social networks, content, visibility. How to build a strong and influential personal brand.',
+      ar: 'دليل شامل حول العلامة الشخصية: الاستراتيجية، الشبكات الاجتماعية، المحتوى، الرؤية. كيفية بناء علامة شخصية قوية ومؤثرة.'
+    },
+    date: '2025-02-15',
+    image: '/assets/blog/personal-branding-2025.svg',
+    keywords: {
+      fr: ['personal branding', 'marque personnelle', 'branding personnel', 'réputation professionnelle'],
+      en: ['personal branding', 'personal brand', 'personal branding', 'professional reputation'],
+      ar: ['العلامة الشخصية', 'العلامة الشخصية', 'العلامة الشخصية', 'السمعة المهنية']
+    },
+    category: 'développement'
+  },
+  {
+    slug: 'competences-transversales-2025',
+    title: {
+      fr: 'Compétences Transversales 2025 : Les Soft Skills Essentielles',
+      en: 'Transferable Skills 2025: Essential Soft Skills',
+      ar: 'المهارات القابلة للنقل 2025: المهارات الناعمة الأساسية'
+    },
+    description: {
+      fr: 'Guide complet sur les compétences transversales : communication, leadership, adaptabilité, résolution de problèmes. Comment développer vos soft skills en 2025.',
+      en: 'Complete guide on transferable skills: communication, leadership, adaptability, problem solving. How to develop your soft skills in 2025.',
+      ar: 'دليل شامل حول المهارات القابلة للنقل: التواصل، القيادة، التكيف، حل المشاكل. كيفية تطوير مهاراتك الناعمة في عام 2025.'
+    },
+    date: '2025-02-16',
+    image: '/assets/blog/competences-transversales-2025.svg',
+    keywords: {
+      fr: ['compétences transversales', 'soft skills', 'compétences comportementales', 'compétences relationnelles'],
+      en: ['transferable skills', 'soft skills', 'behavioral skills', 'relational skills'],
+      ar: ['المهارات القابلة للنقل', 'المهارات الناعمة', 'المهارات السلوكية', 'المهارات العلائقية']
+    },
+    category: 'compétences'
+  },
+  {
+    slug: 'carriere-internationale-expatriation-2025',
+    title: {
+      fr: 'Carrière Internationale et Expatriation 2025 : Guide Complet',
+      en: 'International Career and Expatriation 2025: Complete Guide',
+      ar: 'المسيرة المهنية الدولية والإقامة في الخارج 2025: دليل شامل'
+    },
+    description: {
+      fr: 'Guide complet sur l\'expatriation professionnelle : préparation, destinations, défis, opportunités. Comment réussir votre carrière à l\'international en 2025.',
+      en: 'Complete guide on professional expatriation: preparation, destinations, challenges, opportunities. How to succeed in your international career in 2025.',
+      ar: 'دليل شامل حول الإقامة المهنية في الخارج: التحضير، الوجهات، التحديات، الفرص. كيفية النجاح في مسيرتك المهنية الدولية في عام 2025.'
+    },
+    date: '2025-02-17',
+    image: '/assets/blog/expatriation-2025.svg',
+    keywords: {
+      fr: ['expatriation', 'carrière internationale', 'travail à l\'étranger', 'mobilité professionnelle'],
+      en: ['expatriation', 'international career', 'work abroad', 'professional mobility'],
+      ar: ['الإقامة في الخارج', 'المسيرة المهنية الدولية', 'العمل في الخارج', 'الحراك المهني']
+    },
+    category: 'carrière'
+  },
+  {
+    slug: 'transition-carriere-2025',
+    title: {
+      fr: 'Transition de Carrière 2025 : Guide pour Changer de Voie Professionnelle',
+      en: 'Career Transition 2025: Guide to Change Professional Path',
+      ar: 'الانتقال المهني 2025: دليل لتغيير المسار المهني'
+    },
+    description: {
+      fr: 'Guide complet sur la transition de carrière : préparation, stratégies, financement, erreurs à éviter. Comment réussir votre changement de voie professionnelle.',
+      en: 'Complete guide on career transition: preparation, strategies, funding, mistakes to avoid. How to succeed in your professional path change.',
+      ar: 'دليل شامل حول الانتقال المهني: التحضير، الاستراتيجيات، التمويل، الأخطاء التي يجب تجنبها. كيفية النجاح في تغيير مسارك المهني.'
+    },
+    date: '2025-02-18',
+    image: '/assets/blog/transition-carriere-2025.svg',
+    keywords: {
+      fr: ['transition carrière', 'changement carrière', 'reconversion', 'évolution professionnelle'],
+      en: ['career transition', 'career change', 'career change', 'professional evolution'],
+      ar: ['الانتقال المهني', 'تغيير المسيرة المهنية', 'إعادة التوجيه', 'التطور المهني']
+    },
+    category: 'carrière'
+  },
+  {
+    slug: 'productivite-efficacite-travail-2025',
+    title: {
+      fr: 'Productivité et Efficacité au Travail 2025 : Techniques et Outils',
+      en: 'Productivity and Efficiency at Work 2025: Techniques and Tools',
+      ar: 'الإنتاجية والكفاءة في العمل 2025: التقنيات والأدوات'
+    },
+    description: {
+      fr: 'Guide complet pour améliorer votre productivité : méthodes, outils, techniques, erreurs à éviter. Comment être plus efficace et performant au travail.',
+      en: 'Complete guide to improve your productivity: methods, tools, techniques, mistakes to avoid. How to be more efficient and performant at work.',
+      ar: 'دليل شامل لتحسين إنتاجيتك: الطرق، الأدوات، التقنيات، الأخطاء التي يجب تجنبها. كيفية أن تكون أكثر كفاءة وأداءً في العمل.'
+    },
+    date: '2025-02-19',
+    image: '/assets/blog/productivite-2025.svg',
+    keywords: {
+      fr: ['productivité', 'efficacité', 'productivité travail', 'gestion du temps'],
+      en: ['productivity', 'efficiency', 'work productivity', 'time management'],
+      ar: ['الإنتاجية', 'الكفاءة', 'إنتاجية العمل', 'إدارة الوقت']
+    },
+    category: 'compétences'
+  },
+  {
+    slug: 'objectifs-carriere-planification-2025',
+    title: {
+      fr: 'Objectifs de Carrière et Planification 2025 : Construire votre Avenir Professionnel',
+      en: 'Career Goals and Planning 2025: Build Your Professional Future',
+      ar: 'أهداف المسيرة المهنية والتخطيط 2025: بناء مستقبلك المهني'
+    },
+    description: {
+      fr: 'Guide complet sur la planification de carrière : définir ses objectifs, créer un plan, stratégies, erreurs à éviter. Comment construire la carrière de vos rêves.',
+      en: 'Complete guide on career planning: define your goals, create a plan, strategies, mistakes to avoid. How to build the career of your dreams.',
+      ar: 'دليل شامل حول تخطيط المسيرة المهنية: تحديد أهدافك، إنشاء خطة، الاستراتيجيات، الأخطاء التي يجب تجنبها. كيفية بناء المسيرة المهنية التي تحلم بها.'
+    },
+    date: '2025-02-20',
+    image: '/assets/blog/objectifs-carriere-2025.svg',
+    keywords: {
+      fr: ['objectifs carrière', 'planification carrière', 'plan de carrière', 'développement carrière'],
+      en: ['career goals', 'career planning', 'career plan', 'career development'],
+      ar: ['أهداف المسيرة المهنية', 'تخطيط المسيرة المهنية', 'خطة المسيرة المهنية', 'تطوير المسيرة المهنية']
+    },
+    category: 'carrière'
+  },
+  {
+    slug: 'retraite-planification-financiere-2025',
+    title: {
+      fr: 'Retraite et Planification Financière 2025 : Préparer son Avenir',
+      en: 'Retirement and Financial Planning 2025: Prepare Your Future',
+      ar: 'التقاعد والتخطيط المالي 2025: إعداد مستقبلك'
+    },
+    description: {
+      fr: 'Guide complet sur la planification de la retraite : épargne, investissements, stratégies, erreurs à éviter. Comment préparer financièrement votre retraite.',
+      en: 'Complete guide on retirement planning: savings, investments, strategies, mistakes to avoid. How to financially prepare for your retirement.',
+      ar: 'دليل شامل حول تخطيط التقاعد: الادخار، الاستثمارات، الاستراتيجيات، الأخطاء التي يجب تجنبها. كيفية التحضير مالياً للتقاعد.'
+    },
+    date: '2025-02-21',
+    image: '/assets/blog/retraite-2025.svg',
+    keywords: {
+      fr: ['retraite', 'planification retraite', 'épargne retraite', 'investissement retraite'],
+      en: ['retirement', 'retirement planning', 'retirement savings', 'retirement investment'],
+      ar: ['التقاعد', 'تخطيط التقاعد', 'ادخار التقاعد', 'استثمار التقاعد']
+    },
+    category: 'planification'
+  },
+  {
+    slug: 'success-stories-carriere-2025',
+    title: {
+      fr: 'Success Stories de Carrière 2025 : Inspirations et Leçons Apprises',
+      en: 'Career Success Stories 2025: Inspirations and Lessons Learned',
+      ar: 'قصص نجاح المسيرة المهنية 2025: الإلهام والدروس المستفادة'
+    },
+    description: {
+      fr: 'Découvrez des success stories de carrière inspirantes : parcours, défis, stratégies, leçons. Comment ces professionnels ont réussi leur carrière et ce que vous pouvez en apprendre.',
+      en: 'Discover inspiring career success stories: paths, challenges, strategies, lessons. How these professionals succeeded in their careers and what you can learn from them.',
+      ar: 'اكتشف قصص نجاح مهنية ملهمة: المسارات، التحديات، الاستراتيجيات، الدروس. كيف نجح هؤلاء المحترفون في مسيراتهم المهنية وما يمكنك تعلمه منهم.'
+    },
+    date: '2025-02-22',
+    image: '/assets/blog/success-stories-2025.svg',
+    keywords: {
+      fr: ['success stories', 'parcours professionnel', 'réussite carrière', 'inspiration carrière'],
+      en: ['success stories', 'professional path', 'career success', 'career inspiration'],
+      ar: ['قصص النجاح', 'المسار المهني', 'نجاح المسيرة المهنية', 'إلهام المسيرة المهنية']
+    },
+    category: 'inspiration'
+  },
+  {
+    slug: 'tendances-emploi-futur-2025-2030',
+    title: {
+      fr: 'Tendances de l\'Emploi 2025-2030 : Préparer l\'Avenir du Travail',
+      en: 'Employment Trends 2025-2030: Preparing for the Future of Work',
+      ar: 'اتجاهات التوظيف 2025-2030: الاستعداد لمستقبل العمل'
+    },
+    description: {
+      fr: 'Analyse complète des tendances de l\'emploi pour 2025-2030 : métiers émergents, secteurs en croissance, compétences requises. Comment se préparer aux évolutions du marché du travail.',
+      en: 'Complete analysis of employment trends for 2025-2030: emerging jobs, growing sectors, required skills. How to prepare for job market evolutions.',
+      ar: 'تحليل شامل لاتجاهات التوظيف لعام 2025-2030: الوظائف الناشئة، القطاعات النامية، المهارات المطلوبة. كيفية الاستعداد لتطورات سوق العمل.'
+    },
+    date: '2025-02-23',
+    image: '/assets/blog/tendances-emploi-2025.svg',
+    keywords: {
+      fr: ['tendances emploi', 'métiers futurs', 'emploi 2025', 'marché du travail'],
+      en: ['employment trends', 'future jobs', 'employment 2025', 'job market'],
+      ar: ['اتجاهات التوظيف', 'وظائف المستقبل', 'التوظيف 2025', 'سوق العمل']
+    },
+    category: 'tendances'
+  },
+  {
+    slug: 'qualite-vie-travail-bien-etre-2025',
+    title: {
+      fr: 'Qualité de Vie au Travail et Bien-être 2025 : Créer un Environnement Épanouissant',
+      en: 'Quality of Life at Work and Well-being 2025: Create a Fulfilling Environment',
+      ar: 'جودة الحياة في العمل والرفاهية 2025: خلق بيئة مُرضية'
+    },
+    description: {
+      fr: 'Guide complet sur la qualité de vie au travail : bien-être, satisfaction, engagement, performance. Comment créer un environnement de travail épanouissant et performant.',
+      en: 'Complete guide on quality of life at work: well-being, satisfaction, engagement, performance. How to create a fulfilling and high-performing work environment.',
+      ar: 'دليل شامل حول جودة الحياة في العمل: الرفاهية، الرضا، المشاركة، الأداء. كيفية خلق بيئة عمل مُرضية وعالية الأداء.'
+    },
+    date: '2025-02-24',
+    image: '/assets/blog/qualite-vie-travail-2025.svg',
+    keywords: {
+      fr: ['qualité de vie au travail', 'bien-être travail', 'QVT', 'satisfaction professionnelle'],
+      en: ['quality of life at work', 'work well-being', 'QWL', 'professional satisfaction'],
+      ar: ['جودة الحياة في العمل', 'الرفاهية في العمل', 'جودة الحياة في العمل', 'الرضا المهني']
+    },
+    category: 'bien-être'
   }
 ]
 
