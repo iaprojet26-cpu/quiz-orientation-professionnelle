@@ -215,16 +215,14 @@ function BlogArticle() {
             })}
           </div>
           {/* Image de l'article */}
-          {article.image || getDefaultArticleImage(article.category) ? (
-            <div className="mb-6 rounded-lg overflow-hidden">
-              <OptimizedImage
-                src={article.image || getDefaultArticleImage(article.category)}
-                alt={generateImageAltText(article.title, article.category)}
-                className="w-full h-64 md:h-96 object-cover"
-                lazy={false}
-              />
-            </div>
-          ) : null}
+          <div className="mb-6 rounded-lg overflow-hidden">
+            <OptimizedImage
+              src={article.image || getDefaultArticleImage(article.category || 'blog')}
+              alt={generateImageAltText(article.title, article.category)}
+              className="w-full h-64 md:h-96 object-cover"
+              lazy={false}
+            />
+          </div>
           <h1 className="text-4xl md:text-5xl font-bold text-primary-900 mb-4" itemProp="headline">
             {article.title}
           </h1>
