@@ -13,9 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     
-    <!-- Preload des assets critiques -->
-    <link rel="preload" href="/src/main.jsx" as="script" />
-    <link rel="preload" href="/src/index.css" as="style" />
+    <!-- Preload des assets critiques - Retiré car cause des warnings -->
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -86,8 +84,8 @@
   </head>
   <body>
     <div id="root"></div>
-    <!-- Script principal avec defer pour ne pas bloquer le rendu -->
-    <script type="module" src="/src/main.jsx" defer></script>
+    <!-- Script principal - pas de defer pour éviter les problèmes de chargement -->
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
 

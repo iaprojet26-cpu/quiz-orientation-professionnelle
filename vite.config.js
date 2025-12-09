@@ -30,9 +30,9 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: (id) => {
-          // React core dans un chunk séparé
+          // React et React-DOM DOIVENT être dans le même chunk pour éviter les erreurs
           if (id.includes('node_modules/react/') || id.includes('node_modules/react-dom/')) {
-            return 'react-core'
+            return 'react-vendor'
           }
           // React Router séparé
           if (id.includes('node_modules/react-router')) {
