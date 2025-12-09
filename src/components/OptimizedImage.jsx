@@ -61,11 +61,17 @@ function OptimizedImage({
       {/* Image de fallback */}
       <img
         src={finalSrc}
-        alt={alt}
+        alt={alt || 'Image'}
         className={`${className} ${isLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}
-        style={style}
+        style={{
+          ...style,
+          width: style?.width || '100%',
+          height: style?.height || 'auto',
+          objectFit: style?.objectFit || 'cover'
+        }}
         loading={lazy ? 'lazy' : 'eager'}
         decoding="async"
+        fetchpriority={lazy ? 'low' : 'high'}
         onError={handleError}
         onLoad={handleLoad}
         {...props}

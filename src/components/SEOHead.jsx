@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-import { getHomepageSEO, getResultPageSEO, getOGTags, getTwitterTags, getHomepageSchema, getResultPageSchema } from '../services/seoService'
+import { getHomepageSEO, getResultPageSEO, getOGTags, getTwitterTags, getHomepageSchema, getResultPageSchema, getArticleSchema } from '../services/seoService'
 
 /**
  * Composant pour gérer les meta tags SEO dynamiques
@@ -22,11 +22,8 @@ function SEOHead({ page = 'homepage', profileName = '', articleTitle = '', custo
         title: `${articleTitle} | QuizOrientation Blog`,
         description: `Découvrez notre article : ${articleTitle}`
       }
-      schemaData = {
-        "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": articleTitle
-      }
+      // Le schema Article sera généré dans BlogArticle avec getArticleSchema
+      schemaData = {}
     } else if (page === 'blog') {
       seoData = {
         title: 'Blog - Conseils d\'Orientation Professionnelle | QuizOrientation',

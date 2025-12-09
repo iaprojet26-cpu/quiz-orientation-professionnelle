@@ -40,6 +40,7 @@ export const isOwnerVerified = () => {
 
 /**
  * Initialise Monetag si le propriétaire est vérifié
+ * Optimisé pour ne pas bloquer le rendu (délai de 1 seconde)
  */
 export const initMonetag = () => {
   if (!isOwnerVerified()) {
@@ -47,32 +48,54 @@ export const initMonetag = () => {
     return
   }
 
-  try {
-    // Enregistrer le service worker
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker
-        .register('/sw.js')
-        .then((registration) => {
-          console.log('Monetag: Service Worker enregistré avec succès', registration.scope)
-        })
-        .catch((error) => {
-          console.error('Monetag: Erreur enregistrement Service Worker', error)
-        })
-    }
+  // Délai de 1 seconde pour éviter le blocage du rendu initial
+  setTimeout(() => {
+    try {
+      // Enregistrer le service worker (non bloquant)
+      if ('serviceWorker' in navigator) {
+        // Utiliser requestIdleCallback si disponible, sinon setTimeout
+        const registerSW = () => {
+          navigator.serviceWorker
+            .register('/sw.js')
+            .then((registration) => {
+              console.log('Monetag: Service Worker enregistré avec succès', registration.scope)
+            })
+            .catch((error) => {
+              console.error('Monetag: Erreur enregistrement Service Worker', error)
+            })
+        }
+        
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(registerSW, { timeout: 2000 })
+        } else {
+          setTimeout(registerSW, 1000)
+        }
+      }
 
-    // Charger le script Monetag
-    const script = document.createElement('script')
-    script.src = `https://s.monetag.net/s/${MONETAG_SITE_ID}.js`
-    script.async = true
-    script.onerror = () => {
-      console.error('Monetag: Erreur chargement script')
-    }
-    document.head.appendChild(script)
+      // Charger le script Monetag en bas de page (non bloquant)
+      const script = document.createElement('script')
+      script.src = `https://s.monetag.net/s/${MONETAG_SITE_ID}.js`
+      script.async = true
+      script.defer = true
+      script.onerror = () => {
+        console.error('Monetag: Erreur chargement script')
+      }
+      
+      // Ajouter en bas du body plutôt que dans le head pour ne pas bloquer
+      if (document.body) {
+        document.body.appendChild(script)
+      } else {
+        // Si body n'est pas encore disponible, attendre
+        document.addEventListener('DOMContentLoaded', () => {
+          document.body.appendChild(script)
+        })
+      }
 
-    console.log('Monetag: Initialisé avec succès')
-  } catch (error) {
-    console.error('Monetag: Erreur initialisation', error)
-  }
+      console.log('Monetag: Initialisé avec succès (délai appliqué)')
+    } catch (error) {
+      console.error('Monetag: Erreur initialisation', error)
+    }
+  }, 1000) // Délai de 1 seconde avant initialisation
 }
 
 /**

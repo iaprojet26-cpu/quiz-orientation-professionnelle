@@ -122,20 +122,115 @@ export const getTwitterTags = (language = 'fr') => {
  * Obtenir le Schema.org JSON-LD pour la homepage
  */
 export const getHomepageSchema = (language = 'fr') => {
-  const content = getSEOContent(language, 'schema_org')
-  return content?.homepage || {}
+  const baseUrl = 'https://quizorientation.online'
+  const lang = ['fr', 'en', 'ar'].includes(language) ? language : 'fr'
+  
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Quiz d'Orientation Professionnelle",
+    "description": "Découvrez votre profil professionnel en 10 minutes. Test gratuit avec résultats instantanés et recommandations personnalisées de métiers.",
+    "url": baseUrl,
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "1250"
+    },
+    "mainEntity": {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Comment fonctionne le quiz d'orientation professionnelle ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Le quiz prend moins de 10 minutes. Répondez honnêtement aux questions, et notre algorithme analysera vos réponses pour déterminer votre profil professionnel. Les résultats sont instantanés."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Le quiz est-il vraiment gratuit ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui, le quiz d'orientation professionnelle est entièrement gratuit. Aucun paiement n'est requis pour obtenir vos résultats."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quels profils professionnels sont disponibles ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Notre quiz identifie 5 profils distincts : Créatif, Technique, Social, Organisationnel et Entrepreneurial. Chaque profil correspond à des métiers et formations spécifiques."
+          }
+        }
+      ]
+    }
+  }
 }
 
 /**
  * Obtenir le Schema.org JSON-LD pour la page de résultats
  */
 export const getResultPageSchema = (language = 'fr', profileName = '') => {
-  const content = getSEOContent(language, 'schema_org')
-  const schema = content?.result_page || {}
-  if (schema.mainEntity) {
-    schema.mainEntity.name = profileName
+  const baseUrl = 'https://quizorientation.online'
+  const lang = ['fr', 'en', 'ar'].includes(language) ? language : 'fr'
+  
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": `Profil Professionnel: ${profileName}`,
+    "description": `Découvrez les métiers et formations pour le profil ${profileName}. Résultats personnalisés de votre quiz d'orientation professionnelle.`,
+    "url": `${baseUrl}/${lang}/result/${profileName.toLowerCase().replace(/\s+/g, '-')}`,
+    "mainEntity": {
+      "@type": "ProfilePage",
+      "name": profileName
+    }
   }
-  return schema
+}
+
+/**
+ * Obtenir le Schema.org JSON-LD pour un article de blog
+ */
+export const getArticleSchema = (article) => {
+  if (!article) return null
+  
+  const baseUrl = 'https://quizorientation.online'
+  const publishedDate = article.date ? new Date(article.date).toISOString() : new Date().toISOString()
+  
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": article.title || '',
+    "description": article.description || '',
+    "image": article.image ? `${baseUrl}${article.image}` : `${baseUrl}/og-image.jpg`,
+    "datePublished": publishedDate,
+    "dateModified": publishedDate,
+    "author": {
+      "@type": "Organization",
+      "name": "QuizOrientation",
+      "url": baseUrl
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "QuizOrientation",
+      "url": baseUrl,
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${baseUrl}/logo.png`
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `${baseUrl}/blog/${article.slug}`
+    }
+  }
 }
 
 /**

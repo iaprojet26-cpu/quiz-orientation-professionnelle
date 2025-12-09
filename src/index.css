@@ -3,8 +3,43 @@
 @tailwind utilities;
 
 @layer base {
+  /* Optimisations Core Web Vitals */
+  * {
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  
   body {
     @apply bg-gray-50 text-gray-900;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    /* Prévention du layout shift */
+    overflow-x: hidden;
+  }
+  
+  /* Optimisation des images */
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  /* Amélioration du scroll mobile */
+  @media (max-width: 768px) {
+    html {
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    body {
+      -webkit-tap-highlight-color: transparent;
+    }
   }
 }
 
@@ -84,5 +119,68 @@
 .rtl .gap-4 > * + * {
   margin-left: 0;
   margin-right: 1rem;
+}
+
+/* ============================================
+   OPTIMISATIONS MOBILE ET CORE WEB VITALS
+   ============================================ */
+
+/* Réduction du layout shift (CLS) */
+.monetag-ad-zone {
+  min-height: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Optimisation des transitions pour réduire le FID/INP */
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    transition-duration: 0.2s;
+    transition-timing-function: ease-out;
+  }
+}
+
+/* Optimisation mobile - Padding et marges */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Réduction des espacements sur mobile */
+  .card {
+    padding: 1rem;
+  }
+  
+  /* Optimisation des boutons pour le touch */
+  .btn-primary,
+  .btn-secondary {
+    min-height: 44px; /* Taille minimale pour le touch */
+    padding: 0.75rem 1.5rem;
+  }
+}
+
+/* Optimisation des images pour LCP */
+img[loading="lazy"] {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+img[loading="lazy"].loaded {
+  opacity: 1;
+}
+
+/* Prévention du layout shift pour les contenus dynamiques */
+.prose {
+  contain: layout style;
+}
+
+/* Optimisation du scroll */
+@media (max-width: 768px) {
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
 }
 

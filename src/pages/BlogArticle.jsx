@@ -8,6 +8,7 @@ import SEOHead from '../components/SEOHead'
 import OptimizedImage from '../components/OptimizedImage'
 import { trackArticleView } from '../utils/analytics'
 import MonetagAdZone from '../components/MonetagAdZone'
+import { getArticleSchema } from '../services/seoService'
 
 function BlogArticle() {
   const { slug } = useParams()
@@ -165,11 +166,28 @@ function BlogArticle() {
     )
   }
 
+  // Ajouter le schema Article pour SEO
+  useEffect(() => {
+    if (article) {
+      const articleSchema = getArticleSchema(article)
+      if (articleSchema) {
+        let schemaScript = document.querySelector('script[type="application/ld+json"][data-article-schema]')
+        if (!schemaScript) {
+          schemaScript = document.createElement('script')
+          schemaScript.setAttribute('type', 'application/ld+json')
+          schemaScript.setAttribute('data-article-schema', 'true')
+          document.head.appendChild(schemaScript)
+        }
+        schemaScript.textContent = JSON.stringify(articleSchema)
+      }
+    }
+  }, [article])
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary-50 to-primary-100">
       <SEOHead page="blog-article" articleTitle={article.title} />
       
-      <article className="container mx-auto px-4 py-8 max-w-4xl">
+      <article className="container mx-auto px-4 py-8 max-w-4xl" itemScope itemType="https://schema.org/Article">
         <Link to="/blog" className="text-primary-600 hover:underline mb-6 inline-block">
           ← {t('blog.back_to_blog', { defaultValue: 'Retour au blog' })}
         </Link>
@@ -182,10 +200,10 @@ function BlogArticle() {
               day: 'numeric'
             })}
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-primary-900 mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-primary-900 mb-4" itemProp="headline">
             {article.title}
           </h1>
-          <p className="text-xl text-gray-700 mb-6">
+          <p className="text-xl text-gray-700 mb-6" itemProp="description">
             {article.description}
           </p>
           <div className="flex flex-wrap gap-2">

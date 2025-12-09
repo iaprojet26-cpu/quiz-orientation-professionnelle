@@ -22,25 +22,39 @@ function MonetagAdZone({ zoneId, className = '', position = 'default' }) {
       return
     }
 
-    try {
-      // Créer et injecter le script Monetag selon la méthode officielle
-      const script = document.createElement('script')
-      script.type = 'text/javascript'
-      
-      // Utiliser une fonction immédiatement invoquée pour charger le script Monetag
-      script.textContent = `
-        (function(s){
-          s.dataset.zone='${zoneId}';
-          s.src='https://groleegni.net/vignette.min.js';
-        })([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
-      `
-      
-      // Ajouter le script au conteneur
-      containerRef.current.appendChild(script)
+    // Délai de 1 seconde pour éviter le blocage du rendu initial
+    // Utiliser requestIdleCallback si disponible pour charger après le rendu critique
+    const loadAdZone = () => {
+      try {
+        // Créer et injecter le script Monetag selon la méthode officielle
+        const script = document.createElement('script')
+        script.type = 'text/javascript'
+        script.async = true
+        script.defer = true
+        
+        // Utiliser une fonction immédiatement invoquée pour charger le script Monetag
+        script.textContent = `
+          (function(s){
+            s.dataset.zone='${zoneId}';
+            s.src='https://groleegni.net/vignette.min.js';
+          })([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
+        `
+        
+        // Ajouter le script au conteneur
+        containerRef.current.appendChild(script)
 
-      console.log(`Monetag: Zone ${zoneId} chargée (position: ${position})`)
-    } catch (error) {
-      console.error(`Monetag: Erreur chargement zone ${zoneId}`, error)
+        console.log(`Monetag: Zone ${zoneId} chargée (position: ${position})`)
+      } catch (error) {
+        console.error(`Monetag: Erreur chargement zone ${zoneId}`, error)
+      }
+    }
+
+    // Utiliser requestIdleCallback pour charger après le rendu critique
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(loadAdZone, { timeout: 2000 })
+    } else {
+      // Fallback pour navigateurs sans requestIdleCallback
+      setTimeout(loadAdZone, 1000)
     }
 
     // Cleanup
@@ -63,7 +77,14 @@ function MonetagAdZone({ zoneId, className = '', position = 'default' }) {
       className={`monetag-ad-zone monetag-zone-${zoneId} ${className}`}
       data-zone={zoneId}
       data-position={position}
-      style={{ minHeight: '100px' }} // Hauteur minimale pour éviter le layout shift
+      style={{ 
+        minHeight: '100px', // Hauteur minimale pour éviter le layout shift
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}
+      aria-label="Publicité"
     />
   )
 }

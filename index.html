@@ -3,10 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
     <meta name="description" content="Testez gratuitement notre quiz d'orientation professionnelle. Découvrez votre profil (Créatif, Technique, Social...) et les métiers qui vous correspondent. Résultats instantanés avec recommandations personnalisées." />
     <meta name="google-adsense-account" content="ca-pub-9540335927525371">
     <meta name="monetag" content="1670db72de09a5c49b5cb6475cd93b5b">
+    
+    <!-- Preconnect pour améliorer les performances -->
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    
+    <!-- Preload des assets critiques -->
+    <link rel="preload" href="/src/main.jsx" as="script" />
+    <link rel="preload" href="/src/index.css" as="style" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -15,6 +24,7 @@
     <meta property="og:description" content="Découvrez votre profil professionnel en 10 minutes. Test gratuit avec résultats instantanés et recommandations personnalisées de métiers." />
     <meta property="og:image" content="https://quizorientation.online/og-image.jpg" />
     <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="QuizOrientation" />
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -36,11 +46,14 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="apple-mobile-web-app-title" content="QuizOrientation" />
     
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://quizorientation.online/" />
+    
     <title>Quiz d'Orientation Professionnelle Gratuit | Découvrez Votre Profil</title>
     
-    <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0K73VG7X9Z"></script>
-    <script>
+    <!-- Google Analytics 4 - Déplacé en bas avec defer -->
+    <script defer src="https://www.googletagmanager.com/gtag/js?id=G-0K73VG7X9Z"></script>
+    <script defer>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
@@ -48,10 +61,42 @@
         page_path: window.location.pathname,
       });
     </script>
+    
+    <!-- CSS critique inline pour améliorer LCP -->
+    <style>
+      /* Font-display swap pour les polices */
+      @font-face {
+        font-family: 'system';
+        font-display: swap;
+      }
+      
+      /* Prévention du layout shift */
+      body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+      }
+      #root {
+        min-height: 100vh;
+      }
+      
+      /* Optimisation mobile */
+      * {
+        -webkit-tap-highlight-color: transparent;
+      }
+      
+      /* Amélioration du scroll */
+      html {
+        scroll-behavior: smooth;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <!-- Script principal avec defer pour ne pas bloquer le rendu -->
+    <script type="module" src="/src/main.jsx" defer></script>
   </body>
 </html>
 
