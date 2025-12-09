@@ -174,12 +174,16 @@ function Home() {
                     aria-label={`Lire l'article: ${article.title}`}
                   >
                     <div className="h-40 bg-gradient-to-br from-primary-100 to-primary-200 flex items-center justify-center overflow-hidden">
-                      <OptimizedImage
-                        src={article.image || getDefaultArticleImage(article.category)}
-                        alt={generateImageAltText(article.title, article.category)}
-                        className="w-full h-full object-cover"
-                        lazy={true}
-                      />
+                      {article.image ? (
+                        <OptimizedImage
+                          src={article.image}
+                          alt={article.title}
+                          className="w-full h-full object-cover"
+                          lazy={true}
+                        />
+                      ) : (
+                        <span className="text-5xl">📚</span>
+                      )}
                     </div>
                     <div className="p-5">
                       <div className="text-xs text-gray-500 mb-2">
