@@ -91,7 +91,7 @@ function Home() {
         profileName={quizResults?.profile?.nom || ''} 
       />
       
-      <div className="container mx-auto px-4 py-8">
+      <main id="main-content" className="container mx-auto px-4 py-8">
         {/* Zone publicitaire Monetag - En haut de page - Chargée après le rendu initial */}
         {quizCompleted && (
           <div className="mb-8 flex justify-center">
@@ -152,7 +152,8 @@ function Home() {
               </h2>
               <Link
                 to="/blog"
-                className="text-primary-600 hover:underline font-semibold"
+                className="text-primary-600 hover:underline font-semibold focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded"
+                aria-label={t('blog.view_all', { defaultValue: 'Voir tous les articles' })}
               >
                 {t('blog.view_all', { defaultValue: 'Voir tous les articles' })} →
               </Link>
@@ -169,7 +170,8 @@ function Home() {
                   <Link
                     key={article.slug}
                     to={`/blog/${article.slug}`}
-                    className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
+                    className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+                    aria-label={`Lire l'article: ${article.title}`}
                   >
                     <div className="h-40 bg-gradient-to-br from-primary-100 to-primary-200 flex items-center justify-center overflow-hidden">
                       {article.image ? (
@@ -210,7 +212,7 @@ function Home() {
             )}
           </section>
         )}
-      </div>
+      </main>
     </div>
   )
 }

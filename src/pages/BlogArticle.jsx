@@ -187,8 +187,13 @@ function BlogArticle() {
     <div className="min-h-screen bg-gradient-to-br from-primary-50 to-primary-100">
       <SEOHead page="blog-article" articleTitle={article.title} />
       
-      <article className="container mx-auto px-4 py-8 max-w-4xl" itemScope itemType="https://schema.org/Article">
-        <Link to="/blog" className="text-primary-600 hover:underline mb-6 inline-block">
+      <main id="main-content">
+        <article className="container mx-auto px-4 py-8 max-w-4xl" itemScope itemType="https://schema.org/Article">
+        <Link 
+          to="/blog" 
+          className="text-primary-600 hover:underline mb-6 inline-block focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded"
+          aria-label={t('blog.back_to_blog', { defaultValue: 'Retour au blog' })}
+        >
           ← {t('blog.back_to_blog', { defaultValue: 'Retour au blog' })}
         </Link>
 
@@ -265,12 +270,14 @@ function BlogArticle() {
           </div>
           <Link
             to="/blog"
-            className="inline-block bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors"
+            className="inline-block bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+            aria-label={t('blog.view_all', { defaultValue: 'Voir tous les articles' })}
           >
             {t('blog.view_all', { defaultValue: 'Voir tous les articles' })}
           </Link>
         </div>
       </article>
+      </main>
     </div>
   )
 }

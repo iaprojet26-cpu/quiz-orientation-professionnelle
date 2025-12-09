@@ -57,7 +57,11 @@ function Results({ results, onRestart }) {
           {profile?.description || ''}
         </p>
         
-        <button onClick={onRestart} className="btn-primary">
+        <button 
+          onClick={onRestart} 
+          className="btn-primary focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+          aria-label={t('common.restart')}
+        >
           {t('common.restart')}
         </button>
       </div>
@@ -120,13 +124,15 @@ function Results({ results, onRestart }) {
           <div className="flex flex-wrap gap-3 mt-4">
             <Link 
               to="/blog" 
-              className="btn-primary inline-block"
+              className="btn-primary inline-block focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+              aria-label={t('results.explore_blog', { defaultValue: 'Explorer nos articles' })}
             >
               {t('results.explore_blog', { defaultValue: '📚 Explorer nos articles' })}
             </Link>
             <Link 
               to="/top-metiers-futur" 
-              className="btn-secondary inline-block"
+              className="btn-secondary inline-block focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+              aria-label={t('results.top_jobs', { defaultValue: 'Top métiers du futur' })}
             >
               {t('results.top_jobs', { defaultValue: '🚀 Top métiers du futur' })}
             </Link>

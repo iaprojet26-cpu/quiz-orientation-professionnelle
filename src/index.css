@@ -57,6 +57,56 @@
   }
 }
 
+/* Amélioration de l'accessibilité - Styles de focus visibles */
+@layer base {
+  /* Focus visible pour tous les éléments interactifs */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: 2px solid #0ea5e9;
+    outline-offset: 2px;
+  }
+  
+  /* Amélioration du contraste pour les liens */
+  a {
+    color: #0ea5e9;
+  }
+  
+  a:hover {
+    color: #0284c7;
+  }
+  
+  /* Contraste minimum pour le texte */
+  body {
+    color: #1f2937; /* gray-800 pour meilleur contraste */
+  }
+  
+  /* Amélioration du contraste pour les boutons désactivés */
+  button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  /* Skip to main content link (pour les lecteurs d'écran) */
+  .skip-to-main {
+    position: absolute;
+    left: -9999px;
+    z-index: 999;
+  }
+  
+  .skip-to-main:focus {
+    left: 6px;
+    top: 7px;
+    padding: 8px 16px;
+    background: #0ea5e9;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+  }
+}
+
 /* ============================================
    SUPPORT RTL (Right-to-Left) pour l'arabe
    ============================================ */

@@ -194,7 +194,11 @@ function Quiz({ onComplete }) {
     return (
       <div className="card max-w-3xl mx-auto text-center py-12">
         <p className="text-red-600 mb-4">{t('quiz.error')}</p>
-        <button onClick={loadQuestions} className="btn-primary">
+        <button 
+          onClick={loadQuestions} 
+          className="btn-primary focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+          aria-label={t('common.retry')}
+        >
           {t('common.retry')}
         </button>
       </div>
@@ -216,12 +220,12 @@ function Quiz({ onComplete }) {
   return (
     <div className="card max-w-3xl mx-auto">
       {/* Barre de progression */}
-      <div className="mb-6">
+      <div className="mb-6" role="progressbar" aria-valuenow={currentQuestionIndex + 1} aria-valuemin={1} aria-valuemax={questions.length} aria-label={`Question ${currentQuestionIndex + 1} sur ${questions.length}`}>
         <div className="flex justify-between text-sm text-gray-600 mb-2">
           <span>{t('quiz.question_count', { current: currentQuestionIndex + 1, total: questions.length })}</span>
           <span>{t('quiz.progress', { percent: Math.round(progress) })}</span>
         </div>
-        <div className="w-full bg-gray-200 rounded-full h-2">
+        <div className="w-full bg-gray-200 rounded-full h-2" aria-hidden="true">
           <div 
             className="bg-primary-600 h-2 rounded-full transition-all duration-300"
             style={{ width: `${progress}%` }}
@@ -237,18 +241,22 @@ function Quiz({ onComplete }) {
       />
 
       {/* Navigation */}
-      <div className="flex justify-between mt-6">
+      <div className="flex justify-between mt-6" role="navigation" aria-label="Navigation du quiz">
         <button
           onClick={handlePrevious}
           disabled={currentQuestionIndex === 0}
-          className={`btn-secondary ${currentQuestionIndex === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
+          className={`btn-secondary focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 ${currentQuestionIndex === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
+          aria-label={t('common.previous')}
+          aria-disabled={currentQuestionIndex === 0}
         >
           {t('common.previous')}
         </button>
         <button
           onClick={handleNext}
           disabled={!canProceed}
-          className={`btn-primary ${!canProceed ? 'opacity-50 cursor-not-allowed' : ''}`}
+          className={`btn-primary focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 ${!canProceed ? 'opacity-50 cursor-not-allowed' : ''}`}
+          aria-label={currentQuestionIndex === questions.length - 1 ? t('common.finish') : t('common.next')}
+          aria-disabled={!canProceed}
         >
           {currentQuestionIndex === questions.length - 1 ? t('common.finish') : t('common.next')}
         </button>

@@ -36,63 +36,88 @@ function Footer() {
   const pageContent = content[language] || content.fr
 
   return (
-    <footer className="bg-gray-800 text-white mt-16">
+    <footer className="bg-gray-800 text-white mt-16" role="contentinfo">
       <div className="container mx-auto px-4 py-8">
         <div className="grid md:grid-cols-3 gap-8">
           {/* Colonne 1 : Navigation */}
-          <div>
+          <nav aria-label="Navigation principale">
             <h3 className="text-lg font-bold mb-4">{language === 'fr' ? 'Navigation' : language === 'en' ? 'Navigation' : 'التنقل'}</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/" className="text-gray-300 hover:text-white transition-colors">
+                <Link 
+                  to="/" 
+                  className="text-gray-300 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 rounded"
+                >
                   {language === 'fr' ? 'Accueil' : language === 'en' ? 'Home' : 'الرئيسية'}
                 </Link>
               </li>
               <li>
-                <Link to="/top-metiers-futur" className="text-gray-300 hover:text-white transition-colors">
+                <Link 
+                  to="/top-metiers-futur" 
+                  className="text-gray-300 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 rounded"
+                >
                   {language === 'fr' ? 'Top Métiers' : language === 'en' ? 'Top Careers' : 'أفضل المهن'}
                 </Link>
               </li>
               <li>
-                <Link to="/blog" className="text-gray-300 hover:text-white transition-colors">
+                <Link 
+                  to="/blog" 
+                  className="text-gray-300 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 rounded"
+                >
                   {pageContent.blog}
                 </Link>
               </li>
               <li>
-                <Link to="/a-propos" className="text-gray-300 hover:text-white transition-colors">
+                <Link 
+                  to="/a-propos" 
+                  className="text-gray-300 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 rounded"
+                >
                   {pageContent.about}
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-gray-300 hover:text-white transition-colors">
+                <Link 
+                  to="/contact" 
+                  className="text-gray-300 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 rounded"
+                >
                   {pageContent.contact}
                 </Link>
               </li>
             </ul>
-          </div>
+          </nav>
 
           {/* Colonne 2 : Informations Légales */}
-          <div>
+          <nav aria-label="Informations légales">
             <h3 className="text-lg font-bold mb-4">{language === 'fr' ? 'Informations Légales' : language === 'en' ? 'Legal Information' : 'المعلومات القانونية'}</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/mentions-legales" className="text-gray-300 hover:text-white transition-colors">
+                <Link 
+                  to="/mentions-legales" 
+                  className="text-gray-300 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 rounded"
+                >
                   {pageContent.legal}
                 </Link>
               </li>
               <li>
-                <Link to="/politique-confidentialite" className="text-gray-300 hover:text-white transition-colors">
+                <Link 
+                  to="/politique-confidentialite" 
+                  className="text-gray-300 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 rounded"
+                >
                   {pageContent.privacy}
                 </Link>
               </li>
             </ul>
-          </div>
+          </nav>
 
           {/* Colonne 3 : Contact */}
           <div>
             <h3 className="text-lg font-bold mb-4">{pageContent.contact}</h3>
             <p className="text-gray-300 mb-2">
-              <a href="mailto:contact@quizorientation.online" className="hover:text-white transition-colors">
+              <a 
+                href="mailto:contact@quizorientation.online" 
+                className="hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 rounded"
+                aria-label="Envoyer un email à contact@quizorientation.online"
+              >
                 contact@quizorientation.online
               </a>
             </p>

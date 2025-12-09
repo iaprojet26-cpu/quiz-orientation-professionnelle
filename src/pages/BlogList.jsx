@@ -23,7 +23,7 @@ function BlogList() {
     <div className="min-h-screen bg-gradient-to-br from-primary-50 to-primary-100">
       <SEOHead page="blog" />
       
-      <div className="container mx-auto px-4 py-8">
+      <main id="main-content" className="container mx-auto px-4 py-8">
         <header className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-primary-900 mb-4">
             {t('blog.title', { defaultValue: 'Blog - Conseils d\'Orientation Professionnelle' })}
@@ -43,7 +43,8 @@ function BlogList() {
             <Link
               key={article.slug}
               to={`/blog/${article.slug}`}
-              className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
+              className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+              aria-label={`Lire l'article: ${article.title}`}
             >
               <div className="h-48 bg-gradient-to-br from-primary-100 to-primary-200 flex items-center justify-center overflow-hidden">
                 {article.image ? (
@@ -78,7 +79,7 @@ function BlogList() {
             </Link>
           ))}
         </div>
-      </div>
+      </main>
     </div>
   )
 }

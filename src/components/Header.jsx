@@ -38,10 +38,17 @@ function Header() {
 
   return (
     <header className="bg-white shadow-md sticky top-0 z-40">
-      <nav className="container mx-auto px-4 py-4">
+      <a href="#main-content" className="skip-to-main">
+        Aller au contenu principal
+      </a>
+      <nav className="container mx-auto px-4 py-4" aria-label="Navigation principale">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="text-2xl font-bold text-primary-600">
+          <Link 
+            to="/" 
+            className="text-2xl font-bold text-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded"
+            aria-label="QuizOrientation - Retour à l'accueil"
+          >
             QuizOrientation
           </Link>
 
@@ -51,11 +58,12 @@ function Header() {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`px-3 py-2 rounded-md transition-colors ${
+                className={`px-3 py-2 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 ${
                   isActive(item.path)
                     ? 'text-primary-600 font-semibold bg-primary-50'
                     : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
                 }`}
+                aria-current={isActive(item.path) ? 'page' : undefined}
               >
                 {item.label}
               </Link>
@@ -65,9 +73,11 @@ function Header() {
 
           {/* Bouton Menu Mobile */}
           <button
-            className="md:hidden p-2 text-gray-700 hover:text-primary-600"
+            className="md:hidden p-2 text-gray-700 hover:text-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
+            aria-label={mobileMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {mobileMenuOpen ? (
@@ -81,18 +91,20 @@ function Header() {
 
         {/* Menu Mobile */}
         {mobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t border-gray-200">
+          <div id="mobile-menu" className="md:hidden mt-4 pb-4 border-t border-gray-200" role="menu">
             <div className="flex flex-col gap-2 pt-4">
               {items.map((item) => (
                 <Link
                   key={item.path}
                   to={item.path}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`px-3 py-2 rounded-md transition-colors ${
+                  role="menuitem"
+                  className={`px-3 py-2 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 ${
                     isActive(item.path)
                       ? 'text-primary-600 font-semibold bg-primary-50'
                       : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
                   }`}
+                  aria-current={isActive(item.path) ? 'page' : undefined}
                 >
                   {item.label}
                 </Link>
