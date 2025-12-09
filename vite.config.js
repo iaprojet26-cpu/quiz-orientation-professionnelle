@@ -17,10 +17,8 @@ export default defineConfig({
         drop_console: true, // Supprimer console.log en production
         drop_debugger: true,
         pure_funcs: ['console.log', 'console.info', 'console.debug', 'console.warn'],
-        passes: 2, // Plus de passes pour une meilleure compression
-        unsafe: true, // Optimisations agressives
-        unsafe_comps: true,
-        unsafe_math: true
+        passes: 2 // Plus de passes pour une meilleure compression
+        // Désactivé unsafe pour éviter les problèmes avec React
       },
       mangle: {
         safari10: true // Compatibilité Safari
@@ -30,15 +28,12 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: (id) => {
-          // React et React-DOM DOIVENT être dans le même chunk pour éviter les erreurs
-          if (id.includes('node_modules/react/') || id.includes('node_modules/react-dom/')) {
-            return 'react-vendor'
-          }
-          // React Router séparé
+          // Ne PAS séparer React - il doit rester avec le code principal pour éviter les erreurs
+          // React Router séparé (peut être chargé à la demande)
           if (id.includes('node_modules/react-router')) {
             return 'react-router'
           }
-          // i18n séparé
+          // i18n séparé (peut être chargé à la demande)
           if (id.includes('node_modules/i18next') || id.includes('node_modules/react-i18next')) {
             return 'i18n'
           }
@@ -50,7 +45,8 @@ export default defineConfig({
           if (id.includes('node_modules/react-markdown') || id.includes('node_modules/remark')) {
             return 'markdown'
           }
-          // Autres node_modules
+          // React et React-DOM restent dans le bundle principal
+          // Autres node_modules dans vendor
           if (id.includes('node_modules')) {
             return 'vendor'
           }
