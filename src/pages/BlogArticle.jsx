@@ -59,15 +59,25 @@ function BlogArticle() {
   const fetchMarkdownContent = async (slugToFetch) => {
     const basePath = (import.meta.env?.BASE_URL || '/').replace(/\/$/, '')
     const candidatePaths = [
-      `${basePath}/articles/${slugToFetch}.md`,
-      `${basePath}/blog/${slugToFetch}.md`
+      `${basePath}/blog/${slugToFetch}.md`,
+      `${basePath}/articles/${slugToFetch}.md`
     ]
 
     for (const path of candidatePaths) {
       try {
         const response = await fetch(path, { cache: 'no-cache' })
         if (response.ok) {
-          return await response.text()
+          const text = await response.text()
+          // Vérifier que c'est bien du markdown et pas de l'HTML (index.html)
+          if (text.trim().startsWith('<!doctype') || text.trim().startsWith('<!DOCTYPE') || text.trim().startsWith('<html')) {
+            console.warn('Réponse HTML reçue au lieu de markdown pour:', path)
+            continue
+          }
+          // Vérifier que le contenu commence par --- (front matter) ou # (titre markdown)
+          if (text.trim().startsWith('---') || text.trim().startsWith('#')) {
+            return text
+          }
+          console.warn('Contenu ne semble pas être du markdown valide pour:', path)
         }
       } catch (err) {
         console.warn('Échec chargement markdown:', path, err)
@@ -89,19 +99,36 @@ function BlogArticle() {
 
         if (!articleData || !articleData.content) {
           // Charger le fichier markdown en fallback
-          const rawText = await fetchMarkdownContent(slug)
-          const { frontMatter, body } = parseFrontMatter(rawText)
-          markdownContent = body
+          try {
+            const rawText = await fetchMarkdownContent(slug)
+            const { frontMatter, body } = parseFrontMatter(rawText)
+            
+            // Vérifier que le body n'est pas vide et contient du contenu valide
+            if (body && body.trim().length > 0 && !body.trim().startsWith('<!')) {
+              markdownContent = body
 
-          if (!articleData) {
-            articleData = {
-              slug,
-              title: frontMatter.title || slug,
-              description: frontMatter.description || '',
-              date: frontMatter.date || new Date().toISOString(),
-              image: frontMatter.image || null,
-              keywords: frontMatter.keywords || [],
-              category: frontMatter.category || 'blog'
+              if (!articleData) {
+                articleData = {
+                  slug,
+                  title: frontMatter.title || slug,
+                  description: frontMatter.description || '',
+                  date: frontMatter.date || new Date().toISOString(),
+                  image: frontMatter.image || null,
+                  keywords: frontMatter.keywords || [],
+                  category: frontMatter.category || 'blog'
+                }
+              }
+            } else {
+              console.error('Contenu markdown invalide ou vide pour:', slug)
+              throw new Error('Contenu markdown invalide')
+            }
+          } catch (fetchError) {
+            console.error('Erreur lors du chargement du markdown:', fetchError)
+            // Si le markdown ne peut pas être chargé, utiliser les métadonnées du service
+            if (articleData) {
+              markdownContent = `# ${articleData.title}\n\n${articleData.description || 'Contenu en cours de rédaction.'}`
+            } else {
+              throw fetchError
             }
           }
         } else {
@@ -109,7 +136,13 @@ function BlogArticle() {
         }
 
         setArticle(articleData)
-        setContent(markdownContent || `# ${articleData?.title || 'Article'}\n\nContenu en cours de rédaction.`)
+        // S'assurer que le contenu est du markdown valide
+        if (markdownContent && !markdownContent.trim().startsWith('<!')) {
+          setContent(markdownContent)
+        } else {
+          console.error('Contenu invalide détecté, utilisation du fallback')
+          setContent(`# ${articleData?.title || 'Article'}\n\n${articleData?.description || 'Contenu en cours de rédaction.'}`)
+        }
       } catch (error) {
         console.error('Erreur de chargement article:', error)
         setArticle(null)

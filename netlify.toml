@@ -2,10 +2,8 @@
   command = "npm run build"
   publish = "dist"
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+# Le fichier _redirects dans public/ gère les redirections
+# Les fichiers markdown sont exclus de la redirection SPA
 
 [build.environment]
   NODE_VERSION = "18"
