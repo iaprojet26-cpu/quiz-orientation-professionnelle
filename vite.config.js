@@ -10,20 +10,8 @@ export default defineConfig({
     open: true
   },
   build: {
-    // Minification automatique
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true, // Supprimer console.log en production
-        drop_debugger: true,
-        pure_funcs: ['console.log', 'console.info', 'console.debug', 'console.warn'],
-        passes: 2 // Plus de passes pour une meilleure compression
-        // Désactivé unsafe pour éviter les problèmes avec React
-      },
-      mangle: {
-        safari10: true // Compatibilité Safari
-      }
-    },
+    // Minification automatique - esbuild plus sûr que terser
+    minify: 'esbuild', // esbuild est plus rapide et plus sûr
     // Optimisation des chunks
     rollupOptions: {
       output: {
