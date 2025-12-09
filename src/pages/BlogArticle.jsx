@@ -9,7 +9,6 @@ import OptimizedImage from '../components/OptimizedImage'
 import { trackArticleView } from '../utils/analytics'
 import MonetagAdZone from '../components/MonetagAdZone'
 import { getArticleSchema } from '../services/seoService'
-import { getDefaultArticleImage, generateImageAltText } from '../utils/defaultArticleImages'
 
 function BlogArticle() {
   const { slug } = useParams()
@@ -169,11 +168,9 @@ function BlogArticle() {
 
   // Ajouter le schema Article pour SEO
   useEffect(() => {
-    if (!article || !article.title) return
-    
-    try {
+    if (article) {
       const articleSchema = getArticleSchema(article)
-      if (articleSchema && typeof articleSchema === 'object') {
+      if (articleSchema) {
         let schemaScript = document.querySelector('script[type="application/ld+json"][data-article-schema]')
         if (!schemaScript) {
           schemaScript = document.createElement('script')
@@ -181,14 +178,8 @@ function BlogArticle() {
           schemaScript.setAttribute('data-article-schema', 'true')
           document.head.appendChild(schemaScript)
         }
-        try {
-          schemaScript.textContent = JSON.stringify(articleSchema)
-        } catch (jsonError) {
-          console.error('Erreur lors de la sérialisation du schema:', jsonError)
-        }
+        schemaScript.textContent = JSON.stringify(articleSchema)
       }
-    } catch (error) {
-      console.error('Erreur lors de la création du schema:', error)
     }
   }, [article])
 
@@ -213,15 +204,6 @@ function BlogArticle() {
               month: 'long',
               day: 'numeric'
             })}
-          </div>
-          {/* Image de l'article */}
-          <div className="mb-6 rounded-lg overflow-hidden">
-            <OptimizedImage
-              src={article.image || getDefaultArticleImage(article.category || 'blog')}
-              alt={generateImageAltText(article.title, article.category)}
-              className="w-full h-64 md:h-96 object-cover"
-              lazy={false}
-            />
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-primary-900 mb-4" itemProp="headline">
             {article.title}

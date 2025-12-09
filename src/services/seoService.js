@@ -199,50 +199,17 @@ export const getResultPageSchema = (language = 'fr', profileName = '') => {
  * Obtenir le Schema.org JSON-LD pour un article de blog
  */
 export const getArticleSchema = (article) => {
-  if (!article || !article.title) return null
+  if (!article) return null
   
   const baseUrl = 'https://quizorientation.online'
   const publishedDate = article.date ? new Date(article.date).toISOString() : new Date().toISOString()
   
-  // Gérer les titres multilingues (objets) ou strings
-  const titleText = typeof article.title === 'string' ? article.title : (article.title?.fr || article.title?.en || article.title?.ar || '')
-  const descriptionText = typeof article.description === 'string' ? article.description : (article.description?.fr || article.description?.en || article.description?.ar || '')
-  
-  // Utiliser l'image par défaut si pas d'image spécifique
-  let imageUrl = `${baseUrl}/og-image.jpg`
-  if (article.image) {
-    imageUrl = article.image.startsWith('http') ? article.image : `${baseUrl}${article.image}`
-  } else if (article.category) {
-    // Utiliser l'image par défaut selon la catégorie
-    const categoryImages = {
-      'orientation': '/assets/blog/default-orientation.svg',
-      'competences': '/assets/blog/default-competences.svg',
-      'compétences': '/assets/blog/default-competences.svg',
-      'metiers': '/assets/blog/default-metiers.svg',
-      'carrière': '/assets/blog/default-carriere.svg',
-      'rh': '/assets/blog/default-rh.svg',
-      'recrutement': '/assets/blog/default-recrutement.svg',
-      'ia': '/assets/blog/default-ia.svg',
-      'soft-skills': '/assets/blog/default-soft-skills.svg',
-      'entrepreneuriat': '/assets/blog/default-entrepreneuriat.svg',
-      'bien-être': '/assets/blog/default-bien-etre.svg',
-      'bien-etre': '/assets/blog/default-bien-etre.svg',
-      'formation': '/assets/blog/default-formation.svg',
-      'emploi': '/assets/blog/default-emploi.svg',
-      'employabilite': '/assets/blog/default-employabilite.svg',
-      'marche-travail': '/assets/blog/default-marche-travail.svg'
-    }
-    const normalizedCategory = (article.category || '').toLowerCase().trim()
-    const defaultImage = categoryImages[normalizedCategory] || '/assets/blog/default-generic.svg'
-    imageUrl = `${baseUrl}${defaultImage}`
-  }
-  
   return {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": titleText,
-    "description": descriptionText,
-    "image": imageUrl,
+    "headline": article.title || '',
+    "description": article.description || '',
+    "image": article.image ? `${baseUrl}${article.image}` : `${baseUrl}/og-image.jpg`,
     "datePublished": publishedDate,
     "dateModified": publishedDate,
     "author": {
@@ -261,7 +228,7 @@ export const getArticleSchema = (article) => {
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `${baseUrl}/blog/${article.slug || ''}`
+      "@id": `${baseUrl}/blog/${article.slug}`
     }
   }
 }

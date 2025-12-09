@@ -8,7 +8,6 @@ import { getRecentArticles } from '../services/blogService'
 import { Link } from 'react-router-dom'
 import OptimizedImage from '../components/OptimizedImage'
 import MonetagAdZone from '../components/MonetagAdZone'
-import { getDefaultArticleImage, generateImageAltText } from '../utils/defaultArticleImages'
 
 function Home() {
   const { t, i18n } = useTranslation()
