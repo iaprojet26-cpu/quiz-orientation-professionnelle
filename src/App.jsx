@@ -2,10 +2,10 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import { lazy, Suspense } from 'react'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import Home from './pages/Home' // Home doit être chargé immédiatement (page principale)
 import { isAdminAuthenticated } from './services/adminService'
 
-// Lazy loading pour toutes les pages (sauf Home qui est critique)
-const Home = lazy(() => import('./pages/Home'))
+// Lazy loading pour les pages secondaires uniquement
 const BlogList = lazy(() => import('./pages/BlogList'))
 const BlogArticle = lazy(() => import('./pages/BlogArticle'))
 const MentionsLegales = lazy(() => import('./pages/MentionsLegales'))
