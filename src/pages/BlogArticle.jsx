@@ -169,9 +169,11 @@ function BlogArticle() {
 
   // Ajouter le schema Article pour SEO
   useEffect(() => {
-    if (article) {
+    if (!article || !article.title) return
+    
+    try {
       const articleSchema = getArticleSchema(article)
-      if (articleSchema) {
+      if (articleSchema && typeof articleSchema === 'object') {
         let schemaScript = document.querySelector('script[type="application/ld+json"][data-article-schema]')
         if (!schemaScript) {
           schemaScript = document.createElement('script')
@@ -179,8 +181,14 @@ function BlogArticle() {
           schemaScript.setAttribute('data-article-schema', 'true')
           document.head.appendChild(schemaScript)
         }
-        schemaScript.textContent = JSON.stringify(articleSchema)
+        try {
+          schemaScript.textContent = JSON.stringify(articleSchema)
+        } catch (jsonError) {
+          console.error('Erreur lors de la sérialisation du schema:', jsonError)
+        }
       }
+    } catch (error) {
+      console.error('Erreur lors de la création du schema:', error)
     }
   }, [article])
 
@@ -206,6 +214,17 @@ function BlogArticle() {
               day: 'numeric'
             })}
           </div>
+          {/* Image de l'article */}
+          {article.image || getDefaultArticleImage(article.category) ? (
+            <div className="mb-6 rounded-lg overflow-hidden">
+              <OptimizedImage
+                src={article.image || getDefaultArticleImage(article.category)}
+                alt={generateImageAltText(article.title, article.category)}
+                className="w-full h-64 md:h-96 object-cover"
+                lazy={false}
+              />
+            </div>
+          ) : null}
           <h1 className="text-4xl md:text-5xl font-bold text-primary-900 mb-4" itemProp="headline">
             {article.title}
           </h1>

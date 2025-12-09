@@ -69,7 +69,10 @@ const DEFAULT_IMAGE = '/assets/blog/default-generic.svg'
  * @returns {string} Chemin vers l'image par défaut
  */
 export const getDefaultArticleImage = (category) => {
-  if (!category) return DEFAULT_IMAGE
+  // Si pas de catégorie, retourner l'image générique
+  if (!category || typeof category !== 'string') {
+    return DEFAULT_IMAGE
+  }
   
   // Normaliser la catégorie (minuscules, sans accents pour certaines)
   const normalizedCategory = category.toLowerCase().trim()
@@ -94,16 +97,19 @@ export const getDefaultArticleImage = (category) => {
 
 /**
  * Génère un alt text SEO-friendly pour une image d'article
- * @param {string} title - Titre de l'article
+ * @param {string|object} title - Titre de l'article (string ou objet multilingue)
  * @param {string} category - Catégorie de l'article
  * @returns {string} Alt text optimisé pour le SEO
  */
 export const generateImageAltText = (title, category) => {
-  if (!title) return 'Illustration article de blog'
+  // Gérer les titres multilingues (objets) ou strings
+  const titleText = typeof title === 'string' ? title : (title?.fr || title?.en || title?.ar || 'Article')
+  
+  if (!titleText) return 'Illustration article de blog'
   
   // Créer un alt text descriptif avec le titre et la catégorie
   const categoryLabel = category ? ` - ${category}` : ''
-  return `${title}${categoryLabel} - QuizOrientation`
+  return `${titleText}${categoryLabel} - QuizOrientation`
 }
 
 export default {
