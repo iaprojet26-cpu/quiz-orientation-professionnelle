@@ -51,7 +51,7 @@
     
     <!-- Google Analytics 4 - Supprimé du head, chargé dynamiquement après le rendu -->
     
-    <!-- CSS critique inline pour améliorer LCP -->
+    <!-- CSS critique inline pour améliorer LCP et éviter FOUC -->
     <style>
       /* Font-display swap pour les polices */
       @font-face {
@@ -59,26 +59,33 @@
         font-display: swap;
       }
       
-      /* Prévention du layout shift */
+      /* Prévention du layout shift et FOUC */
+      html {
+        scroll-behavior: smooth;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      
       body {
         margin: 0;
         padding: 0;
         min-height: 100vh;
+        background-color: #f0f9ff; /* Couleur de fond par défaut */
       }
+      
       #root {
         min-height: 100vh;
+        opacity: 0;
+        transition: opacity 0.3s ease-in;
+      }
+      
+      #root.loaded {
+        opacity: 1;
       }
       
       /* Optimisation mobile */
       * {
         -webkit-tap-highlight-color: transparent;
-      }
-      
-      /* Amélioration du scroll */
-      html {
-        scroll-behavior: smooth;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
       }
     </style>
   </head>

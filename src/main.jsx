@@ -25,16 +25,34 @@ if (document.readyState === 'complete') {
   })
 }
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <BrowserRouter
-      future={{
-        v7_startTransition: true,
-        v7_relativeSplatPath: true
-      }}
-    >
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>,
-)
+// Attendre que le CSS soit chargé avant de rendre
+const root = ReactDOM.createRoot(document.getElementById('root'))
+
+// Marquer le root comme chargé une fois que React est monté
+const renderApp = () => {
+  root.render(
+    <React.StrictMode>
+      <BrowserRouter
+        future={{
+          v7_startTransition: true,
+          v7_relativeSplatPath: true
+        }}
+      >
+        <App />
+      </BrowserRouter>
+    </React.StrictMode>
+  )
+  
+  // Marquer comme chargé pour afficher le contenu
+  requestAnimationFrame(() => {
+    document.getElementById('root').classList.add('loaded')
+  })
+}
+
+// Attendre que le DOM soit prêt
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', renderApp)
+} else {
+  renderApp()
+}
 
