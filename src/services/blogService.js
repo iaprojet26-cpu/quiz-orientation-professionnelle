@@ -930,6 +930,216 @@ const staticArticles = [
       ar: ['جودة الحياة في العمل', 'الرفاهية في العمل', 'جودة الحياة في العمل', 'الرضا المهني']
     },
     category: 'bien-être'
+  },
+  {
+    slug: 'metiers-tech-2025-guide-complet',
+    title: {
+      fr: 'Métiers Tech 2025 : Guide Complet des Carrières Numériques',
+      en: 'Tech Jobs 2025: Complete Guide to Digital Careers',
+      ar: 'وظائف التكنولوجيا 2025: دليل شامل للمهن الرقمية'
+    },
+    description: {
+      fr: 'Découvrez les métiers tech les plus recherchés en 2025 : développeur, data scientist, cybersécurité, cloud. Guide complet avec compétences requises, salaires et formations.',
+      en: 'Discover the most sought-after tech jobs in 2025: developer, data scientist, cybersecurity, cloud. Complete guide with required skills, salaries and training.',
+      ar: 'اكتشف وظائف التكنولوجيا الأكثر طلباً في عام 2025: المطور، عالم البيانات، الأمن السيبراني، السحابة. دليل شامل مع المهارات المطلوبة والرواتب والتدريب.'
+    },
+    date: '2025-02-25',
+    image: '/assets/blog/metiers-tech-2025.svg',
+    keywords: {
+      fr: ['métiers tech', 'développeur web', 'data scientist', 'cybersécurité', 'cloud computing', 'métiers IT', 'carrière numérique', 'formation tech'],
+      en: ['tech jobs', 'web developer', 'data scientist', 'cybersecurity', 'cloud computing', 'IT jobs', 'digital career', 'tech training'],
+      ar: ['وظائف التكنولوجيا', 'مطور الويب', 'عالم البيانات', 'الأمن السيبراني', 'الحوسبة السحابية', 'وظائف تقنية المعلومات', 'المسيرة الرقمية', 'التدريب التقني']
+    },
+    category: 'tech'
+  },
+  {
+    slug: 'insertion-professionnelle-jeunes-2025',
+    title: {
+      fr: 'Insertion Professionnelle des Jeunes 2025 : Guide Complet pour Débuter',
+      en: 'Professional Integration for Young People 2025: Complete Guide to Get Started',
+      ar: 'الإدماج المهني للشباب 2025: دليل شامل للبدء'
+    },
+    description: {
+      fr: 'Guide complet pour l\'insertion professionnelle des jeunes diplômés : CV, entretiens, réseaux, premières expériences. Conseils pratiques pour réussir votre entrée sur le marché du travail.',
+      en: 'Complete guide for professional integration of young graduates: CV, interviews, networks, first experiences. Practical advice to succeed in entering the job market.',
+      ar: 'دليل شامل للإدماج المهني للخريجين الشباب: السيرة الذاتية، المقابلات، الشبكات، التجارب الأولى. نصائح عملية للنجاح في دخول سوق العمل.'
+    },
+    date: '2025-02-26',
+    image: '/assets/blog/insertion-jeunes-2025.svg',
+    keywords: {
+      fr: ['insertion professionnelle', 'jeunes diplômés', 'premier emploi', 'recherche d\'emploi', 'stage', 'alternance', 'première expérience', 'carrière débutant'],
+      en: ['professional integration', 'young graduates', 'first job', 'job search', 'internship', 'apprenticeship', 'first experience', 'beginner career'],
+      ar: ['الإدماج المهني', 'الخريجون الشباب', 'الوظيفة الأولى', 'البحث عن عمل', 'التدريب', 'التدريب المهني', 'التجربة الأولى', 'المسيرة للمبتدئين']
+    },
+    category: 'insertion'
+  },
+  {
+    slug: 'secteurs-porteurs-emploi-2025',
+    title: {
+      fr: 'Secteurs Porteurs d\'Emploi 2025 : Où Trouver les Meilleures Opportunités',
+      en: 'Growing Job Sectors 2025: Where to Find the Best Opportunities',
+      ar: 'القطاعات النامية للتوظيف 2025: أين تجد أفضل الفرص'
+    },
+    description: {
+      fr: 'Découvrez les secteurs qui recrutent le plus en 2025 : tech, santé, énergies renouvelables, services. Analyse complète avec opportunités, compétences et formations.',
+      en: 'Discover the sectors that recruit the most in 2025: tech, health, renewable energy, services. Complete analysis with opportunities, skills and training.',
+      ar: 'اكتشف القطاعات التي توظف أكثر في عام 2025: التكنولوجيا، الصحة، الطاقة المتجددة، الخدمات. تحليل شامل مع الفرص والمهارات والتدريب.'
+    },
+    date: '2025-02-27',
+    image: '/assets/blog/secteurs-porteurs-2025.svg',
+    keywords: {
+      fr: ['secteurs porteurs', 'secteurs qui recrutent', 'opportunités emploi', 'marché du travail', 'secteurs croissance', 'emploi 2025', 'secteurs d\'avenir', 'recrutement'],
+      en: ['growing sectors', 'recruiting sectors', 'job opportunities', 'job market', 'growth sectors', 'employment 2025', 'future sectors', 'recruitment'],
+      ar: ['القطاعات النامية', 'القطاعات الموظفة', 'فرص العمل', 'سوق العمل', 'قطاعات النمو', 'التوظيف 2025', 'قطاعات المستقبل', 'التوظيف']
+    },
+    category: 'emploi'
+  },
+  {
+    slug: 'competences-recherchees-2025',
+    title: {
+      fr: 'Compétences les Plus Recherchées en 2025 : Guide Complet',
+      en: 'Most Sought-After Skills in 2025: Complete Guide',
+      ar: 'المهارات الأكثر طلباً في 2025: دليل شامل'
+    },
+    description: {
+      fr: 'Découvrez les compétences les plus recherchées par les employeurs en 2025 : techniques et comportementales. Guide complet avec formations et développement.',
+      en: 'Discover the most sought-after skills by employers in 2025: technical and behavioral. Complete guide with training and development.',
+      ar: 'اكتشف المهارات الأكثر طلباً من قبل أصحاب العمل في عام 2025: التقنية والسلوكية. دليل شامل مع التدريب والتطوير.'
+    },
+    date: '2025-02-28',
+    image: '/assets/blog/competences-recherchees-2025.svg',
+    keywords: {
+      fr: ['compétences recherchées', 'compétences 2025', 'compétences employabilité', 'compétences techniques', 'soft skills', 'compétences marché', 'développement compétences', 'formation compétences'],
+      en: ['sought-after skills', 'skills 2025', 'employability skills', 'technical skills', 'soft skills', 'market skills', 'skill development', 'skill training'],
+      ar: ['المهارات المطلوبة', 'مهارات 2025', 'مهارات قابلية التوظيف', 'المهارات التقنية', 'المهارات الناعمة', 'مهارات السوق', 'تطوير المهارات', 'تدريب المهارات']
+    },
+    category: 'compétences'
+  },
+  {
+    slug: 'salaire-marche-travail-2025',
+    title: {
+      fr: 'Salaires et Marché du Travail 2025 : Guide des Rémunérations par Secteur',
+      en: 'Salaries and Job Market 2025: Salary Guide by Sector',
+      ar: 'الرواتب وسوق العمل 2025: دليل الرواتب حسب القطاع'
+    },
+    description: {
+      fr: 'Guide complet des salaires par secteur en 2025 : tech, finance, santé, commerce. Analyse du marché, facteurs influençant les rémunérations et négociation.',
+      en: 'Complete salary guide by sector in 2025: tech, finance, health, commerce. Market analysis, factors influencing compensation and negotiation.',
+      ar: 'دليل شامل للرواتب حسب القطاع في عام 2025: التكنولوجيا، المالية، الصحة، التجارة. تحليل السوق والعوامل المؤثرة على التعويضات والتفاوض.'
+    },
+    date: '2025-03-01',
+    image: '/assets/blog/salaire-marche-2025.svg',
+    keywords: {
+      fr: ['salaire', 'rémunération', 'salaire par secteur', 'marché du travail', 'négociation salaire', 'salaire moyen', 'rémunération 2025', 'compensation'],
+      en: ['salary', 'compensation', 'salary by sector', 'job market', 'salary negotiation', 'average salary', 'compensation 2025', 'remuneration'],
+      ar: ['الراتب', 'التعويض', 'الراتب حسب القطاع', 'سوق العمل', 'تفاوض الراتب', 'متوسط الراتب', 'التعويض 2025', 'المكافأة']
+    },
+    category: 'carrière'
+  },
+  {
+    slug: 'formation-professionnelle-continue-2025',
+    title: {
+      fr: 'Formation Professionnelle Continue 2025 : Guide Complet pour Se Former',
+      en: 'Continuing Professional Training 2025: Complete Guide to Training',
+      ar: 'التدريب المهني المستمر 2025: دليل شامل للتدريب'
+    },
+    description: {
+      fr: 'Guide complet sur la formation professionnelle continue : types de formations, financement, certifications, e-learning. Tout pour développer vos compétences en 2025.',
+      en: 'Complete guide on continuing professional training: types of training, funding, certifications, e-learning. Everything to develop your skills in 2025.',
+      ar: 'دليل شامل حول التدريب المهني المستمر: أنواع التدريب، التمويل، الشهادات، التعلم الإلكتروني. كل شيء لتطوير مهاراتك في عام 2025.'
+    },
+    date: '2025-03-02',
+    image: '/assets/blog/formation-continue-2025.svg',
+    keywords: {
+      fr: ['formation professionnelle', 'formation continue', 'développement compétences', 'certification professionnelle', 'e-learning', 'formation adulte', 'CPF', 'reconversion'],
+      en: ['professional training', 'continuing training', 'skill development', 'professional certification', 'e-learning', 'adult training', 'training fund', 'career change'],
+      ar: ['التدريب المهني', 'التدريب المستمر', 'تطوير المهارات', 'الشهادة المهنية', 'التعلم الإلكتروني', 'تدريب الكبار', 'صندوق التدريب', 'تغيير المسيرة']
+    },
+    category: 'formation'
+  },
+  {
+    slug: 'reconversion-professionnelle-reussir-2025',
+    title: {
+      fr: 'Reconversion Professionnelle 2025 : Guide Complet pour Réussir',
+      en: 'Career Change 2025: Complete Guide to Succeed',
+      ar: 'إعادة التوجيه المهني 2025: دليل شامل للنجاح'
+    },
+    description: {
+      fr: 'Guide complet pour réussir sa reconversion professionnelle : étapes, formations, financement, témoignages. Tout pour changer de métier en 2025.',
+      en: 'Complete guide to succeed in career change: steps, training, funding, testimonials. Everything to change careers in 2025.',
+      ar: 'دليل شامل للنجاح في إعادة التوجيه المهني: الخطوات، التدريب، التمويل، الشهادات. كل شيء لتغيير المهنة في عام 2025.'
+    },
+    date: '2025-03-03',
+    image: '/assets/blog/reconversion-2025.svg',
+    keywords: {
+      fr: ['reconversion professionnelle', 'changement de métier', 'reconversion', 'changement de carrière', 'nouveau métier', 'transition professionnelle', 'bilan de compétences', 'formation reconversion'],
+      en: ['career change', 'career transition', 'career switch', 'new career', 'professional transition', 'skills assessment', 'career change training'],
+      ar: ['إعادة التوجيه المهني', 'تغيير المهنة', 'إعادة التوجيه', 'تغيير المسيرة', 'مهنة جديدة', 'الانتقال المهني', 'تقييم المهارات', 'تدريب إعادة التوجيه']
+    },
+    category: 'reconversion'
+  },
+  {
+    slug: 'entrepreneuriat-startup-guide-2025',
+    title: {
+      fr: 'Entrepreneuriat et Startup 2025 : Guide Complet pour Créer son Entreprise',
+      en: 'Entrepreneurship and Startup 2025: Complete Guide to Start Your Business',
+      ar: 'ريادة الأعمال والشركات الناشئة 2025: دليل شامل لإنشاء شركتك'
+    },
+    description: {
+      fr: 'Guide complet pour créer sa startup en 2025 : idée, business plan, financement, équipe, lancement. Toutes les étapes pour réussir votre projet entrepreneurial.',
+      en: 'Complete guide to create your startup in 2025: idea, business plan, funding, team, launch. All steps to succeed in your entrepreneurial project.',
+      ar: 'دليل شامل لإنشاء شركتك الناشئة في عام 2025: الفكرة، خطة العمل، التمويل، الفريق، الإطلاق. جميع الخطوات للنجاح في مشروعك الريادي.'
+    },
+    date: '2025-03-04',
+    image: '/assets/blog/entrepreneuriat-2025.svg',
+    keywords: {
+      fr: ['entrepreneuriat', 'startup', 'créer entreprise', 'business plan', 'financement startup', 'lancement startup', 'entrepreneur', 'création entreprise'],
+      en: ['entrepreneurship', 'startup', 'start business', 'business plan', 'startup funding', 'startup launch', 'entrepreneur', 'business creation'],
+      ar: ['ريادة الأعمال', 'الشركات الناشئة', 'إنشاء شركة', 'خطة العمل', 'تمويل الشركات الناشئة', 'إطلاق الشركة الناشئة', 'رائد أعمال', 'إنشاء الأعمال']
+    },
+    category: 'entrepreneuriat'
+  },
+  {
+    slug: 'leadership-management-2025',
+    title: {
+      fr: 'Leadership et Management 2025 : Guide des Compétences Managériales',
+      en: 'Leadership and Management 2025: Management Skills Guide',
+      ar: 'القيادة والإدارة 2025: دليل المهارات الإدارية'
+    },
+    description: {
+      fr: 'Guide complet sur le leadership et le management en 2025 : styles de leadership, compétences managériales, gestion d\'équipe, développement des talents. Tout pour devenir un bon manager.',
+      en: 'Complete guide on leadership and management in 2025: leadership styles, management skills, team management, talent development. Everything to become a good manager.',
+      ar: 'دليل شامل حول القيادة والإدارة في عام 2025: أنماط القيادة، المهارات الإدارية، إدارة الفريق، تطوير المواهب. كل شيء لتصبح مديراً جيداً.'
+    },
+    date: '2025-03-05',
+    image: '/assets/blog/leadership-2025.svg',
+    keywords: {
+      fr: ['leadership', 'management', 'gestion d\'équipe', 'compétences managériales', 'développement leadership', 'manager', 'chef d\'équipe', 'direction'],
+      en: ['leadership', 'management', 'team management', 'management skills', 'leadership development', 'manager', 'team leader', 'direction'],
+      ar: ['القيادة', 'الإدارة', 'إدارة الفريق', 'المهارات الإدارية', 'تطوير القيادة', 'مدير', 'قائد الفريق', 'التوجيه']
+    },
+    category: 'management'
+  },
+  {
+    slug: 'work-life-balance-2025',
+    title: {
+      fr: 'Équilibre Vie Pro / Vie Perso 2025 : Guide Complet pour Réussir',
+      en: 'Work-Life Balance 2025: Complete Guide to Succeed',
+      ar: 'التوازن بين الحياة المهنية والشخصية 2025: دليل شامل للنجاح'
+    },
+    description: {
+      fr: 'Guide complet pour trouver l\'équilibre entre vie professionnelle et vie personnelle en 2025 : organisation, limites, bien-être, productivité. Conseils pratiques pour un équilibre durable.',
+      en: 'Complete guide to find balance between professional and personal life in 2025: organization, boundaries, well-being, productivity. Practical advice for sustainable balance.',
+      ar: 'دليل شامل لإيجاد التوازن بين الحياة المهنية والشخصية في عام 2025: التنظيم، الحدود، الرفاهية، الإنتاجية. نصائح عملية للتوازن المستدام.'
+    },
+    date: '2025-03-06',
+    image: '/assets/blog/work-life-balance-2025.svg',
+    keywords: {
+      fr: ['équilibre vie pro perso', 'work life balance', 'bien-être au travail', 'organisation personnelle', 'gestion du temps', 'qualité de vie', 'burn-out', 'santé mentale'],
+      en: ['work-life balance', 'work life balance', 'well-being at work', 'personal organization', 'time management', 'quality of life', 'burnout', 'mental health'],
+      ar: ['التوازن بين الحياة المهنية والشخصية', 'التوازن بين العمل والحياة', 'الرفاهية في العمل', 'التنظيم الشخصي', 'إدارة الوقت', 'جودة الحياة', 'الإرهاق', 'الصحة العقلية']
+    },
+    category: 'bien-etre'
   }
 ]
 
