@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <defs>
+    <linearGradient id="grad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d97706;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="400" fill="url(#grad4)"/>
+  <g transform="translate(400, 200)">
+    <!-- Graphique de croissance -->
+    <polyline points="-180,100 -100,80 -20,40 60,20 140,0" 
+              fill="none" stroke="white" stroke-width="4" opacity="0.9"/>
+    <!-- Points sur la courbe -->
+    <circle cx="-180" cy="100" r="6" fill="white"/>
+    <circle cx="-100" cy="80" r="6" fill="white"/>
+    <circle cx="-20" cy="40" r="6" fill="white"/>
+    <circle cx="60" cy="20" r="6" fill="white"/>
+    <circle cx="140" cy="0" r="8" fill="white"/>
+    <!-- Étoile au sommet -->
+    <g transform="translate(140, 0)">
+      <path d="M 0 -15 L 4 -4 L 15 -4 L 6 2 L 9 13 L 0 7 L -9 13 L -6 2 L -15 -4 L -4 -4 Z" 
+            fill="white" opacity="0.9"/>
+    </g>
+    <!-- Icône de succès -->
+    <g transform="translate(0, -80)">
+      <circle cx="0" cy="0" r="50" fill="white" opacity="0.2"/>
+      <text x="0" y="12" fill="white" font-size="60" text-anchor="middle">🏆</text>
+    </g>
+  </g>
+</svg>
+

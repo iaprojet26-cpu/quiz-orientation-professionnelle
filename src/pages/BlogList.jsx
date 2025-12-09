@@ -5,6 +5,7 @@ import { getAllArticles } from '../services/blogService'
 import SEOHead from '../components/SEOHead'
 import OptimizedImage from '../components/OptimizedImage'
 import MonetagAdZone from '../components/MonetagAdZone'
+import { getDefaultArticleImage, generateImageAltText } from '../utils/defaultArticleImages'
 
 function BlogList() {
   const { t, i18n } = useTranslation()
@@ -47,16 +48,12 @@ function BlogList() {
               aria-label={`Lire l'article: ${article.title}`}
             >
               <div className="h-48 bg-gradient-to-br from-primary-100 to-primary-200 flex items-center justify-center overflow-hidden">
-                {article.image ? (
-                  <OptimizedImage
-                    src={article.image}
-                    alt={article.title}
-                    className="w-full h-full object-cover"
-                    lazy={true}
-                  />
-                ) : (
-                  <span className="text-6xl">📚</span>
-                )}
+                <OptimizedImage
+                  src={article.image || getDefaultArticleImage(article.category)}
+                  alt={generateImageAltText(article.title, article.category)}
+                  className="w-full h-full object-cover"
+                  lazy={true}
+                />
               </div>
               <div className="p-6">
                 <div className="text-sm text-gray-500 mb-2">

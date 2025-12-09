@@ -9,6 +9,7 @@ import OptimizedImage from '../components/OptimizedImage'
 import { trackArticleView } from '../utils/analytics'
 import MonetagAdZone from '../components/MonetagAdZone'
 import { getArticleSchema } from '../services/seoService'
+import { getDefaultArticleImage, generateImageAltText } from '../utils/defaultArticleImages'
 
 function BlogArticle() {
   const { slug } = useParams()
