@@ -7,7 +7,7 @@
 const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID || 'G-0K73VG7X9Z'
 
 /**
- * Initialise Google Analytics
+ * Initialise Google Analytics (chargement différé pour ne pas bloquer le rendu)
  */
 export const initGA = () => {
   if (typeof window === 'undefined' || !GA_MEASUREMENT_ID) {
@@ -15,23 +15,52 @@ export const initGA = () => {
     return
   }
 
-  // Charger le script Google Analytics
-  const script1 = document.createElement('script')
-  script1.async = true
-  script1.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`
-  document.head.appendChild(script1)
+  // Utiliser requestIdleCallback pour charger après le rendu critique
+  const loadGA = () => {
+    // Initialiser gtag d'abord (sans charger le script externe)
+    window.dataLayer = window.dataLayer || []
+    function gtag() {
+      window.dataLayer.push(arguments)
+    }
+    window.gtag = gtag
 
-  // Initialiser gtag
-  window.dataLayer = window.dataLayer || []
-  function gtag() {
-    window.dataLayer.push(arguments)
+    gtag('js', new Date())
+    gtag('config', GA_MEASUREMENT_ID, {
+      page_path: window.location.pathname,
+    })
+
+    // Charger le script Google Analytics de manière non bloquante
+    const script1 = document.createElement('script')
+    script1.async = true
+    script1.defer = true
+    script1.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`
+    // Ajouter en bas du body plutôt que dans le head
+    if (document.body) {
+      document.body.appendChild(script1)
+    } else {
+      document.addEventListener('DOMContentLoaded', () => {
+        document.body.appendChild(script1)
+      })
+    }
   }
-  window.gtag = gtag
 
-  gtag('js', new Date())
-  gtag('config', GA_MEASUREMENT_ID, {
-    page_path: window.location.pathname,
-  })
+  // Attendre que la page soit complètement chargée
+  if (document.readyState === 'complete') {
+    // Utiliser requestIdleCallback si disponible
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(loadGA, { timeout: 3000 })
+    } else {
+      setTimeout(loadGA, 3000)
+    }
+  } else {
+    window.addEventListener('load', () => {
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadGA, { timeout: 3000 })
+      } else {
+        setTimeout(loadGA, 3000)
+      }
+    })
+  }
 }
 
 /**

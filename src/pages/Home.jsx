@@ -20,21 +20,58 @@ function Home() {
   // Mettre à jour le contenu SEO quand la langue change
   useEffect(() => {
     setSeoContent(getHomepageContent(i18n.language || 'fr'))
-    const loadRecentArticles = async () => {
-      setLoadingArticles(true)
-      try {
-        const articles = await getRecentArticles(3, i18n.language || 'fr')
-        console.log('📚 Articles chargés:', articles.length)
-        setRecentArticles(articles)
-      } catch (error) {
-        console.error('Erreur chargement articles:', error)
-        setRecentArticles([])
-      } finally {
-        setLoadingArticles(false)
-      }
-    }
-    loadRecentArticles()
   }, [i18n.language])
+
+  // Charger les articles uniquement quand ils sont visibles (Intersection Observer)
+  useEffect(() => {
+    if (quizCompleted) return // Ne pas charger si le quiz est terminé
+
+    // Ne charger les articles qu'après un délai et seulement si la section est visible
+    const loadRecentArticles = () => {
+      // Vérifier si la section articles existe
+      const articlesSection = document.querySelector('[data-articles-section]')
+      if (!articlesSection) {
+        // Si la section n'existe pas encore, attendre un peu plus
+        setTimeout(() => loadRecentArticles(), 500)
+        return
+      }
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting) {
+            observer.disconnect()
+            setLoadingArticles(true)
+            // Utiliser requestIdleCallback pour charger sans bloquer
+            const load = () => {
+              getRecentArticles(3, i18n.language || 'fr')
+                .then((articles) => {
+                  setRecentArticles(articles)
+                })
+                .catch((error) => {
+                  console.error('Erreur chargement articles:', error)
+                  setRecentArticles([])
+                })
+                .finally(() => {
+                  setLoadingArticles(false)
+                })
+            }
+            
+            if ('requestIdleCallback' in window) {
+              requestIdleCallback(load, { timeout: 2000 })
+            } else {
+              setTimeout(load, 1000)
+            }
+          }
+        },
+        { rootMargin: '300px' } // Commencer à charger 300px avant que la section soit visible
+      )
+      
+      observer.observe(articlesSection)
+    }
+
+    // Délai initial pour ne pas bloquer le rendu
+    setTimeout(() => loadRecentArticles(), 2000)
+  }, [i18n.language, quizCompleted])
 
   const handleQuizComplete = (results) => {
     setQuizResults(results)
@@ -55,10 +92,12 @@ function Home() {
       />
       
       <div className="container mx-auto px-4 py-8">
-        {/* Zone publicitaire Monetag - En haut de page */}
-        <div className="mb-8 flex justify-center">
-          <MonetagAdZone zoneId="10282723" position="top" className="w-full max-w-4xl" />
-        </div>
+        {/* Zone publicitaire Monetag - En haut de page - Chargée après le rendu initial */}
+        {quizCompleted && (
+          <div className="mb-8 flex justify-center">
+            <MonetagAdZone zoneId="10282723" position="top" className="w-full max-w-4xl" />
+          </div>
+        )}
 
         {!quizCompleted && (
           <header className="text-center mb-8">
@@ -97,16 +136,16 @@ function Home() {
           <Results results={quizResults} onRestart={handleRestart} />
         )}
 
-        {/* Zone publicitaire Monetag - Entre contenu et articles */}
+        {/* Zone publicitaire Monetag - Entre contenu et articles - Chargée après scroll */}
         {!quizCompleted && (
-          <div className="my-12 flex justify-center">
+          <div className="my-12 flex justify-center" data-ad-zone-middle>
             <MonetagAdZone zoneId="10282723" position="middle" className="w-full max-w-4xl" />
           </div>
         )}
 
         {/* Section Articles Récents - Toujours affichée en bas de page */}
         {!quizCompleted && (
-          <section className="mt-16 mb-8 max-w-6xl mx-auto">
+          <section className="mt-16 mb-8 max-w-6xl mx-auto" data-articles-section>
             <div className="flex justify-between items-center mb-8">
               <h2 className="text-3xl font-bold text-primary-900">
                 {t('blog.recent_articles', { defaultValue: 'Articles Récents' })}

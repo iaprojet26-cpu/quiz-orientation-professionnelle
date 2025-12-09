@@ -16,17 +16,44 @@ export default defineConfig({
       compress: {
         drop_console: true, // Supprimer console.log en production
         drop_debugger: true,
-        pure_funcs: ['console.log', 'console.info', 'console.debug']
+        pure_funcs: ['console.log', 'console.info', 'console.debug', 'console.warn'],
+        passes: 2, // Plus de passes pour une meilleure compression
+        unsafe: true, // Optimisations agressives
+        unsafe_comps: true,
+        unsafe_math: true
+      },
+      mangle: {
+        safari10: true // Compatibilité Safari
       }
     },
     // Optimisation des chunks
     rollupOptions: {
       output: {
-        manualChunks: {
-          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-          'i18n-vendor': ['i18next', 'react-i18next', 'i18next-browser-languagedetector'],
-          'supabase-vendor': ['@supabase/supabase-js'],
-          'markdown-vendor': ['react-markdown', 'remark-gfm']
+        manualChunks: (id) => {
+          // React core dans un chunk séparé
+          if (id.includes('node_modules/react/') || id.includes('node_modules/react-dom/')) {
+            return 'react-core'
+          }
+          // React Router séparé
+          if (id.includes('node_modules/react-router')) {
+            return 'react-router'
+          }
+          // i18n séparé
+          if (id.includes('node_modules/i18next') || id.includes('node_modules/react-i18next')) {
+            return 'i18n'
+          }
+          // Supabase séparé (chargé seulement si nécessaire)
+          if (id.includes('node_modules/@supabase')) {
+            return 'supabase'
+          }
+          // Markdown séparé (chargé seulement pour les articles)
+          if (id.includes('node_modules/react-markdown') || id.includes('node_modules/remark')) {
+            return 'markdown'
+          }
+          // Autres node_modules
+          if (id.includes('node_modules')) {
+            return 'vendor'
+          }
         },
         // Optimisation des noms de fichiers
         chunkFileNames: 'assets/js/[name]-[hash].js',
