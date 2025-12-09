@@ -38,27 +38,83 @@ function App() {
   return (
     <>
       <Header />
-      <Suspense fallback={<LoadingFallback />}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/blog" element={<BlogList />} />
-          <Route path="/blog/:slug" element={<BlogArticle />} />
-          <Route path="/mentions-legales" element={<MentionsLegales />} />
-          <Route path="/politique-confidentialite" element={<PolitiqueConfidentialite />} />
-          <Route path="/a-propos" element={<APropos />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/top-metiers-futur" element={<TopMetiersFutur />} />
-          <Route path="/admin/login" element={<AdminLogin />} />
-          <Route
-            path="/admin"
-            element={
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route 
+          path="/blog" 
+          element={
+            <Suspense fallback={<LoadingFallback />}>
+              <BlogList />
+            </Suspense>
+          } 
+        />
+        <Route 
+          path="/blog/:slug" 
+          element={
+            <Suspense fallback={<LoadingFallback />}>
+              <BlogArticle />
+            </Suspense>
+          } 
+        />
+        <Route 
+          path="/mentions-legales" 
+          element={
+            <Suspense fallback={<LoadingFallback />}>
+              <MentionsLegales />
+            </Suspense>
+          } 
+        />
+        <Route 
+          path="/politique-confidentialite" 
+          element={
+            <Suspense fallback={<LoadingFallback />}>
+              <PolitiqueConfidentialite />
+            </Suspense>
+          } 
+        />
+        <Route 
+          path="/a-propos" 
+          element={
+            <Suspense fallback={<LoadingFallback />}>
+              <APropos />
+            </Suspense>
+          } 
+        />
+        <Route 
+          path="/contact" 
+          element={
+            <Suspense fallback={<LoadingFallback />}>
+              <Contact />
+            </Suspense>
+          } 
+        />
+        <Route 
+          path="/top-metiers-futur" 
+          element={
+            <Suspense fallback={<LoadingFallback />}>
+              <TopMetiersFutur />
+            </Suspense>
+          } 
+        />
+        <Route 
+          path="/admin/login" 
+          element={
+            <Suspense fallback={<LoadingFallback />}>
+              <AdminLogin />
+            </Suspense>
+          } 
+        />
+        <Route
+          path="/admin"
+          element={
+            <Suspense fallback={<LoadingFallback />}>
               <ProtectedAdminRoute>
                 <AdminDashboard />
               </ProtectedAdminRoute>
-            }
-          />
-        </Routes>
-      </Suspense>
+            </Suspense>
+          }
+        />
+      </Routes>
       <Footer />
     </>
   )
