@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Ingénieur IA : pourquoi c'est le métier du futur en 2025",
+  "description": "Guide complet sur ingénieur ia : pourquoi c'est le métier du futur en 2025",
+  "image": "/assets/blog/default-métiers.svg",
+  "datePublished": "2025-01-18",
+  "dateModified": "2025-01-18",
+  "author": {
+    "@type": "Organization",
+    "name": "Quiz Orientation"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Quiz Orientation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://quizorientation.online/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://quizorientation.online/blog/ingenieur-ia-metier-futur-2025"
+  }
+}

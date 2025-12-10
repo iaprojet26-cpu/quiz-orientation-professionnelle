@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Assistant(e) administratif(ve) : compétences essentielles et débouchés 2025",
+  "description": "Guide complet sur assistant(e) administratif(ve) : compétences essentielles et débouchés 2025",
+  "image": "/assets/blog/default-métiers.svg",
+  "datePublished": "2025-01-22",
+  "dateModified": "2025-01-22",
+  "author": {
+    "@type": "Organization",
+    "name": "Quiz Orientation"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Quiz Orientation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://quizorientation.online/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://quizorientation.online/blog/assistant-administratif-competences-2025"
+  }
+}

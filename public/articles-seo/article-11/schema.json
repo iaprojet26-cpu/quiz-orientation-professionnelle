@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Comment choisir sa filière après le bac : guide complet orientation 2025",
+  "description": "Guide complet sur comment choisir sa filière après le bac : guide complet orientation 2025",
+  "image": "/assets/blog/default-orientation.svg",
+  "datePublished": "2025-01-25",
+  "dateModified": "2025-01-25",
+  "author": {
+    "@type": "Organization",
+    "name": "Quiz Orientation"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Quiz Orientation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://quizorientation.online/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://quizorientation.online/blog/choisir-filiere-apres-bac-2025"
+  }
+}

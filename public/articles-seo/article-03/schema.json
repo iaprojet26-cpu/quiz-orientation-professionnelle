@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Infirmier en 2025 : parcours, débouchés, salaires et formations",
+  "description": "Guide complet sur infirmier en 2025 : parcours, débouchés, salaires et formations",
+  "image": "/assets/blog/default-métiers.svg",
+  "datePublished": "2025-01-17",
+  "dateModified": "2025-01-17",
+  "author": {
+    "@type": "Organization",
+    "name": "Quiz Orientation"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Quiz Orientation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://quizorientation.online/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://quizorientation.online/blog/infirmier-2025-parcours-debouches-salaires"
+  }
+}

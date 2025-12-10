@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Comment surmonter le stress lié à l'avenir professionnel : guide pratique",
+  "description": "Guide complet sur comment surmonter le stress lié à l'avenir professionnel : guide pratique",
+  "image": "/assets/blog/default-orientation.svg",
+  "datePublished": "2025-02-12",
+  "dateModified": "2025-02-12",
+  "author": {
+    "@type": "Organization",
+    "name": "Quiz Orientation"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Quiz Orientation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://quizorientation.online/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://quizorientation.online/blog/surmonter-stress-avenir-professionnel"
+  }
+}

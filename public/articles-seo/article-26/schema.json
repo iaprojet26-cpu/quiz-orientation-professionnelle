@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Les secteurs qui recrutent le plus au Maroc en 2025",
+  "description": "Guide complet sur les secteurs qui recrutent le plus au maroc en 2025",
+  "image": "/assets/blog/default-futur.svg",
+  "datePublished": "2025-02-09",
+  "dateModified": "2025-02-09",
+  "author": {
+    "@type": "Organization",
+    "name": "Quiz Orientation"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Quiz Orientation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://quizorientation.online/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://quizorientation.online/blog/secteurs-recrutent-maroc-2025"
+  }
+}

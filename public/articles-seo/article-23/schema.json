@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Comment booster son employabilité en 2025 : stratégies efficaces",
+  "description": "Guide complet sur comment booster son employabilité en 2025 : stratégies efficaces",
+  "image": "/assets/blog/default-conseils.svg",
+  "datePublished": "2025-02-06",
+  "dateModified": "2025-02-06",
+  "author": {
+    "@type": "Organization",
+    "name": "Quiz Orientation"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Quiz Orientation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://quizorientation.online/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://quizorientation.online/blog/booster-employabilite-2025"
+  }
+}

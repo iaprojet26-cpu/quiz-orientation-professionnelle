@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Community Manager : guide complet du débutant à l'expert en 2025",
+  "description": "Guide complet sur community manager : guide complet du débutant à l'expert en 2025",
+  "image": "/assets/blog/default-métiers.svg",
+  "datePublished": "2025-01-23",
+  "dateModified": "2025-01-23",
+  "author": {
+    "@type": "Organization",
+    "name": "Quiz Orientation"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Quiz Orientation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://quizorientation.online/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://quizorientation.online/blog/community-manager-guide-complet-2025"
+  }
+}

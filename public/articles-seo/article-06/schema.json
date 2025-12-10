@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Agent immobilier : comment réussir en 2025, formation et conseils",
+  "description": "Guide complet sur agent immobilier : comment réussir en 2025, formation et conseils",
+  "image": "/assets/blog/default-métiers.svg",
+  "datePublished": "2025-01-20",
+  "dateModified": "2025-01-20",
+  "author": {
+    "@type": "Organization",
+    "name": "Quiz Orientation"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Quiz Orientation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://quizorientation.online/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://quizorientation.online/blog/agent-immobilier-reussir-2025"
+  }
+}

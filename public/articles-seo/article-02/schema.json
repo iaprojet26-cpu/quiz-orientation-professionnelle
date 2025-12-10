@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Métier Data Analyst : formation, salaire, compétences et débouchés en 2025",
+  "description": "Guide complet sur métier data analyst : formation, salaire, compétences et débouchés en 2025",
+  "image": "/assets/blog/default-métiers.svg",
+  "datePublished": "2025-01-16",
+  "dateModified": "2025-01-16",
+  "author": {
+    "@type": "Organization",
+    "name": "Quiz Orientation"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Quiz Orientation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://quizorientation.online/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://quizorientation.online/blog/metier-data-analyst-formation-salaire-2025"
+  }
+}

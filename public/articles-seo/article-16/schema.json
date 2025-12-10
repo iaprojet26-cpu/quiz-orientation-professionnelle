@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Top 10 soft skills demandées en entreprise en 2025",
+  "description": "Guide complet sur top 10 soft skills demandées en entreprise en 2025",
+  "image": "/assets/blog/default-compétences.svg",
+  "datePublished": "2025-01-30",
+  "dateModified": "2025-01-30",
+  "author": {
+    "@type": "Organization",
+    "name": "Quiz Orientation"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Quiz Orientation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://quizorientation.online/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://quizorientation.online/blog/top-10-soft-skills-entreprise-2025"
+  }
+}

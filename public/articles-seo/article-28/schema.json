@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Test d'orientation professionnelle : comment ça marche en 2025",
+  "description": "Guide complet sur test d'orientation professionnelle : comment ça marche en 2025",
+  "image": "/assets/blog/default-orientation.svg",
+  "datePublished": "2025-02-11",
+  "dateModified": "2025-02-11",
+  "author": {
+    "@type": "Organization",
+    "name": "Quiz Orientation"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Quiz Orientation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://quizorientation.online/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://quizorientation.online/blog/test-orientation-professionnelle-2025"
+  }
+}

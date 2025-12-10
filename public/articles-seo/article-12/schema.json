@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Erreurs d'orientation à éviter : guide complet pour bien s'orienter",
+  "description": "Guide complet sur erreurs d'orientation à éviter : guide complet pour bien s'orienter",
+  "image": "/assets/blog/default-orientation.svg",
+  "datePublished": "2025-01-26",
+  "dateModified": "2025-01-26",
+  "author": {
+    "@type": "Organization",
+    "name": "Quiz Orientation"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Quiz Orientation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://quizorientation.online/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://quizorientation.online/blog/erreurs-orientation-eviter-2025"
+  }
+}

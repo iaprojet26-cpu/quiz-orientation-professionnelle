@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Comment préparer un entretien d'embauche : guide complet 2025",
+  "description": "Guide complet sur comment préparer un entretien d'embauche : guide complet 2025",
+  "image": "/assets/blog/default-conseils.svg",
+  "datePublished": "2025-02-05",
+  "dateModified": "2025-02-05",
+  "author": {
+    "@type": "Organization",
+    "name": "Quiz Orientation"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Quiz Orientation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://quizorientation.online/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://quizorientation.online/blog/preparer-entretien-embauche-2025"
+  }
+}

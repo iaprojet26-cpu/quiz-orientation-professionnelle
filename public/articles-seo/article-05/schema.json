@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Gestionnaire RH : fiche métier complète, compétences et salaire 2025",
+  "description": "Guide complet sur gestionnaire rh : fiche métier complète, compétences et salaire 2025",
+  "image": "/assets/blog/default-métiers.svg",
+  "datePublished": "2025-01-19",
+  "dateModified": "2025-01-19",
+  "author": {
+    "@type": "Organization",
+    "name": "Quiz Orientation"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Quiz Orientation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://quizorientation.online/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://quizorientation.online/blog/gestionnaire-rh-fiche-metier-2025"
+  }
+}

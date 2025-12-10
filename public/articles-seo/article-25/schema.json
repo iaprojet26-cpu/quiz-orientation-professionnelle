@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Les métiers qui vont exploser grâce à l'IA en 2025-2030",
+  "description": "Guide complet sur les métiers qui vont exploser grâce à l'ia en 2025-2030",
+  "image": "/assets/blog/default-futur.svg",
+  "datePublished": "2025-02-08",
+  "dateModified": "2025-02-08",
+  "author": {
+    "@type": "Organization",
+    "name": "Quiz Orientation"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Quiz Orientation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://quizorientation.online/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://quizorientation.online/blog/metiers-exploser-ia-2025-2030"
+  }
+}

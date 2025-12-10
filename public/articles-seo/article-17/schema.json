@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Compétences digitales indispensables pour les jeunes diplômés en 2025",
+  "description": "Guide complet sur compétences digitales indispensables pour les jeunes diplômés en 2025",
+  "image": "/assets/blog/default-compétences.svg",
+  "datePublished": "2025-01-31",
+  "dateModified": "2025-01-31",
+  "author": {
+    "@type": "Organization",
+    "name": "Quiz Orientation"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Quiz Orientation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://quizorientation.online/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://quizorientation.online/blog/competences-digitales-jeunes-diplomes-2025"
+  }
+}

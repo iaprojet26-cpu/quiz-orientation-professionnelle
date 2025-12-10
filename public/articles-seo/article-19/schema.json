@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Comment rédiger un CV parfait : guide complet avec modèles 2025",
+  "description": "Guide complet sur comment rédiger un cv parfait : guide complet avec modèles 2025",
+  "image": "/assets/blog/default-conseils.svg",
+  "datePublished": "2025-02-02",
+  "dateModified": "2025-02-02",
+  "author": {
+    "@type": "Organization",
+    "name": "Quiz Orientation"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Quiz Orientation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://quizorientation.online/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://quizorientation.online/blog/rediger-cv-parfait-modeles-2025"
+  }
+}

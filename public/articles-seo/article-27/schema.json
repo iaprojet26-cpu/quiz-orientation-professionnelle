@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Comment découvrir son potentiel professionnel : guide complet",
+  "description": "Guide complet sur comment découvrir son potentiel professionnel : guide complet",
+  "image": "/assets/blog/default-orientation.svg",
+  "datePublished": "2025-02-10",
+  "dateModified": "2025-02-10",
+  "author": {
+    "@type": "Organization",
+    "name": "Quiz Orientation"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Quiz Orientation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://quizorientation.online/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://quizorientation.online/blog/decouvrir-potentiel-professionnel"
+  }
+}

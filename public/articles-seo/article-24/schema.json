@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Les métiers qui vont disparaître d'ici 2030 : analyse et alternatives",
+  "description": "Guide complet sur les métiers qui vont disparaître d'ici 2030 : analyse et alternatives",
+  "image": "/assets/blog/default-futur.svg",
+  "datePublished": "2025-02-07",
+  "dateModified": "2025-02-07",
+  "author": {
+    "@type": "Organization",
+    "name": "Quiz Orientation"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Quiz Orientation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://quizorientation.online/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://quizorientation.online/blog/metiers-disparaitre-2030"
+  }
+}

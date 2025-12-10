@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Étudier ou travailler : comment prendre la bonne décision en 2025",
+  "description": "Guide complet sur étudier ou travailler : comment prendre la bonne décision en 2025",
+  "image": "/assets/blog/default-orientation.svg",
+  "datePublished": "2025-01-29",
+  "dateModified": "2025-01-29",
+  "author": {
+    "@type": "Organization",
+    "name": "Quiz Orientation"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Quiz Orientation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://quizorientation.online/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://quizorientation.online/blog/etudier-ou-travailler-decision-2025"
+  }
+}

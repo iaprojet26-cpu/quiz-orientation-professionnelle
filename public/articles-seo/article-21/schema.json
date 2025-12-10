@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Comment décrocher un job sans expérience : stratégies efficaces 2025",
+  "description": "Guide complet sur comment décrocher un job sans expérience : stratégies efficaces 2025",
+  "image": "/assets/blog/default-conseils.svg",
+  "datePublished": "2025-02-04",
+  "dateModified": "2025-02-04",
+  "author": {
+    "@type": "Organization",
+    "name": "Quiz Orientation"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Quiz Orientation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://quizorientation.online/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://quizorientation.online/blog/decrocher-job-sans-experience-2025"
+  }
+}

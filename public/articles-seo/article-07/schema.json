@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Technicien en réseaux et cybersécurité : parcours complet et formations 2025",
+  "description": "Guide complet sur technicien en réseaux et cybersécurité : parcours complet et formations 2025",
+  "image": "/assets/blog/default-métiers.svg",
+  "datePublished": "2025-01-21",
+  "dateModified": "2025-01-21",
+  "author": {
+    "@type": "Organization",
+    "name": "Quiz Orientation"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Quiz Orientation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://quizorientation.online/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://quizorientation.online/blog/technicien-reseaux-cybersecurite-2025"
+  }
+}

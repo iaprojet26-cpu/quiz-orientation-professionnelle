@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Comment améliorer sa communication professionnelle en 2025",
+  "description": "Guide complet sur comment améliorer sa communication professionnelle en 2025",
+  "image": "/assets/blog/default-compétences.svg",
+  "datePublished": "2025-02-01",
+  "dateModified": "2025-02-01",
+  "author": {
+    "@type": "Organization",
+    "name": "Quiz Orientation"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Quiz Orientation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://quizorientation.online/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://quizorientation.online/blog/ameliorer-communication-professionnelle-2025"
+  }
+}
