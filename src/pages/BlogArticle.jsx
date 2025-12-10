@@ -292,20 +292,26 @@ function BlogArticle() {
         </header>
 
         {/* Zone publicitaire Monetag - Avant le contenu */}
-        <div className="mb-8 flex justify-center">
-          <MonetagAdZone zoneId="10282723" position="top" className="w-full max-w-4xl" />
-        </div>
+        {import.meta.env.VITE_MONETAG_ENABLED !== 'false' && (
+          <div className="mb-8 flex justify-center">
+            <MonetagAdZone zoneId="10282723" position="top" className="w-full max-w-4xl" />
+          </div>
+        )}
 
         <div className="bg-white rounded-lg shadow-md p-8 prose prose-lg max-w-none">
           <ReactMarkdown remarkPlugins={[remarkGfm]}>
-            {content || 'Chargement du contenu...'}
+            {content && content.trim().length > 0
+              ? content
+              : `# ${article.title}\n\n${article.description || t('blog.article_default', { defaultValue: 'Contenu en cours de chargement.' })}`}
           </ReactMarkdown>
         </div>
 
         {/* Zone publicitaire Monetag - Après le contenu */}
-        <div className="my-8 flex justify-center">
-          <MonetagAdZone zoneId="10282723" position="bottom" className="w-full max-w-4xl" />
-        </div>
+        {import.meta.env.VITE_MONETAG_ENABLED !== 'false' && (
+          <div className="my-8 flex justify-center">
+            <MonetagAdZone zoneId="10282723" position="bottom" className="w-full max-w-4xl" />
+          </div>
+        )}
 
         {/* Liens internes SEO */}
         <div className="mt-12 pt-8 border-t border-gray-200">

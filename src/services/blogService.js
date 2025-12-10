@@ -5,6 +5,12 @@
 
 import { supabase } from '../lib/supabase'
 
+// Désactiver Supabase si les variables d'environnement sont absentes
+const supabaseEnabled = Boolean(
+  import.meta?.env?.VITE_SUPABASE_URL &&
+  import.meta?.env?.VITE_SUPABASE_ANON_KEY
+)
+
 // Articles statiques (fallback si Supabase non disponible)
 const staticArticles = [
   {
@@ -1570,7 +1576,7 @@ export const getAllArticles = async (language = 'fr') => {
   const slugSet = new Set()
 
   // Essayer de charger depuis Supabase
-  if (supabase) {
+  if (supabase && supabaseEnabled) {
     try {
       const { data, error } = await supabase
         .from('blog_articles')
@@ -1609,7 +1615,7 @@ export const getAllArticles = async (language = 'fr') => {
  */
 export const getArticleBySlug = async (slug, language = 'fr') => {
   // Essayer de charger depuis Supabase
-  if (supabase) {
+  if (supabase && supabaseEnabled) {
     try {
       const { data, error } = await supabase
         .from('blog_articles')
