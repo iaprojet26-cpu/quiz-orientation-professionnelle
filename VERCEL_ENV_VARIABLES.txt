@@ -1,0 +1,70 @@
+===========================================
+VARIABLES D'ENVIRONNEMENT POUR VERCEL
+===========================================
+
+Copiez-collez ces variables une par une dans Vercel :
+Settings → Environment Variables → Add New
+
+===========================================
+VARIABLES OBLIGATOIRES
+===========================================
+
+1. VITE_SUPABASE_URL
+   Valeur à remplacer : https://VOTRE_PROJET.supabase.co
+   Environnements : Production, Preview
+
+2. VITE_SUPABASE_ANON_KEY
+   Valeur à remplacer : VOTRE_CLE_ANON_SUPABASE
+   Environnements : Production, Preview
+
+===========================================
+VARIABLES OPTIONNELLES (mais recommandées)
+===========================================
+
+3. VITE_GA_MEASUREMENT_ID
+   Valeur : G-0K73VG7X9Z
+   Environnements : Production, Preview
+
+4. VITE_ADMIN_PASSWORD
+   Valeur à remplacer : VotreMotDePasseSecurise2025!
+   Environnements : Production, Preview
+
+5. VITE_MONETAG_ENABLED
+   Valeur : true
+   Environnements : Production, Preview
+
+6. VITE_MONETAG_SITE_ID
+   Valeur à remplacer : VOTRE_SITE_ID_MONETAG
+   Environnements : Production, Preview
+
+7. VITE_MONETAG_OWNER_VERIFICATION
+   Valeur : 1670db72de09a5c49b5cb6475cd93b5b
+   Environnements : Production, Preview
+
+===========================================
+INSTRUCTIONS
+===========================================
+
+Pour chaque variable :
+1. Cliquez sur "Add New" dans Vercel
+2. Copiez le nom de la variable (Key)
+3. Collez la valeur (Value)
+4. Sélectionnez "Production" et "Preview"
+5. Cliquez sur "Save"
+6. Répétez pour la variable suivante
+
+===========================================
+OÙ TROUVER LES VALEURS
+===========================================
+
+VITE_SUPABASE_URL :
+→ Supabase Dashboard → Settings → API → Project URL
+
+VITE_SUPABASE_ANON_KEY :
+→ Supabase Dashboard → Settings → API → anon public key
+
+VITE_MONETAG_SITE_ID :
+→ Dashboard Monetag → Paramètres du site
+
+===========================================
+
