@@ -67,35 +67,22 @@ function BlogArticle() {
       `${basePath}/articles/${slugToFetch}.md`
     ]
 
-    console.log('🔍 Tentative de chargement markdown pour:', slugToFetch)
-    console.log('📁 Chemins testés:', candidatePaths)
-
     for (const path of candidatePaths) {
       try {
-        console.log('📥 Fetch:', path)
         const response = await fetch(path, { cache: 'no-cache' })
-        console.log('📊 Réponse:', response.status, response.statusText, response.url)
         
         if (response.ok) {
           const text = await response.text()
-          console.log('📄 Contenu reçu (premiers 100 caractères):', text.substring(0, 100))
           
-          // Vérifier que c'est bien du markdown et pas de l'HTML (index.html)
           if (text.trim().startsWith('<!doctype') || text.trim().startsWith('<!DOCTYPE') || text.trim().startsWith('<html')) {
-            console.warn('⚠️ Réponse HTML reçue au lieu de markdown pour:', path)
             continue
           }
-          // Vérifier que le contenu commence par --- (front matter) ou # (titre markdown)
           if (text.trim().startsWith('---') || text.trim().startsWith('#')) {
-            console.log('✅ Markdown chargé avec succès depuis:', path)
             return text
           }
-          console.warn('⚠️ Contenu ne semble pas être du markdown valide pour:', path)
-        } else {
-          console.warn('⚠️ Réponse non OK:', response.status, path)
         }
       } catch (err) {
-        console.error('❌ Échec chargement markdown:', path, err)
+        console.error('Échec chargement markdown:', path, err)
       }
     }
 
@@ -111,12 +98,8 @@ function BlogArticle() {
       setLoading(true)
       setError(null)
       
-      console.log('🚀 Début chargement article:', slug, 'langue:', language)
-      
       try {
-        console.log('📚 Appel getArticleBySlug...')
         let articleData = await getArticleBySlug(slug, language)
-        console.log('📚 Résultat getArticleBySlug:', articleData ? 'Article trouvé' : 'Article non trouvé')
         
         if (!isMountedRef.current) return
         
@@ -127,19 +110,13 @@ function BlogArticle() {
         }
 
         if (!articleData || !articleData.content) {
-          console.log('📝 Pas de contenu dans articleData, tentative chargement markdown...')
-          // Charger le fichier markdown en fallback
           try {
             const rawText = await fetchMarkdownContent(slug)
             
             if (!isMountedRef.current) return
             
-            console.log('✅ Markdown brut chargé, longueur:', rawText.length)
             const { frontMatter, body } = parseFrontMatter(rawText)
-            console.log('📋 Front matter:', Object.keys(frontMatter))
-            console.log('📄 Body longueur:', body.length)
             
-            // Vérifier que le body n'est pas vide et contient du contenu valide
             if (body && body.trim().length > 0 && !body.trim().startsWith('<!')) {
               markdownContent = body
 
@@ -153,23 +130,16 @@ function BlogArticle() {
                   keywords: frontMatter.keywords || [],
                   category: frontMatter.category || 'blog'
                 }
-                console.log('✅ Article créé depuis front matter:', articleData.title)
               }
             } else {
-              console.error('❌ Contenu markdown invalide ou vide pour:', slug)
               throw new Error('Contenu markdown invalide')
             }
           } catch (fetchError) {
             if (!isMountedRef.current) return
             
-            console.error('❌ Erreur lors du chargement du markdown:', fetchError)
-            // Si le markdown ne peut pas être chargé, utiliser les métadonnées du service
             if (articleData) {
-              console.log('⚠️ Utilisation du fallback avec métadonnées du service')
               markdownContent = `# ${articleData.title}\n\n${articleData.description || 'Contenu en cours de rédaction.'}\n\n*Le contenu complet de cet article sera bientôt disponible.*`
             } else {
-              // Si même articleData est null, créer un article minimal
-              console.log('⚠️ Création article minimal depuis slug')
               articleData = {
                 slug,
                 title: slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
@@ -183,7 +153,6 @@ function BlogArticle() {
             }
           }
         } else {
-          console.log('✅ Contenu trouvé dans articleData')
           markdownContent = articleData.content
         }
 
@@ -193,40 +162,33 @@ function BlogArticle() {
           throw new Error('Article non trouvé')
         }
         
-        console.log('✅ Article final:', articleData.title)
         setArticle(articleData)
-        // S'assurer que le contenu est du markdown valide
         if (markdownContent && !markdownContent.trim().startsWith('<!')) {
           setContent(markdownContent)
-          console.log('✅ Contenu markdown défini, longueur:', markdownContent.length)
         } else {
-          console.error('⚠️ Contenu invalide détecté, utilisation du fallback')
           setContent(`# ${articleData?.title || 'Article'}\n\n${articleData?.description || 'Contenu en cours de rédaction.'}`)
         }
       } catch (error) {
         if (!isMountedRef.current) return
         
-        console.error('❌ Erreur de chargement article:', error)
+        console.error('Erreur de chargement article:', error)
         setError(error.message || 'Erreur lors du chargement de l\'article')
         setArticle(null)
         setContent('')
       } finally {
         if (isMountedRef.current) {
           setLoading(false)
-          console.log('🏁 Fin chargement article')
         }
       }
     }
     
     loadArticle()
     
-    // Cleanup function pour éviter les mises à jour d'état après démontage
     return () => {
       isMountedRef.current = false
     }
   }, [slug, language])
 
-  // Ajouter le schema Article pour SEO - DOIT être avant les retours précoces
   useEffect(() => {
     if (!isMountedRef.current || !article) return
     

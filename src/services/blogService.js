@@ -1572,17 +1572,12 @@ const mapSupabaseArticle = (article, language = 'fr') => ({
  * Obtenir tous les articles (depuis Supabase + fallback statique)
  */
 export const getAllArticles = async (language = 'fr') => {
-  console.log('🔍 getAllArticles appelé avec langue:', language)
-  console.log('📊 Supabase activé:', supabaseEnabled)
-  console.log('📊 Supabase client:', supabase ? 'disponible' : 'non disponible')
-  
   const combinedArticles = []
   const slugSet = new Set()
 
   // Essayer de charger depuis Supabase
   if (supabase && supabaseEnabled) {
     try {
-      console.log('📥 Tentative de chargement depuis Supabase...')
       const { data, error } = await supabase
         .from('blog_articles')
         .select('*')
@@ -1590,46 +1585,32 @@ export const getAllArticles = async (language = 'fr') => {
         .order('published_at', { ascending: false })
 
       if (error) {
-        console.error('❌ Erreur Supabase:', error)
-      } else {
-        console.log('✅ Articles Supabase chargés:', data?.length || 0)
-        if (data && data.length > 0) {
-          data.forEach(article => {
-            const mapped = mapSupabaseArticle(article, language)
-            combinedArticles.push(mapped)
-            slugSet.add(mapped.slug)
-          })
-        }
+        console.error('Erreur Supabase:', error)
+      } else if (data && data.length > 0) {
+        data.forEach(article => {
+          const mapped = mapSupabaseArticle(article, language)
+          combinedArticles.push(mapped)
+          slugSet.add(mapped.slug)
+        })
       }
     } catch (error) {
-      console.error('❌ Erreur lors du chargement des articles depuis Supabase:', error)
+      console.error('Erreur lors du chargement des articles depuis Supabase:', error)
     }
-  } else {
-    console.log('ℹ️ Supabase non disponible, utilisation des articles statiques uniquement')
   }
 
   // Ajouter les articles statiques manquants
-  console.log('📚 Articles statiques disponibles:', staticArticles.length)
   staticArticles.forEach(article => {
     if (!slugSet.has(article.slug)) {
       const mapped = mapStaticArticle(article, language)
       combinedArticles.push(mapped)
-      console.log('➕ Article statique ajouté:', mapped.slug)
-    } else {
-      console.log('⏭️ Article statique ignoré (déjà dans Supabase):', article.slug)
     }
   })
 
   if (combinedArticles.length === 0) {
-    console.warn('⚠️ Aucun article combiné, utilisation des articles statiques uniquement')
-    const staticOnly = staticArticles.map(article => mapStaticArticle(article, language))
-    console.log('📚 Articles statiques retournés:', staticOnly.length)
-    return staticOnly
+    return staticArticles.map(article => mapStaticArticle(article, language))
   }
 
-  const sorted = combinedArticles.sort((a, b) => new Date(b.date) - new Date(a.date))
-  console.log('✅ Total articles retournés:', sorted.length)
-  return sorted
+  return combinedArticles.sort((a, b) => new Date(b.date) - new Date(a.date))
 }
 
 /**

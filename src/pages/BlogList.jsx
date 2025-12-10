@@ -24,17 +24,12 @@ function BlogList() {
         
         setLoading(true)
         setError(null)
-        console.log('📚 Début du chargement des articles, langue:', language)
         
         const data = await getAllArticles(language)
         
         if (!isMountedRef.current) return
         
-        console.log('✅ Articles chargés:', data?.length || 0, 'articles')
-        console.log('📋 Détails des articles:', data)
-        
         if (!data || data.length === 0) {
-          console.warn('⚠️ Aucun article trouvé')
           setError('Aucun article disponible pour le moment.')
         } else {
           setArticles(data)
@@ -42,7 +37,7 @@ function BlogList() {
       } catch (err) {
         if (!isMountedRef.current) return
         
-        console.error('❌ Erreur lors du chargement des articles:', err)
+        console.error('Erreur lors du chargement des articles:', err)
         setError(err.message || 'Erreur lors du chargement des articles')
       } finally {
         if (isMountedRef.current) {
@@ -53,7 +48,6 @@ function BlogList() {
     
     loadArticles()
     
-    // Cleanup function pour éviter les mises à jour d'état après démontage
     return () => {
       isMountedRef.current = false
     }
