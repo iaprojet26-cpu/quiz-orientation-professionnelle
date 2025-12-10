@@ -192,8 +192,6 @@ function BlogArticle() {
         if (!articleData) {
           throw new Error('Article non trouvé')
         }
-
-        if (!isMountedRef.current) return
         
         console.log('✅ Article final:', articleData.title)
         setArticle(articleData)
@@ -228,6 +226,23 @@ function BlogArticle() {
     }
   }, [slug, language])
 
+  // Ajouter le schema Article pour SEO - DOIT être avant les retours précoces
+  useEffect(() => {
+    if (!isMountedRef.current || !article) return
+    
+    const articleSchema = getArticleSchema(article)
+    if (articleSchema) {
+      let schemaScript = document.querySelector('script[type="application/ld+json"][data-article-schema]')
+      if (!schemaScript) {
+        schemaScript = document.createElement('script')
+        schemaScript.setAttribute('type', 'application/ld+json')
+        schemaScript.setAttribute('data-article-schema', 'true')
+        document.head.appendChild(schemaScript)
+      }
+      schemaScript.textContent = JSON.stringify(articleSchema)
+    }
+  }, [article])
+
   if (loading) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-primary-50 to-primary-100 flex items-center justify-center">
@@ -259,23 +274,6 @@ function BlogArticle() {
       </div>
     )
   }
-
-  // Ajouter le schema Article pour SEO
-  useEffect(() => {
-    if (!isMountedRef.current || !article) return
-    
-    const articleSchema = getArticleSchema(article)
-    if (articleSchema) {
-      let schemaScript = document.querySelector('script[type="application/ld+json"][data-article-schema]')
-      if (!schemaScript) {
-        schemaScript = document.createElement('script')
-        schemaScript.setAttribute('type', 'application/ld+json')
-        schemaScript.setAttribute('data-article-schema', 'true')
-        document.head.appendChild(schemaScript)
-      }
-      schemaScript.textContent = JSON.stringify(articleSchema)
-    }
-  }, [article])
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary-50 to-primary-100">
