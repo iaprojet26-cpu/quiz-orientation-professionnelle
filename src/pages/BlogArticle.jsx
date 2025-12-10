@@ -292,7 +292,7 @@ function BlogArticle() {
         </header>
 
         {/* Zone publicitaire Monetag - Avant le contenu */}
-        {import.meta.env.VITE_MONETAG_ENABLED !== 'false' && (
+        {import.meta.env.VITE_MONETAG_ENABLED === 'true' && (
           <div className="mb-8 flex justify-center">
             <MonetagAdZone zoneId="10282723" position="top" className="w-full max-w-4xl" />
           </div>
@@ -307,7 +307,7 @@ function BlogArticle() {
         </div>
 
         {/* Zone publicitaire Monetag - Après le contenu */}
-        {import.meta.env.VITE_MONETAG_ENABLED !== 'false' && (
+        {import.meta.env.VITE_MONETAG_ENABLED === 'true' && (
           <div className="my-8 flex justify-center">
             <MonetagAdZone zoneId="10282723" position="bottom" className="w-full max-w-4xl" />
           </div>
