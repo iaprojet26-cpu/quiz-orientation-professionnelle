@@ -6,8 +6,12 @@
   "framework": "vite",
   "rewrites": [
     {
-      "source": "/(.*\\.md)",
-      "destination": "/$1"
+      "source": "/blog/(.*\\.md)",
+      "destination": "/blog/$1"
+    },
+    {
+      "source": "/articles/(.*\\.md)",
+      "destination": "/articles/$1"
     },
     {
       "source": "/(.*)",
