@@ -15,6 +15,8 @@ function BlogArticle() {
   const { t, i18n } = useTranslation()
   const [article, setArticle] = useState(null)
   const [content, setContent] = useState('')
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
   const language = i18n.language || 'fr'
 
   const parseFrontMatter = (rawText) => {
@@ -90,6 +92,9 @@ function BlogArticle() {
 
   useEffect(() => {
     const loadArticle = async () => {
+      setLoading(true)
+      setError(null)
+      
       try {
         let articleData = await getArticleBySlug(slug, language)
         let markdownContent = ''
@@ -136,6 +141,10 @@ function BlogArticle() {
           markdownContent = articleData.content
         }
 
+        if (!articleData) {
+          throw new Error('Article non trouvé')
+        }
+
         setArticle(articleData)
         // S'assurer que le contenu est du markdown valide
         if (markdownContent && !markdownContent.trim().startsWith('<!')) {
@@ -146,19 +155,41 @@ function BlogArticle() {
         }
       } catch (error) {
         console.error('Erreur de chargement article:', error)
+        setError(error.message || 'Erreur lors du chargement de l\'article')
         setArticle(null)
         setContent('')
+      } finally {
+        setLoading(false)
       }
     }
     loadArticle()
   }, [slug, language])
 
-  if (!article) {
+  if (loading) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-primary-50 to-primary-100 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Article non trouvé</h1>
-          <Link to="/blog" className="text-primary-600 hover:underline">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Chargement de l'article...</p>
+        </div>
+      </div>
+    )
+  }
+
+  if (error || !article) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-primary-50 to-primary-100 flex items-center justify-center">
+        <div className="text-center max-w-md mx-auto px-4">
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">
+            {error ? 'Erreur de chargement' : 'Article non trouvé'}
+          </h1>
+          {error && (
+            <p className="text-gray-600 mb-4">{error}</p>
+          )}
+          <Link 
+            to="/blog" 
+            className="inline-block bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+          >
             Retour au blog
           </Link>
         </div>
