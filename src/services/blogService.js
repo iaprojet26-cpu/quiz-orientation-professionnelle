@@ -5,10 +5,10 @@
 
 import { supabase } from '../lib/supabase'
 
-// Désactiver Supabase si les variables d'environnement sont absentes
-const supabaseEnabled = Boolean(
-  import.meta?.env?.VITE_SUPABASE_URL &&
-  import.meta?.env?.VITE_SUPABASE_ANON_KEY
+// Supabase activé uniquement si les variables sont présentes ET non forcé à false
+const supabaseEnabled = (
+  import.meta?.env?.VITE_SUPABASE_ENABLED !== 'false' &&
+  Boolean(import.meta?.env?.VITE_SUPABASE_URL && import.meta?.env?.VITE_SUPABASE_ANON_KEY)
 )
 
 // Articles statiques (fallback si Supabase non disponible)
