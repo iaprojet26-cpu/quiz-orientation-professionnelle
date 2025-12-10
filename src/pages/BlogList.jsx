@@ -9,12 +9,33 @@ import MonetagAdZone from '../components/MonetagAdZone'
 function BlogList() {
   const { t, i18n } = useTranslation()
   const [articles, setArticles] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
   const language = i18n.language || 'fr'
 
   useEffect(() => {
     const loadArticles = async () => {
-      const data = await getAllArticles(language)
-      setArticles(data)
+      try {
+        setLoading(true)
+        setError(null)
+        console.log('📚 Début du chargement des articles, langue:', language)
+        
+        const data = await getAllArticles(language)
+        console.log('✅ Articles chargés:', data?.length || 0, 'articles')
+        console.log('📋 Détails des articles:', data)
+        
+        if (!data || data.length === 0) {
+          console.warn('⚠️ Aucun article trouvé')
+          setError('Aucun article disponible pour le moment.')
+        } else {
+          setArticles(data)
+        }
+      } catch (err) {
+        console.error('❌ Erreur lors du chargement des articles:', err)
+        setError(err.message || 'Erreur lors du chargement des articles')
+      } finally {
+        setLoading(false)
+      }
     }
     loadArticles()
   }, [language])
@@ -38,6 +59,33 @@ function BlogList() {
           <MonetagAdZone zoneId="10282723" position="top" className="w-full max-w-4xl" />
         </div>
 
+        {/* État de chargement */}
+        {loading && (
+          <div className="text-center py-12">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mx-auto mb-4"></div>
+            <p className="text-gray-600">Chargement des articles...</p>
+          </div>
+        )}
+
+        {/* Message d'erreur */}
+        {error && !loading && (
+          <div className="text-center py-12 max-w-2xl mx-auto">
+            <div className="bg-red-50 border border-red-200 rounded-lg p-6">
+              <p className="text-red-800 font-semibold mb-2">Erreur de chargement</p>
+              <p className="text-red-600">{error}</p>
+            </div>
+          </div>
+        )}
+
+        {/* Message si aucun article */}
+        {!loading && !error && articles.length === 0 && (
+          <div className="text-center py-12 max-w-2xl mx-auto">
+            <p className="text-gray-600 text-lg">Aucun article disponible pour le moment.</p>
+          </div>
+        )}
+
+        {/* Liste des articles */}
+        {!loading && !error && articles.length > 0 && (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {articles.map((article) => (
             <Link
@@ -79,6 +127,7 @@ function BlogList() {
             </Link>
           ))}
         </div>
+        )}
       </main>
     </div>
   )
