@@ -154,9 +154,20 @@ function BlogArticle() {
             // Si le markdown ne peut pas être chargé, utiliser les métadonnées du service
             if (articleData) {
               console.log('⚠️ Utilisation du fallback avec métadonnées du service')
-              markdownContent = `# ${articleData.title}\n\n${articleData.description || 'Contenu en cours de rédaction.'}`
+              markdownContent = `# ${articleData.title}\n\n${articleData.description || 'Contenu en cours de rédaction.'}\n\n*Le contenu complet de cet article sera bientôt disponible.*`
             } else {
-              throw fetchError
+              // Si même articleData est null, créer un article minimal
+              console.log('⚠️ Création article minimal depuis slug')
+              articleData = {
+                slug,
+                title: slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+                description: 'Article en cours de chargement...',
+                date: new Date().toISOString(),
+                image: null,
+                keywords: [],
+                category: 'blog'
+              }
+              markdownContent = `# ${articleData.title}\n\n*Le contenu de cet article sera bientôt disponible.*`
             }
           }
         } else {
