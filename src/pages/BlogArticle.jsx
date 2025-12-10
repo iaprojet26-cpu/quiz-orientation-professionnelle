@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import ReactMarkdown from 'react-markdown'
@@ -101,11 +101,13 @@ function BlogArticle() {
     throw new Error(`Article markdown introuvable pour: ${slugToFetch}`)
   }
 
+  const isMountedRef = useRef(true)
+  
   useEffect(() => {
-    let isMounted = true
+    isMountedRef.current = true
     
     const loadArticle = async () => {
-      if (!isMounted) return
+      if (!isMountedRef.current) return
       
       setLoading(true)
       setError(null)
@@ -117,7 +119,7 @@ function BlogArticle() {
         let articleData = await getArticleBySlug(slug, language)
         console.log('📚 Résultat getArticleBySlug:', articleData ? 'Article trouvé' : 'Article non trouvé')
         
-        if (!isMounted) return
+        if (!isMountedRef.current) return
         
         let markdownContent = ''
 
@@ -131,7 +133,7 @@ function BlogArticle() {
           try {
             const rawText = await fetchMarkdownContent(slug)
             
-            if (!isMounted) return
+            if (!isMountedRef.current) return
             
             console.log('✅ Markdown brut chargé, longueur:', rawText.length)
             const { frontMatter, body } = parseFrontMatter(rawText)
@@ -159,7 +161,7 @@ function BlogArticle() {
               throw new Error('Contenu markdown invalide')
             }
           } catch (fetchError) {
-            if (!isMounted) return
+            if (!isMountedRef.current) return
             
             console.error('❌ Erreur lors du chargement du markdown:', fetchError)
             // Si le markdown ne peut pas être chargé, utiliser les métadonnées du service
@@ -186,12 +188,14 @@ function BlogArticle() {
           markdownContent = articleData.content
         }
 
-        if (!isMounted) return
+        if (!isMountedRef.current) return
 
         if (!articleData) {
           throw new Error('Article non trouvé')
         }
 
+        if (!isMountedRef.current) return
+        
         console.log('✅ Article final:', articleData.title)
         setArticle(articleData)
         // S'assurer que le contenu est du markdown valide
@@ -203,14 +207,14 @@ function BlogArticle() {
           setContent(`# ${articleData?.title || 'Article'}\n\n${articleData?.description || 'Contenu en cours de rédaction.'}`)
         }
       } catch (error) {
-        if (!isMounted) return
+        if (!isMountedRef.current) return
         
         console.error('❌ Erreur de chargement article:', error)
         setError(error.message || 'Erreur lors du chargement de l\'article')
         setArticle(null)
         setContent('')
       } finally {
-        if (isMounted) {
+        if (isMountedRef.current) {
           setLoading(false)
           console.log('🏁 Fin chargement article')
         }
@@ -221,7 +225,7 @@ function BlogArticle() {
     
     // Cleanup function pour éviter les mises à jour d'état après démontage
     return () => {
-      isMounted = false
+      isMountedRef.current = false
     }
   }, [slug, language])
 
@@ -259,18 +263,18 @@ function BlogArticle() {
 
   // Ajouter le schema Article pour SEO
   useEffect(() => {
-    if (article) {
-      const articleSchema = getArticleSchema(article)
-      if (articleSchema) {
-        let schemaScript = document.querySelector('script[type="application/ld+json"][data-article-schema]')
-        if (!schemaScript) {
-          schemaScript = document.createElement('script')
-          schemaScript.setAttribute('type', 'application/ld+json')
-          schemaScript.setAttribute('data-article-schema', 'true')
-          document.head.appendChild(schemaScript)
-        }
-        schemaScript.textContent = JSON.stringify(articleSchema)
+    if (!isMountedRef.current || !article) return
+    
+    const articleSchema = getArticleSchema(article)
+    if (articleSchema) {
+      let schemaScript = document.querySelector('script[type="application/ld+json"][data-article-schema]')
+      if (!schemaScript) {
+        schemaScript = document.createElement('script')
+        schemaScript.setAttribute('type', 'application/ld+json')
+        schemaScript.setAttribute('data-article-schema', 'true')
+        document.head.appendChild(schemaScript)
       }
+      schemaScript.textContent = JSON.stringify(articleSchema)
     }
   }, [article])
 

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { getAllArticles } from '../services/blogService'
@@ -13,12 +13,14 @@ function BlogList() {
   const [error, setError] = useState(null)
   const language = i18n.language || 'fr'
 
+  const isMountedRef = useRef(true)
+  
   useEffect(() => {
-    let isMounted = true
+    isMountedRef.current = true
     
     const loadArticles = async () => {
       try {
-        if (!isMounted) return
+        if (!isMountedRef.current) return
         
         setLoading(true)
         setError(null)
@@ -26,7 +28,7 @@ function BlogList() {
         
         const data = await getAllArticles(language)
         
-        if (!isMounted) return
+        if (!isMountedRef.current) return
         
         console.log('✅ Articles chargés:', data?.length || 0, 'articles')
         console.log('📋 Détails des articles:', data)
@@ -38,12 +40,12 @@ function BlogList() {
           setArticles(data)
         }
       } catch (err) {
-        if (!isMounted) return
+        if (!isMountedRef.current) return
         
         console.error('❌ Erreur lors du chargement des articles:', err)
         setError(err.message || 'Erreur lors du chargement des articles')
       } finally {
-        if (isMounted) {
+        if (isMountedRef.current) {
           setLoading(false)
         }
       }
@@ -53,7 +55,7 @@ function BlogList() {
     
     // Cleanup function pour éviter les mises à jour d'état après démontage
     return () => {
-      isMounted = false
+      isMountedRef.current = false
     }
   }, [language])
 
