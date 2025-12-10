@@ -17,6 +17,7 @@ function BlogArticle() {
   const [content, setContent] = useState('')
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const isMountedRef = useRef(true)
   const language = i18n.language || 'fr'
 
   const parseFrontMatter = (rawText) => {
@@ -101,8 +102,6 @@ function BlogArticle() {
     throw new Error(`Article markdown introuvable pour: ${slugToFetch}`)
   }
 
-  const isMountedRef = useRef(true)
-  
   useEffect(() => {
     isMountedRef.current = true
     
