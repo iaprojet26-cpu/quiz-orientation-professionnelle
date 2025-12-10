@@ -12,30 +12,10 @@ export default defineConfig({
   build: {
     // Minification automatique - esbuild plus sûr que terser
     minify: 'esbuild', // esbuild est plus rapide et plus sûr
-    // Optimisation des chunks
+    // Optimisation des chunks (simple pour éviter les doublons de React)
     rollupOptions: {
       output: {
-        manualChunks: (id) => {
-          // Ne PAS séparer React et Supabase - ils doivent rester avec le code principal pour éviter les erreurs
-          // React Router séparé (peut être chargé à la demande)
-          if (id.includes('node_modules/react-router')) {
-            return 'react-router'
-          }
-          // i18n séparé (peut être chargé à la demande)
-          if (id.includes('node_modules/i18next') || id.includes('node_modules/react-i18next')) {
-            return 'i18n'
-          }
-          // Markdown séparé (chargé seulement pour les articles)
-          if (id.includes('node_modules/react-markdown') || id.includes('node_modules/remark')) {
-            return 'markdown'
-          }
-          // React, React-DOM et Supabase restent dans le bundle principal
-          // Autres node_modules dans vendor
-          if (id.includes('node_modules')) {
-            return 'vendor'
-          }
-        },
-        // Optimisation des noms de fichiers
+        // Laisser Rollup gérer automatiquement les chunks pour éviter les copies multiples de React
         chunkFileNames: 'assets/js/[name]-[hash].js',
         entryFileNames: 'assets/js/[name]-[hash].js',
         assetFileNames: 'assets/[ext]/[name]-[hash].[ext]'
