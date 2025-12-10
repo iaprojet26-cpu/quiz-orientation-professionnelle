@@ -1,0 +1,7 @@
+# Fichier ads.txt pour Google AdSense
+# Ce fichier autorise Google AdSense à vendre des espaces publicitaires sur votre site
+# Site: quizorientation.online
+# ID Éditeur: pub-9540335927525371
+
+google.com, pub-9540335927525371, DIRECT, f08c47fec0942fa0
+
