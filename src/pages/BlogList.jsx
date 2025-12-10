@@ -14,13 +14,20 @@ function BlogList() {
   const language = i18n.language || 'fr'
 
   useEffect(() => {
+    let isMounted = true
+    
     const loadArticles = async () => {
       try {
+        if (!isMounted) return
+        
         setLoading(true)
         setError(null)
         console.log('📚 Début du chargement des articles, langue:', language)
         
         const data = await getAllArticles(language)
+        
+        if (!isMounted) return
+        
         console.log('✅ Articles chargés:', data?.length || 0, 'articles')
         console.log('📋 Détails des articles:', data)
         
@@ -31,13 +38,23 @@ function BlogList() {
           setArticles(data)
         }
       } catch (err) {
+        if (!isMounted) return
+        
         console.error('❌ Erreur lors du chargement des articles:', err)
         setError(err.message || 'Erreur lors du chargement des articles')
       } finally {
-        setLoading(false)
+        if (isMounted) {
+          setLoading(false)
+        }
       }
     }
+    
     loadArticles()
+    
+    // Cleanup function pour éviter les mises à jour d'état après démontage
+    return () => {
+      isMounted = false
+    }
   }, [language])
 
   return (

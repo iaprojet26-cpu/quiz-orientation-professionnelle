@@ -102,7 +102,11 @@ function BlogArticle() {
   }
 
   useEffect(() => {
+    let isMounted = true
+    
     const loadArticle = async () => {
+      if (!isMounted) return
+      
       setLoading(true)
       setError(null)
       
@@ -112,6 +116,8 @@ function BlogArticle() {
         console.log('📚 Appel getArticleBySlug...')
         let articleData = await getArticleBySlug(slug, language)
         console.log('📚 Résultat getArticleBySlug:', articleData ? 'Article trouvé' : 'Article non trouvé')
+        
+        if (!isMounted) return
         
         let markdownContent = ''
 
@@ -124,6 +130,9 @@ function BlogArticle() {
           // Charger le fichier markdown en fallback
           try {
             const rawText = await fetchMarkdownContent(slug)
+            
+            if (!isMounted) return
+            
             console.log('✅ Markdown brut chargé, longueur:', rawText.length)
             const { frontMatter, body } = parseFrontMatter(rawText)
             console.log('📋 Front matter:', Object.keys(frontMatter))
@@ -150,6 +159,8 @@ function BlogArticle() {
               throw new Error('Contenu markdown invalide')
             }
           } catch (fetchError) {
+            if (!isMounted) return
+            
             console.error('❌ Erreur lors du chargement du markdown:', fetchError)
             // Si le markdown ne peut pas être chargé, utiliser les métadonnées du service
             if (articleData) {
@@ -175,6 +186,8 @@ function BlogArticle() {
           markdownContent = articleData.content
         }
 
+        if (!isMounted) return
+
         if (!articleData) {
           throw new Error('Article non trouvé')
         }
@@ -190,16 +203,26 @@ function BlogArticle() {
           setContent(`# ${articleData?.title || 'Article'}\n\n${articleData?.description || 'Contenu en cours de rédaction.'}`)
         }
       } catch (error) {
+        if (!isMounted) return
+        
         console.error('❌ Erreur de chargement article:', error)
         setError(error.message || 'Erreur lors du chargement de l\'article')
         setArticle(null)
         setContent('')
       } finally {
-        setLoading(false)
-        console.log('🏁 Fin chargement article')
+        if (isMounted) {
+          setLoading(false)
+          console.log('🏁 Fin chargement article')
+        }
       }
     }
+    
     loadArticle()
+    
+    // Cleanup function pour éviter les mises à jour d'état après démontage
+    return () => {
+      isMounted = false
+    }
   }, [slug, language])
 
   if (loading) {
