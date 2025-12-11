@@ -2,6 +2,9 @@
 /blog/*.md  200
 /articles/*.md  200
 
+# Exclure ads.txt de la redirection SPA (requis pour Google AdSense)
+/ads.txt  200
+
 # Redirection SPA pour toutes les autres routes
 /*  /index.html  200
 
