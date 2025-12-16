@@ -210,6 +210,10 @@ function Home() {
               </div>
             )}
           </section>
+      </main>
+    </div>
+  )
+}
 
 export default Home
 
