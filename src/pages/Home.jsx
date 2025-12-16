@@ -24,7 +24,7 @@ function Home() {
 
   // Charger les articles uniquement quand ils sont visibles (Intersection Observer)
   useEffect(() => {
-    if (quizCompleted) return // Ne pas charger si le quiz est terminé
+    // Charger les articles même après le quiz pour avoir du contenu visible
 
     // Ne charger les articles qu'après un délai et seulement si la section est visible
     const loadRecentArticles = () => {
@@ -143,9 +143,8 @@ function Home() {
           </div>
         )}
 
-        {/* Section Articles Récents - Toujours affichée en bas de page */}
-        {!quizCompleted && (
-          <section className="mt-16 mb-8 max-w-6xl mx-auto" data-articles-section>
+        {/* Section Articles Récents - Toujours affichée en bas de page (même après quiz) */}
+        <section className="mt-16 mb-8 max-w-6xl mx-auto" data-articles-section>
             <div className="flex justify-between items-center mb-8">
               <h2 className="text-3xl font-bold text-primary-900">
                 {t('blog.recent_articles', { defaultValue: 'Articles Récents' })}
@@ -211,11 +210,6 @@ function Home() {
               </div>
             )}
           </section>
-        )}
-      </main>
-    </div>
-  )
-}
 
 export default Home
 
