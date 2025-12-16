@@ -683,3 +683,7 @@ function generateAllArticles() {
 // Exécuter
 generateAllArticles();
 
+
+
+
+

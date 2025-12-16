@@ -137,19 +137,17 @@ function BlogArticle() {
           } catch (fetchError) {
             if (!isMountedRef.current) return
             
-            if (articleData) {
-              markdownContent = `# ${articleData.title}\n\n${articleData.description || 'Contenu en cours de rédaction.'}\n\n*Le contenu complet de cet article sera bientôt disponible.*`
+            // Si l'article n'existe pas, on lance une erreur pour afficher la page 404
+            if (!articleData) {
+              throw new Error('Article non trouvé')
+            }
+            
+            // Si l'article existe mais le contenu markdown n'est pas disponible,
+            // on utilise le contenu de la base de données ou on affiche une erreur
+            if (articleData.content) {
+              markdownContent = articleData.content
             } else {
-              articleData = {
-                slug,
-                title: slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
-                description: 'Article en cours de chargement...',
-                date: new Date().toISOString(),
-                image: null,
-                keywords: [],
-                category: 'blog'
-              }
-              markdownContent = `# ${articleData.title}\n\n*Le contenu de cet article sera bientôt disponible.*`
+              throw new Error('Contenu de l\'article non disponible')
             }
           }
         } else {
@@ -163,10 +161,11 @@ function BlogArticle() {
         }
         
         setArticle(articleData)
-        if (markdownContent && !markdownContent.trim().startsWith('<!')) {
+        if (markdownContent && !markdownContent.trim().startsWith('<!') && markdownContent.trim().length > 0) {
           setContent(markdownContent)
         } else {
-          setContent(`# ${articleData?.title || 'Article'}\n\n${articleData?.description || 'Contenu en cours de rédaction.'}`)
+          // Si pas de contenu valide, on lance une erreur pour afficher la page 404
+          throw new Error('Contenu de l\'article non disponible')
         }
       } catch (error) {
         if (!isMountedRef.current) return
@@ -217,21 +216,64 @@ function BlogArticle() {
   }
 
   if (error || !article) {
+    const errorContent = {
+      fr: {
+        title: 'Article non trouvé',
+        message: 'Désolé, l\'article que vous recherchez n\'existe pas ou n\'est plus disponible.',
+        suggestion: 'Nous vous invitons à explorer nos autres articles de blog sur l\'orientation professionnelle, les métiers d\'avenir et les conseils de carrière.',
+        backToBlog: 'Retour au blog',
+        exploreArticles: 'Découvrir nos articles'
+      },
+      en: {
+        title: 'Article Not Found',
+        message: 'Sorry, the article you are looking for does not exist or is no longer available.',
+        suggestion: 'We invite you to explore our other blog articles about career orientation, future careers and career advice.',
+        backToBlog: 'Back to blog',
+        exploreArticles: 'Discover our articles'
+      },
+      ar: {
+        title: 'المقال غير موجود',
+        message: 'عذرًا، المقال الذي تبحث عنه غير موجود أو لم يعد متاحًا.',
+        suggestion: 'ندعوك لاستكشاف مقالات المدونة الأخرى حول التوجيه المهني والمهن المستقبلية ونصائح المسيرة المهنية.',
+        backToBlog: 'العودة إلى المدونة',
+        exploreArticles: 'اكتشف مقالاتنا'
+      }
+    }
+    
+    const content = errorContent[language] || errorContent.fr
+    
     return (
-      <div className="min-h-screen bg-gradient-to-br from-primary-50 to-primary-100 flex items-center justify-center">
-        <div className="text-center max-w-md mx-auto px-4">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">
-            {error ? 'Erreur de chargement' : 'Article non trouvé'}
-          </h1>
-          {error && (
-            <p className="text-gray-600 mb-4">{error}</p>
-          )}
-          <Link 
-            to="/blog" 
-            className="inline-block bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
-          >
-            Retour au blog
-          </Link>
+      <div className="min-h-screen bg-gradient-to-br from-primary-50 to-primary-100">
+        <SEOHead 
+          page="blog-article" 
+          articleTitle={content.title}
+        />
+        <div className="container mx-auto px-4 py-16 max-w-4xl">
+          <div className="bg-white rounded-lg shadow-md p-8 text-center">
+            <h1 className="text-4xl font-bold text-primary-900 mb-6">
+              {content.title}
+            </h1>
+            <p className="text-lg text-gray-700 mb-4">
+              {content.message}
+            </p>
+            <p className="text-gray-600 mb-8">
+              {content.suggestion}
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link 
+                to="/blog" 
+                className="inline-block bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+              >
+                {content.backToBlog}
+              </Link>
+              <Link 
+                to="/" 
+                className="inline-block bg-gray-200 text-gray-800 px-6 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+              >
+                {language === 'fr' ? 'Retour à l\'accueil' : language === 'en' ? 'Back to home' : 'العودة إلى الصفحة الرئيسية'}
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     )
