@@ -1,3 +1,6 @@
+# Redirection WWW vers Non-WWW
+https://www.quizorientation.online/* https://quizorientation.online/:splat 301!
+
 # Exclure les fichiers markdown de la redirection SPA
 /blog/*.md  200
 /articles/*.md  200

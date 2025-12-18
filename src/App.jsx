@@ -1,9 +1,10 @@
-import { Routes, Route, Navigate } from 'react-router-dom'
-import { lazy, Suspense } from 'react'
+import { Routes, Route, Navigate, useParams } from 'react-router-dom'
+import { lazy, Suspense, useEffect } from 'react'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Home from './pages/Home' // Home doit être chargé immédiatement (page principale)
 import { isAdminAuthenticated } from './services/adminService'
+import { useTranslation } from 'react-i18next'
 
 // Lazy loading pour les pages secondaires uniquement
 const BlogList = lazy(() => import('./pages/BlogList'))
@@ -39,84 +40,105 @@ function App() {
     <>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route 
-          path="/blog" 
-          element={
-            <Suspense fallback={<LoadingFallback />}>
-              <BlogList />
-            </Suspense>
-          } 
-        />
-        <Route 
-          path="/blog/:slug" 
-          element={
-            <Suspense fallback={<LoadingFallback />}>
-              <BlogArticle />
-            </Suspense>
-          } 
-        />
-        <Route 
-          path="/mentions-legales" 
-          element={
-            <Suspense fallback={<LoadingFallback />}>
-              <MentionsLegales />
-            </Suspense>
-          } 
-        />
-        <Route 
-          path="/politique-confidentialite" 
-          element={
-            <Suspense fallback={<LoadingFallback />}>
-              <PolitiqueConfidentialite />
-            </Suspense>
-          } 
-        />
-        <Route 
-          path="/a-propos" 
-          element={
-            <Suspense fallback={<LoadingFallback />}>
-              <APropos />
-            </Suspense>
-          } 
-        />
-        <Route 
-          path="/contact" 
-          element={
-            <Suspense fallback={<LoadingFallback />}>
-              <Contact />
-            </Suspense>
-          } 
-        />
-        <Route 
-          path="/top-metiers-futur" 
-          element={
-            <Suspense fallback={<LoadingFallback />}>
-              <TopMetiersFutur />
-            </Suspense>
-          } 
-        />
-        <Route 
-          path="/admin/login" 
-          element={
-            <Suspense fallback={<LoadingFallback />}>
-              <AdminLogin />
-            </Suspense>
-          } 
-        />
-        <Route
-          path="/admin"
-          element={
-            <Suspense fallback={<LoadingFallback />}>
-              <ProtectedAdminRoute>
-                <AdminDashboard />
-              </ProtectedAdminRoute>
-            </Suspense>
-          }
-        />
+        {/* Support des préfixes de langue pour le SEO */}
+        <Route path="/:lang/*" element={<RoutesContainer />} />
+        <Route path="*" element={<RoutesContainer />} />
       </Routes>
       <Footer />
     </>
+  )
+}
+
+function RoutesContainer() {
+  const { lang } = useParams()
+  const { i18n } = useTranslation()
+
+  useEffect(() => {
+    if (lang && ['fr', 'en', 'ar'].includes(lang)) {
+      if (i18n.language !== lang) {
+        i18n.changeLanguage(lang)
+      }
+    }
+  }, [lang, i18n])
+
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route 
+        path="/blog" 
+        element={
+          <Suspense fallback={<LoadingFallback />}>
+            <BlogList />
+          </Suspense>
+        } 
+      />
+      <Route 
+        path="/blog/:slug" 
+        element={
+          <Suspense fallback={<LoadingFallback />}>
+            <BlogArticle />
+          </Suspense>
+        } 
+      />
+      <Route 
+        path="/mentions-legales" 
+        element={
+          <Suspense fallback={<LoadingFallback />}>
+            <MentionsLegales />
+          </Suspense>
+        } 
+      />
+      <Route 
+        path="/politique-confidentialite" 
+        element={
+          <Suspense fallback={<LoadingFallback />}>
+            <PolitiqueConfidentialite />
+          </Suspense>
+        } 
+      />
+      <Route 
+        path="/a-propos" 
+        element={
+          <Suspense fallback={<LoadingFallback />}>
+            <APropos />
+          </Suspense>
+        } 
+      />
+      <Route 
+        path="/contact" 
+        element={
+          <Suspense fallback={<LoadingFallback />}>
+            <Contact />
+          </Suspense>
+        } 
+      />
+      <Route 
+        path="/top-metiers-futur" 
+        element={
+          <Suspense fallback={<LoadingFallback />}>
+            <TopMetiersFutur />
+          </Suspense>
+        } 
+      />
+      <Route 
+        path="/admin/login" 
+        element={
+          <Suspense fallback={<LoadingFallback />}>
+            <AdminLogin />
+          </Suspense>
+        } 
+      />
+      <Route
+        path="/admin"
+        element={
+          <Suspense fallback={<LoadingFallback />}>
+            <ProtectedAdminRoute>
+              <AdminDashboard />
+            </ProtectedAdminRoute>
+          </Suspense>
+        }
+      />
+    </Routes>
   )
 }
 
