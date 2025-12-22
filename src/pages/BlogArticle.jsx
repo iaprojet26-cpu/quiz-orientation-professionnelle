@@ -371,7 +371,56 @@ function BlogArticle() {
         )}
 
         <div className="bg-white rounded-lg shadow-md p-8 prose prose-lg max-w-none">
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>
+          <ReactMarkdown 
+            remarkPlugins={[remarkGfm]}
+            components={{
+              a: ({ node, href, children, ...props }) => {
+                if (!href) return <span>{children}</span>
+                
+                // Corriger les liens vers le quiz (toutes les variantes)
+                if (href.includes('/quiz') || href.includes('quizorientation.online/quiz') || href === 'quiz') {
+                  return (
+                    <Link to="/" {...props} className="text-primary-600 hover:underline font-semibold">
+                      {children}
+                    </Link>
+                  )
+                }
+                
+                // Si c'est un lien interne (commence par / ou ne commence pas par http/https)
+                if (href.startsWith('/') || (!href.startsWith('http://') && !href.startsWith('https://'))) {
+                  // Liens internes vers le blog
+                  if (href.startsWith('/blog/') || href.startsWith('blog/')) {
+                    const cleanHref = href.startsWith('/') ? href : `/${href}`
+                    return (
+                      <Link to={cleanHref} {...props} className="text-primary-600 hover:underline">
+                        {children}
+                      </Link>
+                    )
+                  }
+                  // Autres liens internes
+                  const cleanHref = href.startsWith('/') ? href : `/${href}`
+                  return (
+                    <Link to={cleanHref} {...props} className="text-primary-600 hover:underline">
+                      {children}
+                    </Link>
+                  )
+                }
+                
+                // Liens externes
+                return (
+                  <a 
+                    href={href} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    {...props} 
+                    className="text-primary-600 hover:underline"
+                  >
+                    {children}
+                  </a>
+                )
+              }
+            }}
+          >
             {content && content.trim().length > 0
               ? content
               : `# ${article.title}\n\n${article.description || t('blog.article_default', { defaultValue: 'Contenu en cours de chargement.' })}`}

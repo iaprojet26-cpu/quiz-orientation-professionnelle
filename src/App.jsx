@@ -56,6 +56,7 @@ function App() {
       <Routes>
         {/* Routes principales */}
         <Route path="/" element={<Home />} />
+        <Route path="/quiz" element={<Navigate to="/" replace />} />
         <Route 
           path="/blog" 
           element={
