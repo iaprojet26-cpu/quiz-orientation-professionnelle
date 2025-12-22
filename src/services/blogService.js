@@ -1570,46 +1570,101 @@ const mapSupabaseArticle = (article, language = 'fr') => ({
 
 /**
  * Charger les articles depuis les fichiers markdown dans articles-seo/
+ * Optimisé avec chargement parallèle et cache
  */
+const articleCache = new Map()
 const loadArticlesFromMarkdown = async (language = 'fr') => {
+  const cacheKey = `articles_${language}`
+  
+  // Vérifier le cache (valide 5 minutes)
+  if (articleCache.has(cacheKey)) {
+    const cached = articleCache.get(cacheKey)
+    if (Date.now() - cached.timestamp < 5 * 60 * 1000) {
+      return cached.data
+    }
+  }
+  
   const articles = []
   const basePath = (import.meta.env?.BASE_URL || '/').replace(/\/$/, '')
   
   try {
-    // Charger la liste des dossiers article-XX depuis le serveur
-    // On va essayer de charger un fichier index qui liste les articles
-    // Sinon, on va itérer sur les numéros d'articles connus (1-40)
+    // Charger tous les articles en parallèle pour améliorer les performances
+    const promises = []
     for (let i = 1; i <= 40; i++) {
       const articleNum = i.toString().padStart(2, '0')
       const metadataPath = `${basePath}/articles-seo/article-${articleNum}/metadata.json`
       
-      try {
-        const metadataResponse = await fetch(metadataPath, { cache: 'no-cache' })
-        if (metadataResponse.ok) {
-          const metadata = await metadataResponse.json()
-          
-          // Vérifier que le slug existe pour la langue demandée
-          const slugKey = `slug_${language}`
-          const titleKey = `title_${language}`
-          const descriptionKey = `description_${language}`
-          
-          if (metadata[slugKey] && metadata[titleKey]) {
-            articles.push({
-              slug: metadata[slugKey],
-              title: metadata[titleKey],
-              description: metadata[descriptionKey] || '',
-              date: metadata.datePublication || '2025-01-01',
-              image: metadata.image || `/assets/blog/default-${metadata.category || 'blog'}.svg`,
-              keywords: [],
-              category: metadata.category || 'blog'
-            })
-          }
-        }
-      } catch (err) {
-        // Ignorer les erreurs pour les articles qui n'existent pas
-        continue
-      }
+      promises.push(
+        fetch(metadataPath, { cache: 'default' })
+          .then(async (response) => {
+            if (!response.ok) return null
+            try {
+              const metadata = await response.json()
+              
+              // Vérifier que le slug existe pour la langue demandée
+              const slugKey = `slug_${language}`
+              const titleKey = `title_${language}`
+              const descriptionKey = `description_${language}`
+              
+              if (metadata[slugKey] && metadata[titleKey]) {
+                // Essayer de charger l'image depuis le front matter du markdown
+                let image = `/assets/blog/default-${metadata.category || 'blog'}.svg`
+                
+                // Charger le front matter du markdown pour obtenir l'image
+                try {
+                  const markdownPath = `${basePath}/articles-seo/article-${articleNum}/${language}.md`
+                  const markdownResponse = await fetch(markdownPath, { cache: 'default' })
+                  if (markdownResponse.ok) {
+                    const markdownText = await markdownResponse.text()
+                    // Chercher l'image dans le front matter (format YAML)
+                    const imageMatch = markdownText.match(/^image:\s*["']?([^"'\n]+)["']?/m)
+                    if (imageMatch && imageMatch[1]) {
+                      image = imageMatch[1].trim()
+                    }
+                  }
+                } catch (err) {
+                  // Ignorer les erreurs de chargement du markdown
+                }
+                
+                // Fallback sur l'image par défaut si pas trouvée
+                if (!image || image === '') {
+                  image = `/assets/blog/default-${metadata.category || 'blog'}.svg`
+                }
+                
+                return {
+                  slug: metadata[slugKey],
+                  title: metadata[titleKey],
+                  description: metadata[descriptionKey] || '',
+                  date: metadata.datePublication || '2025-01-01',
+                  image: image,
+                  keywords: [],
+                  category: metadata.category || 'blog'
+                }
+              }
+              return null
+            } catch (err) {
+              return null
+            }
+          })
+          .catch(() => null)
+      )
     }
+    
+    // Attendre toutes les requêtes en parallèle
+    const results = await Promise.all(promises)
+    
+    // Filtrer les résultats null et ajouter aux articles
+    results.forEach(article => {
+      if (article) {
+        articles.push(article)
+      }
+    })
+    
+    // Mettre en cache
+    articleCache.set(cacheKey, {
+      data: articles,
+      timestamp: Date.now()
+    })
   } catch (error) {
     console.error('Erreur lors du chargement des articles markdown:', error)
   }

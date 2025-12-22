@@ -42,11 +42,24 @@ function App() {
   // Détecter le préfixe de langue dans l'URL
   useEffect(() => {
     const pathParts = location.pathname.split('/').filter(Boolean)
+    let detectedLang = 'fr' // Par défaut
+    
     if (pathParts.length > 0 && ['fr', 'en', 'ar'].includes(pathParts[0])) {
-      const lang = pathParts[0]
-      if (i18n.language !== lang) {
-        i18n.changeLanguage(lang)
+      detectedLang = pathParts[0]
+    } else {
+      // Si pas de préfixe, détecter depuis la langue actuelle de i18n
+      detectedLang = i18n.language || 'fr'
+      // Normaliser (enlever les variantes comme en-US)
+      if (detectedLang.includes('-')) {
+        detectedLang = detectedLang.split('-')[0]
       }
+      if (!['fr', 'en', 'ar'].includes(detectedLang)) {
+        detectedLang = 'fr'
+      }
+    }
+    
+    if (i18n.language !== detectedLang) {
+      i18n.changeLanguage(detectedLang)
     }
   }, [location.pathname, i18n])
 
