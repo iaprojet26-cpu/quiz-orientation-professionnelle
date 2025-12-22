@@ -12,6 +12,7 @@ function BlogList() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const language = i18n.language || 'fr'
+  const langPrefix = ['fr', 'en', 'ar'].includes(language) ? `/${language}` : ''
 
   const isMountedRef = useRef(true)
   
@@ -103,7 +104,7 @@ function BlogList() {
           {articles.map((article) => (
             <Link
               key={article.slug}
-              to={`/blog/${article.slug}`}
+              to={`${langPrefix}/blog/${article.slug}`}
               className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
               aria-label={`Lire l'article: ${article.title}`}
             >

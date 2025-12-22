@@ -11,7 +11,8 @@ import MonetagAdZone from '../components/MonetagAdZone'
 import { getArticleSchema } from '../services/seoService'
 
 function BlogArticle() {
-  const { slug } = useParams()
+  const { slug: rawSlug } = useParams()
+  const slug = decodeURIComponent(rawSlug || '')
   const { t, i18n } = useTranslation()
   const [article, setArticle] = useState(null)
   const [content, setContent] = useState('')
@@ -330,7 +331,7 @@ function BlogArticle() {
       <main id="main-content">
         <article className="container mx-auto px-4 py-8 max-w-4xl" itemScope itemType="https://schema.org/Article">
         <Link 
-          to="/blog" 
+          to={`${['fr','en','ar'].includes(language) ? `/${language}` : ''}/blog`} 
           className="text-primary-600 hover:underline mb-6 inline-block focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded"
           aria-label={t('blog.back_to_blog', { defaultValue: 'Retour au blog' })}
         >
@@ -378,7 +379,7 @@ function BlogArticle() {
                 if (!href) return <span>{children}</span>
                 
                 // Corriger les liens vers le quiz (toutes les variantes)
-                if (href.includes('/quiz') || href.includes('quizorientation.online/quiz') || href === 'quiz') {
+                  if (href.includes('/quiz') || href.includes('quizorientation.online/quiz') || href === 'quiz') {
                   return (
                     <Link to="/" {...props} className="text-primary-600 hover:underline font-semibold">
                       {children}
@@ -390,17 +391,21 @@ function BlogArticle() {
                 if (href.startsWith('/') || (!href.startsWith('http://') && !href.startsWith('https://'))) {
                   // Liens internes vers le blog
                   if (href.startsWith('/blog/') || href.startsWith('blog/')) {
+                    const langPrefix = ['fr', 'en', 'ar'].includes(language) ? `/${language}` : ''
                     const cleanHref = href.startsWith('/') ? href : `/${href}`
+                    const finalHref = `${langPrefix}${cleanHref}`
                     return (
-                      <Link to={cleanHref} {...props} className="text-primary-600 hover:underline">
+                      <Link to={finalHref} {...props} className="text-primary-600 hover:underline">
                         {children}
                       </Link>
                     )
                   }
                   // Autres liens internes
+                  const langPrefix = ['fr', 'en', 'ar'].includes(language) ? `/${language}` : ''
                   const cleanHref = href.startsWith('/') ? href : `/${href}`
+                  const finalHref = `${langPrefix}${cleanHref}`
                   return (
-                    <Link to={cleanHref} {...props} className="text-primary-600 hover:underline">
+                    <Link to={finalHref} {...props} className="text-primary-600 hover:underline">
                       {children}
                     </Link>
                   )
