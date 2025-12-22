@@ -1777,8 +1777,13 @@ export const getArticleBySlug = async (slug, language = 'fr') => {
       if (metadataResponse.ok) {
         const metadata = await metadataResponse.json()
         const slugKey = `slug_${language}`
+        const articleSlug = metadata[slugKey]
         
-        if (metadata[slugKey] === slug) {
+        // Comparer les slugs en décodant si nécessaire (pour les slugs arabes)
+        const normalizedSlug = decodeURIComponent(slug)
+        const normalizedArticleSlug = decodeURIComponent(articleSlug || '')
+        
+        if (articleSlug && (articleSlug === slug || normalizedArticleSlug === normalizedSlug || articleSlug === normalizedSlug || normalizedArticleSlug === slug)) {
           // Charger le contenu markdown
           const markdownPath = `${basePath}/articles-seo/article-${articleNum}/${language}.md`
           let content = ''
