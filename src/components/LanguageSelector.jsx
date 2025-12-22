@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { applyTextDirection } from '../i18n/config'
 
 /**
@@ -8,6 +9,8 @@ import { applyTextDirection } from '../i18n/config'
  */
 function LanguageSelector() {
   const { i18n } = useTranslation()
+  const navigate = useNavigate()
+  const location = useLocation()
 
   // Liste des langues disponibles avec leurs drapeaux
   const languages = [
@@ -22,6 +25,14 @@ function LanguageSelector() {
    */
   const changeLanguage = (languageCode) => {
     i18n.changeLanguage(languageCode)
+    // Recomposer l'URL avec le préfixe de langue, en conservant le slug actuel
+    const segments = location.pathname.split('/').filter(Boolean)
+    // Si le premier segment est une langue, le retirer
+    if (segments.length > 0 && ['fr', 'en', 'ar'].includes(segments[0])) {
+      segments.shift()
+    }
+    const newPath = `/${languageCode}/${segments.join('/')}`.replace(/\/+$/, '') || `/${languageCode}`
+    navigate(newPath === `/${languageCode}` ? `/${languageCode}/` : newPath, { replace: true })
     // La direction RTL/LTR est appliquée automatiquement via i18n.on('languageChanged')
   }
 
