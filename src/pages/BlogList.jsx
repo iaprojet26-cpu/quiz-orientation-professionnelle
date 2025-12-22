@@ -108,13 +108,24 @@ function BlogList() {
               className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
               aria-label={`Lire l'article: ${article.title}`}
             >
-              <div className="h-48 bg-gradient-to-br from-primary-100 to-primary-200 flex items-center justify-center overflow-hidden">
+              <div className="h-48 bg-gradient-to-br from-primary-100 to-primary-200 flex items-center justify-center overflow-hidden relative">
                 {article.image ? (
                   <OptimizedImage
                     src={article.image}
                     alt={article.title}
                     className="w-full h-full object-cover"
                     lazy={true}
+                    onError={(e) => {
+                      // Fallback sur emoji si l'image échoue
+                      e.target.style.display = 'none'
+                      const parent = e.target.closest('div')
+                      if (parent && !parent.querySelector('.fallback-emoji')) {
+                        const emoji = document.createElement('span')
+                        emoji.className = 'fallback-emoji text-6xl'
+                        emoji.textContent = '📚'
+                        parent.appendChild(emoji)
+                      }
+                    }}
                   />
                 ) : (
                   <span className="text-6xl">📚</span>

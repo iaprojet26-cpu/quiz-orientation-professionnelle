@@ -47,7 +47,7 @@ function App() {
     if (pathParts.length > 0 && ['fr', 'en', 'ar'].includes(pathParts[0])) {
       detectedLang = pathParts[0]
     } else {
-      // Si pas de préfixe, détecter depuis la langue actuelle de i18n
+      // Si pas de préfixe, utiliser la langue actuelle de i18n
       detectedLang = i18n.language || 'fr'
       // Normaliser (enlever les variantes comme en-US)
       if (detectedLang.includes('-')) {
@@ -58,8 +58,23 @@ function App() {
       }
     }
     
-    if (i18n.language !== detectedLang) {
+    // Normaliser la langue actuelle de i18n pour comparaison
+    let currentLang = i18n.language || 'fr'
+    if (currentLang.includes('-')) {
+      currentLang = currentLang.split('-')[0]
+    }
+    
+    // Changer la langue seulement si différente
+    if (currentLang !== detectedLang) {
       i18n.changeLanguage(detectedLang)
+      // Appliquer la direction RTL/LTR
+      if (detectedLang === 'ar') {
+        document.documentElement.setAttribute('dir', 'rtl')
+        document.documentElement.setAttribute('lang', 'ar')
+      } else {
+        document.documentElement.setAttribute('dir', 'ltr')
+        document.documentElement.setAttribute('lang', detectedLang)
+      }
     }
   }, [location.pathname, i18n])
 

@@ -1610,24 +1610,29 @@ const loadArticlesFromMarkdown = async (language = 'fr') => {
                 // Essayer de charger l'image depuis le front matter du markdown
                 let image = `/assets/blog/default-${metadata.category || 'blog'}.svg`
                 
-                // Charger le front matter du markdown pour obtenir l'image
+                // Charger le front matter du markdown pour obtenir l'image (en parallèle avec metadata)
                 try {
                   const markdownPath = `${basePath}/articles-seo/article-${articleNum}/${language}.md`
                   const markdownResponse = await fetch(markdownPath, { cache: 'default' })
                   if (markdownResponse.ok) {
                     const markdownText = await markdownResponse.text()
                     // Chercher l'image dans le front matter (format YAML)
-                    const imageMatch = markdownText.match(/^image:\s*["']?([^"'\n]+)["']?/m)
-                    if (imageMatch && imageMatch[1]) {
-                      image = imageMatch[1].trim()
+                    // Chercher dans les premières lignes après ---
+                    const frontMatterMatch = markdownText.match(/^---\s*\n([\s\S]*?)\n---/)
+                    if (frontMatterMatch) {
+                      const frontMatter = frontMatterMatch[1]
+                      const imageMatch = frontMatter.match(/^image:\s*["']?([^"'\n]+)["']?/m)
+                      if (imageMatch && imageMatch[1]) {
+                        image = imageMatch[1].trim()
+                      }
                     }
                   }
                 } catch (err) {
                   // Ignorer les erreurs de chargement du markdown
                 }
                 
-                // Fallback sur l'image par défaut si pas trouvée
-                if (!image || image === '') {
+                // Fallback sur l'image par défaut si pas trouvée ou invalide
+                if (!image || image === '' || !image.startsWith('/')) {
                   image = `/assets/blog/default-${metadata.category || 'blog'}.svg`
                 }
                 

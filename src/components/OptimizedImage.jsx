@@ -41,7 +41,10 @@ function OptimizedImage({
     // Si WebP échoue, essayer l'original
     if (webpSrc && !imageError) {
       setImageError(true)
+      return
     }
+    // Si l'image originale échoue aussi, afficher un placeholder
+    console.warn('Image failed to load:', src)
   }
 
   const handleLoad = () => {

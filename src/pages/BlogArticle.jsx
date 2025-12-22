@@ -61,43 +61,58 @@ function BlogArticle() {
     return { frontMatter: data, body }
   }
 
-  const fetchMarkdownContent = async (slugToFetch) => {
+  const fetchMarkdownContent = async (slugToFetch, lang = language) => {
     const basePath = (import.meta.env?.BASE_URL || '/').replace(/\/$/, '')
     
     // D'abord, essayer de charger depuis articles-seo/
+    // Charger en parallèle pour améliorer les performances
+    const promises = []
     for (let i = 1; i <= 40; i++) {
       const articleNum = i.toString().padStart(2, '0')
       const metadataPath = `${basePath}/articles-seo/article-${articleNum}/metadata.json`
       
-      try {
-        const metadataResponse = await fetch(metadataPath, { cache: 'no-cache' })
-        if (metadataResponse.ok) {
-          const metadata = await metadataResponse.json()
-          const slugKey = `slug_${language}`
-          
-          if (metadata[slugKey] === slugToFetch) {
-            // Charger le contenu markdown
-            const markdownPath = `${basePath}/articles-seo/article-${articleNum}/${language}.md`
-            const contentResponse = await fetch(markdownPath, { cache: 'no-cache' })
-            
-            if (contentResponse.ok) {
-              const text = await contentResponse.text()
+      promises.push(
+        fetch(metadataPath, { cache: 'default' })
+          .then(async (metadataResponse) => {
+            if (!metadataResponse.ok) return null
+            try {
+              const metadata = await metadataResponse.json()
+              const slugKey = `slug_${lang}`
               
-              if (text.trim().startsWith('<!doctype') || text.trim().startsWith('<!DOCTYPE') || text.trim().startsWith('<html')) {
-                continue
+              if (metadata[slugKey] === slugToFetch) {
+                // Charger le contenu markdown dans la bonne langue
+                const markdownPath = `${basePath}/articles-seo/article-${articleNum}/${lang}.md`
+                const contentResponse = await fetch(markdownPath, { cache: 'default' })
+                
+                if (contentResponse.ok) {
+                  const text = await contentResponse.text()
+                  
+                  if (text.trim().startsWith('<!doctype') || text.trim().startsWith('<!DOCTYPE') || text.trim().startsWith('<html')) {
+                    return null
+                  }
+                  
+                  // Vérifier que ce n'est pas un placeholder
+                  if (text.includes('[Contenu à compléter') || text.includes('Contenu à compléter')) {
+                    throw new Error(`Article ${articleNum} contient un placeholder`)
+                  }
+                  
+                  return text
+                }
               }
-              
-              // Vérifier que ce n'est pas un placeholder
-              if (text.includes('[Contenu à compléter') || text.includes('Contenu à compléter')) {
-                throw new Error(`Article ${articleNum} contient un placeholder`)
-              }
-              
-              return text
+              return null
+            } catch (err) {
+              return null
             }
-          }
-        }
-      } catch (err) {
-        continue
+          })
+          .catch(() => null)
+      )
+    }
+    
+    // Attendre toutes les requêtes et retourner le premier résultat valide
+    const results = await Promise.all(promises)
+    for (const result of results) {
+      if (result) {
+        return result
       }
     }
     
@@ -151,14 +166,15 @@ function BlogArticle() {
 
         if (!articleData || !articleData.content) {
           try {
-            const rawText = await fetchMarkdownContent(slug)
+            // Utiliser la langue actuelle pour charger le bon fichier markdown
+            const rawText = await fetchMarkdownContent(slug, language)
             
             if (!isMountedRef.current) return
             
             const { frontMatter, body } = parseFrontMatter(rawText)
             
             // Vérifier que le contenu n'est pas un placeholder
-            if (body && body.includes('[Contenu à compléter') || body.includes('Contenu à compléter')) {
+            if (body && (body.includes('[Contenu à compléter') || body.includes('Contenu à compléter'))) {
               throw new Error('Article en cours de rédaction')
             }
             
@@ -171,9 +187,14 @@ function BlogArticle() {
                   title: frontMatter.title || slug,
                   description: frontMatter.description || '',
                   date: frontMatter.date || new Date().toISOString(),
-                  image: frontMatter.image || null,
+                  image: frontMatter.image || `/assets/blog/default-${frontMatter.category || 'blog'}.svg`,
                   keywords: frontMatter.keywords || [],
                   category: frontMatter.category || 'blog'
+                }
+              } else {
+                // Mettre à jour l'image si elle n'est pas définie
+                if (!articleData.image && frontMatter.image) {
+                  articleData.image = frontMatter.image
                 }
               }
             } else {
