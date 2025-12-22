@@ -1569,7 +1569,56 @@ const mapSupabaseArticle = (article, language = 'fr') => ({
 })
 
 /**
- * Obtenir tous les articles (depuis Supabase + fallback statique)
+ * Charger les articles depuis les fichiers markdown dans articles-seo/
+ */
+const loadArticlesFromMarkdown = async (language = 'fr') => {
+  const articles = []
+  const basePath = (import.meta.env?.BASE_URL || '/').replace(/\/$/, '')
+  
+  try {
+    // Charger la liste des dossiers article-XX depuis le serveur
+    // On va essayer de charger un fichier index qui liste les articles
+    // Sinon, on va itérer sur les numéros d'articles connus (1-40)
+    for (let i = 1; i <= 40; i++) {
+      const articleNum = i.toString().padStart(2, '0')
+      const metadataPath = `${basePath}/articles-seo/article-${articleNum}/metadata.json`
+      
+      try {
+        const metadataResponse = await fetch(metadataPath, { cache: 'no-cache' })
+        if (metadataResponse.ok) {
+          const metadata = await metadataResponse.json()
+          
+          // Vérifier que le slug existe pour la langue demandée
+          const slugKey = `slug_${language}`
+          const titleKey = `title_${language}`
+          const descriptionKey = `description_${language}`
+          
+          if (metadata[slugKey] && metadata[titleKey]) {
+            articles.push({
+              slug: metadata[slugKey],
+              title: metadata[titleKey],
+              description: metadata[descriptionKey] || '',
+              date: metadata.datePublication || '2025-01-01',
+              image: metadata.image || `/assets/blog/default-${metadata.category || 'blog'}.svg`,
+              keywords: [],
+              category: metadata.category || 'blog'
+            })
+          }
+        }
+      } catch (err) {
+        // Ignorer les erreurs pour les articles qui n'existent pas
+        continue
+      }
+    }
+  } catch (error) {
+    console.error('Erreur lors du chargement des articles markdown:', error)
+  }
+  
+  return articles
+}
+
+/**
+ * Obtenir tous les articles (depuis Supabase + markdown + fallback statique)
  */
 export const getAllArticles = async (language = 'fr') => {
   const combinedArticles = []
@@ -1598,6 +1647,19 @@ export const getAllArticles = async (language = 'fr') => {
     }
   }
 
+  // Charger les articles depuis les fichiers markdown
+  try {
+    const markdownArticles = await loadArticlesFromMarkdown(language)
+    markdownArticles.forEach(article => {
+      if (!slugSet.has(article.slug)) {
+        combinedArticles.push(article)
+        slugSet.add(article.slug)
+      }
+    })
+  } catch (error) {
+    console.error('Erreur lors du chargement des articles markdown:', error)
+  }
+
   // Ajouter les articles statiques manquants
   staticArticles.forEach(article => {
     if (!slugSet.has(article.slug)) {
@@ -1614,7 +1676,7 @@ export const getAllArticles = async (language = 'fr') => {
 }
 
 /**
- * Obtenir un article par son slug (depuis Supabase ou fallback)
+ * Obtenir un article par son slug (depuis Supabase, markdown ou fallback)
  */
 export const getArticleBySlug = async (slug, language = 'fr') => {
   // Essayer de charger depuis Supabase
@@ -1641,6 +1703,49 @@ export const getArticleBySlug = async (slug, language = 'fr') => {
       }
     } catch (error) {
       console.error('Erreur lors du chargement de l\'article depuis Supabase:', error)
+    }
+  }
+
+  // Essayer de charger depuis les fichiers markdown
+  const basePath = (import.meta.env?.BASE_URL || '/').replace(/\/$/, '')
+  for (let i = 1; i <= 40; i++) {
+    const articleNum = i.toString().padStart(2, '0')
+    const metadataPath = `${basePath}/articles-seo/article-${articleNum}/metadata.json`
+    
+    try {
+      const metadataResponse = await fetch(metadataPath, { cache: 'no-cache' })
+      if (metadataResponse.ok) {
+        const metadata = await metadataResponse.json()
+        const slugKey = `slug_${language}`
+        
+        if (metadata[slugKey] === slug) {
+          // Charger le contenu markdown
+          const markdownPath = `${basePath}/articles-seo/article-${articleNum}/${language}.md`
+          let content = ''
+          
+          try {
+            const contentResponse = await fetch(markdownPath, { cache: 'no-cache' })
+            if (contentResponse.ok) {
+              content = await contentResponse.text()
+            }
+          } catch (err) {
+            console.error('Erreur chargement markdown:', err)
+          }
+          
+          return {
+            slug: metadata[slugKey],
+            title: metadata[`title_${language}`] || metadata.title_fr,
+            description: metadata[`description_${language}`] || metadata.description_fr,
+            date: metadata.datePublication || '2025-01-01',
+            image: metadata.image || `/assets/blog/default-${metadata.category || 'blog'}.svg`,
+            keywords: [],
+            category: metadata.category || 'blog',
+            content: content
+          }
+        }
+      }
+    } catch (err) {
+      continue
     }
   }
 
