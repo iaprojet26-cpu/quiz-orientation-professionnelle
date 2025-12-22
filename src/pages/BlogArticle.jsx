@@ -154,7 +154,16 @@ function BlogArticle() {
       setError(null)
       
       try {
-        let articleData = await getArticleBySlug(slug, language)
+        // Normaliser la langue (enlever les variantes)
+        let normalizedLang = language
+        if (normalizedLang.includes('-')) {
+          normalizedLang = normalizedLang.split('-')[0]
+        }
+        if (!['fr', 'en', 'ar'].includes(normalizedLang)) {
+          normalizedLang = 'fr'
+        }
+        
+        let articleData = await getArticleBySlug(slug, normalizedLang)
         
         if (!isMountedRef.current) return
         
@@ -166,8 +175,8 @@ function BlogArticle() {
 
         if (!articleData || !articleData.content) {
           try {
-            // Utiliser la langue actuelle pour charger le bon fichier markdown
-            const rawText = await fetchMarkdownContent(slug, language)
+            // Utiliser la langue normalisée pour charger le bon fichier markdown
+            const rawText = await fetchMarkdownContent(slug, normalizedLang)
             
             if (!isMountedRef.current) return
             

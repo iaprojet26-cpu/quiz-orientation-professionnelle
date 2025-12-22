@@ -11,8 +11,15 @@ function BlogList() {
   const [articles, setArticles] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
-  const language = i18n.language || 'fr'
-  const langPrefix = ['fr', 'en', 'ar'].includes(language) ? `/${language}` : ''
+  // Normaliser la langue
+  let language = i18n.language || 'fr'
+  if (language.includes('-')) {
+    language = language.split('-')[0]
+  }
+  if (!['fr', 'en', 'ar'].includes(language)) {
+    language = 'fr'
+  }
+  const langPrefix = `/${language}`
 
   const isMountedRef = useRef(true)
   
@@ -110,11 +117,11 @@ function BlogList() {
             >
               <div className="h-48 bg-gradient-to-br from-primary-100 to-primary-200 flex items-center justify-center overflow-hidden relative">
                 {article.image ? (
-                  <OptimizedImage
+                  <img
                     src={article.image}
                     alt={article.title}
                     className="w-full h-full object-cover"
-                    lazy={true}
+                    loading="lazy"
                     onError={(e) => {
                       // Fallback sur emoji si l'image échoue
                       e.target.style.display = 'none'
