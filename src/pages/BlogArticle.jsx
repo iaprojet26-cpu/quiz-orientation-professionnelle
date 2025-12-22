@@ -62,6 +62,45 @@ function BlogArticle() {
 
   const fetchMarkdownContent = async (slugToFetch) => {
     const basePath = (import.meta.env?.BASE_URL || '/').replace(/\/$/, '')
+    
+    // D'abord, essayer de charger depuis articles-seo/
+    for (let i = 1; i <= 40; i++) {
+      const articleNum = i.toString().padStart(2, '0')
+      const metadataPath = `${basePath}/articles-seo/article-${articleNum}/metadata.json`
+      
+      try {
+        const metadataResponse = await fetch(metadataPath, { cache: 'no-cache' })
+        if (metadataResponse.ok) {
+          const metadata = await metadataResponse.json()
+          const slugKey = `slug_${language}`
+          
+          if (metadata[slugKey] === slugToFetch) {
+            // Charger le contenu markdown
+            const markdownPath = `${basePath}/articles-seo/article-${articleNum}/${language}.md`
+            const contentResponse = await fetch(markdownPath, { cache: 'no-cache' })
+            
+            if (contentResponse.ok) {
+              const text = await contentResponse.text()
+              
+              if (text.trim().startsWith('<!doctype') || text.trim().startsWith('<!DOCTYPE') || text.trim().startsWith('<html')) {
+                continue
+              }
+              
+              // Vérifier que ce n'est pas un placeholder
+              if (text.includes('[Contenu à compléter') || text.includes('Contenu à compléter')) {
+                throw new Error(`Article ${articleNum} contient un placeholder`)
+              }
+              
+              return text
+            }
+          }
+        }
+      } catch (err) {
+        continue
+      }
+    }
+    
+    // Fallback sur les anciens chemins
     const candidatePaths = [
       `${basePath}/blog/${slugToFetch}.md`,
       `${basePath}/articles/${slugToFetch}.md`

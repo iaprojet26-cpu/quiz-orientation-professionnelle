@@ -1706,7 +1706,7 @@ export const getArticleBySlug = async (slug, language = 'fr') => {
     }
   }
 
-  // Essayer de charger depuis les fichiers markdown
+  // Essayer de charger depuis les fichiers markdown dans articles-seo/
   const basePath = (import.meta.env?.BASE_URL || '/').replace(/\/$/, '')
   for (let i = 1; i <= 40; i++) {
     const articleNum = i.toString().padStart(2, '0')
@@ -1726,7 +1726,23 @@ export const getArticleBySlug = async (slug, language = 'fr') => {
           try {
             const contentResponse = await fetch(markdownPath, { cache: 'no-cache' })
             if (contentResponse.ok) {
-              content = await contentResponse.text()
+              const rawText = await contentResponse.text()
+              
+              // Parser le front matter et extraire le contenu
+              const frontMatterMatch = rawText.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/)
+              if (frontMatterMatch) {
+                // Extraire le contenu après le front matter
+                content = rawText.slice(frontMatterMatch[0].length).trim()
+              } else {
+                // Si pas de front matter, utiliser tout le contenu
+                content = rawText.trim()
+              }
+              
+              // Vérifier que le contenu n'est pas un placeholder
+              if (content.includes('[Contenu à compléter') || content.includes('Contenu à compléter')) {
+                console.warn(`Article ${articleNum} contient un placeholder, contenu ignoré`)
+                content = ''
+              }
             }
           } catch (err) {
             console.error('Erreur chargement markdown:', err)
