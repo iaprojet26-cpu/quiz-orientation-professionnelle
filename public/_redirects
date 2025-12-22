@@ -1,13 +1,31 @@
 # Redirection WWW vers Non-WWW
 https://www.quizorientation.online/* https://quizorientation.online/:splat 301!
 
+# Exclure les fichiers statiques de la redirection SPA
+/ads.txt  200
+/sitemap.xml  200
+/robots.txt  200
+/*.js  200
+/*.css  200
+/*.json  200
+/*.xml  200
+/*.svg  200
+/*.png  200
+/*.jpg  200
+/*.jpeg  200
+/*.gif  200
+/*.webp  200
+/*.ico  200
+/*.woff  200
+/*.woff2  200
+/*.ttf  200
+/*.eot  200
+
 # Exclure les fichiers markdown de la redirection SPA
 /blog/*.md  200
 /articles/*.md  200
+/articles-seo/*  200
 
-# Exclure ads.txt de la redirection SPA (requis pour Google AdSense)
-/ads.txt  200
-
-# Redirection SPA pour toutes les autres routes
+# Redirection SPA pour toutes les autres routes (DOIT être en dernier)
 /*  /index.html  200
 

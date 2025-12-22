@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate, useParams } from 'react-router-dom'
+import { Routes, Route, Navigate, useParams, useLocation } from 'react-router-dom'
 import { lazy, Suspense, useEffect } from 'react'
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -36,109 +36,161 @@ function ProtectedAdminRoute({ children }) {
 }
 
 function App() {
-  return (
-    <>
-      <Header />
-      <Routes>
-        {/* Support des préfixes de langue pour le SEO */}
-        <Route path="/:lang/*" element={<RoutesContainer />} />
-        <Route path="*" element={<RoutesContainer />} />
-      </Routes>
-      <Footer />
-    </>
-  )
-}
-
-function RoutesContainer() {
-  const { lang } = useParams()
   const { i18n } = useTranslation()
+  const location = useLocation()
 
+  // Détecter le préfixe de langue dans l'URL
   useEffect(() => {
-    if (lang && ['fr', 'en', 'ar'].includes(lang)) {
+    const pathParts = location.pathname.split('/').filter(Boolean)
+    if (pathParts.length > 0 && ['fr', 'en', 'ar'].includes(pathParts[0])) {
+      const lang = pathParts[0]
       if (i18n.language !== lang) {
         i18n.changeLanguage(lang)
       }
     }
-  }, [lang, i18n])
+  }, [location.pathname, i18n])
 
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route 
-        path="/blog" 
-        element={
-          <Suspense fallback={<LoadingFallback />}>
-            <BlogList />
-          </Suspense>
-        } 
-      />
-      <Route 
-        path="/blog/:slug" 
-        element={
-          <Suspense fallback={<LoadingFallback />}>
-            <BlogArticle />
-          </Suspense>
-        } 
-      />
-      <Route 
-        path="/mentions-legales" 
-        element={
-          <Suspense fallback={<LoadingFallback />}>
-            <MentionsLegales />
-          </Suspense>
-        } 
-      />
-      <Route 
-        path="/politique-confidentialite" 
-        element={
-          <Suspense fallback={<LoadingFallback />}>
-            <PolitiqueConfidentialite />
-          </Suspense>
-        } 
-      />
-      <Route 
-        path="/a-propos" 
-        element={
-          <Suspense fallback={<LoadingFallback />}>
-            <APropos />
-          </Suspense>
-        } 
-      />
-      <Route 
-        path="/contact" 
-        element={
-          <Suspense fallback={<LoadingFallback />}>
-            <Contact />
-          </Suspense>
-        } 
-      />
-      <Route 
-        path="/top-metiers-futur" 
-        element={
-          <Suspense fallback={<LoadingFallback />}>
-            <TopMetiersFutur />
-          </Suspense>
-        } 
-      />
-      <Route 
-        path="/admin/login" 
-        element={
-          <Suspense fallback={<LoadingFallback />}>
-            <AdminLogin />
-          </Suspense>
-        } 
-      />
-      <Route
-        path="/admin"
-        element={
-          <Suspense fallback={<LoadingFallback />}>
-            <ProtectedAdminRoute>
-              <AdminDashboard />
-            </ProtectedAdminRoute>
-          </Suspense>
-        }
-      />
-    </Routes>
+    <>
+      <Header />
+      <Routes>
+        {/* Routes principales */}
+        <Route path="/" element={<Home />} />
+        <Route 
+          path="/blog" 
+          element={
+            <Suspense fallback={<LoadingFallback />}>
+              <BlogList />
+            </Suspense>
+          } 
+        />
+        <Route 
+          path="/blog/:slug" 
+          element={
+            <Suspense fallback={<LoadingFallback />}>
+              <BlogArticle />
+            </Suspense>
+          } 
+        />
+        <Route 
+          path="/mentions-legales" 
+          element={
+            <Suspense fallback={<LoadingFallback />}>
+              <MentionsLegales />
+            </Suspense>
+          } 
+        />
+        <Route 
+          path="/politique-confidentialite" 
+          element={
+            <Suspense fallback={<LoadingFallback />}>
+              <PolitiqueConfidentialite />
+            </Suspense>
+          } 
+        />
+        <Route 
+          path="/a-propos" 
+          element={
+            <Suspense fallback={<LoadingFallback />}>
+              <APropos />
+            </Suspense>
+          } 
+        />
+        <Route 
+          path="/contact" 
+          element={
+            <Suspense fallback={<LoadingFallback />}>
+              <Contact />
+            </Suspense>
+          } 
+        />
+        <Route 
+          path="/top-metiers-futur" 
+          element={
+            <Suspense fallback={<LoadingFallback />}>
+              <TopMetiersFutur />
+            </Suspense>
+          } 
+        />
+        <Route 
+          path="/admin/login" 
+          element={
+            <Suspense fallback={<LoadingFallback />}>
+              <AdminLogin />
+            </Suspense>
+          } 
+        />
+        <Route
+          path="/admin"
+          element={
+            <Suspense fallback={<LoadingFallback />}>
+              <ProtectedAdminRoute>
+                <AdminDashboard />
+              </ProtectedAdminRoute>
+            </Suspense>
+          }
+        />
+        {/* Support des préfixes de langue pour le SEO */}
+        <Route path="/:lang" element={<Home />} />
+        <Route 
+          path="/:lang/blog" 
+          element={
+            <Suspense fallback={<LoadingFallback />}>
+              <BlogList />
+            </Suspense>
+          } 
+        />
+        <Route 
+          path="/:lang/blog/:slug" 
+          element={
+            <Suspense fallback={<LoadingFallback />}>
+              <BlogArticle />
+            </Suspense>
+          } 
+        />
+        <Route 
+          path="/:lang/mentions-legales" 
+          element={
+            <Suspense fallback={<LoadingFallback />}>
+              <MentionsLegales />
+            </Suspense>
+          } 
+        />
+        <Route 
+          path="/:lang/politique-confidentialite" 
+          element={
+            <Suspense fallback={<LoadingFallback />}>
+              <PolitiqueConfidentialite />
+            </Suspense>
+          } 
+        />
+        <Route 
+          path="/:lang/a-propos" 
+          element={
+            <Suspense fallback={<LoadingFallback />}>
+              <APropos />
+            </Suspense>
+          } 
+        />
+        <Route 
+          path="/:lang/contact" 
+          element={
+            <Suspense fallback={<LoadingFallback />}>
+              <Contact />
+            </Suspense>
+          } 
+        />
+        <Route 
+          path="/:lang/top-metiers-futur" 
+          element={
+            <Suspense fallback={<LoadingFallback />}>
+              <TopMetiersFutur />
+            </Suspense>
+          } 
+        />
+      </Routes>
+      <Footer />
+    </>
   )
 }
 
