@@ -156,6 +156,11 @@ function BlogArticle() {
             
             const { frontMatter, body } = parseFrontMatter(rawText)
             
+            // Vérifier que le contenu n'est pas un placeholder
+            if (body && body.includes('[Contenu à compléter') || body.includes('Contenu à compléter')) {
+              throw new Error('Article en cours de rédaction')
+            }
+            
             if (body && body.trim().length > 0 && !body.trim().startsWith('<!')) {
               markdownContent = body
 

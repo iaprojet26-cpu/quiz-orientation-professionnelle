@@ -1740,8 +1740,15 @@ export const getArticleBySlug = async (slug, language = 'fr') => {
               
               // Vérifier que le contenu n'est pas un placeholder
               if (content.includes('[Contenu à compléter') || content.includes('Contenu à compléter')) {
-                console.warn(`Article ${articleNum} contient un placeholder, contenu ignoré`)
-                content = ''
+                console.warn(`Article ${articleNum} contient un placeholder, article ignoré`)
+                // Ne pas retourner cet article
+                continue
+              }
+              
+              // Vérifier que le contenu a une longueur minimale
+              if (content.length < 1000) {
+                console.warn(`Article ${articleNum} a un contenu trop court (${content.length} caractères), article ignoré`)
+                continue
               }
             }
           } catch (err) {
