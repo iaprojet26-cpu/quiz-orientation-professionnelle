@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Compétences du futur : quelles sont les soft skills essentielles à l'ère de l'IA ?",
+  "description": "Découvrez les compétences du futur essentielles à l'ère de l'intelligence artificielle. Guide complet sur les soft skills qui feront la différence dans votre carrière professionnelle.",
+  "image": "/assets/blog/default-ia.svg",
+  "datePublished": "2025-02-22",
+  "dateModified": "2025-02-22",
+  "author": {
+    "@type": "Organization",
+    "name": "Quiz Orientation"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Quiz Orientation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://quizorientation.online/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://quizorientation.online/blog/competences-futur-soft-skills-essentielles-ere-ia"
+  }
+}

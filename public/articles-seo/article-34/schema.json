@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Reconversion professionnelle avec l'IA : comment se former aux métiers de demain",
+  "description": "Guide complet sur la reconversion professionnelle à l'ère de l'IA. Découvrez comment utiliser l'intelligence artificielle pour identifier les métiers d'avenir et vous former efficacement.",
+  "image": "/assets/blog/default-ia.svg",
+  "datePublished": "2025-02-23",
+  "dateModified": "2025-02-23",
+  "author": {
+    "@type": "Organization",
+    "name": "Quiz Orientation"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Quiz Orientation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://quizorientation.online/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://quizorientation.online/blog/reconversion-professionnelle-ia-se-former-metiers-demain"
+  }
+}

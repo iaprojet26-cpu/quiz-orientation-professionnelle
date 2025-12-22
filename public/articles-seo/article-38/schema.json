@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Métiers en croissance grâce à l'IA : opportunités de carrière en 2025",
+  "description": "Explorez les métiers en forte croissance grâce à l'intelligence artificielle. Découvrez les opportunités de carrière les plus prometteuses en 2025 et les compétences requises.",
+  "image": "/assets/blog/default-ia.svg",
+  "datePublished": "2025-02-27",
+  "dateModified": "2025-02-27",
+  "author": {
+    "@type": "Organization",
+    "name": "Quiz Orientation"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Quiz Orientation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://quizorientation.online/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://quizorientation.online/blog/metiers-croissance-grace-ia-opportunites-carriere-2025"
+  }
+}

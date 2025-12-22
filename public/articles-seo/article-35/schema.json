@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "L'IA au service de l'orientation professionnelle : outils et plateformes innovantes",
+  "description": "Découvrez comment l'intelligence artificielle révolutionne l'orientation professionnelle. Guide sur les meilleurs outils et plateformes IA pour trouver votre voie professionnelle.",
+  "image": "/assets/blog/default-ia.svg",
+  "datePublished": "2025-02-24",
+  "dateModified": "2025-02-24",
+  "author": {
+    "@type": "Organization",
+    "name": "Quiz Orientation"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Quiz Orientation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://quizorientation.online/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://quizorientation.online/blog/ia-service-orientation-professionnelle-outils-plateformes-innovantes"
+  }
+}

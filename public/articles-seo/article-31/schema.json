@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Employabilité 4.0 : Comment l'IA transforme le marché du travail en 2025",
+  "description": "Découvrez comment l'employabilité 4.0 et l'intelligence artificielle transforment le marché du travail en 2025. Guide complet sur les nouvelles compétences requises et les opportunités de carrière.",
+  "image": "/assets/blog/default-ia.svg",
+  "datePublished": "2025-02-20",
+  "dateModified": "2025-02-20",
+  "author": {
+    "@type": "Organization",
+    "name": "Quiz Orientation"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Quiz Orientation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://quizorientation.online/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://quizorientation.online/blog/employabilite-4-0-ia-transforme-marche-travail-2025"
+  }
+}

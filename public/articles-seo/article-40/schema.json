@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Entrepreneuriat et IA : comment lancer son projet professionnel en 2025",
+  "description": "Découvrez comment l'intelligence artificielle transforme l'entrepreneuriat. Guide complet pour lancer votre projet professionnel avec l'IA en 2025.",
+  "image": "/assets/blog/default-ia.svg",
+  "datePublished": "2025-03-01",
+  "dateModified": "2025-03-01",
+  "author": {
+    "@type": "Organization",
+    "name": "Quiz Orientation"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Quiz Orientation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://quizorientation.online/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://quizorientation.online/blog/entrepreneuriat-ia-lancer-projet-professionnel-2025"
+  }
+}

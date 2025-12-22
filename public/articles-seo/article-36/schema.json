@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "CV et lettre de motivation à l'ère de l'IA : comment se démarquer ?",
+  "description": "Apprenez à créer un CV et une lettre de motivation qui se démarquent à l'ère de l'intelligence artificielle. Conseils pratiques pour optimiser votre candidature avec l'IA.",
+  "image": "/assets/blog/default-ia.svg",
+  "datePublished": "2025-02-25",
+  "dateModified": "2025-02-25",
+  "author": {
+    "@type": "Organization",
+    "name": "Quiz Orientation"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Quiz Orientation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://quizorientation.online/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://quizorientation.online/blog/cv-lettre-motivation-ere-ia-comment-demarquer"
+  }
+}

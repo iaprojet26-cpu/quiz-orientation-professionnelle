@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Formation continue et apprentissage avec l'IA : les meilleures pratiques",
+  "description": "Découvrez comment utiliser l'intelligence artificielle pour votre formation continue et votre apprentissage professionnel. Guide complet sur les meilleures pratiques et outils IA.",
+  "image": "/assets/blog/default-ia.svg",
+  "datePublished": "2025-02-26",
+  "dateModified": "2025-02-26",
+  "author": {
+    "@type": "Organization",
+    "name": "Quiz Orientation"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Quiz Orientation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://quizorientation.online/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://quizorientation.online/blog/formation-continue-apprentissage-ia-meilleures-pratiques"
+  }
+}
