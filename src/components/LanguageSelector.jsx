@@ -24,15 +24,30 @@ function LanguageSelector() {
    * @param {string} languageCode - Code de la langue (fr, en, ar)
    */
   const changeLanguage = (languageCode) => {
+    // Changer la langue dans i18n d'abord
     i18n.changeLanguage(languageCode)
+    
     // Recomposer l'URL avec le préfixe de langue, en conservant le slug actuel
     const segments = location.pathname.split('/').filter(Boolean)
+    
     // Si le premier segment est une langue, le retirer
     if (segments.length > 0 && ['fr', 'en', 'ar'].includes(segments[0])) {
       segments.shift()
     }
-    const newPath = `/${languageCode}/${segments.join('/')}`.replace(/\/+$/, '') || `/${languageCode}`
-    navigate(newPath === `/${languageCode}` ? `/${languageCode}/` : newPath, { replace: true })
+    
+    // Construire le nouveau chemin
+    let newPath = ''
+    if (segments.length === 0) {
+      // Si on est sur la home, rediriger vers /{lang}/
+      newPath = `/${languageCode}/`
+    } else {
+      // Sinon, préserver le chemin avec le nouveau préfixe de langue
+      newPath = `/${languageCode}/${segments.join('/')}`
+    }
+    
+    // Naviguer vers le nouveau chemin
+    navigate(newPath, { replace: true })
+    
     // La direction RTL/LTR est appliquée automatiquement via i18n.on('languageChanged')
   }
 
