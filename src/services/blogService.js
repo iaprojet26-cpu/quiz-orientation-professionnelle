@@ -1590,7 +1590,7 @@ const loadArticlesFromMarkdown = async (language = 'fr') => {
   try {
     // Charger tous les articles en parallèle pour améliorer les performances
     const promises = []
-    for (let i = 1; i <= 40; i++) {
+    for (let i = 1; i <= 45; i++) {
       const articleNum = i.toString().padStart(2, '0')
       const metadataPath = `${basePath}/articles-seo/article-${articleNum}/metadata.json`
       
@@ -1640,9 +1640,9 @@ const loadArticlesFromMarkdown = async (language = 'fr') => {
                   slug: metadata[slugKey],
                   title: metadata[titleKey],
                   description: metadata[descriptionKey] || '',
-                  date: metadata.datePublication || '2025-01-01',
+                  date: metadata.datePublication || metadata.date || '2025-01-01',
                   image: image,
-                  keywords: [],
+                  keywords: metadata[`keywords_${language}`] || metadata.keywords_fr || [],
                   category: metadata.category || 'blog'
                 }
               }
@@ -1768,7 +1768,7 @@ export const getArticleBySlug = async (slug, language = 'fr') => {
 
   // Essayer de charger depuis les fichiers markdown dans articles-seo/
   const basePath = (import.meta.env?.BASE_URL || '/').replace(/\/$/, '')
-  for (let i = 1; i <= 40; i++) {
+  for (let i = 1; i <= 45; i++) {
     const articleNum = i.toString().padStart(2, '0')
     const metadataPath = `${basePath}/articles-seo/article-${articleNum}/metadata.json`
     
@@ -1776,16 +1776,39 @@ export const getArticleBySlug = async (slug, language = 'fr') => {
       const metadataResponse = await fetch(metadataPath, { cache: 'no-cache' })
       if (metadataResponse.ok) {
         const metadata = await metadataResponse.json()
-        const slugKey = `slug_${language}`
-        const articleSlug = metadata[slugKey]
         
-        // Comparer les slugs en décodant si nécessaire (pour les slugs arabes)
+        // Chercher le slug dans toutes les langues (fr, en, ar)
+        const allSlugs = {
+          fr: metadata.slug_fr,
+          en: metadata.slug_en,
+          ar: metadata.slug_ar
+        }
+        
+        // Normaliser le slug recherché
         const normalizedSlug = decodeURIComponent(slug)
-        const normalizedArticleSlug = decodeURIComponent(articleSlug || '')
         
-        if (articleSlug && (articleSlug === slug || normalizedArticleSlug === normalizedSlug || articleSlug === normalizedSlug || normalizedArticleSlug === slug)) {
-          // Charger le contenu markdown
-          const markdownPath = `${basePath}/articles-seo/article-${articleNum}/${language}.md`
+        // Vérifier si le slug correspond à n'importe quelle langue
+        let matchingLang = null
+        for (const [lang, articleSlug] of Object.entries(allSlugs)) {
+          if (!articleSlug) continue
+          const normalizedArticleSlug = decodeURIComponent(articleSlug)
+          if (articleSlug === slug || normalizedArticleSlug === normalizedSlug || 
+              articleSlug === normalizedSlug || normalizedArticleSlug === slug) {
+            matchingLang = lang
+            break
+          }
+        }
+        
+        // Si on a trouvé une correspondance, utiliser la langue correspondante ou la langue demandée
+        if (matchingLang) {
+          // Utiliser la langue demandée si disponible, sinon utiliser la langue du slug trouvé
+          const finalLang = (metadata[`title_${language}`] && metadata[`slug_${language}`]) ? language : matchingLang
+          const slugKey = `slug_${finalLang}`
+          const titleKey = `title_${finalLang}`
+          const descriptionKey = `description_${finalLang}`
+          
+          // Charger le contenu markdown dans la langue finale
+          const markdownPath = `${basePath}/articles-seo/article-${articleNum}/${finalLang}.md`
           let content = ''
           
           try {
@@ -1810,8 +1833,16 @@ export const getArticleBySlug = async (slug, language = 'fr') => {
                 continue
               }
               
-              // Vérifier que le contenu a une longueur minimale
-              if (content.length < 1000) {
+              // Vérifier que le contenu a une longueur minimale (sauf pour les articles CV qui sont en cours de rédaction)
+              // Les articles CV peuvent avoir un contenu plus court car ils sont en cours de rédaction
+              if (content.length < 200 && metadata.category !== 'cv') {
+                console.warn(`Article ${articleNum} a un contenu trop court (${content.length} caractères), article ignoré`)
+                continue
+              }
+              
+              // Pour les articles CV, on accepte même avec un contenu court (templates)
+              // Pour les autres articles, on vérifie qu'ils ont au moins 200 caractères
+              if (metadata.category !== 'cv' && content.length < 200) {
                 console.warn(`Article ${articleNum} a un contenu trop court (${content.length} caractères), article ignoré`)
                 continue
               }
@@ -1822,11 +1853,11 @@ export const getArticleBySlug = async (slug, language = 'fr') => {
           
           return {
             slug: metadata[slugKey],
-            title: metadata[`title_${language}`] || metadata.title_fr,
-            description: metadata[`description_${language}`] || metadata.description_fr,
-            date: metadata.datePublication || '2025-01-01',
+            title: metadata[titleKey] || metadata.title_fr,
+            description: metadata[descriptionKey] || metadata.description_fr,
+            date: metadata.datePublication || metadata.date || '2025-01-01',
             image: metadata.image || `/assets/blog/default-${metadata.category || 'blog'}.svg`,
-            keywords: [],
+            keywords: metadata[`keywords_${finalLang}`] || metadata.keywords_fr || [],
             category: metadata.category || 'blog',
             content: content
           }

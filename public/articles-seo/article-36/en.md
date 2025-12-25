@@ -174,3 +174,5 @@ Use AI CV analysis tools that can evaluate your CV and suggest improvements. You
 
 Yes, but only after AI filtering. Your CV must therefore please both AI (to pass the filter) and recruiters (to land an interview).
 
+
+

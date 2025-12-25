@@ -1,0 +1,16 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "CV et orientation : comment aligner votre CV avec votre profil",
+  "description": "Guide complet sur cv et orientation : comment aligner votre cv avec votre profil. Conseils pratiques et exemples pour créer un CV professionnel.",
+  "author": {
+    "@type": "Organization",
+    "name": "QuizOrientation"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "QuizOrientation"
+  },
+  "datePublished": "2025-12-25",
+  "dateModified": "2025-12-25"
+}

@@ -52,6 +52,255 @@
       "name": "Profil Entrepreneurial",
       "description": "Vous êtes indépendant, aimez prendre des risques calculés et créer votre propre voie. Vous êtes visionnaire."
     }
+  },
+  "cv": {
+    "seo": {
+      "title": "Créer un CV efficace selon ton profil | QuizOrientation",
+      "description": "Créez un CV professionnel adapté à votre profil. Outil gratuit de structuration de CV avec conseils et exemples."
+    },
+    "hero": {
+      "title": "Créer un CV efficace selon ton profil",
+      "subtitle": "Structurez votre CV professionnel avec notre outil gratuit. Alignez votre CV avec votre profil d'orientation pour maximiser vos chances."
+    },
+    "builder": {
+      "title": "Outil de structuration de CV",
+      "coming_soon": "L'outil interactif sera disponible prochainement. En attendant, découvrez nos articles et conseils ci-dessous.",
+      "cta_quiz": "Découvre ton profil d'orientation"
+    },
+    "articles": {
+      "title": "Articles et conseils CV",
+      "subtitle": "Découvrez nos guides pratiques pour créer un CV professionnel et efficace qui vous démarque.",
+      "tool_link": "Outil CV",
+      "quiz_link": "Quiz Orientation",
+      "read_more": "Lire la suite →",
+      "cta_title": "Optimisez votre CV avec votre profil d'orientation",
+      "cta_text": "Découvrez votre profil professionnel et alignez votre CV pour maximiser vos chances de succès.",
+      "cta_button": "Découvrir mon profil"
+    },
+    "job_platforms": {
+      "title": "Trouver des offres d'emploi",
+      "coming_soon": "Les liens vers les plateformes d'emploi seront ajoutés prochainement."
+    },
+    "disclaimer": "⚠️ Cet outil aide à structurer un CV mais ne remplace pas un accompagnement professionnel.",
+    "form": {
+      "step": "Étape",
+      "step1": {
+        "title": "Informations générales"
+      },
+      "step2": {
+        "title": "Titre du CV et Profil",
+        "description": "Définissez votre titre de CV et votre message d'accroche"
+      },
+      "step3": {
+        "title": "Formation Diplômante",
+        "description": "Vos diplômes d'État ou d'écoles classés du plus récent au plus ancien"
+      },
+      "step4": {
+        "title": "Formation Certifiante",
+        "description": "Certifications obtenues hors cursus universitaire"
+      },
+      "step5": {
+        "title": "Expériences Professionnelles",
+        "description": "Stages (PFE, observation, technique) et premiers emplois/CDD"
+      },
+      "step6": {
+        "title": "Expériences Extra-professionnelles",
+        "description": "Projets, compétitions, associations et bénévolat"
+      },
+      "step7": {
+        "title": "Compétences Techniques (Hard Skills)",
+        "description": "Savoirs spécifiques liés à votre métier"
+      },
+      "step8": {
+        "title": "Compétences Informatiques",
+        "description": "Maîtrise des logiciels bureautiques et outils métiers"
+      },
+      "step9": {
+        "title": "Compétences Managériales (Soft Skills)",
+        "description": "Capacités comportementales (esprit d'équipe, gestion du stress, etc.)"
+      },
+      "step10": {
+        "title": "Compétences Linguistiques",
+        "description": "Niveaux de maîtrise en Arabe, Français et Anglais"
+      },
+      "step11": {
+        "title": "Loisirs et Centres d'intérêt",
+        "description": "Vos passions réelles (soyez spécifique)"
+      },
+      "firstName": "Prénom",
+      "lastName": "Nom",
+      "email": "Email",
+      "phone": "Téléphone",
+      "phone_placeholder": "+212 6XX XXX XXX",
+      "city": "Ville",
+      "city_placeholder": "Ex: Casablanca",
+      "neighborhood": "Quartier",
+      "neighborhood_placeholder": "Ex: Maarif (pour la mobilité)",
+      "optional": "optionnel",
+      "linkedin": "Profil LinkedIn",
+      "linkedin_placeholder": "https://linkedin.com/in/votre-profil",
+      "linkedin_hint": "Conseil 2025 : Vérifiez que votre lien LinkedIn est personnalisé (sans chiffres inutiles à la fin)",
+      "photo": "Photo professionnelle (optionnel)",
+      "photo_advice": "Format : Portrait de face, fond neutre, tenue professionnelle. Au Maroc, la photo reste d'usage courant pour humaniser le profil.",
+      "add_photo": "Ajouter une photo",
+      "change_photo": "Changer la photo",
+      "remove_photo": "Supprimer la photo",
+      "photo_hint": "Format JPG/PNG, max 2MB",
+      "photo_size_error": "La photo ne doit pas dépasser 2MB",
+      "photo_type_error": "Veuillez sélectionner une image",
+      "education_section": "Formation",
+      "educationLevel": "Niveau d'étude",
+      "educationDiploma": "Diplôme / Formation",
+      "educationDiploma_placeholder": "Ex: Licence en Informatique",
+      "educationInstitution": "Établissement",
+      "educationInstitution_placeholder": "Ex: Université Mohammed V",
+      "cvTitle": "Titre du CV",
+      "cvTitle_hint": "L'intitulé exact du poste visé ou de votre diplôme phare. Ex: \"Lauréat de l'EMI – Ingénieur d'État en Génie Civil\"",
+      "cvTitle_placeholder": "Ex: Lauréat de l'EMI – Ingénieur d'État en Génie Civil",
+      "profile": "Message d'Accroche / Profil",
+      "profile_hint": "Un paragraphe de 3 à 4 lignes résumant votre formation, votre expertise majeure et votre valeur ajoutée.",
+      "profile_placeholder": "Ex: Jeune diplômé de l'ENCG passionné par l'analyse de données, doté d'une première expérience en audit chez [Cabinet X]. Orienté résultats et prêt à intégrer vos équipes finance.",
+      "minimum_50": "Minimum 50 caractères",
+      "add_diploma": "Ajouter un diplôme",
+      "no_diploma": "Aucun diplôme ajouté. Cliquez sur \"Ajouter un diplôme\" pour commencer.",
+      "diploma": "Diplôme",
+      "diploma_level": "Niveau",
+      "diploma_name": "Diplôme",
+      "diploma_name_placeholder": "Ex: Ingénieur d'État en Génie Civil",
+      "institution": "Institution",
+      "institution_placeholder": "Ex: École Mohammadia d'Ingénieurs (EMI)",
+      "year": "Année d'obtention",
+      "year_placeholder": "Ex: 2024",
+      "mention": "Mention",
+      "mention_placeholder": "Ex: Bien, Assez Bien, Très Bien",
+      "pfe_subject": "Sujet du PFE",
+      "pfe_subject_placeholder": "Ex: Conception d'un système de gestion...",
+      "add_certification": "Ajouter une certification",
+      "no_certification": "Aucune certification ajoutée. (Optionnel)",
+      "certification": "Certification",
+      "cert_name": "Nom de la certification",
+      "cert_name_placeholder": "Ex: Google Ads Certification",
+      "organization": "Organisme",
+      "organization_placeholder": "Ex: Google, Coursera, Microsoft",
+      "cert_date": "Date d'obtention",
+      "cert_date_placeholder": "Ex: Janvier 2024",
+      "cert_link": "Lien (optionnel)",
+      "cert_link_placeholder": "https://...",
+      "targetDomain": "Domaine visé",
+      "select": "Sélectionner...",
+      "education": {
+        "bac": "Baccalauréat",
+        "bac2": "Bac+2 (DUT, BTS)",
+        "bac3": "Bac+3 (Licence)",
+        "bac5": "Bac+5 (Master)",
+        "bac8": "Bac+8 (Doctorat)"
+      },
+      "domain": {
+        "tech": "Technologie / Informatique",
+        "commerce": "Commerce / Marketing",
+        "sante": "Santé / Social",
+        "education": "Éducation / Formation",
+        "art": "Art / Design",
+        "autre": "Autre"
+      },
+      "soft_skills": {
+        "communication": "Communication",
+        "leadership": "Leadership",
+        "creativity": "Créativité",
+        "teamwork": "Travail d'équipe",
+        "adaptability": "Adaptabilité",
+        "problem_solving": "Résolution de problèmes",
+        "organization": "Organisation",
+        "autonomy": "Autonomie"
+      },
+      "add_experience": "Ajouter une expérience",
+      "no_experience": "Aucune expérience ajoutée. Cliquez sur \"Ajouter une expérience\" pour commencer.",
+      "experience": "Expérience",
+      "remove": "Supprimer",
+      "experience_type": "Type",
+      "type": {
+        "pfe": "Stage PFE",
+        "stage": "Stage",
+        "observation": "Stage d'observation",
+        "technique": "Stage technique",
+        "cdd": "CDD",
+        "cdi": "CDI",
+        "projet": "Projet",
+        "benevolat": "Bénévolat",
+        "emploi": "Emploi",
+        "hackathon": "Hackathon",
+        "enactus": "Enactus",
+        "injaz": "Injaz",
+        "challenge": "Challenge technique",
+        "other": "Autre"
+      },
+      "position_placeholder": "Ex: Stagiaire en Marketing Digital",
+      "company_placeholder": "Ex: Cabinet X",
+      "missions": "Missions (3-4 puces avec résultats obtenus)",
+      "add_mission": "Ajouter une mission",
+      "no_mission": "Aucune mission ajoutée",
+      "mission_placeholder": "Ex: Analyse des données clients → +15% de conversion",
+      "projects_competitions": "Projets et Compétitions",
+      "projects_hint": "Hackathons, compétitions d'entrepreneuriat (Enactus, Injaz), challenges techniques. Indiquez votre rôle et le classement obtenu.",
+      "add_project": "Ajouter",
+      "no_project": "Aucun projet ajouté. (Optionnel)",
+      "project": "Projet",
+      "project_name": "Nom du projet / Compétition",
+      "project_name_placeholder": "Ex: Hackathon Tech 2024",
+      "project_type": "Type",
+      "role": "Votre rôle",
+      "role_placeholder": "Ex: Développeur Frontend",
+      "ranking": "Classement",
+      "ranking_placeholder": "Ex: 1er prix, Finaliste",
+      "date": "Date",
+      "date_placeholder": "Ex: Mars 2024",
+      "associations": "Associations et Bénévolat",
+      "associations_hint": "Implication dans des clubs d'école ou ONG. Cela démontre votre esprit de citoyenneté et vos valeurs humaines.",
+      "add_association": "Ajouter",
+      "no_association": "Aucune association ajoutée. (Optionnel)",
+      "association": "Association",
+      "arabic": "Arabe",
+      "french": "Français",
+      "english": "Anglais",
+      "level": "Niveau",
+      "native": "Langue maternelle",
+      "professional": "Professionnel",
+      "fluent": "Courant",
+      "intermediate": "Intermédiaire",
+      "classical_arabic": "Maîtrise de l'Arabe classique",
+      "score": "Score TOEIC/TOEFL (optionnel)",
+      "score_placeholder": "Ex: TOEIC 850",
+      "custom_skills": "Ajouter des compétences personnalisées",
+      "custom_skills_hint": "Ajoutez des compétences spécifiques à votre domaine (ex: Normes comptables marocaines, calcul de structure, droit du travail)",
+      "custom_skill_placeholder": "Ex: Normes comptables marocaines",
+      "custom_skills_added": "Compétences ajoutées :",
+      "custom_it_skills": "Ajouter des compétences informatiques personnalisées",
+      "custom_it_skills_hint": "Ajoutez des logiciels ou outils spécifiques à votre domaine",
+      "custom_it_skill_placeholder": "Ex: Tableau, Power BI, Salesforce",
+      "add": "Ajouter",
+      "position": "Poste",
+      "company": "Entreprise / Organisation",
+      "period": "Période",
+      "period_placeholder": "Ex: Jan 2023 - Juin 2023",
+      "description": "Description",
+      "interests_placeholder": "Ex: Course à pied - Participation au Marathon de Casablanca 2024\nLecture thématique - Intérêt pour la littérature entrepreneuriale\nVoyage - Exploration de 15 pays en Europe et Afrique",
+      "objective_placeholder": "Ex: Je souhaite intégrer une entreprise dynamique dans le domaine du marketing digital où je pourrai mettre à profit mes compétences en communication et ma créativité...",
+      "characters": "caractères",
+      "submit": "Générer mon CV"
+    },
+    "preview": {
+      "title": "Aperçu de votre CV",
+      "description": "Votre CV structuré sera affiché ici. Fonctionnalité en cours de développement.",
+      "back": "Modifier le formulaire",
+      "edit": "Modifier",
+      "cta_text": "💡 Ton CV est plus efficace quand il est aligné avec ton profil. Découvre ton profil d'orientation pour optimiser ton CV.",
+      "cta_quiz": "Découvre ton profil d'orientation",
+      "export_pdf": "Télécharger en PDF",
+      "export_word": "Télécharger en Word",
+      "export_coming_soon": "L'export PDF sera disponible prochainement.",
+      "export_error": "Erreur lors du téléchargement. Veuillez réessayer.",
+      "name_placeholder": "Nom Prénom"
+    }
   }
 }
 

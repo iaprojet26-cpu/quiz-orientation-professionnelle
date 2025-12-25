@@ -195,3 +195,5 @@ It varies according to the skill and your starting level. Some skills can be imp
 
 No, they are complementary. Technical skills allow you to use tools, soft skills allow you to create unique value. The ideal is to develop both.
 
+
+

@@ -195,3 +195,5 @@ Cela varie selon la compétence et votre niveau de départ. Certaines compétenc
 
 Non, elles sont complémentaires. Les compétences techniques vous permettent d'utiliser les outils, les soft skills vous permettent de créer de la valeur unique. L'idéal est de développer les deux.
 
+
+

@@ -1,0 +1,16 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Comment faire un CV quand on n'a pas d'expérience",
+  "description": "Guide complet sur comment faire un cv quand on n'a pas d'expérience. Conseils pratiques et exemples pour créer un CV professionnel.",
+  "author": {
+    "@type": "Organization",
+    "name": "QuizOrientation"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "QuizOrientation"
+  },
+  "datePublished": "2025-12-25",
+  "dateModified": "2025-12-25"
+}

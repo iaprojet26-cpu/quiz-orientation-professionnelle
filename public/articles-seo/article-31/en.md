@@ -165,3 +165,5 @@ No, you don't need to be a developer. The important thing is to understand how A
 
 Adopt a continuous learning mindset, develop your soft skills, use AI as an improvement tool, and build a strong professional network. Adaptability and curiosity are your best assets.
 
+
+

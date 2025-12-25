@@ -189,3 +189,5 @@ It depends on the platform. It's essential to choose reputable platforms, read p
 
 Start by using an AI-powered career orientation quiz to assess your profile. Then explore CV optimization tools and intelligent job search tools. Gradually integrate AI into your professional development strategy.
 
+
+

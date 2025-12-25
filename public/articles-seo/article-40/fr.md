@@ -325,3 +325,5 @@ Les risques incluent la dépendance excessive, les questions éthiques, et les c
 
 Commencez par identifier comment l'IA peut vous aider, explorez les outils disponibles, testez-les, et intégrez-les progressivement dans votre projet. Commencez simple et évoluez.
 
+
+

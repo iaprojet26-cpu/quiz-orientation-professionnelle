@@ -251,3 +251,5 @@ Pas nécessairement. De nombreuses reconversions se font en parallèle de l'empl
 
 Plusieurs options existent : financement personnel, CPF (Compte Personnel de Formation), financement par l'employeur, aides publiques, ou prêts étudiants. L'IA peut vous aider à identifier les financements disponibles selon votre situation.
 
+
+

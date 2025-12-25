@@ -218,3 +218,5 @@ Oui, avec la bonne formation et la motivation, les métiers de l'IA sont accessi
 
 Actuellement, les métiers les plus en demande incluent les développeurs IA, les data scientists, les spécialistes en IA générative (prompt engineers), les intégrateurs IA, et les formateurs IA. La demande évolue rapidement avec les tendances technologiques.
 
+
+

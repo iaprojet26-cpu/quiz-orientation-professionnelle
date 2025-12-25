@@ -1,0 +1,35 @@
+{
+  "slug_fr": "cv-orientation-profil",
+  "slug_en": "cv-orientation-profile",
+  "slug_ar": "cv-tawjih-malaf",
+  "title_fr": "CV et orientation : comment aligner votre CV avec votre profil",
+  "title_en": "CV and Orientation: How to Align Your CV with Your Profile",
+  "title_ar": "السيرة الذاتية والتوجيه: كيفية محاذاة سيرتك الذاتية مع ملفك",
+  "description_fr": "Guide complet sur cv et orientation : comment aligner votre cv avec votre profil. Conseils pratiques et exemples pour créer un CV professionnel.",
+  "description_en": "Complete guide on cv and orientation: how to align your cv with your profile. Practical tips and examples to create a professional CV.",
+  "description_ar": "دليل شامل حول السيرة الذاتية والتوجيه: كيفية محاذاة سيرتك الذاتية مع ملفك. نصائح عملية وأمثلة لإنشاء سيرة ذاتية مهنية.",
+  "category": "cv",
+  "keywords_fr": [
+    "orientation professionnelle",
+    "profil CV",
+    "CV personnalisé",
+    "quiz orientation",
+    "aligner CV"
+  ],
+  "keywords_en": [
+    "career orientation",
+    "CV profile",
+    "personalized CV",
+    "orientation quiz",
+    "align CV"
+  ],
+  "keywords_ar": [
+    "التوجيه المهني",
+    "ملف السيرة الذاتية",
+    "سيرة ذاتية مخصصة",
+    "اختبار التوجيه",
+    "محاذاة السيرة الذاتية"
+  ],
+  "date": "2025-12-25",
+  "image": "/assets/blog/default-cv.svg"
+}

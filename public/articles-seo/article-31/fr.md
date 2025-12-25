@@ -165,3 +165,5 @@ Non, il n'est pas nécessaire d'être développeur. L'important est de comprendr
 
 Adoptez une mentalité d'apprentissage continu, développez vos soft skills, utilisez l'IA comme outil d'amélioration, et construisez un réseau professionnel solide. L'adaptabilité et la curiosité sont vos meilleurs atouts.
 
+
+

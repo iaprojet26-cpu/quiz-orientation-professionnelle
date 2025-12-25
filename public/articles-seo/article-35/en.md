@@ -246,3 +246,5 @@ Yes, it's recommended to use multiple tools for a complete view. Each tool has i
 
 No, AI complements but doesn't replace a human counselor. AI excels at data analysis and recommendations, while a counselor brings empathy, listening, and human experience. The ideal is to combine both.
 
+
+

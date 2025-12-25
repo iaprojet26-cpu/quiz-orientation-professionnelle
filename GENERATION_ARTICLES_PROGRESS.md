@@ -35,3 +35,5 @@
 4. Mettre à jour le sitemap.xml
 5. Vérifier et valider tous les articles
 
+
+

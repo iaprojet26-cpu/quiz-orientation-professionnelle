@@ -52,6 +52,255 @@
       "name": "Entrepreneurial Profile",
       "description": "You are independent, like to take calculated risks and create your own path. You are visionary."
     }
+  },
+  "cv": {
+    "seo": {
+      "title": "Create an effective CV based on your profile | QuizOrientation",
+      "description": "Create a professional CV adapted to your profile. Free CV structuring tool with tips and examples."
+    },
+    "hero": {
+      "title": "Create an effective CV based on your profile",
+      "subtitle": "Structure your professional CV with our free tool. Align your CV with your orientation profile to maximize your chances."
+    },
+    "builder": {
+      "title": "CV Structuring Tool",
+      "coming_soon": "The interactive tool will be available soon. In the meantime, discover our articles and tips below.",
+      "cta_quiz": "Discover your orientation profile"
+    },
+    "articles": {
+      "title": "CV Articles and Tips",
+      "subtitle": "Discover our practical guides to create a professional and effective CV that stands out.",
+      "tool_link": "CV Tool",
+      "quiz_link": "Orientation Quiz",
+      "read_more": "Read more →",
+      "cta_title": "Optimize your CV with your orientation profile",
+      "cta_text": "Discover your professional profile and align your CV to maximize your chances of success.",
+      "cta_button": "Discover my profile"
+    },
+    "job_platforms": {
+      "title": "Find Job Offers",
+      "coming_soon": "Links to job platforms will be added soon."
+    },
+    "disclaimer": "⚠️ This tool helps structure a CV but does not replace professional guidance.",
+    "form": {
+      "step": "Step",
+      "step1": {
+        "title": "General Information"
+      },
+      "step2": {
+        "title": "CV Title and Profile",
+        "description": "Define your CV title and catchy message"
+      },
+      "step3": {
+        "title": "Diploma Education",
+        "description": "Your state or school diplomas listed from most recent to oldest"
+      },
+      "step4": {
+        "title": "Certifying Education",
+        "description": "Certifications obtained outside university curriculum"
+      },
+      "step5": {
+        "title": "Professional Experience",
+        "description": "Internships (PFE, observation, technical) and first jobs/fixed-term contracts"
+      },
+      "step6": {
+        "title": "Extra-professional Experience",
+        "description": "Projects, competitions, associations and volunteering"
+      },
+      "step7": {
+        "title": "Technical Skills (Hard Skills)",
+        "description": "Specific knowledge related to your profession"
+      },
+      "step8": {
+        "title": "IT Skills",
+        "description": "Mastery of office software and business tools"
+      },
+      "step9": {
+        "title": "Managerial Skills (Soft Skills)",
+        "description": "Behavioral capabilities (teamwork, stress management, etc.)"
+      },
+      "step10": {
+        "title": "Language Skills",
+        "description": "Proficiency levels in Arabic, French and English"
+      },
+      "step11": {
+        "title": "Hobbies and Interests",
+        "description": "Your real passions (be specific)"
+      },
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "phone": "Phone",
+      "phone_placeholder": "+212 6XX XXX XXX",
+      "city": "City",
+      "city_placeholder": "Ex: Casablanca",
+      "neighborhood": "Neighborhood",
+      "neighborhood_placeholder": "Ex: Maarif (for mobility)",
+      "optional": "optional",
+      "linkedin": "LinkedIn Profile",
+      "linkedin_placeholder": "https://linkedin.com/in/your-profile",
+      "linkedin_hint": "2025 Tip: Make sure your LinkedIn link is personalized (without unnecessary numbers at the end)",
+      "photo": "Professional Photo (optional)",
+      "photo_advice": "Format: Front-facing portrait, neutral background, professional attire. In Morocco, photos are still commonly used to humanize the profile.",
+      "add_photo": "Add Photo",
+      "change_photo": "Change Photo",
+      "remove_photo": "Remove Photo",
+      "photo_hint": "JPG/PNG format, max 2MB",
+      "photo_size_error": "Photo must not exceed 2MB",
+      "photo_type_error": "Please select an image",
+      "education_section": "Education",
+      "educationLevel": "Education Level",
+      "educationDiploma": "Degree / Diploma",
+      "educationDiploma_placeholder": "Ex: Bachelor's in Computer Science",
+      "educationInstitution": "Institution",
+      "educationInstitution_placeholder": "Ex: University of...",
+      "cvTitle": "CV Title",
+      "cvTitle_hint": "The exact title of the position you're targeting or your flagship diploma. Ex: \"EMI Graduate – State Engineer in Civil Engineering\"",
+      "cvTitle_placeholder": "Ex: EMI Graduate – State Engineer in Civil Engineering",
+      "profile": "Catchy Message / Profile",
+      "profile_hint": "A 3-4 line paragraph summarizing your education, major expertise and added value.",
+      "profile_placeholder": "Ex: Young ENCG graduate passionate about data analysis, with first experience in audit at [Company X]. Results-oriented and ready to join your finance teams.",
+      "minimum_50": "Minimum 50 characters",
+      "add_diploma": "Add Diploma",
+      "no_diploma": "No diploma added. Click \"Add Diploma\" to start.",
+      "diploma": "Diploma",
+      "diploma_level": "Level",
+      "diploma_name": "Diploma",
+      "diploma_name_placeholder": "Ex: State Engineer in Civil Engineering",
+      "institution": "Institution",
+      "institution_placeholder": "Ex: Mohammadia School of Engineers (EMI)",
+      "year": "Year Obtained",
+      "year_placeholder": "Ex: 2024",
+      "mention": "Mention",
+      "mention_placeholder": "Ex: Good, Fairly Good, Very Good",
+      "pfe_subject": "Final Project Subject",
+      "pfe_subject_placeholder": "Ex: Design of a management system...",
+      "add_certification": "Add Certification",
+      "no_certification": "No certification added. (Optional)",
+      "certification": "Certification",
+      "cert_name": "Certification Name",
+      "cert_name_placeholder": "Ex: Google Ads Certification",
+      "organization": "Organization",
+      "organization_placeholder": "Ex: Google, Coursera, Microsoft",
+      "cert_date": "Date Obtained",
+      "cert_date_placeholder": "Ex: January 2024",
+      "cert_link": "Link (optional)",
+      "cert_link_placeholder": "https://...",
+      "targetDomain": "Target Domain",
+      "select": "Select...",
+      "education": {
+        "bac": "High School Diploma",
+        "bac2": "Associate Degree (DUT, BTS)",
+        "bac3": "Bachelor's Degree",
+        "bac5": "Master's Degree",
+        "bac8": "Doctorate"
+      },
+      "domain": {
+        "tech": "Technology / IT",
+        "commerce": "Commerce / Marketing",
+        "sante": "Health / Social",
+        "education": "Education / Training",
+        "art": "Art / Design",
+        "autre": "Other"
+      },
+      "soft_skills": {
+        "communication": "Communication",
+        "leadership": "Leadership",
+        "creativity": "Creativity",
+        "teamwork": "Teamwork",
+        "adaptability": "Adaptability",
+        "problem_solving": "Problem Solving",
+        "organization": "Organization",
+        "autonomy": "Autonomy"
+      },
+      "add_experience": "Add Experience",
+      "no_experience": "No experience added. Click \"Add Experience\" to start.",
+      "experience": "Experience",
+      "remove": "Remove",
+      "experience_type": "Type",
+      "type": {
+        "pfe": "PFE Internship",
+        "stage": "Internship",
+        "observation": "Observation Internship",
+        "technique": "Technical Internship",
+        "cdd": "Fixed-term Contract",
+        "cdi": "Permanent Contract",
+        "projet": "Project",
+        "benevolat": "Volunteer",
+        "emploi": "Job",
+        "hackathon": "Hackathon",
+        "enactus": "Enactus",
+        "injaz": "Injaz",
+        "challenge": "Technical Challenge",
+        "other": "Other"
+      },
+      "position_placeholder": "Ex: Digital Marketing Intern",
+      "company_placeholder": "Ex: Company X",
+      "missions": "Missions (3-4 bullets with results obtained)",
+      "add_mission": "Add Mission",
+      "no_mission": "No mission added",
+      "mission_placeholder": "Ex: Customer data analysis → +15% conversion",
+      "projects_competitions": "Projects and Competitions",
+      "projects_hint": "Hackathons, entrepreneurship competitions (Enactus, Injaz), technical challenges. Indicate your role and ranking obtained.",
+      "add_project": "Add",
+      "no_project": "No project added. (Optional)",
+      "project": "Project",
+      "project_name": "Project / Competition Name",
+      "project_name_placeholder": "Ex: Tech Hackathon 2024",
+      "project_type": "Type",
+      "role": "Your Role",
+      "role_placeholder": "Ex: Frontend Developer",
+      "ranking": "Ranking",
+      "ranking_placeholder": "Ex: 1st Prize, Finalist",
+      "date": "Date",
+      "date_placeholder": "Ex: March 2024",
+      "associations": "Associations and Volunteering",
+      "associations_hint": "Involvement in school clubs or NGOs. This demonstrates your citizenship spirit and human values.",
+      "add_association": "Add",
+      "no_association": "No association added. (Optional)",
+      "association": "Association",
+      "arabic": "Arabic",
+      "french": "French",
+      "english": "English",
+      "level": "Level",
+      "native": "Native Language",
+      "professional": "Professional",
+      "fluent": "Fluent",
+      "intermediate": "Intermediate",
+      "classical_arabic": "Classical Arabic Mastery",
+      "score": "TOEIC/TOEFL Score (optional)",
+      "score_placeholder": "Ex: TOEIC 850",
+      "custom_skills": "Add Custom Skills",
+      "custom_skills_hint": "Add skills specific to your field (ex: Moroccan accounting standards, structure calculation, labor law)",
+      "custom_skill_placeholder": "Ex: Moroccan accounting standards",
+      "custom_skills_added": "Added Skills:",
+      "custom_it_skills": "Add Custom IT Skills",
+      "custom_it_skills_hint": "Add software or tools specific to your field",
+      "custom_it_skill_placeholder": "Ex: Tableau, Power BI, Salesforce",
+      "add": "Add",
+      "position": "Position",
+      "company": "Company / Organization",
+      "period": "Period",
+      "period_placeholder": "Ex: Jan 2023 - Jun 2023",
+      "description": "Description",
+      "interests_placeholder": "Ex: Running - Participation in Casablanca Marathon 2024\nThematic Reading - Interest in entrepreneurial literature\nTravel - Exploration of 15 countries in Europe and Africa",
+      "objective_placeholder": "Ex: I wish to join a dynamic company in the digital marketing field where I can use my communication skills and creativity...",
+      "characters": "characters",
+      "submit": "Generate my CV"
+    },
+    "preview": {
+      "title": "CV Preview",
+      "description": "Your structured CV will be displayed here. Feature under development.",
+      "back": "Edit Form",
+      "edit": "Edit",
+      "cta_text": "💡 Your CV is more effective when aligned with your profile. Discover your orientation profile to optimize your CV.",
+      "cta_quiz": "Discover your orientation profile",
+      "export_pdf": "Download PDF",
+      "export_word": "Download Word",
+      "export_coming_soon": "PDF export will be available soon.",
+      "export_error": "Error downloading. Please try again.",
+      "name_placeholder": "Full Name"
+    }
   }
 }
 

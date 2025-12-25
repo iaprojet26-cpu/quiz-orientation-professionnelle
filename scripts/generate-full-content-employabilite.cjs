@@ -26,3 +26,5 @@ const articleTemplates = {
 console.log('📝 Script de génération de contenu créé.');
 console.log('💡 Le contenu complet sera généré directement dans les fichiers markdown pour garantir la qualité.');
 
+
+

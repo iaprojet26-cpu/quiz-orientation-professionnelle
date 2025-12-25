@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next'
 // Lazy loading pour les pages secondaires uniquement
 const BlogList = lazy(() => import('./pages/BlogList'))
 const BlogArticle = lazy(() => import('./pages/BlogArticle'))
+const CV = lazy(() => import('./pages/CV'))
 const MentionsLegales = lazy(() => import('./pages/MentionsLegales'))
 const PolitiqueConfidentialite = lazy(() => import('./pages/PolitiqueConfidentialite'))
 const APropos = lazy(() => import('./pages/APropos'))
@@ -103,6 +104,14 @@ function App() {
           } 
         />
         <Route 
+          path="/cv" 
+          element={
+            <Suspense fallback={<LoadingFallback />}>
+              <CV />
+            </Suspense>
+          } 
+        />
+        <Route 
           path="/mentions-legales" 
           element={
             <Suspense fallback={<LoadingFallback />}>
@@ -191,6 +200,14 @@ function App() {
           element={
             <Suspense fallback={<LoadingFallback />}>
               <PolitiqueConfidentialite />
+            </Suspense>
+          } 
+        />
+        <Route 
+          path="/:lang/cv" 
+          element={
+            <Suspense fallback={<LoadingFallback />}>
+              <CV />
             </Suspense>
           } 
         />

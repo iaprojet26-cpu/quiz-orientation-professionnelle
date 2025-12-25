@@ -46,7 +46,8 @@ function LanguageSelector() {
     }
     
     // Naviguer vers le nouveau chemin
-    navigate(newPath, { replace: true })
+    // Utiliser replace: false pour permettre au navigateur de gérer l'historique
+    navigate(newPath, { replace: false })
     
     // La direction RTL/LTR est appliquée automatiquement via i18n.on('languageChanged')
   }

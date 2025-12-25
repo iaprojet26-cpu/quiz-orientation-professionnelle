@@ -174,3 +174,5 @@ Utilisez des outils d'analyse de CV avec IA qui peuvent évaluer votre CV et sug
 
 Oui, mais seulement après le filtrage par l'IA. Votre CV doit donc plaire à la fois à l'IA (pour passer le filtre) et aux recruteurs (pour décrocher un entretien).
 
+
+

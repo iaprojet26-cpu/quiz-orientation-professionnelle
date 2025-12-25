@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-import { getHomepageSEO, getResultPageSEO, getOGTags, getTwitterTags, getHomepageSchema, getResultPageSchema, getArticleSchema } from '../services/seoService'
+import { getHomepageSEO, getResultPageSEO, getOGTags, getTwitterTags, getHomepageSchema, getResultPageSchema, getArticleSchema, getCVPageSEO, getCVPageSchema } from '../services/seoService'
 
 /**
  * Composant pour gérer les meta tags SEO dynamiques
@@ -30,6 +30,9 @@ function SEOHead({ page = 'homepage', profileName = '', articleTitle = '', custo
         description: 'Découvrez nos articles sur l\'orientation professionnelle, les métiers et les carrières'
       }
       schemaData = {}
+    } else if (page === 'cv') {
+      seoData = getCVPageSEO(language)
+      schemaData = getCVPageSchema(language)
     } else if (customTitle && customDescription) {
       // Pages personnalisées (legal, contact, etc.)
       seoData = {
@@ -118,6 +121,8 @@ function SEOHead({ page = 'homepage', profileName = '', articleTitle = '', custo
     if (page === 'result' && profileName) {
       const slug = profileName.toLowerCase().replace(/\s+/g, '-')
       canonicalUrl = `${baseUrl}/${language}/result/${slug}`
+    } else if (page === 'cv') {
+      canonicalUrl = `${baseUrl}/${language === 'fr' ? '' : language + '/'}cv`
     }
     
     let canonicalLink = document.querySelector('link[rel="canonical"]')

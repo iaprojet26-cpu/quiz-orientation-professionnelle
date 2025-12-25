@@ -225,3 +225,5 @@ articles.forEach(article => {
 console.log('\n✅ Tous les articles ont été créés avec succès !');
 console.log('📝 Les fichiers markdown sont vides et doivent être remplis avec le contenu complet.');
 
+
+

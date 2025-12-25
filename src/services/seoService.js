@@ -262,3 +262,46 @@ export const getSocialShareTexts = (language = 'fr', profileName = '') => {
   return texts
 }
 
+/**
+ * Obtenir les meta tags pour la page CV
+ */
+export const getCVPageSEO = (language = 'fr') => {
+  const content = getSEOContent(language, 'cv_page')
+  return {
+    title: content?.title || 'Créer un CV efficace selon ton profil | QuizOrientation',
+    description: content?.meta || 'Créez un CV professionnel adapté à votre profil. Outil gratuit de structuration de CV avec conseils et exemples.',
+    h1: content?.h1 || 'Créer un CV efficace selon ton profil',
+    keywords: content?.keywords || ['créer cv', 'cv professionnel', 'modèle cv', 'structure cv', 'cv gratuit']
+  }
+}
+
+/**
+ * Obtenir le Schema.org JSON-LD pour la page CV
+ */
+export const getCVPageSchema = (language = 'fr') => {
+  const baseUrl = 'https://quizorientation.online'
+  const lang = ['fr', 'en', 'ar'].includes(language) ? language : 'fr'
+  
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Générateur de CV Professionnel",
+    "description": "Créez un CV professionnel adapté à votre profil. Outil gratuit de structuration de CV avec conseils et exemples.",
+    "url": `${baseUrl}/${lang === 'fr' ? '' : lang + '/'}cv`,
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+    },
+    "featureList": [
+      "Génération de CV professionnel",
+      "4 modèles de CV disponibles",
+      "Export PDF et Word",
+      "Conseils personnalisés",
+      "Structuration automatique"
+    ]
+  }
+}
+

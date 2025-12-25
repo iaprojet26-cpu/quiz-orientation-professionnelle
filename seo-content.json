@@ -57,6 +57,12 @@
       "image_alt": "Quiz d'orientation professionnelle - Découvrez votre profil et les métiers qui vous correspondent",
       "tweet_text": "🎯 Découvrez votre profil professionnel en 10 minutes ! Quiz gratuit avec résultats instantanés 👉"
     },
+    "cv_page": {
+      "title": "Créer un CV efficace selon ton profil | QuizOrientation",
+      "meta": "Créez un CV professionnel adapté à votre profil. Outil gratuit de structuration de CV avec conseils et exemples. 4 modèles disponibles, export PDF et Word.",
+      "h1": "Créer un CV efficace selon ton profil",
+      "keywords": ["créer cv", "cv professionnel", "modèle cv", "structure cv", "cv gratuit", "générateur cv", "cv personnalisé", "exemple cv", "template cv"]
+    },
     "keywords": {
       "transactionnelles": [
         "quiz orientation professionnelle gratuit",
@@ -225,6 +231,12 @@
       "image_alt": "Career orientation quiz - Discover your profile and matching careers",
       "tweet_text": "🎯 Discover your professional profile in 10 minutes! Free quiz with instant results 👉"
     },
+    "cv_page": {
+      "title": "Create an Effective CV Based on Your Profile | QuizOrientation",
+      "meta": "Create a professional CV adapted to your profile. Free CV structuring tool with tips and examples. 4 templates available, PDF and Word export.",
+      "h1": "Create an Effective CV Based on Your Profile",
+      "keywords": ["create cv", "professional cv", "cv template", "cv structure", "free cv", "cv generator", "personalized cv", "cv example", "cv template"]
+    },
     "keywords": {
       "transactionnelles": [
         "free career orientation quiz",
@@ -392,6 +404,12 @@
       "description": "اكتشف ملفك المهني في 10 دقائق. اختبار مجاني مع نتائج فورية وتوصيات مهنية مخصصة.",
       "image_alt": "اختبار التوجيه المهني - اكتشف ملفك والمهن التي تناسبك",
       "tweet_text": "🎯 اكتشف ملفك المهني في 10 دقائق! اختبار مجاني مع نتائج فورية 👉"
+    },
+    "cv_page": {
+      "title": "إنشاء سيرة ذاتية فعالة حسب ملفك | QuizOrientation",
+      "meta": "أنشئ سيرة ذاتية مهنية مكيفة مع ملفك. أداة مجانية لتنظيم السيرة الذاتية مع نصائح وأمثلة. 4 قوالب متاحة، تصدير PDF و Word.",
+      "h1": "إنشاء سيرة ذاتية فعالة حسب ملفك",
+      "keywords": ["إنشاء سيرة ذاتية", "سيرة ذاتية مهنية", "نموذج سيرة ذاتية", "هيكلة سيرة ذاتية", "سيرة ذاتية مجانية", "مولد سيرة ذاتية", "سيرة ذاتية مخصصة", "مثال سيرة ذاتية", "قالب سيرة ذاتية"]
     },
     "keywords": {
       "transactionnelles": [

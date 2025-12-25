@@ -256,3 +256,5 @@ Vérifiez les avis d'utilisateurs, testez la plateforme, comparez avec d'autres 
 
 L'IA peut être utile pour apprendre de nombreuses compétences, mais certaines compétences pratiques nécessitent toujours une pratique réelle et une interaction humaine. L'IA est particulièrement efficace pour les compétences théoriques et cognitives.
 
+
+

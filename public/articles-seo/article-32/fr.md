@@ -189,3 +189,5 @@ Cela dépend de la plateforme. Il est essentiel de choisir des plateformes répu
 
 Commencez par utiliser un quiz d'orientation professionnelle avec IA pour évaluer votre profil. Ensuite, explorez les outils d'optimisation de CV et de recherche d'emploi intelligents. Progressivement, intégrez l'IA dans votre stratégie de développement professionnel.
 
+
+

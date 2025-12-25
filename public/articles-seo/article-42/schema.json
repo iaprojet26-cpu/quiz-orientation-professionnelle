@@ -1,0 +1,16 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "CV étudiant : erreurs à éviter absolument",
+  "description": "Guide complet sur cv étudiant : erreurs à éviter absolument. Conseils pratiques et exemples pour créer un CV professionnel.",
+  "author": {
+    "@type": "Organization",
+    "name": "QuizOrientation"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "QuizOrientation"
+  },
+  "datePublished": "2025-12-25",
+  "dateModified": "2025-12-25"
+}

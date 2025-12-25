@@ -67,7 +67,7 @@ function BlogArticle() {
     // D'abord, essayer de charger depuis articles-seo/
     // Charger en parallèle pour améliorer les performances
     const promises = []
-    for (let i = 1; i <= 40; i++) {
+    for (let i = 1; i <= 45; i++) {
       const articleNum = i.toString().padStart(2, '0')
       const metadataPath = `${basePath}/articles-seo/article-${articleNum}/metadata.json`
       
@@ -383,7 +383,7 @@ function BlogArticle() {
             {article.description}
           </p>
           <div className="flex flex-wrap gap-2">
-            {article.keywords?.slice(0, 3).map((keyword, index) => (
+            {Array.isArray(article.keywords) && article.keywords.length > 0 && article.keywords.slice(0, 3).map((keyword, index) => (
               <span
                 key={index}
                 className="px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-sm"
