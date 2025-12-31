@@ -210,3 +210,4 @@ Le site est prêt pour :
 
 Il ne reste qu'à soumettre le sitemap dans Google Search Console après le déploiement.
 
+

@@ -197,3 +197,4 @@ No, they are complementary. Technical skills allow you to use tools, soft skills
 
 
 
+
