@@ -96,7 +96,7 @@ function MentionsLegales() {
           </h1>
           
           <div className={`prose max-w-none text-gray-700 ${language === 'ar' ? 'rtl' : ''}`}>
-            <p className="mb-6 text-sm">
+            <p className="mb-6 text-base leading-relaxed">
               {pageContent.intro}
             </p>
             
@@ -104,7 +104,7 @@ function MentionsLegales() {
               <h2 className="text-xl font-bold text-primary-900 mb-4">
                 {pageContent.section1.title}
               </h2>
-              <p className="mb-4 text-sm">
+              <p className="mb-4 text-base leading-relaxed">
                 {pageContent.section1.content}
               </p>
             </section>
@@ -113,7 +113,7 @@ function MentionsLegales() {
               <h2 className="text-xl font-bold text-primary-900 mb-4">
                 {pageContent.section2.title}
               </h2>
-              <p className="mb-4 text-sm">
+              <p className="mb-4 text-base leading-relaxed">
                 {pageContent.section2.content}
               </p>
             </section>
@@ -122,7 +122,7 @@ function MentionsLegales() {
               <h2 className="text-xl font-bold text-primary-900 mb-4">
                 {pageContent.section3.title}
               </h2>
-              <p className="mb-4 text-sm">
+              <p className="mb-4 text-base leading-relaxed">
                 {pageContent.section3.content}
               </p>
             </section>
@@ -131,7 +131,7 @@ function MentionsLegales() {
               <h2 className="text-xl font-bold text-primary-900 mb-4">
                 {pageContent.section4.title}
               </h2>
-              <p className="mb-4 text-sm">
+              <p className="mb-4 text-base leading-relaxed">
                 {pageContent.section4.content}
               </p>
             </section>
@@ -140,7 +140,7 @@ function MentionsLegales() {
               <h2 className="text-xl font-bold text-primary-900 mb-4">
                 {pageContent.section5.title}
               </h2>
-              <p className="mb-4 text-sm">
+              <p className="mb-4 text-base leading-relaxed">
                 {pageContent.section5.content}
               </p>
             </section>
@@ -149,7 +149,7 @@ function MentionsLegales() {
               <h2 className="text-xl font-bold text-primary-900 mb-4">
                 {pageContent.section6.title}
               </h2>
-              <p className="mb-4 text-sm">
+              <p className="mb-4 text-base leading-relaxed">
                 {pageContent.section6.content}
               </p>
             </section>
@@ -158,7 +158,7 @@ function MentionsLegales() {
               <h2 className="text-xl font-bold text-primary-900 mb-4">
                 {pageContent.section7.title}
               </h2>
-              <p className="mb-4 text-sm">
+              <p className="mb-4 text-base leading-relaxed">
                 {pageContent.section7.content}
               </p>
             </section>
@@ -167,7 +167,7 @@ function MentionsLegales() {
               <h2 className="text-xl font-bold text-primary-900 mb-4">
                 {pageContent.section8.title}
               </h2>
-              <p className="mb-4 text-sm">
+              <p className="mb-4 text-base leading-relaxed">
                 {pageContent.section8.content}
               </p>
             </section>

@@ -394,8 +394,8 @@ function BlogArticle() {
           </div>
         </header>
 
-        {/* Zone publicitaire Monetag - Avant le contenu */}
-        {import.meta.env.VITE_MONETAG_ENABLED === 'true' && (
+        {/* Zone publicitaire Monetag - Avant le contenu - Seulement si le contenu existe et est suffisant */}
+        {import.meta.env.VITE_MONETAG_ENABLED === 'true' && content && content.trim().length > 500 && (
           <div className="mb-8 flex justify-center">
             <MonetagAdZone zoneId="10282723" position="top" className="w-full max-w-4xl" />
           </div>
@@ -462,8 +462,8 @@ function BlogArticle() {
           </ReactMarkdown>
         </div>
 
-        {/* Zone publicitaire Monetag - Après le contenu */}
-        {import.meta.env.VITE_MONETAG_ENABLED === 'true' && (
+        {/* Zone publicitaire Monetag - Après le contenu - Seulement si le contenu existe et est suffisant */}
+        {import.meta.env.VITE_MONETAG_ENABLED === 'true' && content && content.trim().length > 500 && (
           <div className="my-8 flex justify-center">
             <MonetagAdZone zoneId="10282723" position="bottom" className="w-full max-w-4xl" />
           </div>

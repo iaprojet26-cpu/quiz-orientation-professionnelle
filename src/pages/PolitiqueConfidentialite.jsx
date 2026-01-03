@@ -103,7 +103,7 @@ function PolitiqueConfidentialite() {
           </h1>
           
           <div className={`prose max-w-none text-gray-700 ${language === 'ar' ? 'rtl' : ''}`}>
-            <p className="mb-6 text-sm">
+            <p className="mb-6 text-base leading-relaxed">
               {pageContent.intro}
             </p>
             
@@ -112,7 +112,7 @@ function PolitiqueConfidentialite() {
                 <h2 className="text-xl font-bold text-primary-900 mb-4">
                   {pageContent[`section${num}`].title}
                 </h2>
-                <p className="mb-4 text-sm">
+                <p className="mb-4 text-base leading-relaxed">
                   {pageContent[`section${num}`].content}
                 </p>
               </section>

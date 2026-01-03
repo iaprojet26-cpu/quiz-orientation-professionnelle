@@ -75,10 +75,12 @@ function BlogList() {
           </p>
         </header>
 
-        {/* Zone publicitaire Monetag - En haut de la liste */}
-        <div className="mb-8 flex justify-center">
-          <MonetagAdZone zoneId="10282723" position="top" className="w-full max-w-4xl" />
-        </div>
+        {/* Zone publicitaire Monetag - En haut de la liste - Seulement si des articles sont disponibles */}
+        {!loading && !error && articles.length > 0 && (
+          <div className="mb-8 flex justify-center">
+            <MonetagAdZone zoneId="10282723" position="top" className="w-full max-w-4xl" />
+          </div>
+        )}
 
         {/* État de chargement */}
         {loading && (

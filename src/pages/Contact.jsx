@@ -98,12 +98,35 @@ function Contact() {
           </h1>
           
           <div className={`prose max-w-none text-gray-700 mb-8 ${language === 'ar' ? 'rtl' : ''}`}>
-            <p className="mb-6 text-sm">
+            <p className="mb-6 text-base leading-relaxed">
               {pageContent.intro}
             </p>
-            <p className="text-sm mb-4">
+            <p className="text-base mb-4">
               <strong>Email :</strong> <a href="mailto:contact@quizorientation.online" className="text-primary-600 hover:underline">contact@quizorientation.online</a>
             </p>
+            <div className="bg-primary-50 p-6 rounded-lg mb-6">
+              <h2 className="text-xl font-bold text-primary-900 mb-3">
+                {language === 'fr' ? 'Pourquoi nous contacter ?' : language === 'en' ? 'Why contact us?' : 'لماذا تتصل بنا؟'}
+              </h2>
+              <p className="text-gray-700 mb-4 text-base leading-relaxed">
+                {language === 'fr' 
+                  ? 'Notre équipe est à votre disposition pour répondre à toutes vos questions concernant l\'orientation professionnelle, notre quiz d\'orientation, les métiers d\'avenir, ou toute autre demande. Que vous soyez étudiant, parent, enseignant ou professionnel en reconversion, nous sommes là pour vous accompagner dans votre démarche d\'orientation. Nous répondons généralement sous 24-48 heures et nous nous efforçons de fournir des réponses complètes et personnalisées à chaque demande.'
+                  : language === 'en'
+                  ? 'Our team is available to answer all your questions about career orientation, our orientation quiz, future careers, or any other request. Whether you are a student, parent, teacher, or professional in career transition, we are here to support you in your orientation process. We usually respond within 24-48 hours and strive to provide complete and personalized answers to each request.'
+                  : 'فريقنا متاح للإجابة على جميع أسئلتك حول التوجيه المهني، اختبار التوجيه لدينا، المهن المستقبلية، أو أي طلب آخر. سواء كنت طالبًا أو ولي أمر أو معلمًا أو محترفًا في مرحلة انتقال مهني، نحن هنا لدعمك في عملية التوجيه الخاصة بك. عادة ما نرد خلال 24-48 ساعة ونسعى جاهدين لتقديم إجابات كاملة ومخصصة لكل طلب.'}
+              </p>
+              <h3 className="text-lg font-semibold text-primary-900 mb-2">
+                {language === 'fr' ? 'Types de demandes que nous traitons :' : language === 'en' ? 'Types of requests we handle:' : 'أنواع الطلبات التي نتعامل معها:'}
+              </h3>
+              <ul className="list-disc list-inside text-gray-700 space-y-2 text-base">
+                <li>{language === 'fr' ? 'Questions sur le fonctionnement du quiz d\'orientation' : language === 'en' ? 'Questions about how the orientation quiz works' : 'أسئلة حول كيفية عمل اختبار التوجيه'}</li>
+                <li>{language === 'fr' ? 'Conseils personnalisés sur l\'orientation professionnelle' : language === 'en' ? 'Personalized advice on career orientation' : 'نصائح مخصصة حول التوجيه المهني'}</li>
+                <li>{language === 'fr' ? 'Informations sur les métiers et les formations' : language === 'en' ? 'Information about careers and training' : 'معلومات حول المهن والتدريب'}</li>
+                <li>{language === 'fr' ? 'Partenariats et collaborations' : language === 'en' ? 'Partnerships and collaborations' : 'الشراكات والتعاون'}</li>
+                <li>{language === 'fr' ? 'Signaler un problème technique' : language === 'en' ? 'Report a technical issue' : 'الإبلاغ عن مشكلة تقنية'}</li>
+                <li>{language === 'fr' ? 'Suggestions d\'amélioration' : language === 'en' ? 'Improvement suggestions' : 'اقتراحات للتحسين'}</li>
+              </ul>
+            </div>
           </div>
 
           {submitted ? (
