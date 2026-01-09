@@ -1,12 +1,39 @@
 import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useLocation } from 'react-router-dom'
 import { getHomepageSEO, getResultPageSEO, getOGTags, getTwitterTags, getHomepageSchema, getResultPageSchema, getArticleSchema, getCVPageSEO, getCVPageSchema } from '../services/seoService'
+
+/**
+ * Fonction pour normaliser une URL en version canonique (sans www, avec trailing slash si nécessaire)
+ */
+function normalizeCanonicalUrl(url) {
+  try {
+    const urlObj = new URL(url)
+    // Toujours utiliser la version sans www
+    urlObj.hostname = urlObj.hostname.replace(/^www\./, '')
+    
+    // Normaliser le pathname
+    let pathname = urlObj.pathname
+    
+    // Retirer le trailing slash sauf pour la racine
+    if (pathname !== '/' && pathname.endsWith('/')) {
+      pathname = pathname.slice(0, -1)
+    }
+    
+    // Reconstruire l'URL
+    return `${urlObj.protocol}//${urlObj.hostname}${pathname}${urlObj.search}${urlObj.hash}`
+  } catch (e) {
+    console.error('Erreur normalisation URL:', e)
+    return url
+  }
+}
 
 /**
  * Composant pour gérer les meta tags SEO dynamiques
  */
-function SEOHead({ page = 'homepage', profileName = '', articleTitle = '', customTitle = '', customDescription = '' }) {
+function SEOHead({ page = 'homepage', profileName = '', articleTitle = '', articleSlug = '', customTitle = '', customDescription = '' }) {
   const { i18n } = useTranslation()
+  const location = useLocation()
   const language = i18n.language || 'fr'
 
   useEffect(() => {
@@ -107,31 +134,69 @@ function SEOHead({ page = 'homepage', profileName = '', articleTitle = '', custo
     }
     schemaScript.textContent = JSON.stringify(schemaData)
 
-    // Ajouter ou mettre à jour la balise canonical
-    const baseUrl = 'https://quizorientation.online'
+    // Construire l'URL canonical basée sur l'URL actuelle
+    const baseUrl = 'https://quizorientation.online' // Toujours sans www
     let canonicalUrl = baseUrl
     
-    // Construire l'URL canonical selon la page et la langue
-    if (language !== 'fr') {
-      canonicalUrl = `${baseUrl}/${language}/`
-    } else {
-      canonicalUrl = `${baseUrl}/`
+    // Normaliser la langue
+    let normalizedLang = language
+    if (normalizedLang.includes('-')) {
+      normalizedLang = normalizedLang.split('-')[0]
+    }
+    if (!['fr', 'en', 'ar'].includes(normalizedLang)) {
+      normalizedLang = 'fr'
     }
     
-    if (page === 'result' && profileName) {
+    // Construire l'URL canonical selon la page
+    if (page === 'blog-article' && articleSlug) {
+      // Pour les articles de blog, utiliser le slug et la langue de l'URL actuelle
+      const pathSegments = location.pathname.split('/').filter(Boolean)
+      const langFromPath = pathSegments[0] && ['fr', 'en', 'ar'].includes(pathSegments[0]) ? pathSegments[0] : normalizedLang
+      
+      if (langFromPath === 'fr') {
+        canonicalUrl = `${baseUrl}/blog/${articleSlug}`
+      } else {
+        canonicalUrl = `${baseUrl}/${langFromPath}/blog/${articleSlug}`
+      }
+    } else if (page === 'blog') {
+      // Page liste des articles
+      const pathSegments = location.pathname.split('/').filter(Boolean)
+      const langFromPath = pathSegments[0] && ['fr', 'en', 'ar'].includes(pathSegments[0]) ? pathSegments[0] : normalizedLang
+      
+      if (langFromPath === 'fr') {
+        canonicalUrl = `${baseUrl}/blog`
+      } else {
+        canonicalUrl = `${baseUrl}/${langFromPath}/blog`
+      }
+    } else if (page === 'result' && profileName) {
       const slug = profileName.toLowerCase().replace(/\s+/g, '-')
-      canonicalUrl = `${baseUrl}/${language}/result/${slug}`
+      canonicalUrl = `${baseUrl}/${normalizedLang === 'fr' ? '' : normalizedLang + '/'}result/${slug}`
     } else if (page === 'cv') {
-      canonicalUrl = `${baseUrl}/${language === 'fr' ? '' : language + '/'}cv`
+      canonicalUrl = `${baseUrl}/${normalizedLang === 'fr' ? '' : normalizedLang + '/'}cv`
+    } else {
+      // Page d'accueil ou autres pages
+      const pathSegments = location.pathname.split('/').filter(Boolean)
+      const langFromPath = pathSegments[0] && ['fr', 'en', 'ar'].includes(pathSegments[0]) ? pathSegments[0] : normalizedLang
+      
+      if (langFromPath === 'fr') {
+        canonicalUrl = `${baseUrl}/`
+      } else {
+        canonicalUrl = `${baseUrl}/${langFromPath}/`
+      }
     }
     
-    let canonicalLink = document.querySelector('link[rel="canonical"]')
-    if (!canonicalLink) {
-      canonicalLink = document.createElement('link')
-      canonicalLink.setAttribute('rel', 'canonical')
-      document.head.appendChild(canonicalLink)
-    }
+    // Normaliser l'URL (s'assurer qu'elle est sans www et correctement formatée)
+    canonicalUrl = normalizeCanonicalUrl(canonicalUrl)
+    
+    // Supprimer toutes les balises canonical existantes pour éviter les duplications
+    const existingCanonicals = document.querySelectorAll('link[rel="canonical"]')
+    existingCanonicals.forEach(link => link.remove())
+    
+    // Créer la nouvelle balise canonical
+    const canonicalLink = document.createElement('link')
+    canonicalLink.setAttribute('rel', 'canonical')
     canonicalLink.setAttribute('href', canonicalUrl)
+    document.head.appendChild(canonicalLink)
 
     // Mettre à jour la langue du document
     document.documentElement.setAttribute('lang', language)
@@ -141,7 +206,7 @@ function SEOHead({ page = 'homepage', profileName = '', articleTitle = '', custo
       document.documentElement.setAttribute('dir', 'ltr')
     }
 
-  }, [language, page, profileName, articleTitle, customTitle, customDescription])
+  }, [language, page, profileName, articleTitle, articleSlug, customTitle, customDescription, location.pathname])
 
   return null // Ce composant ne rend rien visuellement
 }

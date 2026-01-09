@@ -175,15 +175,6 @@
    OPTIMISATIONS MOBILE ET CORE WEB VITALS
    ============================================ */
 
-/* Réduction du layout shift (CLS) */
-.monetag-ad-zone {
-  min-height: 100px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 /* Optimisation des transitions pour réduire le FID/INP */
 @media (prefers-reduced-motion: no-preference) {
   * {

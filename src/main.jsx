@@ -5,7 +5,6 @@ import App from './App.jsx'
 import './i18n/config' // Initialise i18next - DOIT être synchrone
 import './index.css'
 import { initGA } from './utils/analytics' // Google Analytics
-import { initMonetag } from './utils/monetag' // Monetag
 
 // Initialiser Google Analytics avec délai (après le rendu complet) - non bloquant
 const initAnalytics = () => {
@@ -31,32 +30,8 @@ const initAnalytics = () => {
   }
 }
 
-// Initialiser Monetag avec délai encore plus long - non bloquant
-const initMonetagDelayed = () => {
-  if (document.readyState === 'complete') {
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(() => {
-        setTimeout(() => initMonetag(), 5000)
-      }, { timeout: 7000 })
-    } else {
-      setTimeout(() => initMonetag(), 5000)
-    }
-  } else {
-    window.addEventListener('load', () => {
-      if ('requestIdleCallback' in window) {
-        requestIdleCallback(() => {
-          setTimeout(() => initMonetag(), 5000)
-        }, { timeout: 7000 })
-      } else {
-        setTimeout(() => initMonetag(), 5000)
-      }
-    })
-  }
-}
-
 // Initialiser les scripts tiers de manière non bloquante
 initAnalytics()
-initMonetagDelayed()
 
 // Rendre immédiatement sans attendre - plus rapide et évite les blocages
 const root = ReactDOM.createRoot(document.getElementById('root'))

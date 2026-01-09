@@ -6,8 +6,9 @@ import { resolve } from 'path'
 export default defineConfig({
   plugins: [react()],
   server: {
-    port: 3000,
-    open: true
+    port: 3001,
+    open: true,
+    host: true
   },
   build: {
     // Minification automatique - esbuild plus sûr que terser

@@ -7,7 +7,6 @@ import { getArticleBySlug } from '../services/blogService'
 import SEOHead from '../components/SEOHead'
 import OptimizedImage from '../components/OptimizedImage'
 import { trackArticleView } from '../utils/analytics'
-import MonetagAdZone from '../components/MonetagAdZone'
 import { getArticleSchema } from '../services/seoService'
 
 function BlogArticle() {
@@ -67,7 +66,7 @@ function BlogArticle() {
     // D'abord, essayer de charger depuis articles-seo/
     // Charger en parallèle pour améliorer les performances
     const promises = []
-    for (let i = 1; i <= 45; i++) {
+    for (let i = 1; i <= 60; i++) {
       const articleNum = i.toString().padStart(2, '0')
       const metadataPath = `${basePath}/articles-seo/article-${articleNum}/metadata.json`
       
@@ -356,7 +355,7 @@ function BlogArticle() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary-50 to-primary-100">
-      <SEOHead page="blog-article" articleTitle={article.title} />
+      <SEOHead page="blog-article" articleTitle={article.title} articleSlug={slug} />
       
       <main id="main-content">
         <article className="container mx-auto px-4 py-8 max-w-4xl" itemScope itemType="https://schema.org/Article">
@@ -394,12 +393,6 @@ function BlogArticle() {
           </div>
         </header>
 
-        {/* Zone publicitaire Monetag - Avant le contenu - Seulement si le contenu existe et est suffisant */}
-        {import.meta.env.VITE_MONETAG_ENABLED === 'true' && content && content.trim().length > 500 && (
-          <div className="mb-8 flex justify-center">
-            <MonetagAdZone zoneId="10282723" position="top" className="w-full max-w-4xl" />
-          </div>
-        )}
 
         <div className="bg-white rounded-lg shadow-md p-8 prose prose-lg max-w-none">
           <ReactMarkdown 
@@ -462,12 +455,6 @@ function BlogArticle() {
           </ReactMarkdown>
         </div>
 
-        {/* Zone publicitaire Monetag - Après le contenu - Seulement si le contenu existe et est suffisant */}
-        {import.meta.env.VITE_MONETAG_ENABLED === 'true' && content && content.trim().length > 500 && (
-          <div className="my-8 flex justify-center">
-            <MonetagAdZone zoneId="10282723" position="bottom" className="w-full max-w-4xl" />
-          </div>
-        )}
 
         {/* Liens internes SEO */}
         <div className="mt-12 pt-8 border-t border-gray-200">
@@ -483,7 +470,7 @@ function BlogArticle() {
                 {language === 'fr' ? '🎯 Test d\'Orientation Gratuit' : language === 'en' ? '🎯 Free Orientation Test' : '🎯 اختبار التوجيه المجاني'}
               </h3>
               <p className="text-gray-700">
-                {language === 'fr' ? 'Découvrez votre profil professionnel en 10 minutes avec notre quiz d\'orientation professionnelle.' : language === 'en' ? 'Discover your professional profile in 10 minutes with our career orientation quiz.' : 'اكتشف ملفك المهني في 10 دقائق مع اختبار التوجيه المهني لدينا.'}
+                {language === 'fr' ? 'Découvrez votre profil professionnel en 2 minutes avec notre quiz d\'orientation professionnelle.' : language === 'en' ? 'Discover your professional profile in 2 minutes with our career orientation quiz.' : 'اكتشف ملفك المهني في دقيقتين مع اختبار التوجيه المهني لدينا.'}
               </p>
             </Link>
             <Link

@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next'
 import { getAllArticles } from '../services/blogService'
 import SEOHead from '../components/SEOHead'
 import OptimizedImage from '../components/OptimizedImage'
-import MonetagAdZone from '../components/MonetagAdZone'
 
 function BlogList() {
   const { t, i18n } = useTranslation()
@@ -40,6 +39,13 @@ function BlogList() {
         if (!data || data.length === 0) {
           setError('Aucun article disponible pour le moment.')
         } else {
+          // Debug: vérifier les images des articles
+          console.log('📚 Articles chargés:', data.length)
+          data.forEach((article, index) => {
+            if (index < 5) { // Log les 5 premiers
+              console.log(`📄 Article ${index + 1}: "${article.title}" - image: ${article.image}`)
+            }
+          })
           setArticles(data)
         }
       } catch (err) {
@@ -75,12 +81,6 @@ function BlogList() {
           </p>
         </header>
 
-        {/* Zone publicitaire Monetag - En haut de la liste - Seulement si des articles sont disponibles */}
-        {!loading && !error && articles.length > 0 && (
-          <div className="mb-8 flex justify-center">
-            <MonetagAdZone zoneId="10282723" position="top" className="w-full max-w-4xl" />
-          </div>
-        )}
 
         {/* État de chargement */}
         {loading && (
@@ -118,27 +118,31 @@ function BlogList() {
               aria-label={`Lire l'article: ${article.title}`}
             >
               <div className="h-48 bg-gradient-to-br from-primary-100 to-primary-200 flex items-center justify-center overflow-hidden relative">
-                {article.image ? (
-                  <img
-                    src={article.image}
-                    alt={article.title}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                    onError={(e) => {
-                      // Fallback sur emoji si l'image échoue
-                      e.target.style.display = 'none'
-                      const parent = e.target.closest('div')
-                      if (parent && !parent.querySelector('.fallback-emoji')) {
-                        const emoji = document.createElement('span')
-                        emoji.className = 'fallback-emoji text-6xl'
-                        emoji.textContent = '📚'
-                        parent.appendChild(emoji)
-                      }
-                    }}
-                  />
-                ) : (
-                  <span className="text-6xl">📚</span>
-                )}
+                {(() => {
+                  // TOUJOURS utiliser l'image générique par défaut pour tous les articles
+                  const imageUrl = '/assets/blog/default-generic.svg'
+                  
+                  return (
+                    <img
+                      src={imageUrl}
+                      alt={article.title}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                      onError={(e) => {
+                        console.error('❌ Erreur chargement image:', imageUrl, 'pour article:', article.title)
+                        // Fallback sur emoji si l'image échoue
+                        e.target.style.display = 'none'
+                        const parent = e.target.closest('div')
+                        if (parent && !parent.querySelector('.fallback-emoji')) {
+                          const emoji = document.createElement('span')
+                          emoji.className = 'fallback-emoji text-6xl'
+                          emoji.textContent = '📚'
+                          parent.appendChild(emoji)
+                        }
+                      }}
+                    />
+                  )
+                })()}
               </div>
               <div className="p-6">
                 <div className="text-sm text-gray-500 mb-2">

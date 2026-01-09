@@ -44,7 +44,7 @@ export const getHomepageContent = (language = 'fr') => {
       whyTitle: "Pourquoi Faire Ce Test d'Orientation Gratuit ?",
       whyText: "Ce **test d'orientation professionnelle** est conçu pour vous guider dans vos choix de carrière. Que vous soyez étudiant, en reconversion ou simplement curieux, découvrez les métiers qui correspondent à votre personnalité et vos aspirations. Notre **quiz d'orientation professionnelle** vous permet d'obtenir un **bilan d'orientation en ligne** complet et personnalisé.",
       howTitle: "Comment Fonctionne Notre Quiz d'Orientation ?",
-      howText: "Le **quiz d'orientation professionnelle** prend moins de 10 minutes. Répondez honnêtement aux questions, et notre algorithme analysera vos réponses pour déterminer votre profil professionnel. Les résultats sont instantanés et incluent des recommandations détaillées de métiers et **formations adaptées à votre profil**. Un **bilan d'orientation en ligne** rapide et efficace."
+      howText: "Le **quiz d'orientation professionnelle** prend moins de 2 minutes. Répondez honnêtement aux questions, et notre algorithme analysera vos réponses pour déterminer votre profil professionnel. Les résultats sont instantanés et incluent des recommandations détaillées de métiers et **formations adaptées à votre profil**. Un **bilan d'orientation en ligne** rapide et efficace."
     },
     en: {
       intro1: "Wondering about your professional future? Our **free career orientation test** helps you identify your professional profile among 5 distinct profiles: Creative, Technical, Social, Organizational, or Entrepreneurial. This **professional orientation quiz** is designed to help you **find your ideal career**.",
@@ -52,7 +52,7 @@ export const getHomepageContent = (language = 'fr') => {
       whyTitle: "Why Take This Free Career Orientation Test?",
       whyText: "This **career orientation test** is designed to guide you in your career choices. Whether you're a student, in career transition, or simply curious, discover the careers that match your personality and aspirations. Our **professional orientation quiz** allows you to get a complete and personalized **online career assessment**.",
       howTitle: "How Does Our Career Orientation Quiz Work?",
-      howText: "The **professional orientation quiz** takes less than 10 minutes. Answer honestly, and our algorithm will analyze your responses to determine your professional profile. Results are instant and include detailed career recommendations and **training programs adapted to your profile**. A quick and effective **online career assessment**."
+      howText: "The **professional orientation quiz** takes less than 2 minutes. Answer honestly, and our algorithm will analyze your responses to determine your professional profile. Results are instant and include detailed career recommendations and **training programs adapted to your profile**. A quick and effective **online career assessment**."
     },
     ar: {
       intro1: "هل تتساءل عن مستقبلك المهني؟ يساعدك اختبار التوجيه المجاني لدينا على تحديد ملفك المهني من بين 5 ملفات متميزة: الإبداعي، التقني، الاجتماعي، التنظيمي، أو الريادي.",
@@ -60,7 +60,7 @@ export const getHomepageContent = (language = 'fr') => {
       whyTitle: "لماذا تجري هذا الاختبار؟",
       whyText: "تم تصميم اختبار التوجيه المهني هذا لإرشادك في اختياراتك المهنية. سواء كنت طالباً، في مرحلة انتقال مهني، أو ببساطة فضولياً، اكتشف المهن التي تطابق شخصيتك وتطلعاتك.",
       howTitle: "كيف يعمل؟",
-      howText: "يستغرق الاختبار أقل من 10 دقائق. أجب بصدق، وسيحلل خوارزميتنا إجاباتك لتحديد ملفك المهني. النتائج فورية وتشمل توصيات مفصلة."
+      howText: "يستغرق الاختبار أقل من دقيقتين. أجب بصدق، وسيحلل خوارزميتنا إجاباتك لتحديد ملفك المهني. النتائج فورية وتشمل توصيات مفصلة."
     }
   }
   
@@ -129,7 +129,7 @@ export const getHomepageSchema = (language = 'fr') => {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Quiz d'Orientation Professionnelle",
-    "description": "Découvrez votre profil professionnel en 10 minutes. Test gratuit avec résultats instantanés et recommandations personnalisées de métiers.",
+    "description": "Découvrez votre profil professionnel en 2 minutes. Test gratuit avec résultats instantanés et recommandations personnalisées de métiers.",
     "url": baseUrl,
     "applicationCategory": "EducationalApplication",
     "operatingSystem": "Web",
@@ -151,7 +151,7 @@ export const getHomepageSchema = (language = 'fr') => {
           "name": "Comment fonctionne le quiz d'orientation professionnelle ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Le quiz prend moins de 10 minutes. Répondez honnêtement aux questions, et notre algorithme analysera vos réponses pour déterminer votre profil professionnel. Les résultats sont instantanés."
+            "text": "Le quiz prend moins de 2 minutes. Répondez honnêtement aux questions, et notre algorithme analysera vos réponses pour déterminer votre profil professionnel. Les résultats sont instantanés."
           }
         },
         {

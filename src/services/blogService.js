@@ -1590,7 +1590,7 @@ const loadArticlesFromMarkdown = async (language = 'fr') => {
   try {
     // Charger tous les articles en parallèle pour améliorer les performances
     const promises = []
-    for (let i = 1; i <= 45; i++) {
+    for (let i = 1; i <= 60; i++) {
       const articleNum = i.toString().padStart(2, '0')
       const metadataPath = `${basePath}/articles-seo/article-${articleNum}/metadata.json`
       
@@ -1607,33 +1607,57 @@ const loadArticlesFromMarkdown = async (language = 'fr') => {
               const descriptionKey = `description_${language}`
               
               if (metadata[slugKey] && metadata[titleKey]) {
-                // Essayer de charger l'image depuis le front matter du markdown
-                let image = `/assets/blog/default-${metadata.category || 'blog'}.svg`
+                // Priorité 1: image depuis metadata.json
+                // Priorité 2: image depuis le front matter du markdown
+                // Priorité 3: image par défaut selon la catégorie
+                let image = metadata.image || null
                 
-                // Charger le front matter du markdown pour obtenir l'image (en parallèle avec metadata)
-                try {
-                  const markdownPath = `${basePath}/articles-seo/article-${articleNum}/${language}.md`
-                  const markdownResponse = await fetch(markdownPath, { cache: 'default' })
-                  if (markdownResponse.ok) {
-                    const markdownText = await markdownResponse.text()
-                    // Chercher l'image dans le front matter (format YAML)
-                    // Chercher dans les premières lignes après ---
-                    const frontMatterMatch = markdownText.match(/^---\s*\n([\s\S]*?)\n---/)
-                    if (frontMatterMatch) {
-                      const frontMatter = frontMatterMatch[1]
-                      const imageMatch = frontMatter.match(/^image:\s*["']?([^"'\n]+)["']?/m)
-                      if (imageMatch && imageMatch[1]) {
-                        image = imageMatch[1].trim()
+                // Debug pour articles 46-60
+                if (articleNum >= 46 && articleNum <= 60) {
+                  console.log(`🔍 Article ${articleNum}: metadata.image =`, metadata.image, 'metadata.category =', metadata.category)
+                }
+                
+                // Si pas d'image dans metadata, charger le front matter du markdown
+                if (!image) {
+                  try {
+                    const markdownPath = `${basePath}/articles-seo/article-${articleNum}/${language}.md`
+                    const markdownResponse = await fetch(markdownPath, { cache: 'default' })
+                    if (markdownResponse.ok) {
+                      const markdownText = await markdownResponse.text()
+                      // Chercher l'image dans le front matter (format YAML)
+                      // Chercher dans les premières lignes après ---
+                      const frontMatterMatch = markdownText.match(/^---\s*\n([\s\S]*?)\n---/)
+                      if (frontMatterMatch) {
+                        const frontMatter = frontMatterMatch[1]
+                        const imageMatch = frontMatter.match(/^image:\s*["']?([^"'\n]+)["']?/m)
+                        if (imageMatch && imageMatch[1]) {
+                          image = imageMatch[1].trim()
+                        }
                       }
                     }
+                  } catch (err) {
+                    // Ignorer les erreurs de chargement du markdown
                   }
-                } catch (err) {
-                  // Ignorer les erreurs de chargement du markdown
                 }
                 
                 // Fallback sur l'image par défaut si pas trouvée ou invalide
+                // TOUJOURS utiliser default-generic.svg pour tous les articles
                 if (!image || image === '' || !image.startsWith('/')) {
-                  image = `/assets/blog/default-${metadata.category || 'blog'}.svg`
+                  image = `/assets/blog/default-generic.svg`
+                } else {
+                  // Même si une image est spécifiée, vérifier qu'elle existe
+                  // Pour simplifier, on utilise toujours default-generic.svg
+                  image = `/assets/blog/default-generic.svg`
+                }
+                
+                // S'assurer que l'image est toujours définie (fallback final)
+                if (!image) {
+                  image = `/assets/blog/default-generic.svg`
+                }
+                
+                // Debug: log final pour vérifier le chargement des images
+                if (articleNum >= 46 && articleNum <= 60) {
+                  console.log(`✅ Article ${articleNum}: image finale = ${image}`)
                 }
                 
                 return {
@@ -1641,7 +1665,7 @@ const loadArticlesFromMarkdown = async (language = 'fr') => {
                   title: metadata[titleKey],
                   description: metadata[descriptionKey] || '',
                   date: metadata.datePublication || metadata.date || '2025-01-01',
-                  image: image,
+                  image: image || '/assets/blog/default-generic.svg', // Fallback final
                   keywords: metadata[`keywords_${language}`] || metadata.keywords_fr || [],
                   category: metadata.category || 'blog'
                 }
@@ -1768,7 +1792,7 @@ export const getArticleBySlug = async (slug, language = 'fr') => {
 
   // Essayer de charger depuis les fichiers markdown dans articles-seo/
   const basePath = (import.meta.env?.BASE_URL || '/').replace(/\/$/, '')
-  for (let i = 1; i <= 45; i++) {
+  for (let i = 1; i <= 60; i++) {
     const articleNum = i.toString().padStart(2, '0')
     const metadataPath = `${basePath}/articles-seo/article-${articleNum}/metadata.json`
     

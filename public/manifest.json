@@ -1,7 +1,7 @@
 {
   "name": "Quiz d'Orientation Professionnelle",
   "short_name": "QuizOrientation",
-  "description": "Découvrez votre profil professionnel avec notre quiz d'orientation gratuit. Testez en 10 minutes et obtenez des recommandations personnalisées de métiers.",
+  "description": "Découvrez votre profil professionnel avec notre quiz d'orientation gratuit. Testez en 2 minutes et obtenez des recommandations personnalisées de métiers.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",

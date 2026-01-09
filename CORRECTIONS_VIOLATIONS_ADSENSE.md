@@ -27,13 +27,11 @@ D'après la notification Google AdSense, deux violations principales ont été i
 // AVANT : Annonce toujours affichée
 <MonetagAdZone zoneId="10282723" position="top" />
 
-// APRÈS : Annonce seulement si des articles sont disponibles
-{!loading && !error && articles.length > 0 && (
-  <MonetagAdZone zoneId="10282723" position="top" />
-)}
+// APRÈS : Monetag complètement supprimé du site
+// (Toutes les références à Monetag ont été retirées)
 ```
 
-**Résultat** : Les annonces ne s'affichent plus sur la page BlogList si aucun article n'est disponible.
+**Résultat** : Monetag a été complètement retiré du site.
 
 ---
 
@@ -52,10 +50,8 @@ D'après la notification Google AdSense, deux violations principales ont été i
   <MonetagAdZone zoneId="10282723" position="top" />
 )}
 
-// APRÈS : Annonce seulement si le contenu existe et fait plus de 500 caractères
-{import.meta.env.VITE_MONETAG_ENABLED === 'true' && content && content.trim().length > 500 && (
-  <MonetagAdZone zoneId="10282723" position="top" />
-)}
+// APRÈS : Monetag complètement supprimé du site
+// (Toutes les références à Monetag ont été retirées)
 ```
 
 **Résultat** : Les annonces ne s'affichent que sur les articles avec un contenu suffisant (minimum 500 caractères).
@@ -224,4 +220,6 @@ Le site est maintenant conforme aux exigences Google AdSense concernant :
 - ✅ La lisibilité et la qualité du contenu
 
 Vous pouvez maintenant déployer ces modifications et renvoyer votre demande dans Google AdSense après avoir attendu 24-48h.
+
+
 

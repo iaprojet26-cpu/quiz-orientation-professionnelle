@@ -6,7 +6,7 @@
 
 #### Configuration dans `index.html`
 - ✅ **Meta tag Google AdSense** : `ca-pub-1569648268532720` présent
-- ✅ **Meta tag Monetag** : `1670db72de09a5c49b5cb6475cd93b5b` présent
+- ❌ **Meta tag Monetag** : Supprimé (Monetag retiré du site)
 - ✅ **Fichier ads.txt** : Présent dans `/public/ads.txt`
 
 #### Fichier ads.txt
@@ -152,7 +152,7 @@ Le fichier `ads.txt` est présent et accessible à la racine du site :
 
 ### Google AdSense
 - [x] Meta tag `google-adsense-account` présent
-- [x] Meta tag `monetag` présent
+- [x] Meta tag `monetag` supprimé (Monetag retiré du site)
 - [x] Fichier `ads.txt` présent et accessible
 - [x] Aucun contenu bloquant AdSense
 

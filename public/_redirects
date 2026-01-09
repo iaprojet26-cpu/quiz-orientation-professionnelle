@@ -1,5 +1,16 @@
-# Redirection WWW vers Non-WWW
+# Redirection WWW vers Non-WWW (DOIT être en premier)
 https://www.quizorientation.online/* https://quizorientation.online/:splat 301!
+
+# Redirections pour normaliser les URLs et éviter les duplications
+# Rediriger les URLs avec trailing slash vers sans trailing slash (sauf pour la racine)
+# Exemple: /blog/ -> /blog
+/blog/ /blog 301!
+/en/ /en 301!
+/ar/ /ar 301!
+/en/blog/ /en/blog 301!
+/ar/blog/ /ar/blog 301!
+/fr/blog/ /fr/blog 301!
+/fr/ / 301!
 
 # Exclure les fichiers statiques de la redirection SPA
 /ads.txt  200

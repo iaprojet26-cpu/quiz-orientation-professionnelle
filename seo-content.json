@@ -3,8 +3,8 @@
     "homepage": {
       "title": "Quiz d'Orientation Professionnelle Gratuit | Découvrez Votre Profil",
       "meta": "Testez gratuitement notre quiz d'orientation professionnelle. Découvrez votre profil (Créatif, Technique, Social...) et les métiers qui vous correspondent. Résultats instantanés avec recommandations personnalisées.",
-      "h1": "Découvrez Votre Profil Professionnel en 10 Minutes",
-      "content_html": "<div class=\"seo-content\"><h1>Découvrez Votre Profil Professionnel en 10 Minutes</h1><p>Vous vous interrogez sur votre avenir professionnel ? Notre quiz d'orientation gratuit vous aide à identifier votre profil professionnel parmi 5 profils distincts : Créatif, Technique, Social, Organisationnel ou Entrepreneurial.</p><p>En répondant à 10-12 questions simples sur vos centres d'intérêt, compétences et préférences de travail, vous obtiendrez un profil personnalisé accompagné de 5 métiers recommandés, leurs descriptions, niveaux d'études requis et formations possibles.</p><h2>Pourquoi Faire Ce Quiz ?</h2><p>Ce test d'orientation professionnelle est conçu pour vous guider dans vos choix de carrière. Que vous soyez étudiant, en reconversion ou simplement curieux, découvrez les métiers qui correspondent à votre personnalité et vos aspirations.</p><h2>Comment Ça Marche ?</h2><p>Le quiz prend moins de 10 minutes. Répondez honnêtement aux questions, et notre algorithme analysera vos réponses pour déterminer votre profil professionnel. Les résultats sont instantanés et incluent des recommandations détaillées.</p></div>",
+      "h1": "Découvrez Votre Profil Professionnel en 2 Minutes",
+      "content_html": "<div class=\"seo-content\"><h1>Découvrez Votre Profil Professionnel en 2 Minutes</h1><p>Vous vous interrogez sur votre avenir professionnel ? Notre quiz d'orientation gratuit vous aide à identifier votre profil professionnel parmi 5 profils distincts : Créatif, Technique, Social, Organisationnel ou Entrepreneurial.</p><p>En répondant à 10-12 questions simples sur vos centres d'intérêt, compétences et préférences de travail, vous obtiendrez un profil personnalisé accompagné de 5 métiers recommandés, leurs descriptions, niveaux d'études requis et formations possibles.</p><h2>Pourquoi Faire Ce Quiz ?</h2><p>Ce test d'orientation professionnelle est conçu pour vous guider dans vos choix de carrière. Que vous soyez étudiant, en reconversion ou simplement curieux, découvrez les métiers qui correspondent à votre personnalité et vos aspirations.</p><h2>Comment Ça Marche ?</h2><p>Le quiz prend moins de 2 minutes. Répondez honnêtement aux questions, et notre algorithme analysera vos réponses pour déterminer votre profil professionnel. Les résultats sont instantanés et incluent des recommandations détaillées.</p></div>",
       "cta": "Commencer le Quiz Gratuitement"
     },
     "result_template": {
@@ -53,9 +53,9 @@
     ],
     "og": {
       "title": "Quiz d'Orientation Professionnelle Gratuit | QuizOrientation",
-      "description": "Découvrez votre profil professionnel en 10 minutes. Test gratuit avec résultats instantanés et recommandations personnalisées de métiers.",
+      "description": "Découvrez votre profil professionnel en 2 minutes. Test gratuit avec résultats instantanés et recommandations personnalisées de métiers.",
       "image_alt": "Quiz d'orientation professionnelle - Découvrez votre profil et les métiers qui vous correspondent",
-      "tweet_text": "🎯 Découvrez votre profil professionnel en 10 minutes ! Quiz gratuit avec résultats instantanés 👉"
+      "tweet_text": "🎯 Découvrez votre profil professionnel en 2 minutes ! Quiz gratuit avec résultats instantanés 👉"
     },
     "cv_page": {
       "title": "Créer un CV efficace selon ton profil | QuizOrientation",
@@ -96,7 +96,7 @@
     },
     "social_share_texts": {
       "facebook": "🎯 J'ai découvert mon profil professionnel ! Découvrez le vôtre aussi sur QuizOrientation 🚀",
-      "twitter": "🎯 Mon profil professionnel : {{profile}} ! Découvrez le vôtre en 10 min 👉 quizorientation.online",
+      "twitter": "🎯 Mon profil professionnel : {{profile}} ! Découvrez le vôtre en 2 min 👉 quizorientation.online",
       "whatsapp": "🎯 Teste ce quiz d'orientation professionnelle gratuit ! Découvre ton profil et les métiers qui te correspondent 👉 quizorientation.online"
     },
     "alt_texts": {
@@ -177,8 +177,8 @@
     "homepage": {
       "title": "Free Career Orientation Quiz | Discover Your Profile",
       "meta": "Take our free career orientation quiz. Discover your professional profile (Creative, Technical, Social...) and matching careers. Instant results with personalized recommendations.",
-      "h1": "Discover Your Professional Profile in 10 Minutes",
-      "content_html": "<div class=\"seo-content\"><h1>Discover Your Professional Profile in 10 Minutes</h1><p>Wondering about your professional future? Our free orientation quiz helps you identify your professional profile among 5 distinct profiles: Creative, Technical, Social, Organizational, or Entrepreneurial.</p><p>By answering 10-12 simple questions about your interests, skills, and work preferences, you'll get a personalized profile along with 5 recommended careers, their descriptions, required education levels, and possible training programs.</p><h2>Why Take This Quiz?</h2><p>This career orientation test is designed to guide you in your career choices. Whether you're a student, in career transition, or simply curious, discover the careers that match your personality and aspirations.</p><h2>How It Works?</h2><p>The quiz takes less than 10 minutes. Answer honestly, and our algorithm will analyze your responses to determine your professional profile. Results are instant and include detailed recommendations.</p></div>",
+      "h1": "Discover Your Professional Profile in 2 Minutes",
+      "content_html": "<div class=\"seo-content\"><h1>Discover Your Professional Profile in 2 Minutes</h1><p>Wondering about your professional future? Our free orientation quiz helps you identify your professional profile among 5 distinct profiles: Creative, Technical, Social, Organizational, or Entrepreneurial.</p><p>By answering 10-12 simple questions about your interests, skills, and work preferences, you'll get a personalized profile along with 5 recommended careers, their descriptions, required education levels, and possible training programs.</p><h2>Why Take This Quiz?</h2><p>This career orientation test is designed to guide you in your career choices. Whether you're a student, in career transition, or simply curious, discover the careers that match your personality and aspirations.</p><h2>How It Works?</h2><p>The quiz takes less than 2 minutes. Answer honestly, and our algorithm will analyze your responses to determine your professional profile. Results are instant and include detailed recommendations.</p></div>",
       "cta": "Start Free Quiz"
     },
     "result_template": {
@@ -227,9 +227,9 @@
     ],
     "og": {
       "title": "Free Career Orientation Quiz | QuizOrientation",
-      "description": "Discover your professional profile in 10 minutes. Free test with instant results and personalized career recommendations.",
+      "description": "Discover your professional profile in 2 minutes. Free test with instant results and personalized career recommendations.",
       "image_alt": "Career orientation quiz - Discover your profile and matching careers",
-      "tweet_text": "🎯 Discover your professional profile in 10 minutes! Free quiz with instant results 👉"
+      "tweet_text": "🎯 Discover your professional profile in 2 minutes! Free quiz with instant results 👉"
     },
     "cv_page": {
       "title": "Create an Effective CV Based on Your Profile | QuizOrientation",
@@ -270,7 +270,7 @@
     },
     "social_share_texts": {
       "facebook": "🎯 I discovered my professional profile! Discover yours too on QuizOrientation 🚀",
-      "twitter": "🎯 My professional profile: {{profile}}! Discover yours in 10 min 👉 quizorientation.online",
+      "twitter": "🎯 My professional profile: {{profile}}! Discover yours in 2 min 👉 quizorientation.online",
       "whatsapp": "🎯 Try this free career orientation quiz! Discover your profile and matching careers 👉 quizorientation.online"
     },
     "alt_texts": {
@@ -351,8 +351,8 @@
     "homepage": {
       "title": "اختبار التوجيه المهني المجاني | اكتشف ملفك المهني",
       "meta": "اختبر اختبار التوجيه المهني المجاني. اكتشف ملفك المهني (إبداعي، تقني، اجتماعي...) والمهن التي تناسبك. نتائج فورية مع توصيات مخصصة.",
-      "h1": "اكتشف ملفك المهني في 10 دقائق",
-      "content_html": "<div class=\"seo-content\" dir=\"rtl\"><h1>اكتشف ملفك المهني في 10 دقائق</h1><p>هل تتساءل عن مستقبلك المهني؟ يساعدك اختبار التوجيه المجاني لدينا على تحديد ملفك المهني من بين 5 ملفات متميزة: الإبداعي، التقني، الاجتماعي، التنظيمي، أو الريادي.</p><p>من خلال الإجابة على 10-12 سؤالاً بسيطاً حول اهتماماتك ومهاراتك وتفضيلات العمل، ستحصل على ملف شخصي مع 5 مهن موصى بها، ووصفها، ومستويات التعليم المطلوبة، وبرامج التدريب الممكنة.</p><h2>لماذا تجري هذا الاختبار؟</h2><p>تم تصميم اختبار التوجيه المهني هذا لإرشادك في اختياراتك المهنية. سواء كنت طالباً، في مرحلة انتقال مهني، أو ببساطة فضولياً، اكتشف المهن التي تطابق شخصيتك وتطلعاتك.</p><h2>كيف يعمل؟</h2><p>يستغرق الاختبار أقل من 10 دقائق. أجب بصدق، وسيحلل خوارزميتنا إجاباتك لتحديد ملفك المهني. النتائج فورية وتشمل توصيات مفصلة.</p></div>",
+      "h1": "اكتشف ملفك المهني في دقيقتين",
+      "content_html": "<div class=\"seo-content\" dir=\"rtl\"><h1>اكتشف ملفك المهني في دقيقتين</h1><p>هل تتساءل عن مستقبلك المهني؟ يساعدك اختبار التوجيه المجاني لدينا على تحديد ملفك المهني من بين 5 ملفات متميزة: الإبداعي، التقني، الاجتماعي، التنظيمي، أو الريادي.</p><p>من خلال الإجابة على 10-12 سؤالاً بسيطاً حول اهتماماتك ومهاراتك وتفضيلات العمل، ستحصل على ملف شخصي مع 5 مهن موصى بها، ووصفها، ومستويات التعليم المطلوبة، وبرامج التدريب الممكنة.</p><h2>لماذا تجري هذا الاختبار؟</h2><p>تم تصميم اختبار التوجيه المهني هذا لإرشادك في اختياراتك المهنية. سواء كنت طالباً، في مرحلة انتقال مهني، أو ببساطة فضولياً، اكتشف المهن التي تطابق شخصيتك وتطلعاتك.</p><h2>كيف يعمل؟</h2><p>يستغرق الاختبار أقل من دقيقتين. أجب بصدق، وسيحلل خوارزميتنا إجاباتك لتحديد ملفك المهني. النتائج فورية وتشمل توصيات مفصلة.</p></div>",
       "cta": "ابدأ الاختبار المجاني"
     },
     "result_template": {
@@ -401,9 +401,9 @@
     ],
     "og": {
       "title": "اختبار التوجيه المهني المجاني | QuizOrientation",
-      "description": "اكتشف ملفك المهني في 10 دقائق. اختبار مجاني مع نتائج فورية وتوصيات مهنية مخصصة.",
+      "description": "اكتشف ملفك المهني في دقيقتين. اختبار مجاني مع نتائج فورية وتوصيات مهنية مخصصة.",
       "image_alt": "اختبار التوجيه المهني - اكتشف ملفك والمهن التي تناسبك",
-      "tweet_text": "🎯 اكتشف ملفك المهني في 10 دقائق! اختبار مجاني مع نتائج فورية 👉"
+      "tweet_text": "🎯 اكتشف ملفك المهني في دقيقتين! اختبار مجاني مع نتائج فورية 👉"
     },
     "cv_page": {
       "title": "إنشاء سيرة ذاتية فعالة حسب ملفك | QuizOrientation",
@@ -444,7 +444,7 @@
     },
     "social_share_texts": {
       "facebook": "🎯 اكتشفت ملفي المهني! اكتشف ملفك أيضاً على QuizOrientation 🚀",
-      "twitter": "🎯 ملفي المهني: {{profile}}! اكتشف ملفك في 10 دقائق 👉 quizorientation.online",
+      "twitter": "🎯 ملفي المهني: {{profile}}! اكتشف ملفك في دقيقتين 👉 quizorientation.online",
       "whatsapp": "🎯 جرب هذا الاختبار المجاني للتوجيه المهني! اكتشف ملفك والمهن التي تناسبك 👉 quizorientation.online"
     },
     "alt_texts": {
