@@ -1,4 +1,8 @@
-# Redirection WWW vers Non-WWW (DOIT être en premier)
+# Redirections HTTP vers HTTPS (DOIT être en tout premier)
+http://quizorientation.online/* https://quizorientation.online/:splat 301!
+http://www.quizorientation.online/* https://quizorientation.online/:splat 301!
+
+# Redirection WWW vers Non-WWW (après les redirections HTTP)
 https://www.quizorientation.online/* https://quizorientation.online/:splat 301!
 
 # Redirections pour normaliser les URLs et éviter les duplications
