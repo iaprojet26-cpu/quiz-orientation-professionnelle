@@ -41,6 +41,10 @@ https://www.quizorientation.online/* https://quizorientation.online/:splat 301!
 /articles/*.md  200
 /articles-seo/*  200
 
+# Redirections pour corriger les URLs incorrectes (avant la redirection SPA)
+# Correction URL arabe incorrecte (2025 au début au lieu de la fin)
+/ar/blog/2025-القطاعات-التوظيف-المغرب /ar/blog/القطاعات-التوظيف-المغرب-2025 301!
+
 # Redirection SPA pour toutes les autres routes (DOIT être en dernier)
 /*  /index.html  200
 
