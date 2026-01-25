@@ -9,6 +9,20 @@
 # Redirections supplémentaires dans netlify.toml (backup)
 # Ces redirections sont gérées principalement par public/_redirects
 # Note: Les redirections dans _redirects ont priorité sur celles dans netlify.toml
+# Mais on ajoute ces redirections ici en backup au cas où _redirects ne serait pas copié
+
+# Redirection explicite pour www.quizorientation.online/blog
+[[redirects]]
+  from = "https://www.quizorientation.online/blog"
+  to = "https://quizorientation.online/blog"
+  status = 301
+  force = true
+
+# Redirection SPA pour /blog
+[[redirects]]
+  from = "/blog"
+  to = "/index.html"
+  status = 200
 
 [build.environment]
   NODE_VERSION = "18"
