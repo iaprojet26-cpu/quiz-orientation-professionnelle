@@ -4,6 +4,11 @@
 
 # Le fichier _redirects dans public/ gère les redirections
 # Les fichiers markdown sont exclus de la redirection SPA
+# IMPORTANT: Le fichier _redirects doit être dans public/ pour être copié dans dist/
+
+# Redirections supplémentaires dans netlify.toml (backup)
+# Ces redirections sont gérées principalement par public/_redirects
+# Note: Les redirections dans _redirects ont priorité sur celles dans netlify.toml
 
 [build.environment]
   NODE_VERSION = "18"
