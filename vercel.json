@@ -5,24 +5,6 @@
       "destination": "/index.html"
     }
   ],
-  "redirects": [
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.quizorientation.online"
-        }
-      ],
-      "destination": "https://quizorientation.online/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/ar/blog/2025-القطاعات-التوظيف-المغرب",
-      "destination": "/ar/blog/القطاعات-التوظيف-المغرب-2025",
-      "permanent": true
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",
