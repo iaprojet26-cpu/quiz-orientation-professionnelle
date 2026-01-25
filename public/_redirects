@@ -16,9 +16,6 @@ https://www.quizorientation.online/* https://quizorientation.online/:splat 301!
 /fr/blog/ /fr/blog 301!
 /fr/ / 301!
 
-# S'assurer que /blog est accessible (redirection explicite vers SPA)
-/blog /index.html 200
-
 # Exclure les fichiers statiques de la redirection SPA
 /ads.txt  200
 /sitemap.xml  200
@@ -39,15 +36,16 @@ https://www.quizorientation.online/* https://quizorientation.online/:splat 301!
 /*.ttf  200
 /*.eot  200
 
-# Exclure les fichiers markdown de la redirection SPA
-/blog/*.md  200
-/articles/*.md  200
-/articles-seo/*  200
-
 # Redirections pour corriger les URLs incorrectes (avant la redirection SPA)
 # Correction URL arabe incorrecte (2025 au début au lieu de la fin)
 /ar/blog/2025-القطاعات-التوظيف-المغرب /ar/blog/القطاعات-التوظيف-المغرب-2025 301!
 
+# Exclure les fichiers markdown de la redirection SPA (après les redirections spécifiques)
+/blog/*.md  200
+/articles/*.md  200
+/articles-seo/*  200
+
 # Redirection SPA pour toutes les autres routes (DOIT être en dernier)
+# Cette règle catch-all gère /blog et toutes les autres routes
 /*  /index.html  200
 
