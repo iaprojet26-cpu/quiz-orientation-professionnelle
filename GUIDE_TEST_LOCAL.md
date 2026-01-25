@@ -131,3 +131,4 @@ http://localhost:3000/articles-seo/article-46/metadata.json
 - Les articles sont chargés depuis `public/articles-seo/`
 
 
+

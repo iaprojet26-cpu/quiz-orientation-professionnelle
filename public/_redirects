@@ -16,6 +16,9 @@ https://www.quizorientation.online/* https://quizorientation.online/:splat 301!
 /fr/blog/ /fr/blog 301!
 /fr/ / 301!
 
+# S'assurer que /blog est accessible (redirection explicite vers SPA)
+/blog /index.html 200
+
 # Exclure les fichiers statiques de la redirection SPA
 /ads.txt  200
 /sitemap.xml  200

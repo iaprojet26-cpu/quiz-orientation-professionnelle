@@ -161,3 +161,4 @@ La redirection de `https://www.quizorientation.online/*` vers `https://quizorien
 - [Google : Balises canonical](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls)
 - [Netlify : Redirections](https://docs.netlify.com/routing/redirects/)
 
+

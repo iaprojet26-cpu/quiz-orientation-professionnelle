@@ -81,6 +81,26 @@ function BlogList() {
           </p>
         </header>
 
+        {/* Contenu statique pour SEO - Visible même sans JavaScript */}
+        <noscript>
+          <div className="max-w-4xl mx-auto mb-8">
+            <p className="text-gray-700 mb-4">
+              {language === 'fr' 
+                ? 'Découvrez nos articles sur l\'orientation professionnelle, les métiers d\'avenir, les compétences recherchées et les parcours de formation. Notre blog vous accompagne dans vos choix de carrière avec des conseils pratiques et des informations à jour sur le marché de l\'emploi.'
+                : language === 'en'
+                ? 'Discover our articles on career orientation, future jobs, in-demand skills and training paths. Our blog guides you in your career choices with practical advice and up-to-date information on the job market.'
+                : 'اكتشف مقالاتنا حول التوجيه المهني والمهن المستقبلية والمهارات المطلوبة ومسارات التدريب. مدونتنا ترافقك في خياراتك المهنية مع نصائح عملية ومعلومات محدثة حول سوق العمل.'}
+            </p>
+            <p className="text-gray-700">
+              {language === 'fr'
+                ? 'Nous publions régulièrement des articles sur les secteurs qui recrutent, les formations les plus demandées, les compétences essentielles pour réussir sa carrière, et bien plus encore. Que vous soyez étudiant, jeune diplômé ou en reconversion professionnelle, vous trouverez des ressources utiles pour votre parcours.'
+                : language === 'en'
+                ? 'We regularly publish articles on recruiting sectors, most in-demand training, essential skills for career success, and much more. Whether you are a student, recent graduate or in career transition, you will find useful resources for your journey.'
+                : 'ننشر بانتظام مقالات حول القطاعات التي توظف والتدريبات الأكثر طلبًا والمهارات الأساسية للنجاح في المسيرة المهنية والمزيد. سواء كنت طالبًا أو خريجًا حديثًا أو في مرحلة انتقال مهني، ستجد موارد مفيدة لرحلتك.'}
+            </p>
+          </div>
+        </noscript>
+
 
         {/* État de chargement */}
         {loading && (

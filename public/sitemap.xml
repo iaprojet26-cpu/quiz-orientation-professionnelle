@@ -5,7 +5,7 @@
   <!-- Pages Principales -->
   <url>
     <loc>https://quizorientation.online/</loc>
-    <lastmod>2025-11-06</lastmod>
+    <lastmod>2026-01-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/" />
@@ -16,7 +16,7 @@
 
   <url>
     <loc>https://quizorientation.online/blog</loc>
-    <lastmod>2025-11-06</lastmod>
+    <lastmod>2026-01-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -34,19 +34,19 @@
 
   <url>
     <loc>https://quizorientation.online/a-propos</loc>
-    <lastmod>2025-11-06</lastmod>
+    <lastmod>2026-01-25</lastmod>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://quizorientation.online/top-metiers-futur</loc>
-    <lastmod>2025-11-06</lastmod>
+    <lastmod>2026-01-25</lastmod>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://quizorientation.online/contact</loc>
-    <lastmod>2025-11-06</lastmod>
+    <lastmod>2026-01-25</lastmod>
     <priority>0.7</priority>
   </url>
 
