@@ -5,7 +5,6 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { getArticleBySlug } from '../services/blogService'
 import SEOHead from '../components/SEOHead'
-import OptimizedImage from '../components/OptimizedImage'
 import { trackArticleView } from '../utils/analytics'
 import { getArticleSchema } from '../services/seoService'
 
@@ -392,6 +391,30 @@ function BlogArticle() {
             ))}
           </div>
         </header>
+
+        <section className="bg-blue-50 border border-blue-100 rounded-lg p-5 mb-6">
+          <h2 className="text-lg font-bold text-primary-900 mb-2">
+            {language === 'fr'
+              ? 'Fiabilite et methode editoriale'
+              : language === 'en'
+              ? 'Reliability and editorial method'
+              : 'الموثوقية والمنهجية التحريرية'}
+          </h2>
+          <p className="text-gray-700 mb-2">
+            {language === 'fr'
+              ? 'Article prepare par l equipe editoriale QuizOrientation, relu et mis a jour regulierement pour offrir des conseils pratiques.'
+              : language === 'en'
+              ? 'Article prepared by the QuizOrientation editorial team, reviewed and updated regularly to provide practical guidance.'
+              : 'تم إعداد المقال من طرف فريق التحرير في QuizOrientation مع مراجعة وتحديث دوري لتقديم نصائح عملية.'}
+          </p>
+          <p className="text-gray-700">
+            {language === 'fr'
+              ? "Derniere mise a jour: " + new Date(article.date).toLocaleDateString('fr-FR')
+              : language === 'en'
+              ? "Last updated: " + new Date(article.date).toLocaleDateString('en-US')
+              : "آخر تحديث: " + new Date(article.date).toLocaleDateString('ar-MA')}
+          </p>
+        </section>
 
 
         <div className="bg-white rounded-lg shadow-md p-8 prose prose-lg max-w-none">

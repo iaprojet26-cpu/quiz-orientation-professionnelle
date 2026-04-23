@@ -1,9 +1,17 @@
 import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 import SEOHead from '../components/SEOHead'
 
 function APropos() {
   const { t, i18n } = useTranslation()
-  const language = i18n.language || 'fr'
+  let language = i18n.language || 'fr'
+  if (language.includes('-')) {
+    language = language.split('-')[0]
+  }
+  if (!['fr', 'en', 'ar'].includes(language)) {
+    language = 'fr'
+  }
+  const langPrefix = language === 'fr' ? '' : `/${language}`
 
   const content = {
     fr: {
@@ -103,6 +111,26 @@ function APropos() {
                 </p>
               </section>
             ))}
+            <section className="mb-4 bg-blue-50 border border-blue-100 rounded-lg p-5">
+              <h2 className="text-xl font-bold text-primary-900 mb-3">
+                {language === 'fr'
+                  ? 'Qualite et transparence'
+                  : language === 'en'
+                  ? 'Quality and transparency'
+                  : 'الجودة والشفافية'}
+              </h2>
+              <p className="mb-0 text-base leading-relaxed">
+                {language === 'fr'
+                  ? 'Consultez egalement notre politique editoriale pour comprendre notre methode de redaction, de verification et de mise a jour des contenus.'
+                  : language === 'en'
+                  ? 'See our editorial policy to understand how our content is written, reviewed and updated.'
+                  : 'يمكنك الاطلاع على السياسة التحريرية لفهم منهجية إعداد المحتوى ومراجعته وتحديثه.'}
+                {' '}
+                <Link to={`${langPrefix}/politique-editoriale`} className="text-primary-700 hover:underline font-semibold">
+                  {language === 'fr' ? 'Voir la politique editoriale' : language === 'en' ? 'Read editorial policy' : 'عرض السياسة التحريرية'}
+                </Link>
+              </p>
+            </section>
           </div>
         </article>
       </div>

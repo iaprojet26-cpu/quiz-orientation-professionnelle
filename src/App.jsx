@@ -12,6 +12,7 @@ const BlogArticle = lazy(() => import('./pages/BlogArticle'))
 const CV = lazy(() => import('./pages/CV'))
 const MentionsLegales = lazy(() => import('./pages/MentionsLegales'))
 const PolitiqueConfidentialite = lazy(() => import('./pages/PolitiqueConfidentialite'))
+const PolitiqueEditoriale = lazy(() => import('./pages/PolitiqueEditoriale'))
 const APropos = lazy(() => import('./pages/APropos'))
 const Contact = lazy(() => import('./pages/Contact'))
 const TopMetiersFutur = lazy(() => import('./pages/TopMetiersFutur'))
@@ -128,6 +129,14 @@ function App() {
           } 
         />
         <Route 
+          path="/politique-editoriale" 
+          element={
+            <Suspense fallback={<LoadingFallback />}>
+              <PolitiqueEditoriale />
+            </Suspense>
+          } 
+        />
+        <Route 
           path="/a-propos" 
           element={
             <Suspense fallback={<LoadingFallback />}>
@@ -208,6 +217,14 @@ function App() {
           element={
             <Suspense fallback={<LoadingFallback />}>
               <CV />
+            </Suspense>
+          } 
+        />
+        <Route 
+          path="/:lang/politique-editoriale" 
+          element={
+            <Suspense fallback={<LoadingFallback />}>
+              <PolitiqueEditoriale />
             </Suspense>
           } 
         />

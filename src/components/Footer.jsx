@@ -13,6 +13,7 @@ function Footer() {
       contact: "Contact",
       legal: "Mentions Légales",
       privacy: "Politique de Confidentialité",
+      editorial: "Politique Editoriale",
       copyright: `© ${currentYear} quizorientation. Tous droits réservés.`
     },
     en: {
@@ -21,6 +22,7 @@ function Footer() {
       contact: "Contact",
       legal: "Legal Notice",
       privacy: "Privacy Policy",
+      editorial: "Editorial Policy",
       copyright: `© ${currentYear} quizorientation. All rights reserved.`
     },
     ar: {
@@ -29,6 +31,7 @@ function Footer() {
       contact: "اتصل بنا",
       legal: "الإشعار القانوني",
       privacy: "سياسة الخصوصية",
+      editorial: "السياسة التحريرية",
       copyright: `© ${currentYear} quizorientation. جميع الحقوق محفوظة.`
     }
   }
@@ -104,6 +107,14 @@ function Footer() {
                   className="text-gray-300 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 rounded"
                 >
                   {pageContent.privacy}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/politique-editoriale"
+                  className="text-gray-300 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 rounded"
+                >
+                  {pageContent.editorial}
                 </Link>
               </li>
             </ul>

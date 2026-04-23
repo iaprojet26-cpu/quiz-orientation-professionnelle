@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { getAllArticles } from '../services/blogService'
 import SEOHead from '../components/SEOHead'
-import OptimizedImage from '../components/OptimizedImage'
 
 function BlogList() {
   const { t, i18n } = useTranslation()
@@ -39,13 +38,6 @@ function BlogList() {
         if (!data || data.length === 0) {
           setError('Aucun article disponible pour le moment.')
         } else {
-          // Debug: vérifier les images des articles
-          console.log('📚 Articles chargés:', data.length)
-          data.forEach((article, index) => {
-            if (index < 5) { // Log les 5 premiers
-              console.log(`📄 Article ${index + 1}: "${article.title}" - image: ${article.image}`)
-            }
-          })
           setArticles(data)
         }
       } catch (err) {
@@ -80,6 +72,46 @@ function BlogList() {
             {t('blog.subtitle', { defaultValue: 'Découvrez nos articles sur l\'orientation professionnelle, les métiers et les carrières' })}
           </p>
         </header>
+
+        <section className="max-w-4xl mx-auto mb-10 bg-white/80 rounded-lg p-6 border border-primary-100">
+          <h2 className="text-2xl font-bold text-primary-900 mb-3">
+            {language === 'fr'
+              ? 'Notre engagement editorial'
+              : language === 'en'
+              ? 'Our editorial commitment'
+              : 'التزامنا التحريري'}
+          </h2>
+          <p className="text-gray-700 mb-4">
+            {language === 'fr'
+              ? 'Chaque article est redige pour apporter une valeur pratique: informations metier, conseils applicables et pistes de formation.'
+              : language === 'en'
+              ? 'Each article is written to provide practical value: career insights, actionable advice and training pathways.'
+              : 'يتم إعداد كل مقال لتقديم قيمة عملية: معلومات مهنية ونصائح قابلة للتطبيق ومسارات تكوين.'}
+          </p>
+          <ul className="list-disc pl-6 text-gray-700 space-y-1">
+            <li>
+              {language === 'fr'
+                ? "Mise a jour reguliere selon l'evolution du marche de l'emploi"
+                : language === 'en'
+                ? 'Regular updates based on labor market evolution'
+                : 'تحديث منتظم حسب تطور سوق العمل'}
+            </li>
+            <li>
+              {language === 'fr'
+                ? 'Ressources utiles pour etudiants, jeunes diplomes et reconversion'
+                : language === 'en'
+                ? 'Useful resources for students, graduates and career changers'
+                : 'موارد مفيدة للطلاب والخريجين ومن هم في إعادة التوجيه المهني'}
+            </li>
+            <li>
+              {language === 'fr'
+                ? 'Contenu clair et oriente action'
+                : language === 'en'
+                ? 'Clear and action-oriented content'
+                : 'محتوى واضح وموجه للتطبيق العملي'}
+            </li>
+          </ul>
+        </section>
 
         {/* Contenu statique pour SEO - Visible même sans JavaScript */}
         <noscript>
