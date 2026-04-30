@@ -1,413 +1,292 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
-
-  <!-- Pages Principales -->
   <url>
-    <loc>https://quizorientation.online/</loc>
-    <lastmod>2026-01-25</lastmod>
+    <loc>https://quizorientation.online/fr/</loc>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://quizorientation.online/" />
   </url>
-
   <url>
-    <loc>https://quizorientation.online/blog</loc>
-    <lastmod>2026-01-25</lastmod>
+    <loc>https://quizorientation.online/en/</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://quizorientation.online/ar/</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://quizorientation.online/fr/quiz</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://quizorientation.online/en/quiz</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://quizorientation.online/ar/quiz</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://quizorientation.online/fr/blog</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://quizorientation.online/en/blog</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://quizorientation.online/ar/blog</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://quizorientation.online/fr/career-paths</loc>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://quizorientation.online/cv</loc>
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/cv" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/cv" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/cv" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://quizorientation.online/cv" />
-  </url>
-
-  <url>
-    <loc>https://quizorientation.online/a-propos</loc>
-    <lastmod>2026-01-25</lastmod>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://quizorientation.online/top-metiers-futur</loc>
-    <lastmod>2026-01-25</lastmod>
+    <loc>https://quizorientation.online/en/career-paths</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://quizorientation.online/contact</loc>
-    <lastmod>2026-01-25</lastmod>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://quizorientation.online/blog/comment-devenir-developpeur-web-2025</loc>
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/blog/comment-devenir-developpeur-web-2025" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/blog/how-to-become-web-developer-2025" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/blog/كيف-تصبح-مطور-ويب-2025" />
+    <loc>https://quizorientation.online/ar/career-paths</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quizorientation.online/blog/metier-data-analyst-formation-salaire-2025</loc>
-    <lastmod>2025-01-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/blog/metier-data-analyst-formation-salaire-2025" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/blog/data-analyst-career-training-salary-2025" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/blog/مهنة-محلل-البيانات-2025" />
+    <loc>https://quizorientation.online/fr/opportunities</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quizorientation.online/blog/infirmier-2025-parcours-debouches-salaires</loc>
-    <lastmod>2025-01-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/blog/infirmier-2025-parcours-debouches-salaires" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/blog/nurse-2025-career-opportunities-salaries" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/blog/الممرض-2025" />
+    <loc>https://quizorientation.online/en/opportunities</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quizorientation.online/blog/ingenieur-ia-metier-futur-2025</loc>
-    <lastmod>2025-01-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/blog/ingenieur-ia-metier-futur-2025" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/blog/ai-engineer-future-job-2025" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/blog/مهندس-الذكاء-الاصطناعي-2025" />
+    <loc>https://quizorientation.online/ar/opportunities</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quizorientation.online/blog/gestionnaire-rh-fiche-metier-2025</loc>
-    <lastmod>2025-01-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/blog/gestionnaire-rh-fiche-metier-2025" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/blog/hr-manager-job-description-2025" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/blog/مدير-الموارد-البشرية-2025" />
+    <loc>https://quizorientation.online/fr/study-in-morocco</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quizorientation.online/blog/agent-immobilier-reussir-2025</loc>
-    <lastmod>2025-01-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/blog/agent-immobilier-reussir-2025" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/blog/real-estate-agent-succeed-2025" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/blog/وكيل-عقاري-2025" />
+    <loc>https://quizorientation.online/en/study-in-morocco</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quizorientation.online/blog/technicien-reseaux-cybersecurite-2025</loc>
-    <lastmod>2025-01-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/blog/technicien-reseaux-cybersecurite-2025" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/blog/network-cybersecurity-technician-2025" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/blog/فني-الشبكات-الأمن-2025" />
+    <loc>https://quizorientation.online/ar/study-in-morocco</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quizorientation.online/blog/assistant-administratif-competences-2025</loc>
-    <lastmod>2025-01-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/blog/assistant-administratif-competences-2025" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/blog/administrative-assistant-skills-2025" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/blog/مساعد-إداري-2025" />
+    <loc>https://quizorientation.online/fr/career-guides</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quizorientation.online/blog/community-manager-guide-complet-2025</loc>
-    <lastmod>2025-01-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/blog/community-manager-guide-complet-2025" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/blog/community-manager-complete-guide-2025" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/blog/مدير-المجتمع-2025" />
+    <loc>https://quizorientation.online/en/career-guides</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quizorientation.online/blog/metiers-btp-recrutent-2025</loc>
-    <lastmod>2025-01-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/blog/metiers-btp-recrutent-2025" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/blog/construction-jobs-recruiting-2025" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/blog/مهن-البناء-2025" />
+    <loc>https://quizorientation.online/ar/career-guides</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quizorientation.online/blog/choisir-filiere-apres-bac-2025</loc>
-    <lastmod>2025-01-25</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://quizorientation.online/fr/career-matching</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/blog/choisir-filiere-apres-bac-2025" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/blog/choose-field-after-high-school-2025" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/blog/اختيار-التخصص-بعد-البكالوريا-2025" />
   </url>
   <url>
-    <loc>https://quizorientation.online/blog/erreurs-orientation-eviter-2025</loc>
-    <lastmod>2025-01-26</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://quizorientation.online/en/career-matching</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/blog/erreurs-orientation-eviter-2025" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/blog/orientation-mistakes-avoid-2025" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/blog/أخطاء-التوجيه-2025" />
   </url>
   <url>
-    <loc>https://quizorientation.online/blog/reussir-entretien-admission-2025</loc>
-    <lastmod>2025-01-27</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://quizorientation.online/ar/career-matching</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/blog/reussir-entretien-admission-2025" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/blog/succeed-admission-interview-2025" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/blog/مقابلة-القبول-2025" />
   </url>
   <url>
-    <loc>https://quizorientation.online/blog/reussir-premier-stage-2025</loc>
-    <lastmod>2025-01-28</lastmod>
+    <loc>https://quizorientation.online/fr/blog/soft-skills-competences-professionnelles-essentielles</loc>
+    <lastmod>2025-11-06</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/blog/reussir-premier-stage-2025" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/blog/succeed-first-internship-2025" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/blog/النجاح-في-التدريب-الأول-2025" />
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quizorientation.online/blog/etudier-ou-travailler-decision-2025</loc>
-    <lastmod>2025-01-29</lastmod>
+    <loc>https://quizorientation.online/en/blog/soft-skills-competences-professionnelles-essentielles</loc>
+    <lastmod>2025-11-06</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/blog/etudier-ou-travailler-decision-2025" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/blog/study-or-work-decision-2025" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/blog/الدراسة-أو-العمل-2025" />
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quizorientation.online/blog/top-10-soft-skills-entreprise-2025</loc>
-    <lastmod>2025-01-30</lastmod>
+    <loc>https://quizorientation.online/ar/blog/soft-skills-competences-professionnelles-essentielles</loc>
+    <lastmod>2025-11-06</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/blog/top-10-soft-skills-entreprise-2025" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/blog/top-10-soft-skills-companies-2025" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/blog/أفضل-10-مهارات-ناعمة-2025" />
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quizorientation.online/blog/competences-digitales-jeunes-diplomes-2025</loc>
-    <lastmod>2025-01-31</lastmod>
+    <loc>https://quizorientation.online/fr/blog/metiers-davenir-2025-2030-opportunites</loc>
+    <lastmod>2025-11-06</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/blog/competences-digitales-jeunes-diplomes-2025" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/blog/essential-digital-skills-graduates-2025" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/blog/المهارات-الرقمية-الخريجين-2025" />
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quizorientation.online/blog/ameliorer-communication-professionnelle-2025</loc>
-    <lastmod>2025-02-01</lastmod>
+    <loc>https://quizorientation.online/en/blog/metiers-davenir-2025-2030-opportunites</loc>
+    <lastmod>2025-11-06</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/blog/ameliorer-communication-professionnelle-2025" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/blog/improve-professional-communication-2025" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/blog/تحسين-التواصل-المهني-2025" />
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quizorientation.online/blog/rediger-cv-parfait-modeles-2025</loc>
-    <lastmod>2025-02-02</lastmod>
+    <loc>https://quizorientation.online/ar/blog/metiers-davenir-2025-2030-opportunites</loc>
+    <lastmod>2025-11-06</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/blog/rediger-cv-parfait-modeles-2025" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/blog/write-perfect-cv-templates-2025" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/blog/كتابة-سيرة-ذاتية-مثالية-2025" />
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quizorientation.online/blog/lettre-motivation-guide-exemples-2025</loc>
-    <lastmod>2025-02-03</lastmod>
+    <loc>https://quizorientation.online/fr/blog/reconversion-professionnelle-guide-complet</loc>
+    <lastmod>2025-11-06</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/blog/lettre-motivation-guide-exemples-2025" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/blog/cover-letter-guide-examples-2025" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/blog/رسالة-التحفيز-2025" />
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quizorientation.online/blog/decrocher-job-sans-experience-2025</loc>
-    <lastmod>2025-02-04</lastmod>
+    <loc>https://quizorientation.online/en/blog/reconversion-professionnelle-guide-complet</loc>
+    <lastmod>2025-11-06</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/blog/decrocher-job-sans-experience-2025" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/blog/land-job-without-experience-2025" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/blog/الحصول-على-وظيفة-بدون-خبرة-2025" />
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quizorientation.online/blog/preparer-entretien-embauche-2025</loc>
-    <lastmod>2025-02-05</lastmod>
+    <loc>https://quizorientation.online/ar/blog/reconversion-professionnelle-guide-complet</loc>
+    <lastmod>2025-11-06</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/blog/preparer-entretien-embauche-2025" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/blog/prepare-job-interview-2025" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/blog/تحضير-مقابلة-عمل-2025" />
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quizorientation.online/blog/booster-employabilite-2025</loc>
-    <lastmod>2025-02-06</lastmod>
+    <loc>https://quizorientation.online/fr/blog/formations-diplomes-orientation-professionnelle</loc>
+    <lastmod>2025-11-06</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/blog/booster-employabilite-2025" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/blog/boost-employability-2025" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/blog/تعزيز-قابلية-التوظيف-2025" />
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quizorientation.online/blog/metiers-disparaitre-2030</loc>
-    <lastmod>2025-02-07</lastmod>
+    <loc>https://quizorientation.online/en/blog/formations-diplomes-orientation-professionnelle</loc>
+    <lastmod>2025-11-06</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/blog/metiers-disparaitre-2030" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/blog/jobs-disappear-2030" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/blog/مهن-ستختفي-2030" />
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quizorientation.online/blog/metiers-exploser-ia-2025-2030</loc>
-    <lastmod>2025-02-08</lastmod>
+    <loc>https://quizorientation.online/ar/blog/formations-diplomes-orientation-professionnelle</loc>
+    <lastmod>2025-11-06</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/blog/metiers-exploser-ia-2025-2030" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/blog/jobs-explode-ai-2025-2030" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/blog/مهن-تنفجر-الذكاء-الاصطناعي-2025" />
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quizorientation.online/blog/secteurs-recrutent-maroc-2025</loc>
-    <lastmod>2025-02-09</lastmod>
+    <loc>https://quizorientation.online/fr/blog/guide-complet-orientation-professionnelle-2025</loc>
+    <lastmod>2025-11-06</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/blog/secteurs-recrutent-maroc-2025" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/blog/sectors-recruiting-morocco-2025" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/blog/القطاعات-التوظيف-المغرب-2025" />
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quizorientation.online/blog/decouvrir-potentiel-professionnel</loc>
-    <lastmod>2025-02-10</lastmod>
+    <loc>https://quizorientation.online/en/blog/guide-complet-orientation-professionnelle-2025</loc>
+    <lastmod>2025-11-06</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/blog/decouvrir-potentiel-professionnel" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/blog/discover-professional-potential" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/blog/اكتشاف-الإمكانيات-المهنية" />
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quizorientation.online/blog/test-orientation-professionnelle-2025</loc>
-    <lastmod>2025-02-11</lastmod>
+    <loc>https://quizorientation.online/ar/blog/guide-complet-orientation-professionnelle-2025</loc>
+    <lastmod>2025-11-06</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/blog/test-orientation-professionnelle-2025" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/blog/career-orientation-test-2025" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/blog/اختبار-التوجيه-المهني-2025" />
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quizorientation.online/blog/surmonter-stress-avenir-professionnel</loc>
-    <lastmod>2025-02-12</lastmod>
+    <loc>https://quizorientation.online/fr/blog/5-profils-professionnels-qui-vous-correspondent</loc>
+    <lastmod>2025-11-06</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/blog/surmonter-stress-avenir-professionnel" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/blog/overcome-stress-professional-future" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/blog/التغلب-على-التوتر-المهني" />
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quizorientation.online/blog/definir-projet-professionnel-a-z</loc>
-    <lastmod>2025-02-13</lastmod>
+    <loc>https://quizorientation.online/en/blog/5-profils-professionnels-qui-vous-correspondent</loc>
+    <lastmod>2025-11-06</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/blog/definir-projet-professionnel-a-z" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/blog/define-professional-project-a-z" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/blog/تحديد-المشروع-المهني" />
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quizorientation.online/blog/employabilite-4-0-ia-transforme-marche-travail-2025</loc>
-    <lastmod>2025-02-20</lastmod>
+    <loc>https://quizorientation.online/ar/blog/5-profils-professionnels-qui-vous-correspondent</loc>
+    <lastmod>2025-11-06</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/blog/employabilite-4-0-ia-transforme-marche-travail-2025" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/blog/employability-4-0-ai-transforms-job-market-2025" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/blog/القابلية-للتشغيل-4-0-الذكاء-الاصطناعي-2025" />
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quizorientation.online/blog/piloter-carriere-ia-outils-strategies-reussir</loc>
-    <lastmod>2025-02-21</lastmod>
+    <loc>https://quizorientation.online/fr/blog/metiers-davenir-2025-2030</loc>
+    <lastmod>2025-11-06</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/blog/piloter-carriere-ia-outils-strategies-reussir" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/blog/manage-career-ai-tools-strategies-success" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/blog/إدارة-المسيرة-المهنية-الذكاء-الاصطناعي" />
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quizorientation.online/blog/competences-futur-soft-skills-essentielles-ere-ia</loc>
-    <lastmod>2025-02-22</lastmod>
+    <loc>https://quizorientation.online/en/blog/metiers-davenir-2025-2030</loc>
+    <lastmod>2025-11-06</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/blog/competences-futur-soft-skills-essentielles-ere-ia" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/blog/future-skills-essential-soft-skills-ai-era" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/blog/مهارات-المستقبل-المهارات-الناعمة-الذكاء-الاصطناعي" />
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quizorientation.online/blog/reconversion-professionnelle-ia-se-former-metiers-demain</loc>
-    <lastmod>2025-02-23</lastmod>
+    <loc>https://quizorientation.online/ar/blog/metiers-davenir-2025-2030</loc>
+    <lastmod>2025-11-06</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/blog/reconversion-professionnelle-ia-se-former-metiers-demain" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/blog/career-change-ai-train-tomorrow-jobs" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/blog/إعادة-التوجيه-المهني-الذكاء-الاصطناعي" />
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quizorientation.online/blog/ia-service-orientation-professionnelle-outils-plateformes-innovantes</loc>
-    <lastmod>2025-02-24</lastmod>
+    <loc>https://quizorientation.online/fr/blog/comment-choisir-sa-voie-professionnelle</loc>
+    <lastmod>2025-11-06</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/blog/ia-service-orientation-professionnelle-outils-plateformes-innovantes" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/blog/ai-career-guidance-innovative-tools-platforms" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/blog/الذكاء-الاصطناعي-التوجيه-المهني" />
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quizorientation.online/blog/cv-lettre-motivation-ere-ia-comment-demarquer</loc>
-    <lastmod>2025-02-25</lastmod>
+    <loc>https://quizorientation.online/en/blog/comment-choisir-sa-voie-professionnelle</loc>
+    <lastmod>2025-11-06</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/blog/cv-lettre-motivation-ere-ia-comment-demarquer" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/blog/cv-cover-letter-ai-era-stand-out" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/blog/السيرة-الذاتية-الذكاء-الاصطناعي" />
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quizorientation.online/blog/formation-continue-apprentissage-ia-meilleures-pratiques</loc>
-    <lastmod>2025-02-26</lastmod>
+    <loc>https://quizorientation.online/ar/blog/comment-choisir-sa-voie-professionnelle</loc>
+    <lastmod>2025-11-06</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/blog/formation-continue-apprentissage-ia-meilleures-pratiques" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/blog/continuing-education-learning-ai-best-practices" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/blog/التكوين-المستمر-الذكاء-الاصطناعي" />
-  </url>
-  <url>
-    <loc>https://quizorientation.online/blog/metiers-croissance-grace-ia-opportunites-carriere-2025</loc>
-    <lastmod>2025-02-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/blog/metiers-croissance-grace-ia-opportunites-carriere-2025" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/blog/growing-jobs-ai-career-opportunities-2025" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/blog/المهن-المتزايدة-الذكاء-الاصطناعي-2025" />
-  </url>
-  <url>
-    <loc>https://quizorientation.online/blog/networking-developpement-professionnel-ia-strategies-efficaces</loc>
-    <lastmod>2025-02-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/blog/networking-developpement-professionnel-ia-strategies-efficaces" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/blog/networking-professional-development-ai-effective-strategies" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/blog/الشبكات-التطوير-المهني-الذكاء-الاصطناعي" />
-  </url>
-  <url>
-    <loc>https://quizorientation.online/blog/entrepreneuriat-ia-lancer-projet-professionnel-2025</loc>
-    <lastmod>2025-03-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://quizorientation.online/blog/entrepreneuriat-ia-lancer-projet-professionnel-2025" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://quizorientation.online/en/blog/entrepreneurship-ai-launch-professional-project-2025" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://quizorientation.online/ar/blog/ريادة-الأعمال-الذكاء-الاصطناعي-2025" />
+    <priority>0.8</priority>
   </url>
 </urlset>
