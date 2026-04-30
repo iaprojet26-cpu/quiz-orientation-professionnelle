@@ -8,15 +8,36 @@ import { supabase } from '../lib/supabase'
  * Vérifier l'authentification admin
  */
 export const checkAdminAuth = async (password) => {
-  // Mot de passe stocké dans variable d'environnement
-  const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD || 'admin123'
-  
-  if (password === adminPassword) {
+  // Mot de passe stocké dans variable d'environnement.
+  // On trim pour éviter les erreurs causées par des espaces invisibles.
+  const configuredPassword = (import.meta.env.VITE_ADMIN_PASSWORD || 'admin123').trim()
+  const providedPassword = (password || '').trim()
+
+  if (providedPassword && providedPassword === configuredPassword) {
     // Stocker la session dans localStorage
     localStorage.setItem('admin_authenticated', 'true')
     localStorage.setItem('admin_auth_time', Date.now().toString())
     return true
   }
+  return false
+}
+
+/**
+ * Authentification de récupération via token d'urgence.
+ * Utilisation: /admin/login?admin_token=VOTRE_TOKEN
+ */
+export const checkAdminRecoveryToken = (token) => {
+  const configuredToken = (import.meta.env.VITE_ADMIN_RECOVERY_TOKEN || '').trim()
+  const providedToken = (token || '').trim()
+
+  if (!configuredToken || !providedToken) return false
+
+  if (providedToken === configuredToken) {
+    localStorage.setItem('admin_authenticated', 'true')
+    localStorage.setItem('admin_auth_time', Date.now().toString())
+    return true
+  }
+
   return false
 }
 
@@ -212,6 +233,24 @@ export const generateSitemap = async () => {
 
     if (error) throw error
 
+    // Récupérer le contenu Hub publié/actif
+    const [careerPathsRes, opportunitiesRes, studyProgramsRes, careerGuidesRes] = await Promise.all([
+      supabase.from('career_paths').select('slug, updated_at').eq('active', true).order('updated_at', { ascending: false }),
+      supabase.from('opportunities').select('id, updated_at').eq('is_active', true).order('updated_at', { ascending: false }),
+      supabase.from('study_programs').select('slug, updated_at').eq('is_active', true).order('updated_at', { ascending: false }),
+      supabase.from('career_guides').select('slug, updated_at').eq('is_published', true).order('updated_at', { ascending: false })
+    ])
+
+    if (careerPathsRes.error) throw careerPathsRes.error
+    if (opportunitiesRes.error) throw opportunitiesRes.error
+    if (studyProgramsRes.error) throw studyProgramsRes.error
+    if (careerGuidesRes.error) throw careerGuidesRes.error
+
+    const careerPaths = careerPathsRes.data || []
+    const opportunities = opportunitiesRes.data || []
+    const studyPrograms = studyProgramsRes.data || []
+    const careerGuides = careerGuidesRes.data || []
+
     const today = new Date().toISOString().split('T')[0]
     
     // URLs de base
@@ -224,7 +263,22 @@ export const generateSitemap = async () => {
       { loc: 'https://quizorientation.online/ar/quiz', priority: '0.9', changefreq: 'weekly' },
       { loc: 'https://quizorientation.online/fr/blog', priority: '0.7', changefreq: 'weekly' },
       { loc: 'https://quizorientation.online/en/blog', priority: '0.7', changefreq: 'weekly' },
-      { loc: 'https://quizorientation.online/ar/blog', priority: '0.7', changefreq: 'weekly' }
+      { loc: 'https://quizorientation.online/ar/blog', priority: '0.7', changefreq: 'weekly' },
+      { loc: 'https://quizorientation.online/fr/career-paths', priority: '0.8', changefreq: 'weekly' },
+      { loc: 'https://quizorientation.online/en/career-paths', priority: '0.8', changefreq: 'weekly' },
+      { loc: 'https://quizorientation.online/ar/career-paths', priority: '0.8', changefreq: 'weekly' },
+      { loc: 'https://quizorientation.online/fr/opportunities', priority: '0.8', changefreq: 'daily' },
+      { loc: 'https://quizorientation.online/en/opportunities', priority: '0.8', changefreq: 'daily' },
+      { loc: 'https://quizorientation.online/ar/opportunities', priority: '0.8', changefreq: 'daily' },
+      { loc: 'https://quizorientation.online/fr/study-in-morocco', priority: '0.8', changefreq: 'weekly' },
+      { loc: 'https://quizorientation.online/en/study-in-morocco', priority: '0.8', changefreq: 'weekly' },
+      { loc: 'https://quizorientation.online/ar/study-in-morocco', priority: '0.8', changefreq: 'weekly' },
+      { loc: 'https://quizorientation.online/fr/career-guides', priority: '0.8', changefreq: 'weekly' },
+      { loc: 'https://quizorientation.online/en/career-guides', priority: '0.8', changefreq: 'weekly' },
+      { loc: 'https://quizorientation.online/ar/career-guides', priority: '0.8', changefreq: 'weekly' },
+      { loc: 'https://quizorientation.online/fr/career-matching', priority: '0.7', changefreq: 'weekly' },
+      { loc: 'https://quizorientation.online/en/career-matching', priority: '0.7', changefreq: 'weekly' },
+      { loc: 'https://quizorientation.online/ar/career-matching', priority: '0.7', changefreq: 'weekly' }
     ]
 
     // URLs des articles
@@ -237,6 +291,53 @@ export const generateSitemap = async () => {
           lastmod,
           priority: '0.8',
           changefreq: 'monthly'
+        })
+      })
+    })
+
+    // URLs détail du hub
+    const hubDetailUrls = []
+    careerPaths.forEach((item) => {
+      const lastmod = item.updated_at ? new Date(item.updated_at).toISOString().split('T')[0] : today
+      ;['fr', 'en', 'ar'].forEach((lang) => {
+        hubDetailUrls.push({
+          loc: `https://quizorientation.online/${lang}/career-paths#${item.slug}`,
+          lastmod,
+          priority: '0.7',
+          changefreq: 'monthly'
+        })
+      })
+    })
+    studyPrograms.forEach((item) => {
+      const lastmod = item.updated_at ? new Date(item.updated_at).toISOString().split('T')[0] : today
+      ;['fr', 'en', 'ar'].forEach((lang) => {
+        hubDetailUrls.push({
+          loc: `https://quizorientation.online/${lang}/study-in-morocco#${item.slug}`,
+          lastmod,
+          priority: '0.7',
+          changefreq: 'monthly'
+        })
+      })
+    })
+    careerGuides.forEach((item) => {
+      const lastmod = item.updated_at ? new Date(item.updated_at).toISOString().split('T')[0] : today
+      ;['fr', 'en', 'ar'].forEach((lang) => {
+        hubDetailUrls.push({
+          loc: `https://quizorientation.online/${lang}/career-guides#${item.slug}`,
+          lastmod,
+          priority: '0.7',
+          changefreq: 'monthly'
+        })
+      })
+    })
+    opportunities.forEach((item) => {
+      const lastmod = item.updated_at ? new Date(item.updated_at).toISOString().split('T')[0] : today
+      ;['fr', 'en', 'ar'].forEach((lang) => {
+        hubDetailUrls.push({
+          loc: `https://quizorientation.online/${lang}/opportunities#op-${item.id}`,
+          lastmod,
+          priority: '0.7',
+          changefreq: 'weekly'
         })
       })
     })
@@ -260,6 +361,17 @@ export const generateSitemap = async () => {
 
     // Ajouter les URLs des articles
     articleUrls.forEach(url => {
+      xml += `  <url>
+    <loc>${url.loc}</loc>
+    <lastmod>${url.lastmod}</lastmod>
+    <changefreq>${url.changefreq}</changefreq>
+    <priority>${url.priority}</priority>
+  </url>
+`
+    })
+
+    // Ajouter les URLs detail hub
+    hubDetailUrls.forEach(url => {
       xml += `  <url>
     <loc>${url.loc}</loc>
     <lastmod>${url.lastmod}</lastmod>
@@ -476,6 +588,500 @@ export const deleteJob = async (id) => {
     return true
   } catch (error) {
     console.error('Erreur lors de la suppression du métier:', error)
+    return false
+  }
+}
+
+// ============================================
+// HUB CONTENT - CAREER PATHS
+// ============================================
+
+const parseCsvToArray = (value) => {
+  if (Array.isArray(value)) return value
+  if (!value || typeof value !== 'string') return []
+  return value.split(',').map((item) => item.trim()).filter(Boolean)
+}
+
+export const getAllCareerPathsAdmin = async () => {
+  if (!supabase) return []
+  try {
+    const { data, error } = await supabase
+      .from('career_paths')
+      .select(`
+        *,
+        career_path_translations (*)
+      `)
+      .order('created_at', { ascending: false })
+
+    if (error) throw error
+    return data || []
+  } catch (error) {
+    console.error('Erreur chargement career paths:', error)
+    throw error
+  }
+}
+
+export const createCareerPath = async (formData) => {
+  if (!supabase) return null
+  try {
+    const baseData = {
+      slug: formData.slug,
+      level_group: formData.level_group || null,
+      salary_min_monthly: formData.salary_min_monthly ? parseInt(formData.salary_min_monthly, 10) : null,
+      salary_max_monthly: formData.salary_max_monthly ? parseInt(formData.salary_max_monthly, 10) : null,
+      active: formData.active !== false
+    }
+
+    const { data: created, error: createError } = await supabase
+      .from('career_paths')
+      .insert(baseData)
+      .select()
+      .single()
+    if (createError) throw createError
+
+    const translations = [
+      {
+        career_path_id: created.id,
+        language: 'fr',
+        title: formData.title_fr,
+        short_description: formData.short_description_fr,
+        long_description: formData.long_description_fr || '',
+        skills: parseCsvToArray(formData.skills_fr),
+        education_paths: parseCsvToArray(formData.education_paths_fr),
+        opportunities_summary: formData.opportunities_summary_fr || ''
+      },
+      {
+        career_path_id: created.id,
+        language: 'en',
+        title: formData.title_en || formData.title_fr,
+        short_description: formData.short_description_en || formData.short_description_fr,
+        long_description: formData.long_description_en || '',
+        skills: parseCsvToArray(formData.skills_en),
+        education_paths: parseCsvToArray(formData.education_paths_en),
+        opportunities_summary: formData.opportunities_summary_en || ''
+      },
+      {
+        career_path_id: created.id,
+        language: 'ar',
+        title: formData.title_ar || formData.title_fr,
+        short_description: formData.short_description_ar || formData.short_description_fr,
+        long_description: formData.long_description_ar || '',
+        skills: parseCsvToArray(formData.skills_ar),
+        education_paths: parseCsvToArray(formData.education_paths_ar),
+        opportunities_summary: formData.opportunities_summary_ar || ''
+      }
+    ]
+
+    const { error: trError } = await supabase.from('career_path_translations').insert(translations)
+    if (trError) throw trError
+    return created
+  } catch (error) {
+    console.error('Erreur creation career path:', error)
+    throw error
+  }
+}
+
+export const updateCareerPath = async (id, formData) => {
+  if (!supabase) return null
+  try {
+    const baseData = {
+      slug: formData.slug,
+      level_group: formData.level_group || null,
+      salary_min_monthly: formData.salary_min_monthly ? parseInt(formData.salary_min_monthly, 10) : null,
+      salary_max_monthly: formData.salary_max_monthly ? parseInt(formData.salary_max_monthly, 10) : null,
+      active: formData.active !== false
+    }
+    const { error: upError } = await supabase.from('career_paths').update(baseData).eq('id', id)
+    if (upError) throw upError
+
+    const translations = [
+      ['fr', formData.title_fr, formData.short_description_fr, formData.long_description_fr, formData.skills_fr, formData.education_paths_fr, formData.opportunities_summary_fr],
+      ['en', formData.title_en || formData.title_fr, formData.short_description_en || formData.short_description_fr, formData.long_description_en, formData.skills_en, formData.education_paths_en, formData.opportunities_summary_en],
+      ['ar', formData.title_ar || formData.title_fr, formData.short_description_ar || formData.short_description_fr, formData.long_description_ar, formData.skills_ar, formData.education_paths_ar, formData.opportunities_summary_ar]
+    ]
+
+    for (const [language, title, shortDescription, longDescription, skills, educationPaths, opportunitiesSummary] of translations) {
+      const { error } = await supabase.from('career_path_translations').upsert({
+        career_path_id: id,
+        language,
+        title,
+        short_description: shortDescription,
+        long_description: longDescription || '',
+        skills: parseCsvToArray(skills),
+        education_paths: parseCsvToArray(educationPaths),
+        opportunities_summary: opportunitiesSummary || ''
+      }, { onConflict: 'career_path_id,language' })
+      if (error) throw error
+    }
+    return true
+  } catch (error) {
+    console.error('Erreur update career path:', error)
+    throw error
+  }
+}
+
+export const deleteCareerPath = async (id) => {
+  if (!supabase) return false
+  try {
+    const { error } = await supabase.from('career_paths').delete().eq('id', id)
+    if (error) throw error
+    return true
+  } catch (error) {
+    console.error('Erreur suppression career path:', error)
+    return false
+  }
+}
+
+// ============================================
+// HUB CONTENT - OPPORTUNITIES
+// ============================================
+
+export const getAllOpportunitiesAdmin = async () => {
+  if (!supabase) return []
+  try {
+    const { data, error } = await supabase
+      .from('opportunities')
+      .select(`
+        *,
+        opportunity_translations (*)
+      `)
+      .order('created_at', { ascending: false })
+    if (error) throw error
+    return data || []
+  } catch (error) {
+    console.error('Erreur chargement opportunities:', error)
+    throw error
+  }
+}
+
+export const createOpportunity = async (formData) => {
+  if (!supabase) return null
+  try {
+    const baseData = {
+      type: formData.type,
+      company_name: formData.company_name || null,
+      city: formData.city || null,
+      country: formData.country || 'Morocco',
+      source_url: formData.source_url || null,
+      application_deadline: formData.application_deadline || null,
+      is_remote: !!formData.is_remote,
+      is_active: formData.is_active !== false
+    }
+    const { data: created, error: createError } = await supabase
+      .from('opportunities')
+      .insert(baseData)
+      .select()
+      .single()
+    if (createError) throw createError
+
+    const translations = [
+      {
+        opportunity_id: created.id,
+        language: 'fr',
+        title: formData.title_fr,
+        description: formData.description_fr,
+        requirements: parseCsvToArray(formData.requirements_fr),
+        application_steps: parseCsvToArray(formData.application_steps_fr)
+      },
+      {
+        opportunity_id: created.id,
+        language: 'en',
+        title: formData.title_en || formData.title_fr,
+        description: formData.description_en || formData.description_fr,
+        requirements: parseCsvToArray(formData.requirements_en),
+        application_steps: parseCsvToArray(formData.application_steps_en)
+      },
+      {
+        opportunity_id: created.id,
+        language: 'ar',
+        title: formData.title_ar || formData.title_fr,
+        description: formData.description_ar || formData.description_fr,
+        requirements: parseCsvToArray(formData.requirements_ar),
+        application_steps: parseCsvToArray(formData.application_steps_ar)
+      }
+    ]
+    const { error: trError } = await supabase.from('opportunity_translations').insert(translations)
+    if (trError) throw trError
+    return created
+  } catch (error) {
+    console.error('Erreur creation opportunity:', error)
+    throw error
+  }
+}
+
+export const updateOpportunity = async (id, formData) => {
+  if (!supabase) return null
+  try {
+    const baseData = {
+      type: formData.type,
+      company_name: formData.company_name || null,
+      city: formData.city || null,
+      country: formData.country || 'Morocco',
+      source_url: formData.source_url || null,
+      application_deadline: formData.application_deadline || null,
+      is_remote: !!formData.is_remote,
+      is_active: formData.is_active !== false
+    }
+    const { error: upError } = await supabase.from('opportunities').update(baseData).eq('id', id)
+    if (upError) throw upError
+
+    const translations = [
+      ['fr', formData.title_fr, formData.description_fr, formData.requirements_fr, formData.application_steps_fr],
+      ['en', formData.title_en || formData.title_fr, formData.description_en || formData.description_fr, formData.requirements_en, formData.application_steps_en],
+      ['ar', formData.title_ar || formData.title_fr, formData.description_ar || formData.description_fr, formData.requirements_ar, formData.application_steps_ar]
+    ]
+    for (const [language, title, description, requirements, applicationSteps] of translations) {
+      const { error } = await supabase.from('opportunity_translations').upsert({
+        opportunity_id: id,
+        language,
+        title,
+        description,
+        requirements: parseCsvToArray(requirements),
+        application_steps: parseCsvToArray(applicationSteps)
+      }, { onConflict: 'opportunity_id,language' })
+      if (error) throw error
+    }
+    return true
+  } catch (error) {
+    console.error('Erreur update opportunity:', error)
+    throw error
+  }
+}
+
+export const deleteOpportunity = async (id) => {
+  if (!supabase) return false
+  try {
+    const { error } = await supabase.from('opportunities').delete().eq('id', id)
+    if (error) throw error
+    return true
+  } catch (error) {
+    console.error('Erreur suppression opportunity:', error)
+    return false
+  }
+}
+
+// ============================================
+// HUB CONTENT - STUDY PROGRAMS
+// ============================================
+
+export const getAllStudyProgramsAdmin = async () => {
+  if (!supabase) return []
+  try {
+    const { data, error } = await supabase
+      .from('study_programs')
+      .select(`
+        *,
+        study_program_translations (*)
+      `)
+      .order('created_at', { ascending: false })
+    if (error) throw error
+    return data || []
+  } catch (error) {
+    console.error('Erreur chargement study programs:', error)
+    throw error
+  }
+}
+
+export const createStudyProgram = async (formData) => {
+  if (!supabase) return null
+  try {
+    const { data: created, error: createError } = await supabase
+      .from('study_programs')
+      .insert({
+        slug: formData.slug,
+        institution_name: formData.institution_name,
+        city: formData.city || null,
+        degree_level: formData.degree_level || null,
+        duration_months: formData.duration_months ? parseInt(formData.duration_months, 10) : null,
+        is_active: formData.is_active !== false
+      })
+      .select()
+      .single()
+    if (createError) throw createError
+
+    const translations = [
+      ['fr', formData.title_fr, formData.description_fr, formData.admission_requirements_fr, formData.outcomes_fr],
+      ['en', formData.title_en || formData.title_fr, formData.description_en || formData.description_fr, formData.admission_requirements_en, formData.outcomes_en],
+      ['ar', formData.title_ar || formData.title_fr, formData.description_ar || formData.description_fr, formData.admission_requirements_ar, formData.outcomes_ar]
+    ].map(([language, title, description, admissionRequirements, outcomes]) => ({
+      study_program_id: created.id,
+      language,
+      title,
+      description,
+      admission_requirements: parseCsvToArray(admissionRequirements),
+      outcomes: parseCsvToArray(outcomes)
+    }))
+
+    const { error: trError } = await supabase.from('study_program_translations').insert(translations)
+    if (trError) throw trError
+    return created
+  } catch (error) {
+    console.error('Erreur creation study program:', error)
+    throw error
+  }
+}
+
+export const updateStudyProgram = async (id, formData) => {
+  if (!supabase) return null
+  try {
+    const { error: upError } = await supabase
+      .from('study_programs')
+      .update({
+        slug: formData.slug,
+        institution_name: formData.institution_name,
+        city: formData.city || null,
+        degree_level: formData.degree_level || null,
+        duration_months: formData.duration_months ? parseInt(formData.duration_months, 10) : null,
+        is_active: formData.is_active !== false
+      })
+      .eq('id', id)
+    if (upError) throw upError
+
+    const translations = [
+      ['fr', formData.title_fr, formData.description_fr, formData.admission_requirements_fr, formData.outcomes_fr],
+      ['en', formData.title_en || formData.title_fr, formData.description_en || formData.description_fr, formData.admission_requirements_en, formData.outcomes_en],
+      ['ar', formData.title_ar || formData.title_fr, formData.description_ar || formData.description_fr, formData.admission_requirements_ar, formData.outcomes_ar]
+    ]
+    for (const [language, title, description, admissionRequirements, outcomes] of translations) {
+      const { error } = await supabase.from('study_program_translations').upsert({
+        study_program_id: id,
+        language,
+        title,
+        description,
+        admission_requirements: parseCsvToArray(admissionRequirements),
+        outcomes: parseCsvToArray(outcomes)
+      }, { onConflict: 'study_program_id,language' })
+      if (error) throw error
+    }
+    return true
+  } catch (error) {
+    console.error('Erreur update study program:', error)
+    throw error
+  }
+}
+
+export const deleteStudyProgram = async (id) => {
+  if (!supabase) return false
+  try {
+    const { error } = await supabase.from('study_programs').delete().eq('id', id)
+    if (error) throw error
+    return true
+  } catch (error) {
+    console.error('Erreur suppression study program:', error)
+    return false
+  }
+}
+
+// ============================================
+// HUB CONTENT - CAREER GUIDES
+// ============================================
+
+export const getAllCareerGuidesAdmin = async () => {
+  if (!supabase) return []
+  try {
+    const { data, error } = await supabase
+      .from('career_guides')
+      .select(`
+        *,
+        career_guide_translations (*)
+      `)
+      .order('created_at', { ascending: false })
+    if (error) throw error
+    return data || []
+  } catch (error) {
+    console.error('Erreur chargement career guides:', error)
+    throw error
+  }
+}
+
+export const createCareerGuide = async (formData) => {
+  if (!supabase) return null
+  try {
+    const isPublished = formData.is_published !== false
+    const { data: created, error: createError } = await supabase
+      .from('career_guides')
+      .insert({
+        slug: formData.slug,
+        category: formData.category || 'skills',
+        reading_minutes: formData.reading_minutes ? parseInt(formData.reading_minutes, 10) : 6,
+        is_published: isPublished,
+        published_at: isPublished ? (formData.published_at || new Date().toISOString()) : null
+      })
+      .select()
+      .single()
+    if (createError) throw createError
+
+    const translations = [
+      ['fr', formData.title_fr, formData.summary_fr, formData.body_markdown_fr, formData.seo_title_fr, formData.seo_description_fr],
+      ['en', formData.title_en || formData.title_fr, formData.summary_en || formData.summary_fr, formData.body_markdown_en || '', formData.seo_title_en, formData.seo_description_en],
+      ['ar', formData.title_ar || formData.title_fr, formData.summary_ar || formData.summary_fr, formData.body_markdown_ar || '', formData.seo_title_ar, formData.seo_description_ar]
+    ].map(([language, title, summary, bodyMarkdown, seoTitle, seoDescription]) => ({
+      career_guide_id: created.id,
+      language,
+      title,
+      summary,
+      body_markdown: bodyMarkdown || '',
+      seo_title: seoTitle || null,
+      seo_description: seoDescription || null
+    }))
+
+    const { error: trError } = await supabase.from('career_guide_translations').insert(translations)
+    if (trError) throw trError
+    return created
+  } catch (error) {
+    console.error('Erreur creation career guide:', error)
+    throw error
+  }
+}
+
+export const updateCareerGuide = async (id, formData) => {
+  if (!supabase) return null
+  try {
+    const isPublished = formData.is_published !== false
+    const { error: upError } = await supabase
+      .from('career_guides')
+      .update({
+        slug: formData.slug,
+        category: formData.category || 'skills',
+        reading_minutes: formData.reading_minutes ? parseInt(formData.reading_minutes, 10) : 6,
+        is_published: isPublished,
+        published_at: isPublished ? (formData.published_at || new Date().toISOString()) : null
+      })
+      .eq('id', id)
+    if (upError) throw upError
+
+    const translations = [
+      ['fr', formData.title_fr, formData.summary_fr, formData.body_markdown_fr, formData.seo_title_fr, formData.seo_description_fr],
+      ['en', formData.title_en || formData.title_fr, formData.summary_en || formData.summary_fr, formData.body_markdown_en || '', formData.seo_title_en, formData.seo_description_en],
+      ['ar', formData.title_ar || formData.title_fr, formData.summary_ar || formData.summary_fr, formData.body_markdown_ar || '', formData.seo_title_ar, formData.seo_description_ar]
+    ]
+    for (const [language, title, summary, bodyMarkdown, seoTitle, seoDescription] of translations) {
+      const { error } = await supabase.from('career_guide_translations').upsert({
+        career_guide_id: id,
+        language,
+        title,
+        summary,
+        body_markdown: bodyMarkdown || '',
+        seo_title: seoTitle || null,
+        seo_description: seoDescription || null
+      }, { onConflict: 'career_guide_id,language' })
+      if (error) throw error
+    }
+    return true
+  } catch (error) {
+    console.error('Erreur update career guide:', error)
+    throw error
+  }
+}
+
+export const deleteCareerGuide = async (id) => {
+  if (!supabase) return false
+  try {
+    const { error } = await supabase.from('career_guides').delete().eq('id', id)
+    if (error) throw error
+    return true
+  } catch (error) {
+    console.error('Erreur suppression career guide:', error)
     return false
   }
 }

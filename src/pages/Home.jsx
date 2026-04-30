@@ -5,16 +5,28 @@ import Results from '../components/Results'
 import SEOHead from '../components/SEOHead'
 import { getHomepageContent } from '../services/seoService'
 import { getRecentArticles } from '../services/blogService'
+import { getCareerMatchingContent } from '../services/hubService'
 import { Link } from 'react-router-dom'
 import OptimizedImage from '../components/OptimizedImage'
 
 function Home() {
   const { t, i18n } = useTranslation()
+  let language = i18n.language || 'fr'
+  if (language.includes('-')) language = language.split('-')[0]
+  if (!['fr', 'en', 'ar'].includes(language)) language = 'fr'
+  const langPrefix = language === 'fr' ? '' : `/${language}`
   const [quizCompleted, setQuizCompleted] = useState(false)
   const [quizResults, setQuizResults] = useState(null)
   const [seoContent, setSeoContent] = useState(getHomepageContent(i18n.language || 'fr'))
   const [recentArticles, setRecentArticles] = useState([])
   const [loadingArticles, setLoadingArticles] = useState(true)
+  const [personalized, setPersonalized] = useState({
+    careerPaths: [],
+    opportunities: [],
+    studyPrograms: [],
+    careerGuides: []
+  })
+  const [loadingPersonalized, setLoadingPersonalized] = useState(false)
   
   // Mettre à jour le contenu SEO quand la langue change
   useEffect(() => {
@@ -71,6 +83,24 @@ function Home() {
     // Délai initial pour ne pas bloquer le rendu
     setTimeout(() => loadRecentArticles(), 2000)
   }, [i18n.language, quizCompleted])
+
+  useEffect(() => {
+    const loadPersonalized = async () => {
+      if (!quizCompleted || !quizResults?.profile?.id) {
+        setPersonalized({ careerPaths: [], opportunities: [], studyPrograms: [], careerGuides: [] })
+        return
+      }
+      setLoadingPersonalized(true)
+      const data = await getCareerMatchingContent({
+        profileId: quizResults.profile.id,
+        profileName: quizResults.profile.nom,
+        lang: language
+      })
+      setPersonalized(data)
+      setLoadingPersonalized(false)
+    }
+    loadPersonalized()
+  }, [quizCompleted, quizResults?.profile?.id, quizResults?.profile?.nom, language])
 
   const handleQuizComplete = (results) => {
     setQuizResults(results)
@@ -129,8 +159,68 @@ function Home() {
           <Results results={quizResults} onRestart={handleRestart} />
         )}
 
+        {quizCompleted && (
+          <section className="mt-10 max-w-6xl mx-auto">
+            <div className="bg-white rounded-xl shadow-md p-6 md:p-8">
+              <h2 className="text-2xl font-bold text-primary-900 mb-3">
+                {language === 'fr' ? 'Recommande pour vous' : language === 'en' ? 'Recommended for you' : 'موصى به لك'}
+              </h2>
+              <p className="text-gray-700 mb-5">
+                {language === 'fr'
+                  ? 'Selection personnalisee basee sur votre profil quiz.'
+                  : language === 'en'
+                  ? 'Personalized selection based on your quiz profile.'
+                  : 'اختيارات مخصصة بناء على نتيجة الاختبار.'}
+              </p>
+              {loadingPersonalized ? (
+                <p className="text-gray-600">Chargement...</p>
+              ) : (
+                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                  {personalized.careerPaths.length > 0 && <Link to={`${langPrefix}/career-paths`} className="bg-primary-50 hover:bg-primary-100 rounded-lg p-4 font-semibold text-primary-900">Career Paths ({personalized.careerPaths.length})</Link>}
+                  {personalized.opportunities.length > 0 && <Link to={`${langPrefix}/opportunities`} className="bg-primary-50 hover:bg-primary-100 rounded-lg p-4 font-semibold text-primary-900">Opportunities ({personalized.opportunities.length})</Link>}
+                  {personalized.studyPrograms.length > 0 && <Link to={`${langPrefix}/study-in-morocco`} className="bg-primary-50 hover:bg-primary-100 rounded-lg p-4 font-semibold text-primary-900">Study in Morocco ({personalized.studyPrograms.length})</Link>}
+                  {personalized.careerGuides.length > 0 && <Link to={`${langPrefix}/career-guides`} className="bg-primary-50 hover:bg-primary-100 rounded-lg p-4 font-semibold text-primary-900">Career Guides ({personalized.careerGuides.length})</Link>}
+                  <Link
+                    to={`${langPrefix}/career-matching?profile_id=${encodeURIComponent(quizResults?.profile?.id || '')}&profile_name=${encodeURIComponent(quizResults?.profile?.nom || '')}`}
+                    className="bg-white border border-primary-200 hover:bg-primary-50 rounded-lg p-4 font-semibold text-primary-900"
+                  >
+                    {language === 'fr' ? 'Voir le matching detaille' : language === 'en' ? 'Open detailed matching' : 'عرض المطابقة التفصيلية'}
+                  </Link>
+                </div>
+              )}
+            </div>
+          </section>
+        )}
+
 
         {/* Section Articles Récents - Toujours affichée en bas de page (même après quiz) */}
+        <section className="mt-16 max-w-6xl mx-auto">
+          <div className="bg-white rounded-xl shadow-md p-6 md:p-8">
+            <h2 className="text-3xl font-bold text-primary-900 mb-3">
+              {i18n.language === 'fr'
+                ? "Hub d'orientation, formation et employabilite"
+                : i18n.language === 'en'
+                ? 'Career, Training and Employability Hub'
+                : 'منصة التوجيه والتكوين وقابلية التوظيف'}
+            </h2>
+            <p className="text-gray-700 mb-6">
+              {i18n.language === 'fr'
+                ? 'Decouvrez les rubriques strategiques pour passer du quiz a un plan d action concret.'
+                : i18n.language === 'en'
+                ? 'Explore strategic sections to turn quiz insights into a practical action plan.'
+                : 'اكتشف الأقسام الاستراتيجية لتحويل نتائج الاختبار إلى خطة عملية.'}
+            </p>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <Link to={`${langPrefix}/career-paths`} className="bg-primary-50 hover:bg-primary-100 rounded-lg p-4 font-semibold text-primary-900">Career Paths</Link>
+              <Link to={`${langPrefix}/opportunities`} className="bg-primary-50 hover:bg-primary-100 rounded-lg p-4 font-semibold text-primary-900">Opportunities</Link>
+              <Link to={`${langPrefix}/study-in-morocco`} className="bg-primary-50 hover:bg-primary-100 rounded-lg p-4 font-semibold text-primary-900">Study in Morocco</Link>
+              <Link to={`${langPrefix}/career-guides`} className="bg-primary-50 hover:bg-primary-100 rounded-lg p-4 font-semibold text-primary-900">Career Guides</Link>
+              <Link to={`${langPrefix}/career-matching`} className="bg-primary-50 hover:bg-primary-100 rounded-lg p-4 font-semibold text-primary-900">Career Matching</Link>
+              <Link to={`${langPrefix}/free-tools`} className="bg-primary-50 hover:bg-primary-100 rounded-lg p-4 font-semibold text-primary-900">Free Tools</Link>
+            </div>
+          </div>
+        </section>
+
         <section className="mt-16 mb-8 max-w-6xl mx-auto" data-articles-section>
             <div className="flex justify-between items-center mb-8">
               <h2 className="text-3xl font-bold text-primary-900">

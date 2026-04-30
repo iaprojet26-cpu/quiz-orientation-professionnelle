@@ -1,16 +1,44 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { isAdminAuthenticated, logoutAdmin, getAllArticlesAdmin, deleteArticle, generateSitemap, getAllJobsAdmin, deleteJob } from '../services/adminService'
+import {
+  isAdminAuthenticated,
+  logoutAdmin,
+  getAllArticlesAdmin,
+  deleteArticle,
+  generateSitemap,
+  getAllJobsAdmin,
+  deleteJob,
+  getAllCareerPathsAdmin,
+  deleteCareerPath,
+  getAllOpportunitiesAdmin,
+  deleteOpportunity,
+  getAllStudyProgramsAdmin,
+  deleteStudyProgram,
+  getAllCareerGuidesAdmin,
+  deleteCareerGuide
+} from '../services/adminService'
 import ArticleEditor from '../components/ArticleEditor'
 import JobEditor from '../components/JobEditor'
+import CareerPathEditor from '../components/CareerPathEditor'
+import OpportunityEditor from '../components/OpportunityEditor'
+import StudyProgramEditor from '../components/StudyProgramEditor'
+import CareerGuideEditor from '../components/CareerGuideEditor'
 
 function AdminDashboard() {
-  const [activeTab, setActiveTab] = useState('articles') // 'articles' ou 'jobs'
+  const [activeTab, setActiveTab] = useState('articles')
   const [articles, setArticles] = useState([])
   const [jobs, setJobs] = useState([])
+  const [careerPaths, setCareerPaths] = useState([])
+  const [opportunities, setOpportunities] = useState([])
+  const [studyPrograms, setStudyPrograms] = useState([])
+  const [careerGuides, setCareerGuides] = useState([])
   const [loading, setLoading] = useState(true)
   const [editingArticle, setEditingArticle] = useState(null)
   const [editingJob, setEditingJob] = useState(null)
+  const [editingCareerPath, setEditingCareerPath] = useState(null)
+  const [editingOpportunity, setEditingOpportunity] = useState(null)
+  const [editingStudyProgram, setEditingStudyProgram] = useState(null)
+  const [editingCareerGuide, setEditingCareerGuide] = useState(null)
   const [showEditor, setShowEditor] = useState(false)
   const [sitemapGenerating, setSitemapGenerating] = useState(false)
   const navigate = useNavigate()
@@ -22,11 +50,12 @@ function AdminDashboard() {
       return
     }
 
-    if (activeTab === 'articles') {
-      loadArticles()
-    } else {
-      loadJobs()
-    }
+    if (activeTab === 'articles') loadArticles()
+    else if (activeTab === 'jobs') loadJobs()
+    else if (activeTab === 'careerPaths') loadCareerPaths()
+    else if (activeTab === 'opportunities') loadOpportunities()
+    else if (activeTab === 'studyPrograms') loadStudyPrograms()
+    else loadCareerGuides()
   }, [navigate, activeTab])
 
   const [error, setError] = useState('')
@@ -68,6 +97,70 @@ function AdminDashboard() {
     }
   }
 
+  const loadCareerPaths = async () => {
+    setLoading(true)
+    setError('')
+    try {
+      const data = await getAllCareerPathsAdmin()
+      setCareerPaths(data)
+      if (data.length === 0) {
+        setError('Aucun career path trouvé. Exécutez database/hub_schema.sql dans Supabase SQL Editor.')
+      }
+    } catch (error) {
+      setError(`Erreur : ${error.message || 'Impossible de charger les career paths.'}`)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const loadOpportunities = async () => {
+    setLoading(true)
+    setError('')
+    try {
+      const data = await getAllOpportunitiesAdmin()
+      setOpportunities(data)
+      if (data.length === 0) {
+        setError('Aucune opportunité trouvée. Exécutez database/hub_schema.sql dans Supabase SQL Editor.')
+      }
+    } catch (error) {
+      setError(`Erreur : ${error.message || 'Impossible de charger les opportunités.'}`)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const loadStudyPrograms = async () => {
+    setLoading(true)
+    setError('')
+    try {
+      const data = await getAllStudyProgramsAdmin()
+      setStudyPrograms(data)
+      if (data.length === 0) {
+        setError('Aucun study program trouvé.')
+      }
+    } catch (error) {
+      setError(`Erreur : ${error.message || 'Impossible de charger les study programs.'}`)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const loadCareerGuides = async () => {
+    setLoading(true)
+    setError('')
+    try {
+      const data = await getAllCareerGuidesAdmin()
+      setCareerGuides(data)
+      if (data.length === 0) {
+        setError('Aucun career guide trouvé.')
+      }
+    } catch (error) {
+      setError(`Erreur : ${error.message || 'Impossible de charger les career guides.'}`)
+    } finally {
+      setLoading(false)
+    }
+  }
+
   const handleLogout = () => {
     logoutAdmin()
     navigate('/admin/login')
@@ -94,6 +187,82 @@ function AdminDashboard() {
   const handleEditJob = (job) => {
     setEditingJob(job)
     setEditingArticle(null)
+    setShowEditor(true)
+  }
+
+  const handleNewCareerPath = () => {
+    setEditingCareerPath(null)
+    setEditingArticle(null)
+    setEditingJob(null)
+    setEditingOpportunity(null)
+    setShowEditor(true)
+  }
+
+  const handleEditCareerPath = (careerPath) => {
+    setEditingCareerPath(careerPath)
+    setEditingArticle(null)
+    setEditingJob(null)
+    setEditingOpportunity(null)
+    setShowEditor(true)
+  }
+
+  const handleNewOpportunity = () => {
+    setEditingOpportunity(null)
+    setEditingArticle(null)
+    setEditingJob(null)
+    setEditingCareerPath(null)
+    setEditingStudyProgram(null)
+    setEditingCareerGuide(null)
+    setShowEditor(true)
+  }
+
+  const handleEditOpportunity = (opportunity) => {
+    setEditingOpportunity(opportunity)
+    setEditingArticle(null)
+    setEditingJob(null)
+    setEditingCareerPath(null)
+    setEditingStudyProgram(null)
+    setEditingCareerGuide(null)
+    setShowEditor(true)
+  }
+
+  const handleNewStudyProgram = () => {
+    setEditingStudyProgram(null)
+    setEditingArticle(null)
+    setEditingJob(null)
+    setEditingCareerPath(null)
+    setEditingOpportunity(null)
+    setEditingCareerGuide(null)
+    setShowEditor(true)
+  }
+
+  const handleEditStudyProgram = (program) => {
+    setEditingStudyProgram(program)
+    setEditingArticle(null)
+    setEditingJob(null)
+    setEditingCareerPath(null)
+    setEditingOpportunity(null)
+    setEditingCareerGuide(null)
+    setShowEditor(true)
+  }
+
+  const handleNewCareerGuide = () => {
+    setEditingCareerGuide(null)
+    setEditingArticle(null)
+    setEditingJob(null)
+    setEditingCareerPath(null)
+    setEditingOpportunity(null)
+    setEditingStudyProgram(null)
+    setShowEditor(true)
+  }
+
+  const handleEditCareerGuide = (guide) => {
+    setEditingCareerGuide(guide)
+    setEditingArticle(null)
+    setEditingJob(null)
+    setEditingCareerPath(null)
+    setEditingOpportunity(null)
+    setEditingStudyProgram(null)
     setShowEditor(true)
   }
 
@@ -133,16 +302,45 @@ function AdminDashboard() {
     }
   }
 
+  const handleDeleteCareerPath = async (id) => {
+    if (!window.confirm('Supprimer ce career path ?')) return
+    const success = await deleteCareerPath(id)
+    if (success) loadCareerPaths()
+    else alert('Erreur lors de la suppression')
+  }
+
+  const handleDeleteOpportunity = async (id) => {
+    if (!window.confirm('Supprimer cette opportunité ?')) return
+    const success = await deleteOpportunity(id)
+    if (success) loadOpportunities()
+    else alert('Erreur lors de la suppression')
+  }
+
+  const handleDeleteStudyProgram = async (id) => {
+    if (!window.confirm('Supprimer ce study program ?')) return
+    const success = await deleteStudyProgram(id)
+    if (success) loadStudyPrograms()
+    else alert('Erreur lors de la suppression')
+  }
+
+  const handleDeleteCareerGuide = async (id) => {
+    if (!window.confirm('Supprimer ce career guide ?')) return
+    const success = await deleteCareerGuide(id)
+    if (success) loadCareerGuides()
+    else alert('Erreur lors de la suppression')
+  }
+
   const handleEditorClose = () => {
     setShowEditor(false)
     setEditingArticle(null)
     setEditingJob(null)
     // Recharger la liste selon l'onglet actif
-    if (activeTab === 'articles') {
-      loadArticles()
-    } else {
-      loadJobs()
-    }
+    if (activeTab === 'articles') loadArticles()
+    else if (activeTab === 'jobs') loadJobs()
+    else if (activeTab === 'careerPaths') loadCareerPaths()
+    else if (activeTab === 'opportunities') loadOpportunities()
+    else if (activeTab === 'studyPrograms') loadStudyPrograms()
+    else loadCareerGuides()
   }
 
   const handleGenerateSitemap = async () => {
@@ -179,7 +377,7 @@ function AdminDashboard() {
           onSave={handleEditorClose}
         />
       )
-    } else {
+    } else if (activeTab === 'jobs') {
       return (
         <JobEditor
           job={editingJob}
@@ -187,7 +385,14 @@ function AdminDashboard() {
           onSave={handleEditorClose}
         />
       )
+    } else if (activeTab === 'careerPaths') {
+      return <CareerPathEditor item={editingCareerPath} onClose={handleEditorClose} onSave={handleEditorClose} />
+    } else if (activeTab === 'opportunities') {
+      return <OpportunityEditor item={editingOpportunity} onClose={handleEditorClose} onSave={handleEditorClose} />
+    } else if (activeTab === 'studyPrograms') {
+      return <StudyProgramEditor item={editingStudyProgram} onClose={handleEditorClose} onSave={handleEditorClose} />
     }
+    return <CareerGuideEditor item={editingCareerGuide} onClose={handleEditorClose} onSave={handleEditorClose} />
   }
 
   return (
@@ -249,6 +454,18 @@ function AdminDashboard() {
             >
               💼 Métiers ({jobs.length})
             </button>
+            <button onClick={() => { setActiveTab('careerPaths'); loadCareerPaths() }} className={`py-4 px-1 border-b-2 font-medium text-sm ${activeTab === 'careerPaths' ? 'border-primary-500 text-primary-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'}`}>
+              🧭 Career Paths ({careerPaths.length})
+            </button>
+            <button onClick={() => { setActiveTab('opportunities'); loadOpportunities() }} className={`py-4 px-1 border-b-2 font-medium text-sm ${activeTab === 'opportunities' ? 'border-primary-500 text-primary-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'}`}>
+              🎯 Opportunities ({opportunities.length})
+            </button>
+            <button onClick={() => { setActiveTab('studyPrograms'); loadStudyPrograms() }} className={`py-4 px-1 border-b-2 font-medium text-sm ${activeTab === 'studyPrograms' ? 'border-primary-500 text-primary-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'}`}>
+              🎓 Study Programs ({studyPrograms.length})
+            </button>
+            <button onClick={() => { setActiveTab('careerGuides'); loadCareerGuides() }} className={`py-4 px-1 border-b-2 font-medium text-sm ${activeTab === 'careerGuides' ? 'border-primary-500 text-primary-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'}`}>
+              📘 Career Guides ({careerGuides.length})
+            </button>
           </nav>
         </div>
 
@@ -257,14 +474,34 @@ function AdminDashboard() {
           <h2 className="text-xl font-semibold text-gray-900">
             {activeTab === 'articles' 
               ? `Liste des Articles (${articles.length})`
-              : `Liste des Métiers (${jobs.length})`
+              : activeTab === 'jobs'
+              ? `Liste des Métiers (${jobs.length})`
+              : activeTab === 'careerPaths'
+              ? `Liste des Career Paths (${careerPaths.length})`
+              : activeTab === 'opportunities'
+              ? `Liste des Opportunities (${opportunities.length})`
+              : activeTab === 'studyPrograms'
+              ? `Liste des Study Programs (${studyPrograms.length})`
+              : `Liste des Career Guides (${careerGuides.length})`
             }
           </h2>
           <button
-            onClick={activeTab === 'articles' ? handleNewArticle : handleNewJob}
+            onClick={
+              activeTab === 'articles'
+                ? handleNewArticle
+                : activeTab === 'jobs'
+                ? handleNewJob
+                : activeTab === 'careerPaths'
+                ? handleNewCareerPath
+                : activeTab === 'opportunities'
+                ? handleNewOpportunity
+                : activeTab === 'studyPrograms'
+                ? handleNewStudyProgram
+                : handleNewCareerGuide
+            }
             className="px-6 py-3 bg-primary-600 text-white rounded-lg font-semibold hover:bg-primary-700 transition-colors"
           >
-            + {activeTab === 'articles' ? 'Nouvel Article' : 'Nouveau Métier'}
+            + {activeTab === 'articles' ? 'Nouvel Article' : activeTab === 'jobs' ? 'Nouveau Métier' : activeTab === 'careerPaths' ? 'Nouveau Career Path' : activeTab === 'opportunities' ? 'Nouvelle Opportunity' : activeTab === 'studyPrograms' ? 'Nouveau Study Program' : 'Nouveau Career Guide'}
           </button>
         </div>
 
@@ -382,7 +619,7 @@ function AdminDashboard() {
               </table>
             </div>
           )
-        ) : (
+        ) : activeTab === 'jobs' ? (
           jobs.length === 0 ? (
             <div className="bg-white rounded-lg shadow p-8 text-center">
               <p className="text-gray-600 mb-4">Aucun métier pour le moment.</p>
@@ -458,6 +695,100 @@ function AdminDashboard() {
                       </td>
                     </tr>
                   ))}
+                </tbody>
+              </table>
+            </div>
+          )
+        ) : activeTab === 'careerPaths' ? (
+          careerPaths.length === 0 ? (
+            <div className="bg-white rounded-lg shadow p-8 text-center"><p className="text-gray-600">Aucun career path.</p></div>
+          ) : (
+            <div className="bg-white rounded-lg shadow overflow-hidden">
+              <table className="min-w-full divide-y divide-gray-200">
+                <thead className="bg-gray-50"><tr><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Slug</th><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Titre FR</th><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Statut</th><th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Actions</th></tr></thead>
+                <tbody className="bg-white divide-y divide-gray-200">
+                  {careerPaths.map((cp) => {
+                    const trFr = (cp.career_path_translations || []).find((t) => t.language === 'fr')
+                    return (
+                      <tr key={cp.id} className="hover:bg-gray-50">
+                        <td className="px-6 py-4 text-sm text-gray-700">{cp.slug}</td>
+                        <td className="px-6 py-4 text-sm text-gray-900">{trFr?.title || '-'}</td>
+                        <td className="px-6 py-4 text-sm">{cp.active ? '✅ Actif' : '⏸️ Inactif'}</td>
+                        <td className="px-6 py-4 text-right text-sm"><button onClick={() => handleEditCareerPath(cp)} className="text-primary-600 hover:text-primary-900 mr-4">✏️ Modifier</button><button onClick={() => handleDeleteCareerPath(cp.id)} className="text-red-600 hover:text-red-900">🗑️ Supprimer</button></td>
+                      </tr>
+                    )
+                  })}
+                </tbody>
+              </table>
+            </div>
+          )
+        ) : activeTab === 'opportunities' ? (
+          opportunities.length === 0 ? (
+            <div className="bg-white rounded-lg shadow p-8 text-center"><p className="text-gray-600">Aucune opportunité.</p></div>
+          ) : (
+            <div className="bg-white rounded-lg shadow overflow-hidden">
+              <table className="min-w-full divide-y divide-gray-200">
+                <thead className="bg-gray-50"><tr><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Type</th><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Titre FR</th><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Statut</th><th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Actions</th></tr></thead>
+                <tbody className="bg-white divide-y divide-gray-200">
+                  {opportunities.map((op) => {
+                    const trFr = (op.opportunity_translations || []).find((t) => t.language === 'fr')
+                    return (
+                      <tr key={op.id} className="hover:bg-gray-50">
+                        <td className="px-6 py-4 text-sm text-gray-700">{op.type}</td>
+                        <td className="px-6 py-4 text-sm text-gray-900">{trFr?.title || '-'}</td>
+                        <td className="px-6 py-4 text-sm">{op.is_active ? '✅ Active' : '⏸️ Inactive'}</td>
+                        <td className="px-6 py-4 text-right text-sm"><button onClick={() => handleEditOpportunity(op)} className="text-primary-600 hover:text-primary-900 mr-4">✏️ Modifier</button><button onClick={() => handleDeleteOpportunity(op.id)} className="text-red-600 hover:text-red-900">🗑️ Supprimer</button></td>
+                      </tr>
+                    )
+                  })}
+                </tbody>
+              </table>
+            </div>
+          )
+        ) : activeTab === 'studyPrograms' ? (
+          studyPrograms.length === 0 ? (
+            <div className="bg-white rounded-lg shadow p-8 text-center"><p className="text-gray-600">Aucun study program.</p></div>
+          ) : (
+            <div className="bg-white rounded-lg shadow overflow-hidden">
+              <table className="min-w-full divide-y divide-gray-200">
+                <thead className="bg-gray-50"><tr><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Slug</th><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Institution</th><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Titre FR</th><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Statut</th><th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Actions</th></tr></thead>
+                <tbody className="bg-white divide-y divide-gray-200">
+                  {studyPrograms.map((sp) => {
+                    const trFr = (sp.study_program_translations || []).find((t) => t.language === 'fr')
+                    return (
+                      <tr key={sp.id} className="hover:bg-gray-50">
+                        <td className="px-6 py-4 text-sm">{sp.slug}</td>
+                        <td className="px-6 py-4 text-sm">{sp.institution_name}</td>
+                        <td className="px-6 py-4 text-sm">{trFr?.title || '-'}</td>
+                        <td className="px-6 py-4 text-sm">{sp.is_active ? '✅ Active' : '⏸️ Inactive'}</td>
+                        <td className="px-6 py-4 text-right text-sm"><button onClick={() => handleEditStudyProgram(sp)} className="text-primary-600 hover:text-primary-900 mr-4">✏️ Modifier</button><button onClick={() => handleDeleteStudyProgram(sp.id)} className="text-red-600 hover:text-red-900">🗑️ Supprimer</button></td>
+                      </tr>
+                    )
+                  })}
+                </tbody>
+              </table>
+            </div>
+          )
+        ) : (
+          careerGuides.length === 0 ? (
+            <div className="bg-white rounded-lg shadow p-8 text-center"><p className="text-gray-600">Aucun career guide.</p></div>
+          ) : (
+            <div className="bg-white rounded-lg shadow overflow-hidden">
+              <table className="min-w-full divide-y divide-gray-200">
+                <thead className="bg-gray-50"><tr><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Slug</th><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Categorie</th><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Titre FR</th><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Statut</th><th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Actions</th></tr></thead>
+                <tbody className="bg-white divide-y divide-gray-200">
+                  {careerGuides.map((cg) => {
+                    const trFr = (cg.career_guide_translations || []).find((t) => t.language === 'fr')
+                    return (
+                      <tr key={cg.id} className="hover:bg-gray-50">
+                        <td className="px-6 py-4 text-sm">{cg.slug}</td>
+                        <td className="px-6 py-4 text-sm">{cg.category}</td>
+                        <td className="px-6 py-4 text-sm">{trFr?.title || '-'}</td>
+                        <td className="px-6 py-4 text-sm">{cg.is_published ? '✅ Publie' : '⏳ Brouillon'}</td>
+                        <td className="px-6 py-4 text-right text-sm"><button onClick={() => handleEditCareerGuide(cg)} className="text-primary-600 hover:text-primary-900 mr-4">✏️ Modifier</button><button onClick={() => handleDeleteCareerGuide(cg.id)} className="text-red-600 hover:text-red-900">🗑️ Supprimer</button></td>
+                      </tr>
+                    )
+                  })}
                 </tbody>
               </table>
             </div>

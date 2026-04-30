@@ -1,12 +1,22 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { checkAdminAuth } from '../services/adminService'
+import { useEffect, useState } from 'react'
+import { useNavigate, useSearchParams } from 'react-router-dom'
+import { checkAdminAuth, checkAdminRecoveryToken } from '../services/adminService'
 
 function AdminLogin() {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
+
+  useEffect(() => {
+    // Déblocage d'urgence: /admin/login?admin_token=...
+    // Permet de récupérer l'accès si le mot de passe env est mal configuré.
+    const tokenFromUrl = searchParams.get('admin_token')
+    if (tokenFromUrl && checkAdminRecoveryToken(tokenFromUrl)) {
+      navigate('/admin')
+    }
+  }, [navigate, searchParams])
 
   const handleSubmit = async (e) => {
     e.preventDefault()

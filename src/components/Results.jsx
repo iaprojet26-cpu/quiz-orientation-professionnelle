@@ -8,6 +8,10 @@ import ShareButtons from './ShareButtons'
 
 function Results({ results, onRestart }) {
   const { t, i18n } = useTranslation()
+  let language = i18n.language || 'fr'
+  if (language.includes('-')) language = language.split('-')[0]
+  if (!['fr', 'en', 'ar'].includes(language)) language = 'fr'
+  const langPrefix = language === 'fr' ? '' : `/${language}`
   const [jobs, setJobs] = useState(results?.jobs || [])
   const [profile, setProfile] = useState(results?.profile)
   const [seoResult, setSeoResult] = useState(getResultPageSEO(i18n.language || 'fr', profile?.nom || ''))
@@ -135,6 +139,13 @@ function Results({ results, onRestart }) {
               aria-label={t('results.top_jobs', { defaultValue: 'Top métiers du futur' })}
             >
               {t('results.top_jobs', { defaultValue: '🚀 Top métiers du futur' })}
+            </Link>
+            <Link
+              to={`${langPrefix}/career-matching?profile_id=${encodeURIComponent(results?.profile?.id || '')}&profile_name=${encodeURIComponent(results?.profile?.nom || '')}`}
+              className="btn-secondary inline-block focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+              aria-label={t('results.career_matching', { defaultValue: 'Matching carrière personnalisé' })}
+            >
+              {t('results.career_matching', { defaultValue: '🧭 Matching carrière personnalisé' })}
             </Link>
           </div>
         </div>

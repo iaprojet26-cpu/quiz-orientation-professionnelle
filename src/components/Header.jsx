@@ -7,29 +7,41 @@ function Header() {
   const { t, i18n } = useTranslation()
   const location = useLocation()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const language = i18n.language || 'fr'
+  let language = i18n.language || 'fr'
+  if (language.includes('-')) language = language.split('-')[0]
+  if (!['fr', 'en', 'ar'].includes(language)) language = 'fr'
+  const langPrefix = language === 'fr' ? '' : `/${language}`
 
   const menuItems = {
     fr: [
       { path: '/', label: 'Accueil' },
-      { path: '/cv', label: 'CV' },
-      { path: '/top-metiers-futur', label: 'Top Métiers' },
+      { path: '/career-paths', label: 'Parcours' },
+      { path: '/opportunities', label: 'Opportunites' },
+      { path: '/study-in-morocco', label: 'Etudier au Maroc' },
+      { path: '/career-guides', label: 'Guides' },
+      { path: '/free-tools', label: 'Outils' },
       { path: '/blog', label: 'Blog' },
       { path: '/a-propos', label: 'À Propos' },
       { path: '/contact', label: 'Contact' }
     ],
     en: [
       { path: '/', label: 'Home' },
-      { path: '/cv', label: 'CV' },
-      { path: '/top-metiers-futur', label: 'Top Careers' },
+      { path: '/career-paths', label: 'Career Paths' },
+      { path: '/opportunities', label: 'Opportunities' },
+      { path: '/study-in-morocco', label: 'Study in Morocco' },
+      { path: '/career-guides', label: 'Guides' },
+      { path: '/free-tools', label: 'Tools' },
       { path: '/blog', label: 'Blog' },
       { path: '/a-propos', label: 'About' },
       { path: '/contact', label: 'Contact' }
     ],
     ar: [
       { path: '/', label: 'الرئيسية' },
-      { path: '/cv', label: 'السيرة الذاتية' },
-      { path: '/top-metiers-futur', label: 'أفضل المهن' },
+      { path: '/career-paths', label: 'المسارات المهنية' },
+      { path: '/opportunities', label: 'الفرص' },
+      { path: '/study-in-morocco', label: 'الدراسة في المغرب' },
+      { path: '/career-guides', label: 'الأدلة المهنية' },
+      { path: '/free-tools', label: 'أدوات' },
       { path: '/blog', label: 'المدونة' },
       { path: '/a-propos', label: 'من نحن' },
       { path: '/contact', label: 'اتصل بنا' }
@@ -37,7 +49,11 @@ function Header() {
   }
 
   const items = menuItems[language] || menuItems.fr
-  const isActive = (path) => location.pathname === path
+  const getLocalizedPath = (path) => (language === 'fr' ? path : `${langPrefix}${path === '/' ? '' : path}`)
+  const isActive = (path) => {
+    const localizedPath = getLocalizedPath(path)
+    return location.pathname === localizedPath || (path === '/' && location.pathname === `/${language}`)
+  }
 
   return (
     <header className="bg-white shadow-md sticky top-0 z-40">
@@ -48,7 +64,7 @@ function Header() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link 
-            to="/" 
+            to={language === 'fr' ? '/' : `/${language}`}
             className="text-2xl font-bold text-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded"
             aria-label="QuizOrientation - Retour à l'accueil"
           >
@@ -60,7 +76,7 @@ function Header() {
             {items.map((item) => (
               <Link
                 key={item.path}
-                to={item.path}
+                to={getLocalizedPath(item.path)}
                 className={`px-3 py-2 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 ${
                   isActive(item.path)
                     ? 'text-primary-600 font-semibold bg-primary-50'
@@ -99,7 +115,7 @@ function Header() {
               {items.map((item) => (
                 <Link
                   key={item.path}
-                  to={item.path}
+                  to={getLocalizedPath(item.path)}
                   onClick={() => setMobileMenuOpen(false)}
                   role="menuitem"
                   className={`px-3 py-2 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 ${

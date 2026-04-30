@@ -16,6 +16,12 @@ const PolitiqueEditoriale = lazy(() => import('./pages/PolitiqueEditoriale'))
 const APropos = lazy(() => import('./pages/APropos'))
 const Contact = lazy(() => import('./pages/Contact'))
 const TopMetiersFutur = lazy(() => import('./pages/TopMetiersFutur'))
+const CareerPaths = lazy(() => import('./pages/CareerPaths'))
+const Opportunities = lazy(() => import('./pages/Opportunities'))
+const StudyInMorocco = lazy(() => import('./pages/StudyInMorocco'))
+const CareerGuides = lazy(() => import('./pages/CareerGuides'))
+const CareerMatching = lazy(() => import('./pages/CareerMatching'))
+const FreeTools = lazy(() => import('./pages/FreeTools'))
 const AdminLogin = lazy(() => import('./pages/AdminLogin'))
 const AdminDashboard = lazy(() => import('./pages/AdminDashboard'))
 
@@ -160,6 +166,12 @@ function App() {
             </Suspense>
           } 
         />
+        <Route path="/career-paths" element={<Suspense fallback={<LoadingFallback />}><CareerPaths /></Suspense>} />
+        <Route path="/opportunities" element={<Suspense fallback={<LoadingFallback />}><Opportunities /></Suspense>} />
+        <Route path="/study-in-morocco" element={<Suspense fallback={<LoadingFallback />}><StudyInMorocco /></Suspense>} />
+        <Route path="/career-guides" element={<Suspense fallback={<LoadingFallback />}><CareerGuides /></Suspense>} />
+        <Route path="/career-matching" element={<Suspense fallback={<LoadingFallback />}><CareerMatching /></Suspense>} />
+        <Route path="/free-tools" element={<Suspense fallback={<LoadingFallback />}><FreeTools /></Suspense>} />
         <Route 
           path="/admin/login" 
           element={
@@ -252,6 +264,12 @@ function App() {
             </Suspense>
           } 
         />
+        <Route path="/:lang/career-paths" element={<Suspense fallback={<LoadingFallback />}><CareerPaths /></Suspense>} />
+        <Route path="/:lang/opportunities" element={<Suspense fallback={<LoadingFallback />}><Opportunities /></Suspense>} />
+        <Route path="/:lang/study-in-morocco" element={<Suspense fallback={<LoadingFallback />}><StudyInMorocco /></Suspense>} />
+        <Route path="/:lang/career-guides" element={<Suspense fallback={<LoadingFallback />}><CareerGuides /></Suspense>} />
+        <Route path="/:lang/career-matching" element={<Suspense fallback={<LoadingFallback />}><CareerMatching /></Suspense>} />
+        <Route path="/:lang/free-tools" element={<Suspense fallback={<LoadingFallback />}><FreeTools /></Suspense>} />
       </Routes>
       <Footer />
     </>
