@@ -330,6 +330,9 @@ function Home() {
 
         {!quizCompleted && (
           <header className="text-center mb-8">
+            <div className="inline-flex items-center gap-2 bg-white border border-primary-200 text-primary-800 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+              <span>{language === 'fr' ? 'Orientation • Formation • Employabilité' : language === 'en' ? 'Career • Training • Employability' : 'التوجيه • التكوين • قابلية التوظيف'}</span>
+            </div>
             <h1 className="text-4xl md:text-5xl font-bold text-primary-900 mb-4">
               {seoContent.h1}
             </h1>
@@ -344,6 +347,18 @@ function Home() {
               <Link to={`${langPrefix}/opportunities`} className="bg-white text-primary-700 px-5 py-3 rounded-lg font-semibold border border-primary-200">
                 {language === 'fr' ? 'Voir les opportunités' : language === 'en' ? 'Explore opportunities' : 'استكشف الفرص'}
               </Link>
+            </div>
+
+            <div className="flex flex-wrap justify-center gap-2 mb-8">
+              <span className="bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-xs font-semibold">
+                {language === 'fr' ? '100% gratuit' : language === 'en' ? '100% free' : 'مجاني 100%'}
+              </span>
+              <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-semibold">
+                {language === 'fr' ? '2 minutes' : language === 'en' ? '2 minutes' : 'دقيقتان'}
+              </span>
+              <span className="bg-violet-100 text-violet-800 px-3 py-1 rounded-full text-xs font-semibold">
+                {language === 'fr' ? 'Recommandations personnalisées' : language === 'en' ? 'Personalized recommendations' : 'توصيات مخصصة'}
+              </span>
             </div>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto mb-10">
@@ -410,7 +425,23 @@ function Home() {
         )}
 
         {!quizCompleted ? (
-          <Quiz onComplete={handleQuizComplete} />
+          <section className="max-w-6xl mx-auto mb-2">
+            <div className="bg-white border border-primary-200 rounded-2xl shadow-lg p-4 md:p-6">
+              <div className="text-left mb-4">
+                <h2 className="text-2xl font-bold text-primary-900">
+                  {language === 'fr' ? 'Commencez le quiz maintenant' : language === 'en' ? 'Start the quiz now' : 'ابدأ الاختبار الآن'}
+                </h2>
+                <p className="text-gray-600 text-sm md:text-base">
+                  {language === 'fr'
+                    ? 'Répondez à quelques questions et obtenez un plan d’action carrière concret.'
+                    : language === 'en'
+                    ? 'Answer a few questions and get a practical career action plan.'
+                    : 'أجب عن بعض الأسئلة واحصل على خطة مهنية عملية.'}
+                </p>
+              </div>
+              <Quiz onComplete={handleQuizComplete} />
+            </div>
+          </section>
         ) : (
           <Results results={quizResults} onRestart={handleRestart} />
         )}
