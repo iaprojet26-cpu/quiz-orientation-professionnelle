@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import SEOHead from '../components/SEOHead'
 import { getCareerGuides } from '../services/hubService'
+import RelatedHubLinks from '../components/RelatedHubLinks'
 
 function CareerGuides() {
   const { i18n } = useTranslation()
@@ -85,6 +86,8 @@ function CareerGuides() {
             {text.cta2}
           </Link>
         </div>
+
+        <RelatedHubLinks language={language} langPrefix={langPrefix} current="career-guides" />
       </main>
     </div>
   )

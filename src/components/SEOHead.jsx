@@ -31,7 +31,15 @@ function normalizeCanonicalUrl(url) {
 /**
  * Composant pour gérer les meta tags SEO dynamiques
  */
-function SEOHead({ page = 'homepage', profileName = '', articleTitle = '', articleSlug = '', customTitle = '', customDescription = '' }) {
+function SEOHead({
+  page = 'homepage',
+  profileName = '',
+  articleTitle = '',
+  articleSlug = '',
+  customTitle = '',
+  customDescription = '',
+  extraSchema = []
+}) {
   const { i18n } = useTranslation()
   const location = useLocation()
   const language = i18n.language || 'fr'
@@ -126,13 +134,23 @@ function SEOHead({ page = 'homepage', profileName = '', articleTitle = '', artic
     })
 
     // Ajouter ou mettre à jour le Schema.org JSON-LD
+    const extraSchemaArray = Array.isArray(extraSchema) ? extraSchema.filter(Boolean) : []
+    let finalSchema = schemaData
+    if (extraSchemaArray.length > 0) {
+      const baseArray = schemaData && Object.keys(schemaData).length > 0 ? [schemaData] : []
+      finalSchema = {
+        '@context': 'https://schema.org',
+        '@graph': [...baseArray, ...extraSchemaArray]
+      }
+    }
+
     let schemaScript = document.querySelector('script[type="application/ld+json"]')
     if (!schemaScript) {
       schemaScript = document.createElement('script')
       schemaScript.setAttribute('type', 'application/ld+json')
       document.head.appendChild(schemaScript)
     }
-    schemaScript.textContent = JSON.stringify(schemaData)
+    schemaScript.textContent = JSON.stringify(finalSchema)
 
     // Construire l'URL canonical basée sur l'URL actuelle
     const baseUrl = 'https://quizorientation.online' // Toujours sans www
@@ -215,7 +233,7 @@ function SEOHead({ page = 'homepage', profileName = '', articleTitle = '', artic
       document.documentElement.setAttribute('dir', 'ltr')
     }
 
-  }, [language, page, profileName, articleTitle, articleSlug, customTitle, customDescription, location.pathname])
+  }, [language, page, profileName, articleTitle, articleSlug, customTitle, customDescription, location.pathname, extraSchema])
 
   return null // Ce composant ne rend rien visuellement
 }

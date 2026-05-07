@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import SEOHead from '../components/SEOHead'
+import RelatedHubLinks from '../components/RelatedHubLinks'
 
 function FreeTools() {
   const { i18n } = useTranslation()
@@ -176,6 +177,8 @@ function FreeTools() {
             ))}
           </div>
         </section>
+
+        <RelatedHubLinks language={language} langPrefix={langPrefix} current="free-tools" />
       </main>
     </div>
   )

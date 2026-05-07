@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import SEOHead from '../components/SEOHead'
 import { getStudyPrograms } from '../services/hubService'
+import RelatedHubLinks from '../components/RelatedHubLinks'
 
 function StudyInMorocco() {
   const { i18n } = useTranslation()
@@ -79,6 +80,8 @@ function StudyInMorocco() {
         <Link to={`${langPrefix}/career-guides`} className="bg-primary-600 text-white px-5 py-3 rounded-lg font-semibold">
           {text.cta}
         </Link>
+
+        <RelatedHubLinks language={language} langPrefix={langPrefix} current="study-in-morocco" />
       </main>
     </div>
   )

@@ -236,3 +236,27 @@ export const getCareerMatchingContent = async ({ profileId = '', profileName = '
     return { careerPaths: [], opportunities: [], studyPrograms: [], careerGuides: [] }
   }
 }
+
+export const getHubOverviewCounts = async () => {
+  if (!supabase) {
+    return { careerPaths: 0, opportunities: 0, studyPrograms: 0, careerGuides: 0 }
+  }
+  try {
+    const [cp, opp, sp, cg] = await Promise.all([
+      supabase.from('career_paths').select('*', { count: 'exact', head: true }).eq('active', true),
+      supabase.from('opportunities').select('*', { count: 'exact', head: true }).eq('is_active', true),
+      supabase.from('study_programs').select('*', { count: 'exact', head: true }).eq('is_active', true),
+      supabase.from('career_guides').select('*', { count: 'exact', head: true }).eq('is_published', true)
+    ])
+
+    return {
+      careerPaths: cp.count || 0,
+      opportunities: opp.count || 0,
+      studyPrograms: sp.count || 0,
+      careerGuides: cg.count || 0
+    }
+  } catch (error) {
+    console.error('Erreur getHubOverviewCounts:', error)
+    return { careerPaths: 0, opportunities: 0, studyPrograms: 0, careerGuides: 0 }
+  }
+}

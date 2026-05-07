@@ -3,6 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import SEOHead from '../components/SEOHead'
 import { getCareerMatchingContent } from '../services/hubService'
+import RelatedHubLinks from '../components/RelatedHubLinks'
 
 function CareerMatching() {
   const { i18n } = useTranslation()
@@ -151,6 +152,8 @@ function CareerMatching() {
         <Link to={`${langPrefix}/`} className="bg-primary-600 text-white px-5 py-3 rounded-lg font-semibold">
           {text.cta}
         </Link>
+
+        <RelatedHubLinks language={language} langPrefix={langPrefix} current="career-matching" />
       </main>
     </div>
   )
