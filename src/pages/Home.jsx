@@ -151,9 +151,9 @@ function Home() {
   const intentCards = [
     {
       key: 'student',
-      title: language === 'fr' ? 'Je suis etudiant(e)' : language === 'en' ? 'I am a student' : 'أنا طالب/طالبة',
+      title: language === 'fr' ? 'Je suis étudiant(e)' : language === 'en' ? 'I am a student' : 'أنا طالب/طالبة',
       desc: language === 'fr'
-        ? 'Explorez les metiers et formations selon votre profil.'
+        ? 'Explorez les métiers et formations selon votre profil.'
         : language === 'en'
         ? 'Explore careers and training paths based on your profile.'
         : 'اكتشف المهن ومسارات التكوين حسب ملفك.',
@@ -163,14 +163,14 @@ function Home() {
     },
     {
       key: 'graduate',
-      title: language === 'fr' ? 'Jeune diplome(e)' : language === 'en' ? 'Recent graduate' : 'خريج/خريجة حديث(ة)',
+      title: language === 'fr' ? 'Jeune diplômé(e)' : language === 'en' ? 'Recent graduate' : 'خريج/خريجة حديث(ة)',
       desc: language === 'fr'
-        ? 'Accedez rapidement aux opportunites et outils CV.'
+        ? 'Accédez rapidement aux opportunités et outils CV.'
         : language === 'en'
         ? 'Access opportunities and CV tools quickly.'
         : 'احصل بسرعة على الفرص وأدوات السيرة الذاتية.',
       link: `${langPrefix}/opportunities`,
-      cta: language === 'fr' ? 'Voir les opportunites' : language === 'en' ? 'Explore opportunities' : 'استكشف الفرص',
+      cta: language === 'fr' ? 'Voir les opportunités' : language === 'en' ? 'Explore opportunities' : 'استكشف الفرص',
       image: '/assets/blog/default-emploi.svg'
     },
     {
@@ -190,7 +190,7 @@ function Home() {
   const quickActionsByIntent = [
     {
       key: 'student-actions',
-      title: language === 'fr' ? 'Parcours etudiant' : language === 'en' ? 'Student path' : 'مسار الطالب',
+      title: language === 'fr' ? 'Parcours étudiant' : language === 'en' ? 'Student path' : 'مسار الطالب',
       actions: [
         {
           label: language === 'fr' ? 'Faire le quiz' : language === 'en' ? 'Take the quiz' : 'ابدأ الاختبار',
@@ -201,17 +201,17 @@ function Home() {
           link: `${langPrefix}/study-in-morocco`
         },
         {
-          label: language === 'fr' ? 'Voir les metiers' : language === 'en' ? 'View career paths' : 'استكشف المسارات المهنية',
+          label: language === 'fr' ? 'Voir les métiers' : language === 'en' ? 'View career paths' : 'استكشف المسارات المهنية',
           link: `${langPrefix}/career-paths`
         }
       ]
     },
     {
       key: 'graduate-actions',
-      title: language === 'fr' ? 'Parcours jeune diplome' : language === 'en' ? 'Graduate path' : 'مسار الخريج الحديث',
+      title: language === 'fr' ? 'Parcours jeune diplômé' : language === 'en' ? 'Graduate path' : 'مسار الخريج الحديث',
       actions: [
         {
-          label: language === 'fr' ? 'Trouver des opportunites' : language === 'en' ? 'Find opportunities' : 'ابحث عن الفرص',
+          label: language === 'fr' ? 'Trouver des opportunités' : language === 'en' ? 'Find opportunities' : 'ابحث عن الفرص',
           link: `${langPrefix}/opportunities`
         },
         {
@@ -219,7 +219,7 @@ function Home() {
           link: `${langPrefix}/cv`
         },
         {
-          label: language === 'fr' ? 'Verifier ATS CV Score' : language === 'en' ? 'Check ATS CV score' : 'افحص درجة ATS',
+          label: language === 'fr' ? 'Vérifier ATS CV Score' : language === 'en' ? 'Check ATS CV score' : 'افحص درجة ATS',
           link: `${langPrefix}/tools/ats-score`
         }
       ]
@@ -229,11 +229,11 @@ function Home() {
       title: language === 'fr' ? 'Parcours reconversion' : language === 'en' ? 'Career switch path' : 'مسار إعادة التوجيه',
       actions: [
         {
-          label: language === 'fr' ? 'Lire les guides carriere' : language === 'en' ? 'Read career guides' : 'اقرأ الأدلة المهنية',
+          label: language === 'fr' ? 'Lire les guides carrière' : language === 'en' ? 'Read career guides' : 'اقرأ الأدلة المهنية',
           link: `${langPrefix}/career-guides`
         },
         {
-          label: language === 'fr' ? 'Generer une lettre' : language === 'en' ? 'Generate a cover letter' : 'أنشئ رسالة تحفيز',
+          label: language === 'fr' ? 'Générer une lettre' : language === 'en' ? 'Generate a cover letter' : 'أنشئ رسالة تحفيز',
           link: `${langPrefix}/tools/cover-letter`
         },
         {
@@ -263,14 +263,14 @@ function Home() {
         {
           '@type': 'Question',
           name: language === 'fr'
-            ? 'Comment ameliorer mon CV rapidement ?'
+            ? 'Comment améliorer mon CV rapidement ?'
             : language === 'en'
             ? 'How can I improve my resume quickly?'
             : 'كيف أحسن سيرتي الذاتية بسرعة؟',
           acceptedAnswer: {
             '@type': 'Answer',
             text: language === 'fr'
-              ? 'Utilisez le CV Builder puis ATS CV Score pour aligner votre CV avec l offre.'
+              ? 'Utilisez le CV Builder puis ATS CV Score pour aligner votre CV avec l’offre.'
               : language === 'en'
               ? 'Use CV Builder then ATS CV Score to align with job descriptions.'
               : 'استخدم منشئ السيرة الذاتية ثم درجة ATS لمواءمة السيرة مع العرض.'
@@ -279,14 +279,14 @@ function Home() {
         {
           '@type': 'Question',
           name: language === 'fr'
-            ? 'Le site est-il utile pour une carriere internationale ?'
+            ? 'Le site est-il utile pour une carrière internationale ?'
             : language === 'en'
             ? 'Is this platform useful for international careers?'
             : 'هل المنصة مفيدة للمسارات الدولية؟',
           acceptedAnswer: {
             '@type': 'Answer',
             text: language === 'fr'
-              ? 'Oui, nous proposons des opportunites et guides FR/EN/AR avec angle international.'
+              ? 'Oui, nous proposons des opportunités et des guides FR/EN/AR avec une approche internationale.'
               : language === 'en'
               ? 'Yes, we provide FR/EN/AR opportunities and guides with an international angle.'
               : 'نعم، نوفر فرصا وأدلة بثلاث لغات مع بعد دولي.'
@@ -339,7 +339,7 @@ function Home() {
                 {language === 'fr' ? 'Faire le quiz maintenant' : language === 'en' ? 'Take the quiz now' : 'ابدأ الاختبار الآن'}
               </Link>
               <Link to={`${langPrefix}/opportunities`} className="bg-white text-primary-700 px-5 py-3 rounded-lg font-semibold border border-primary-200">
-                {language === 'fr' ? 'Voir les opportunites' : language === 'en' ? 'Explore opportunities' : 'استكشف الفرص'}
+                {language === 'fr' ? 'Voir les opportunités' : language === 'en' ? 'Explore opportunities' : 'استكشف الفرص'}
               </Link>
             </div>
 
@@ -374,21 +374,21 @@ function Home() {
                 <ul className="list-disc pl-5 space-y-1 text-sm md:text-base">
                   <li>
                     {language === 'fr'
-                      ? 'Un profil professionnel personalise'
+                      ? 'Un profil professionnel personnalisé'
                       : language === 'en'
                       ? 'A personalized career profile'
                       : 'ملف مهني مخصص'}
                   </li>
                   <li>
                     {language === 'fr'
-                      ? 'Des metiers recommandes selon vos reponses'
+                      ? 'Des métiers recommandés selon vos réponses'
                       : language === 'en'
                       ? 'Career recommendations based on your answers'
                       : 'مهن مقترحة بناء على إجاباتك'}
                   </li>
                   <li>
                     {language === 'fr'
-                      ? 'Des formations et actions concretes pour avancer'
+                      ? 'Des formations et actions concrètes pour avancer'
                       : language === 'en'
                       ? 'Training and practical next steps'
                       : 'تكوين وخطوات عملية للتقدم'}
@@ -416,7 +416,7 @@ function Home() {
           <section className="mt-12 max-w-6xl mx-auto">
             <div className="bg-white rounded-xl shadow-md p-6 md:p-8">
               <h2 className="text-3xl font-bold text-primary-900 mb-6">
-                {language === 'fr' ? 'Comment commencer en 3 etapes' : language === 'en' ? 'How to start in 3 steps' : 'كيف تبدأ في 3 خطوات'}
+                {language === 'fr' ? 'Comment commencer en 3 étapes' : language === 'en' ? 'How to start in 3 steps' : 'كيف تبدأ في 3 خطوات'}
               </h2>
               <div className="grid md:grid-cols-3 gap-5">
                 <article className="border border-primary-100 rounded-lg p-5">
@@ -425,11 +425,11 @@ function Home() {
                 </article>
                 <article className="border border-primary-100 rounded-lg p-5">
                   <h3 className="font-bold text-primary-900 mb-2">2. {language === 'fr' ? 'Lire vos recommandations' : language === 'en' ? 'Review recommendations' : 'راجع توصياتك'}</h3>
-                  <p className="text-gray-700 text-sm">{language === 'fr' ? 'Decouvrez metiers, guides et formations adaptes.' : language === 'en' ? 'Discover relevant careers, guides and programs.' : 'اكتشف المهن والأدلة والتكوينات المناسبة.'}</p>
+                  <p className="text-gray-700 text-sm">{language === 'fr' ? 'Découvrez des métiers, des guides et des formations adaptés.' : language === 'en' ? 'Discover relevant careers, guides and programs.' : 'اكتشف المهن والأدلة والتكوينات المناسبة.'}</p>
                 </article>
                 <article className="border border-primary-100 rounded-lg p-5">
-                  <h3 className="font-bold text-primary-900 mb-2">3. {language === 'fr' ? 'Passer a l action' : language === 'en' ? 'Take action' : 'ابدأ التنفيذ'}</h3>
-                  <p className="text-gray-700 text-sm">{language === 'fr' ? 'Utilisez nos outils CV, lettre et preparation entretien.' : language === 'en' ? 'Use CV, cover letter and interview prep tools.' : 'استخدم أدوات السيرة الذاتية ورسالة التحفيز والتحضير للمقابلة.'}</p>
+                  <h3 className="font-bold text-primary-900 mb-2">3. {language === 'fr' ? 'Passer à l’action' : language === 'en' ? 'Take action' : 'ابدأ التنفيذ'}</h3>
+                  <p className="text-gray-700 text-sm">{language === 'fr' ? 'Utilisez nos outils CV, lettre et préparation à l’entretien.' : language === 'en' ? 'Use CV, cover letter and interview prep tools.' : 'استخدم أدوات السيرة الذاتية ورسالة التحفيز والتحضير للمقابلة.'}</p>
                 </article>
               </div>
             </div>
@@ -444,7 +444,7 @@ function Home() {
               </h2>
               <p className="text-gray-700 mb-6">
                 {language === 'fr'
-                  ? 'Choisissez votre profil de depart pour acceder rapidement au bon contenu.'
+                  ? 'Choisissez votre profil de départ pour accéder rapidement au bon contenu.'
                   : language === 'en'
                   ? 'Choose your starting profile to reach the right content faster.'
                   : 'اختر وضعيتك للانتقال بسرعة إلى المحتوى المناسب.'}
@@ -475,7 +475,7 @@ function Home() {
               </h2>
               <p className="text-gray-700 mb-6">
                 {language === 'fr'
-                  ? 'Passez directement a la bonne action pour gagner du temps.'
+                  ? 'Passez directement à la bonne action pour gagner du temps.'
                   : language === 'en'
                   ? 'Jump to the right action and save time.'
                   : 'انتقل مباشرة إلى الإجراء المناسب لتوفير الوقت.'}
@@ -506,11 +506,11 @@ function Home() {
           <section className="mt-10 max-w-6xl mx-auto">
             <div className="bg-white rounded-xl shadow-md p-6 md:p-8">
               <h2 className="text-2xl font-bold text-primary-900 mb-3">
-                {language === 'fr' ? 'Recommande pour vous' : language === 'en' ? 'Recommended for you' : 'موصى به لك'}
+                {language === 'fr' ? 'Recommandé pour vous' : language === 'en' ? 'Recommended for you' : 'موصى به لك'}
               </h2>
               <p className="text-gray-700 mb-5">
                 {language === 'fr'
-                  ? 'Selection personnalisee basee sur votre profil quiz.'
+                  ? 'Sélection personnalisée basée sur votre profil quiz.'
                   : language === 'en'
                   ? 'Personalized selection based on your quiz profile.'
                   : 'اختيارات مخصصة بناء على نتيجة الاختبار.'}
@@ -541,14 +541,14 @@ function Home() {
           <div className="bg-white rounded-xl shadow-md p-6 md:p-8">
             <h2 className="text-3xl font-bold text-primary-900 mb-3">
               {i18n.language === 'fr'
-                ? "Hub d'orientation, formation et employabilite"
+                ? "Hub d'orientation, formation et employabilité"
                 : i18n.language === 'en'
                 ? 'Career, Training and Employability Hub'
                 : 'منصة التوجيه والتكوين وقابلية التوظيف'}
             </h2>
             <p className="text-gray-700 mb-6">
               {i18n.language === 'fr'
-                ? 'Decouvrez les rubriques strategiques pour passer du quiz a un plan d action concret.'
+                ? 'Découvrez les rubriques stratégiques pour passer du quiz à un plan d’action concret.'
                 : i18n.language === 'en'
                 ? 'Explore strategic sections to turn quiz insights into a practical action plan.'
                 : 'اكتشف الأقسام الاستراتيجية لتحويل نتائج الاختبار إلى خطة عملية.'}
@@ -567,7 +567,7 @@ function Home() {
         <section className="mt-12 max-w-6xl mx-auto">
           <div className="bg-white rounded-xl shadow-md p-6 md:p-8">
             <h2 className="text-3xl font-bold text-primary-900 mb-4">
-              {language === 'fr' ? 'FAQ orientation et employabilite' : language === 'en' ? 'Career FAQ' : 'الأسئلة الشائعة حول التوجيه المهني'}
+              {language === 'fr' ? 'FAQ orientation et employabilité' : language === 'en' ? 'Career FAQ' : 'الأسئلة الشائعة حول التوجيه المهني'}
             </h2>
             <div className="space-y-4 text-gray-700">
               <details className="border border-primary-100 rounded-lg p-4">
@@ -575,12 +575,12 @@ function Home() {
                 <p className="mt-2">{language === 'fr' ? 'Oui, le quiz et les outils principaux sont gratuits.' : language === 'en' ? 'Yes, the quiz and core tools are free.' : 'نعم، الاختبار والأدوات الأساسية مجانية.'}</p>
               </details>
               <details className="border border-primary-100 rounded-lg p-4">
-                <summary className="font-semibold cursor-pointer">{language === 'fr' ? 'Comment ameliorer mon CV rapidement ?' : language === 'en' ? 'How can I improve my resume quickly?' : 'كيف أحسن سيرتي الذاتية بسرعة؟'}</summary>
-                <p className="mt-2">{language === 'fr' ? 'Utilisez le CV Builder puis ATS CV Score pour aligner votre CV avec l offre.' : language === 'en' ? 'Use CV Builder then ATS CV Score to align with job descriptions.' : 'استخدم منشئ السيرة الذاتية ثم درجة ATS لمواءمة السيرة مع العرض.'}</p>
+                <summary className="font-semibold cursor-pointer">{language === 'fr' ? 'Comment améliorer mon CV rapidement ?' : language === 'en' ? 'How can I improve my resume quickly?' : 'كيف أحسن سيرتي الذاتية بسرعة؟'}</summary>
+                <p className="mt-2">{language === 'fr' ? 'Utilisez le CV Builder puis ATS CV Score pour aligner votre CV avec l’offre.' : language === 'en' ? 'Use CV Builder then ATS CV Score to align with job descriptions.' : 'استخدم منشئ السيرة الذاتية ثم درجة ATS لمواءمة السيرة مع العرض.'}</p>
               </details>
               <details className="border border-primary-100 rounded-lg p-4">
-                <summary className="font-semibold cursor-pointer">{language === 'fr' ? 'Le site est-il utile pour une carriere internationale ?' : language === 'en' ? 'Is this platform useful for international careers?' : 'هل المنصة مفيدة للمسارات الدولية؟'}</summary>
-                <p className="mt-2">{language === 'fr' ? 'Oui, nous proposons des opportunites et guides FR/EN/AR avec angle international.' : language === 'en' ? 'Yes, we provide FR/EN/AR opportunities and guides with an international angle.' : 'نعم، نوفر فرصا وأدلة بثلاث لغات مع بعد دولي.'}</p>
+                <summary className="font-semibold cursor-pointer">{language === 'fr' ? 'Le site est-il utile pour une carrière internationale ?' : language === 'en' ? 'Is this platform useful for international careers?' : 'هل المنصة مفيدة للمسارات الدولية؟'}</summary>
+                <p className="mt-2">{language === 'fr' ? 'Oui, nous proposons des opportunités et des guides FR/EN/AR avec une approche internationale.' : language === 'en' ? 'Yes, we provide FR/EN/AR opportunities and guides with an international angle.' : 'نعم، نوفر فرصا وأدلة بثلاث لغات مع بعد دولي.'}</p>
               </details>
             </div>
           </div>
@@ -589,11 +589,11 @@ function Home() {
         <section className="mt-12 max-w-6xl mx-auto">
           <div className="bg-white rounded-xl shadow-md p-6 md:p-8">
             <h2 className="text-3xl font-bold text-primary-900 mb-2">
-              {language === 'fr' ? 'A la une: opportunites et guides' : language === 'en' ? 'Featured: opportunities and guides' : 'المميز: الفرص والأدلة'}
+              {language === 'fr' ? 'À la une : opportunités et guides' : language === 'en' ? 'Featured: opportunities and guides' : 'المميز: الفرص والأدلة'}
             </h2>
             <p className="text-gray-700 mb-6">
               {language === 'fr'
-                ? 'Des contenus utiles et actionnables pour passer de l orientation a l employabilite.'
+                ? 'Des contenus utiles et actionnables pour passer de l’orientation à l’employabilité.'
                 : language === 'en'
                 ? 'Practical content to move from orientation to employability.'
                 : 'محتوى عملي للانتقال من التوجيه إلى قابلية التوظيف.'}
@@ -646,21 +646,21 @@ function Home() {
         <section className="mt-12 max-w-6xl mx-auto">
           <div className="bg-primary-900 text-white rounded-xl shadow-md p-6 md:p-8">
             <h2 className="text-2xl font-bold mb-3">
-              {language === 'fr' ? 'Transparence et qualite editoriale' : language === 'en' ? 'Editorial quality and transparency' : 'الجودة التحريرية والشفافية'}
+              {language === 'fr' ? 'Transparence et qualité éditoriale' : language === 'en' ? 'Editorial quality and transparency' : 'الجودة التحريرية والشفافية'}
             </h2>
             <p className="text-primary-100 mb-5">
               {language === 'fr'
-                ? 'Nous publions du contenu utile, verifie et mis a jour regulierement pour aider les etudiants et jeunes actifs.'
+                ? 'Nous publions du contenu utile, vérifié et mis à jour régulièrement pour aider les étudiants et jeunes actifs.'
                 : language === 'en'
                 ? 'We publish practical, reviewed and regularly updated content for students and job seekers.'
                 : 'ننشر محتوى عمليا ومراجعا ويتم تحديثه بانتظام للطلاب والباحثين عن العمل.'}
             </p>
             <div className="flex flex-wrap gap-3">
               <Link to={`${langPrefix}/politique-editoriale`} className="bg-white text-primary-900 px-4 py-2 rounded-lg font-semibold">
-                {language === 'fr' ? 'Politique editoriale' : language === 'en' ? 'Editorial policy' : 'السياسة التحريرية'}
+                {language === 'fr' ? 'Politique éditoriale' : language === 'en' ? 'Editorial policy' : 'السياسة التحريرية'}
               </Link>
               <Link to={`${langPrefix}/a-propos`} className="bg-white text-primary-900 px-4 py-2 rounded-lg font-semibold">
-                {language === 'fr' ? 'A propos' : language === 'en' ? 'About us' : 'من نحن'}
+                {language === 'fr' ? 'À propos' : language === 'en' ? 'About us' : 'من نحن'}
               </Link>
               <Link to={`${langPrefix}/contact`} className="bg-white text-primary-900 px-4 py-2 rounded-lg font-semibold">
                 {language === 'fr' ? 'Contact' : language === 'en' ? 'Contact' : 'اتصل بنا'}
@@ -677,11 +677,11 @@ function Home() {
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
               <div className="border border-primary-100 rounded-lg p-4">
                 <p className="text-2xl font-extrabold text-primary-900">{hubCounts.careerPaths}+</p>
-                <p className="text-sm text-gray-600">{language === 'fr' ? 'fiches metiers' : language === 'en' ? 'career path cards' : 'بطاقات مهنية'}</p>
+                <p className="text-sm text-gray-600">{language === 'fr' ? 'fiches métiers' : language === 'en' ? 'career path cards' : 'بطاقات مهنية'}</p>
               </div>
               <div className="border border-primary-100 rounded-lg p-4">
                 <p className="text-2xl font-extrabold text-primary-900">{hubCounts.opportunities}+</p>
-                <p className="text-sm text-gray-600">{language === 'fr' ? 'opportunites publiees' : language === 'en' ? 'published opportunities' : 'فرص منشورة'}</p>
+                <p className="text-sm text-gray-600">{language === 'fr' ? 'opportunités publiées' : language === 'en' ? 'published opportunities' : 'فرص منشورة'}</p>
               </div>
               <div className="border border-primary-100 rounded-lg p-4">
                 <p className="text-2xl font-extrabold text-primary-900">{hubCounts.studyPrograms}+</p>
