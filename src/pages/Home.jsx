@@ -159,7 +159,8 @@ function Home() {
         : 'اكتشف المهن ومسارات التكوين حسب ملفك.',
       link: `${langPrefix}/study-in-morocco`,
       cta: language === 'fr' ? 'Voir les formations' : language === 'en' ? 'View study programs' : 'عرض برامج التكوين',
-      image: '/assets/blog/default-formation.svg'
+      icon: '🎓',
+      iconBg: 'bg-blue-100'
     },
     {
       key: 'graduate',
@@ -171,7 +172,8 @@ function Home() {
         : 'احصل بسرعة على الفرص وأدوات السيرة الذاتية.',
       link: `${langPrefix}/opportunities`,
       cta: language === 'fr' ? 'Voir les opportunités' : language === 'en' ? 'Explore opportunities' : 'استكشف الفرص',
-      image: '/assets/blog/default-emploi.svg'
+      icon: '💼',
+      iconBg: 'bg-emerald-100'
     },
     {
       key: 'career-shift',
@@ -183,7 +185,8 @@ function Home() {
         : 'اتبع أدلة عملية لتغيير المسار المهني.',
       link: `${langPrefix}/career-guides`,
       cta: language === 'fr' ? 'Voir les guides' : language === 'en' ? 'Open career guides' : 'عرض الأدلة',
-      image: '/assets/blog/default-orientation.svg'
+      icon: '🔄',
+      iconBg: 'bg-amber-100'
     }
   ]
 
@@ -452,8 +455,8 @@ function Home() {
               <div className="grid md:grid-cols-3 gap-5">
                 {intentCards.map((card) => (
                   <article key={card.key} className="border border-primary-100 rounded-lg p-4">
-                    <div className="h-24 mb-3 bg-primary-50 rounded-lg overflow-hidden">
-                      <OptimizedImage src={card.image} alt={card.title} className="w-full h-full object-cover" lazy={true} />
+                    <div className={`h-24 mb-3 rounded-lg flex items-center justify-center text-4xl ${card.iconBg}`}>
+                      <span role="img" aria-label={card.title}>{card.icon}</span>
                     </div>
                     <h3 className="font-bold text-primary-900 mb-2">{card.title}</h3>
                     <p className="text-sm text-gray-700 mb-3">{card.desc}</p>
