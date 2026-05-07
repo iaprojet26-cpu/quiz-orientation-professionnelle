@@ -51,7 +51,7 @@ function APropos() {
       
       section7: {
         title: "Contact",
-        content: "Vous avez des questions, des suggestions ou des retours à nous faire ? Nous serions ravis d'avoir de vos nouvelles ! N'hésitez pas à nous contacter à l'adresse contact@quizorientation.online. Nous nous efforçons de répondre à toutes les demandes dans les meilleurs délais."
+        content: "Vous avez des questions, des suggestions ou des retours à nous faire ? Nous serions ravis d'avoir de vos nouvelles ! N'hésitez pas à nous contacter à l'adresse oocopcmcsm@gmail.com. Nous nous efforçons de répondre à toutes les demandes dans les meilleurs délais."
       }
     },
     en: {
@@ -64,7 +64,7 @@ function APropos() {
       section4: { title: "For Whom?", content: "QuizOrientation is aimed at everyone who questions their professional future: students seeking orientation, people in career transition, employees wishing to evolve in their career, or simply curious to discover their professional profile." },
       section5: { title: "Our Team", content: "QuizOrientation is developed by a team passionate about career orientation and new technologies. We combine expertise in work psychology, knowledge of the job market and technical skills." },
       section6: { title: "Our Commitment", content: "We are committed to keeping QuizOrientation free and accessible to all. We are also committed to protecting your personal data and respecting your privacy." },
-      section7: { title: "Contact", content: "Do you have questions, suggestions or feedback for us? We would be delighted to hear from you! Feel free to contact us at contact@quizorientation.online." }
+      section7: { title: "Contact", content: "Do you have questions, suggestions or feedback for us? We would be delighted to hear from you! Feel free to contact us at oocopcmcsm@gmail.com." }
     },
     ar: {
       title: "من نحن",
@@ -76,7 +76,7 @@ function APropos() {
       section4: { title: "لمن؟", content: "QuizOrientation موجهة لكل من يتساءل عن مستقبله المهني: الطلاب الباحثين عن التوجيه، الأشخاص في مرحلة انتقال مهني، الموظفون الراغبون في التطور في مسيرتهم المهنية." },
       section5: { title: "فريقنا", content: "تم تطوير QuizOrientation من قبل فريق شغوف بالتوجيه المهني والتقنيات الجديدة. نجمع بين الخبرة في علم نفس العمل ومعرفة سوق العمل والمهارات التقنية." },
       section6: { title: "التزامنا", content: "نلتزم بالحفاظ على QuizOrientation مجانيًا ومتاحًا للجميع. نلتزم أيضًا بحماية بياناتك الشخصية واحترام خصوصيتك." },
-      section7: { title: "الاتصال", content: "هل لديك أسئلة أو اقتراحات أو ملاحظات؟ سنكون سعداء للغاية بسماع منك! لا تتردد في الاتصال بنا على contact@quizorientation.online." }
+      section7: { title: "الاتصال", content: "هل لديك أسئلة أو اقتراحات أو ملاحظات؟ سنكون سعداء للغاية بسماع منك! لا تتردد في الاتصال بنا على oocopcmcsm@gmail.com." }
     }
   }
 

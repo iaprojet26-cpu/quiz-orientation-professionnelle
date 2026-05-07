@@ -34,7 +34,7 @@ function PolitiqueEditoriale() {
         },
         {
           title: '6. Signaler une erreur',
-          text: 'Si vous constatez une information inexacte, contactez-nous a contact@quizorientation.online. Nous analysons chaque signalement et corrigeons rapidement si necessaire.'
+          text: 'Si vous constatez une information inexacte, contactez-nous a oocopcmcsm@gmail.com. Nous analysons chaque signalement et corrigeons rapidement si necessaire.'
         }
       ]
     },
@@ -66,7 +66,7 @@ function PolitiqueEditoriale() {
         },
         {
           title: '6. Report an issue',
-          text: 'If you find inaccurate information, contact us at contact@quizorientation.online. We review and correct content when needed.'
+          text: 'If you find inaccurate information, contact us at oocopcmcsm@gmail.com. We review and correct content when needed.'
         }
       ]
     },
@@ -98,7 +98,7 @@ function PolitiqueEditoriale() {
         },
         {
           title: '6. التبليغ عن خطأ',
-          text: 'إذا وجدت معلومة غير دقيقة، راسلنا على contact@quizorientation.online. نقوم بمراجعة التصحيحات بسرعة.'
+          text: 'إذا وجدت معلومة غير دقيقة، راسلنا على oocopcmcsm@gmail.com. نقوم بمراجعة التصحيحات بسرعة.'
         }
       ]
     }

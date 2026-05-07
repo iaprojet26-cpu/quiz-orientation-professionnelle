@@ -125,11 +125,11 @@ function Footer() {
             <h3 className="text-lg font-bold mb-4">{pageContent.contact}</h3>
             <p className="text-gray-300 mb-2">
               <a 
-                href="mailto:contact@quizorientation.online" 
+                href="mailto:oocopcmcsm@gmail.com"
                 className="hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 rounded"
-                aria-label="Envoyer un email à contact@quizorientation.online"
+                aria-label="Envoyer un email à oocopcmcsm@gmail.com"
               >
-                contact@quizorientation.online
+                oocopcmcsm@gmail.com
               </a>
             </p>
           </div>

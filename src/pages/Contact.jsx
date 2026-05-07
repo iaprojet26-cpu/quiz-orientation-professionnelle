@@ -102,7 +102,7 @@ function Contact() {
               {pageContent.intro}
             </p>
             <p className="text-base mb-4">
-              <strong>Email :</strong> <a href="mailto:contact@quizorientation.online" className="text-primary-600 hover:underline">contact@quizorientation.online</a>
+              <strong>Email :</strong> <a href="mailto:oocopcmcsm@gmail.com" className="text-primary-600 hover:underline">oocopcmcsm@gmail.com</a>
             </p>
             <div className="bg-primary-50 p-6 rounded-lg mb-6">
               <h2 className="text-xl font-bold text-primary-900 mb-3">

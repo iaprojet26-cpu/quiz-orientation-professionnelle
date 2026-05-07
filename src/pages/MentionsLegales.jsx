@@ -13,7 +13,7 @@ function MentionsLegales() {
       
       section1: {
         title: "1. Éditeur du Site",
-        content: "Le site quizorientation.online est édité par : quizorientation. Directeur de la publication : quizorientation. Contact : contact@quizorientation.online"
+        content: "Le site quizorientation.online est édité par : quizorientation. Directeur de la publication : quizorientation. Contact : oocopcmcsm@gmail.com"
       },
       
       section2: {
@@ -23,7 +23,7 @@ function MentionsLegales() {
       
       section3: {
         title: "3. Collecte et Traitement des Données",
-        content: "Conformément à la loi « Informatique et Libertés » du 6 janvier 1978 modifiée et au Règlement Général sur la Protection des Données (RGPD) entré en vigueur le 25 mai 2018, vous disposez d'un droit d'accès, de rectification, de suppression et d'opposition aux données personnelles vous concernant. Pour exercer ce droit, vous pouvez nous contacter à l'adresse suivante : contact@quizorientation.online. Les données collectées lors de l'utilisation du quiz d'orientation professionnelle sont utilisées uniquement dans le but de générer votre profil professionnel et de vous proposer des recommandations personnalisées. Aucune donnée personnelle n'est vendue à des tiers."
+        content: "Conformément à la loi « Informatique et Libertés » du 6 janvier 1978 modifiée et au Règlement Général sur la Protection des Données (RGPD) entré en vigueur le 25 mai 2018, vous disposez d'un droit d'accès, de rectification, de suppression et d'opposition aux données personnelles vous concernant. Pour exercer ce droit, vous pouvez nous contacter à l'adresse suivante : oocopcmcsm@gmail.com. Les données collectées lors de l'utilisation du quiz d'orientation professionnelle sont utilisées uniquement dans le but de générer votre profil professionnel et de vous proposer des recommandations personnalisées. Aucune donnée personnelle n'est vendue à des tiers."
       },
       
       section4: {
@@ -48,34 +48,34 @@ function MentionsLegales() {
       
       section8: {
         title: "8. Contact",
-        content: "Pour toute question relative aux présentes mentions légales, vous pouvez nous contacter à l'adresse suivante : contact@quizorientation.online."
+        content: "Pour toute question relative aux présentes mentions légales, vous pouvez nous contacter à l'adresse suivante : oocopcmcsm@gmail.com."
       }
     },
     en: {
       title: "Legal Notice",
       h1: "Legal Notice",
       intro: "In accordance with the provisions of Law No. 2004-575 of June 21, 2004 on confidence in the digital economy, users of the quizorientation.online website are informed of the identity of the various parties involved in its creation and monitoring.",
-      section1: { title: "1. Site Publisher", content: "The quizorientation.online website is published by: quizorientation. Publication director: quizorientation. Contact: contact@quizorientation.online." },
+      section1: { title: "1. Site Publisher", content: "The quizorientation.online website is published by: quizorientation. Publication director: quizorientation. Contact: oocopcmcsm@gmail.com." },
       section2: { title: "2. Hosting", content: "The quizorientation.online website is hosted by: Netlify, Inc. Address: 44 Montgomery Street, Suite 750, San Francisco, CA 94104, United States. Website: https://www.netlify.com" },
-      section3: { title: "3. Data Collection and Processing", content: "In accordance with the 'Data Protection Act' of January 6, 1978, as amended, and the General Data Protection Regulation (GDPR) that came into effect on May 25, 2018, you have the right to access, rectify, delete and object to personal data concerning you. To exercise this right, you can contact us at the following address: contact@quizorientation.online. Data collected during the use of the career orientation quiz is used solely for the purpose of generating your professional profile and providing you with personalized recommendations. No personal data is sold to third parties." },
+      section3: { title: "3. Data Collection and Processing", content: "In accordance with the 'Data Protection Act' of January 6, 1978, as amended, and the General Data Protection Regulation (GDPR) that came into effect on May 25, 2018, you have the right to access, rectify, delete and object to personal data concerning you. To exercise this right, you can contact us at the following address: oocopcmcsm@gmail.com. Data collected during the use of the career orientation quiz is used solely for the purpose of generating your professional profile and providing you with personalized recommendations. No personal data is sold to third parties." },
       section4: { title: "4. Intellectual Property", content: "This entire site is subject to French and international legislation on copyright and intellectual property. All reproduction rights are reserved, including for downloadable documents and iconographic and photographic representations. Reproduction of all or part of this site on any electronic medium is strictly prohibited except with express authorization from the publisher." },
       section5: { title: "5. Liability", content: "The publisher strives to provide on the quizorientation.online website information as accurate as possible. However, it cannot be held responsible for omissions, inaccuracies and deficiencies in the update, whether due to itself or to third-party partners who provide this information." },
       section6: { title: "6. Hypertext Links", content: "The quizorientation.online website may contain hypertext links to other sites on the Internet network. Links to these other resources take you away from the quizorientation.online website." },
       section7: { title: "7. Cookies", content: "The quizorientation.online website may ask you to accept cookies for statistical and display purposes. A cookie is information deposited on your hard drive by the server of the site you visit." },
-      section9: { title: "8. Contact", content: "For any questions regarding these legal notices, you can contact us at the following address: contact@quizorientation.online." }
+      section9: { title: "8. Contact", content: "For any questions regarding these legal notices, you can contact us at the following address: oocopcmcsm@gmail.com." }
     },
     ar: {
       title: "الإشعار القانوني",
       h1: "الإشعار القانوني",
       intro: "وفقًا لأحكام القانون رقم 2004-575 المؤرخ 21 يونيو 2004 بشأن الثقة في الاقتصاد الرقمي، يتم إبلاغ مستخدمي موقع quizorientation.online بهوية الأطراف المختلفة المشاركة في إنشائه ومراقبته.",
-      section1: { title: "1. ناشر الموقع", content: "يتم نشر موقع quizorientation.online من قبل: quizorientation. مدير النشر: quizorientation. الاتصال: contact@quizorientation.online." },
+      section1: { title: "1. ناشر الموقع", content: "يتم نشر موقع quizorientation.online من قبل: quizorientation. مدير النشر: quizorientation. الاتصال: oocopcmcsm@gmail.com." },
       section2: { title: "2. الاستضافة", content: "يتم استضافة موقع quizorientation.online من قبل: Netlify, Inc. العنوان: 44 Montgomery Street, Suite 750, San Francisco, CA 94104, الولايات المتحدة. الموقع الإلكتروني: https://www.netlify.com" },
       section3: { title: "3. جمع البيانات ومعالجتها", content: "وفقًا لقانون 'المعلوماتية والحريات' المؤرخ 6 يناير 1978 المعدل واللائحة العامة لحماية البيانات (RGPD) التي دخلت حيز التنفيذ في 25 مايو 2018، لديك الحق في الوصول والتصحيح والحذف والاعتراض على البيانات الشخصية المتعلقة بك." },
       section4: { title: "4. الملكية الفكرية", content: "يخضع هذا الموقع بالكامل للتشريع الفرنسي والدولي بشأن حق المؤلف والملكية الفكرية. جميع حقوق الاستنساخ محفوظة." },
       section5: { title: "5. المسؤولية", content: "يسعى الناشر إلى توفير معلومات دقيقة قدر الإمكان على موقع quizorientation.online. ومع ذلك، لا يمكن أن يتحمل المسؤولية عن الأخطاء والتناقضات ونقص التحديث." },
       section6: { title: "6. الروابط التشعبية", content: "قد يحتوي موقع quizorientation.online على روابط تشعبية إلى مواقع أخرى على شبكة الإنترنت." },
       section7: { title: "7. ملفات تعريف الارتباط", content: "قد يطلب منك موقع quizorientation.online قبول ملفات تعريف الارتباط لأغراض إحصائية وعرضية." },
-      section9: { title: "8. الاتصال", content: "لأي أسئلة تتعلق بهذا الإشعار القانوني، يمكنك الاتصال بنا على العنوان التالي: contact@quizorientation.online." }
+      section9: { title: "8. الاتصال", content: "لأي أسئلة تتعلق بهذا الإشعار القانوني، يمكنك الاتصال بنا على العنوان التالي: oocopcmcsm@gmail.com." }
     }
   }
 
