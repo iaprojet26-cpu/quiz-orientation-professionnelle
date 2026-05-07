@@ -24,6 +24,7 @@ const CareerMatching = lazy(() => import('./pages/CareerMatching'))
 const FreeTools = lazy(() => import('./pages/FreeTools'))
 const CoverLetterTool = lazy(() => import('./pages/CoverLetterTool'))
 const InterviewPrepTool = lazy(() => import('./pages/InterviewPrepTool'))
+const AtsScoreTool = lazy(() => import('./pages/AtsScoreTool'))
 const AdminLogin = lazy(() => import('./pages/AdminLogin'))
 const AdminDashboard = lazy(() => import('./pages/AdminDashboard'))
 
@@ -176,6 +177,7 @@ function App() {
         <Route path="/free-tools" element={<Suspense fallback={<LoadingFallback />}><FreeTools /></Suspense>} />
         <Route path="/tools/cover-letter" element={<Suspense fallback={<LoadingFallback />}><CoverLetterTool /></Suspense>} />
         <Route path="/tools/interview-prep" element={<Suspense fallback={<LoadingFallback />}><InterviewPrepTool /></Suspense>} />
+        <Route path="/tools/ats-score" element={<Suspense fallback={<LoadingFallback />}><AtsScoreTool /></Suspense>} />
         <Route 
           path="/admin/login" 
           element={
@@ -276,6 +278,7 @@ function App() {
         <Route path="/:lang/free-tools" element={<Suspense fallback={<LoadingFallback />}><FreeTools /></Suspense>} />
         <Route path="/:lang/tools/cover-letter" element={<Suspense fallback={<LoadingFallback />}><CoverLetterTool /></Suspense>} />
         <Route path="/:lang/tools/interview-prep" element={<Suspense fallback={<LoadingFallback />}><InterviewPrepTool /></Suspense>} />
+        <Route path="/:lang/tools/ats-score" element={<Suspense fallback={<LoadingFallback />}><AtsScoreTool /></Suspense>} />
       </Routes>
       <Footer />
     </>

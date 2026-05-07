@@ -33,6 +33,12 @@ function FreeTools() {
           desc: 'Entrainez-vous avec des questions types et des reponses structurees.',
           link: '/tools/interview-prep',
           cta: 'Ouvrir l outil'
+        },
+        {
+          title: 'ATS CV Score',
+          desc: 'Comparez votre CV a une offre et identifiez les mots-cles manquants.',
+          link: '/tools/ats-score',
+          cta: 'Analyser mon CV'
         }
       ],
       linksTitle: 'Explorer aussi',
@@ -67,6 +73,12 @@ function FreeTools() {
           desc: 'Practice common questions with structured answer templates.',
           link: '/tools/interview-prep',
           cta: 'Open tool'
+        },
+        {
+          title: 'ATS CV Score',
+          desc: 'Compare your resume with a job description and detect missing keywords.',
+          link: '/tools/ats-score',
+          cta: 'Analyze my resume'
         }
       ],
       linksTitle: 'Explore also',
@@ -101,6 +113,12 @@ function FreeTools() {
           desc: 'تدرب على الأسئلة الشائعة بإجابات منظمة.',
           link: '/tools/interview-prep',
           cta: 'فتح الأداة'
+        },
+        {
+          title: 'درجة ATS للسيرة الذاتية',
+          desc: 'قارن سيرتك الذاتية بوصف الوظيفة وحدد الكلمات المفتاحية الناقصة.',
+          link: '/tools/ats-score',
+          cta: 'تحليل سيرتي الذاتية'
         }
       ],
       linksTitle: 'استكشف أيضا',
@@ -131,7 +149,7 @@ function FreeTools() {
 
         <section className="mb-10">
           <h2 className="text-2xl font-bold text-primary-900 mb-4">{text.toolsTitle}</h2>
-          <div className="grid md:grid-cols-3 gap-5">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {text.tools.map((tool) => (
               <article key={tool.title} className="bg-white rounded-lg shadow-md p-5 border border-primary-100">
                 <h3 className="text-lg font-bold text-primary-900 mb-2">{tool.title}</h3>
