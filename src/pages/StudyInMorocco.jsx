@@ -13,6 +13,7 @@ function StudyInMorocco() {
   const langPrefix = language === 'fr' ? '' : `/${language}`
   const [items, setItems] = useState([])
   const [loading, setLoading] = useState(true)
+  const [openItemId, setOpenItemId] = useState(null)
 
   const text = {
     fr: {
@@ -20,21 +21,33 @@ function StudyInMorocco() {
       intro:
         'Decouvrez les parcours academiques, ecoles, universites et formations professionnalisantes au Maroc, avec des conseils pratiques d admission.',
       empty: 'Aucune formation publiee pour le moment.',
-      cta: 'Voir les guides de carriere'
+      cta: 'Voir les guides de carriere',
+      details: 'Voir les details',
+      close: 'Masquer',
+      apply: 'S inscrire',
+      requirements: 'Conditions d admission'
     },
     en: {
       h1: 'Study in Morocco',
       intro:
         'Discover academic paths, schools, universities and career-oriented programs in Morocco, with practical admission tips.',
       empty: 'No published programs yet.',
-      cta: 'Explore career guides'
+      cta: 'Explore career guides',
+      details: 'View details',
+      close: 'Hide',
+      apply: 'Apply',
+      requirements: 'Admission requirements'
     },
     ar: {
       h1: 'الدراسة في المغرب',
       intro:
         'اكتشف المسارات الأكاديمية والمدارس والجامعات والتكوينات المهنية في المغرب مع نصائح عملية للقبول.',
       empty: 'لا توجد برامج منشورة حاليا.',
-      cta: 'استكشف أدلة المسار المهني'
+      cta: 'استكشف أدلة المسار المهني',
+      details: 'عرض التفاصيل',
+      close: 'إخفاء',
+      apply: 'التسجيل',
+      requirements: 'شروط القبول'
     }
   }[language]
 
@@ -71,7 +84,43 @@ function StudyInMorocco() {
                 <p className="text-sm text-gray-500 mb-3">
                   {item.institutionName} {item.city ? `• ${item.city}` : ''} {item.degreeLevel ? `• ${item.degreeLevel}` : ''}
                 </p>
-                <p className="text-gray-700">{item.description}</p>
+                <p className="text-gray-700 mb-3">{item.description}</p>
+                <div className="flex flex-wrap items-center gap-3">
+                  <button
+                    type="button"
+                    onClick={() => setOpenItemId((prev) => (prev === item.id ? null : item.id))}
+                    className="text-primary-700 hover:underline font-semibold text-sm"
+                  >
+                    {openItemId === item.id ? text.close : text.details}
+                  </button>
+                  {item.sourceUrl ? (
+                    <a
+                      href={item.sourceUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-primary-600 text-white px-3 py-1.5 rounded-lg text-sm font-semibold"
+                    >
+                      {text.apply}
+                    </a>
+                  ) : null}
+                </div>
+                {openItemId === item.id ? (
+                  <div className="mt-4 border-t pt-4 space-y-3">
+                    {item.admissionRequirements?.length > 0 ? (
+                      <div>
+                        <h3 className="text-sm font-bold text-primary-900 mb-1">{text.requirements}</h3>
+                        <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1">
+                          {item.admissionRequirements.map((req) => <li key={req}>{req}</li>)}
+                        </ul>
+                      </div>
+                    ) : null}
+                    {item.durationMonths ? (
+                      <p className="text-sm text-gray-600">
+                        {language === 'fr' ? 'Duree' : language === 'en' ? 'Duration' : 'المدة'}: {item.durationMonths} {language === 'fr' ? 'mois' : language === 'en' ? 'months' : 'شهرا'}
+                      </p>
+                    ) : null}
+                  </div>
+                ) : null}
               </article>
             ))}
           </section>

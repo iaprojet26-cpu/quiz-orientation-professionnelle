@@ -65,6 +65,7 @@ export const getOpportunities = async (lang = 'fr') => {
         company_name,
         city,
         country,
+        source_url,
         application_deadline,
         is_remote,
         is_active,
@@ -72,7 +73,8 @@ export const getOpportunities = async (lang = 'fr') => {
           language,
           title,
           description,
-          requirements
+          requirements,
+          application_steps
         )
       `)
       .eq('is_active', true)
@@ -88,11 +90,13 @@ export const getOpportunities = async (lang = 'fr') => {
         companyName: item.company_name,
         city: item.city,
         country: item.country,
+        sourceUrl: item.source_url,
         deadline: item.application_deadline,
         isRemote: item.is_remote,
         title: tr?.title || item.type,
         description: tr?.description || '',
-        requirements: tr?.requirements || []
+        requirements: tr?.requirements || [],
+        applicationSteps: tr?.application_steps || []
       }
     })
   } catch (error) {
@@ -114,6 +118,7 @@ export const getStudyPrograms = async (lang = 'fr') => {
         city,
         degree_level,
         duration_months,
+        source_url,
         is_active,
         study_program_translations (
           language,
@@ -135,6 +140,7 @@ export const getStudyPrograms = async (lang = 'fr') => {
         city: item.city,
         degreeLevel: item.degree_level,
         durationMonths: item.duration_months,
+        sourceUrl: item.source_url,
         title: tr?.title || item.slug,
         description: tr?.description || '',
         admissionRequirements: tr?.admission_requirements || []

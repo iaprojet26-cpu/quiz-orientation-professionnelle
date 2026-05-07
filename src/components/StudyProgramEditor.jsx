@@ -18,6 +18,7 @@ function StudyProgramEditor({ item, onClose, onSave }) {
     city: item?.city || '',
     degree_level: item?.degree_level || '',
     duration_months: item?.duration_months || '',
+    source_url: item?.source_url || '',
     is_active: item?.is_active !== false,
     title_fr: translations.fr.title || '',
     description_fr: translations.fr.description || '',
@@ -78,6 +79,7 @@ function StudyProgramEditor({ item, onClose, onSave }) {
               <input name="degree_level" value={formData.degree_level} onChange={handleChange} placeholder="Niveau diplome" className="px-4 py-2 border rounded-lg" />
               <input name="duration_months" value={formData.duration_months} onChange={handleChange} placeholder="Duree (mois)" className="px-4 py-2 border rounded-lg" />
             </div>
+            <input name="source_url" value={formData.source_url} onChange={handleChange} placeholder="Lien inscription (optionnel) - https://..." className="w-full px-4 py-2 border rounded-lg" />
             <label className="flex items-center gap-2"><input type="checkbox" name="is_active" checked={formData.is_active} onChange={handleChange} /> Actif</label>
 
             {['fr', 'en', 'ar'].map((lang) => (

@@ -11,6 +11,101 @@ BEGIN
   END IF;
 END $$;
 
+-- Admin write policies for Hub CRUD (client uses anon/authenticated role)
+-- NOTE: this grants write access from the app client. Keep admin route protected.
+DO $$
+BEGIN
+  -- career_paths
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Admin write career_paths anon') THEN
+    CREATE POLICY "Admin write career_paths anon" ON career_paths
+      FOR ALL TO anon USING (true) WITH CHECK (true);
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Admin write career_paths authenticated') THEN
+    CREATE POLICY "Admin write career_paths authenticated" ON career_paths
+      FOR ALL TO authenticated USING (true) WITH CHECK (true);
+  END IF;
+
+  -- career_path_translations
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Admin write career_path_translations anon') THEN
+    CREATE POLICY "Admin write career_path_translations anon" ON career_path_translations
+      FOR ALL TO anon USING (true) WITH CHECK (true);
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Admin write career_path_translations authenticated') THEN
+    CREATE POLICY "Admin write career_path_translations authenticated" ON career_path_translations
+      FOR ALL TO authenticated USING (true) WITH CHECK (true);
+  END IF;
+
+  -- opportunities
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Admin write opportunities anon') THEN
+    CREATE POLICY "Admin write opportunities anon" ON opportunities
+      FOR ALL TO anon USING (true) WITH CHECK (true);
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Admin write opportunities authenticated') THEN
+    CREATE POLICY "Admin write opportunities authenticated" ON opportunities
+      FOR ALL TO authenticated USING (true) WITH CHECK (true);
+  END IF;
+
+  -- opportunity_translations
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Admin write opportunity_translations anon') THEN
+    CREATE POLICY "Admin write opportunity_translations anon" ON opportunity_translations
+      FOR ALL TO anon USING (true) WITH CHECK (true);
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Admin write opportunity_translations authenticated') THEN
+    CREATE POLICY "Admin write opportunity_translations authenticated" ON opportunity_translations
+      FOR ALL TO authenticated USING (true) WITH CHECK (true);
+  END IF;
+
+  -- study_programs
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Admin write study_programs anon') THEN
+    CREATE POLICY "Admin write study_programs anon" ON study_programs
+      FOR ALL TO anon USING (true) WITH CHECK (true);
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Admin write study_programs authenticated') THEN
+    CREATE POLICY "Admin write study_programs authenticated" ON study_programs
+      FOR ALL TO authenticated USING (true) WITH CHECK (true);
+  END IF;
+
+  -- study_program_translations
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Admin write study_program_translations anon') THEN
+    CREATE POLICY "Admin write study_program_translations anon" ON study_program_translations
+      FOR ALL TO anon USING (true) WITH CHECK (true);
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Admin write study_program_translations authenticated') THEN
+    CREATE POLICY "Admin write study_program_translations authenticated" ON study_program_translations
+      FOR ALL TO authenticated USING (true) WITH CHECK (true);
+  END IF;
+
+  -- career_guides
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Admin write career_guides anon') THEN
+    CREATE POLICY "Admin write career_guides anon" ON career_guides
+      FOR ALL TO anon USING (true) WITH CHECK (true);
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Admin write career_guides authenticated') THEN
+    CREATE POLICY "Admin write career_guides authenticated" ON career_guides
+      FOR ALL TO authenticated USING (true) WITH CHECK (true);
+  END IF;
+
+  -- career_guide_translations
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Admin write career_guide_translations anon') THEN
+    CREATE POLICY "Admin write career_guide_translations anon" ON career_guide_translations
+      FOR ALL TO anon USING (true) WITH CHECK (true);
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Admin write career_guide_translations authenticated') THEN
+    CREATE POLICY "Admin write career_guide_translations authenticated" ON career_guide_translations
+      FOR ALL TO authenticated USING (true) WITH CHECK (true);
+  END IF;
+
+  -- profile_content_matches
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Admin write profile_content_matches anon') THEN
+    CREATE POLICY "Admin write profile_content_matches anon" ON profile_content_matches
+      FOR ALL TO anon USING (true) WITH CHECK (true);
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Admin write profile_content_matches authenticated') THEN
+    CREATE POLICY "Admin write profile_content_matches authenticated" ON profile_content_matches
+      FOR ALL TO authenticated USING (true) WITH CHECK (true);
+  END IF;
+END $$;
+
 -- Core career paths
 CREATE TABLE IF NOT EXISTS career_paths (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -70,10 +165,14 @@ CREATE TABLE IF NOT EXISTS study_programs (
   city TEXT,
   degree_level TEXT,
   duration_months INTEGER,
+  source_url TEXT,
   is_active BOOLEAN NOT NULL DEFAULT true,
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
+
+ALTER TABLE study_programs
+ADD COLUMN IF NOT EXISTS source_url TEXT;
 
 CREATE TABLE IF NOT EXISTS study_program_translations (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),

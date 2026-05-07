@@ -13,25 +13,41 @@ function Opportunities() {
   const langPrefix = language === 'fr' ? '' : `/${language}`
   const [items, setItems] = useState([])
   const [loading, setLoading] = useState(true)
+  const [openItemId, setOpenItemId] = useState(null)
 
   const text = {
     fr: {
       h1: 'Opportunites',
       intro: 'Offres de stages, emplois debutants et appels a candidatures. Objectif: connecter orientation et opportunites reelles.',
       empty: 'Aucune opportunite publiee pour le moment.',
-      cta: 'Voir les parcours de carriere'
+      cta: 'Voir les parcours de carriere',
+      details: 'Voir les details',
+      close: 'Masquer',
+      apply: 'Postuler',
+      steps: 'Etapes',
+      requirements: 'Prerequis'
     },
     en: {
       h1: 'Opportunities',
       intro: 'Internships, entry-level jobs and calls for applications. The goal is to connect career guidance with real opportunities.',
       empty: 'No published opportunities yet.',
-      cta: 'Explore career paths'
+      cta: 'Explore career paths',
+      details: 'View details',
+      close: 'Hide',
+      apply: 'Apply now',
+      steps: 'Steps',
+      requirements: 'Requirements'
     },
     ar: {
       h1: 'الفرص',
       intro: 'فرص تدريب ووظائف للمبتدئين وإعلانات ترشيح. الهدف هو ربط التوجيه المهني بفرص حقيقية.',
       empty: 'لا توجد فرص منشورة حاليا.',
-      cta: 'استكشف المسارات المهنية'
+      cta: 'استكشف المسارات المهنية',
+      details: 'عرض التفاصيل',
+      close: 'إخفاء',
+      apply: 'قدّم الآن',
+      steps: 'الخطوات',
+      requirements: 'المتطلبات'
     }
   }[language]
 
@@ -69,8 +85,49 @@ function Opportunities() {
                   {item.type} {item.companyName ? `• ${item.companyName}` : ''} {item.city ? `• ${item.city}` : ''}
                 </p>
                 <p className="text-gray-700 mb-3">{item.description}</p>
-                {item.requirements.length > 0 ? (
-                  <p className="text-sm text-gray-600 line-clamp-2">{item.requirements.join(', ')}</p>
+                <div className="flex flex-wrap items-center gap-3">
+                  <button
+                    type="button"
+                    onClick={() => setOpenItemId((prev) => (prev === item.id ? null : item.id))}
+                    className="text-primary-700 hover:underline font-semibold text-sm"
+                  >
+                    {openItemId === item.id ? text.close : text.details}
+                  </button>
+                  {item.sourceUrl ? (
+                    <a
+                      href={item.sourceUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-primary-600 text-white px-3 py-1.5 rounded-lg text-sm font-semibold"
+                    >
+                      {text.apply}
+                    </a>
+                  ) : null}
+                </div>
+                {openItemId === item.id ? (
+                  <div className="mt-4 border-t pt-4 space-y-3">
+                    {item.deadline ? (
+                      <p className="text-sm text-gray-600">
+                        {language === 'fr' ? 'Date limite' : language === 'en' ? 'Deadline' : 'آخر أجل'}: {item.deadline}
+                      </p>
+                    ) : null}
+                    {item.requirements?.length > 0 ? (
+                      <div>
+                        <h3 className="text-sm font-bold text-primary-900 mb-1">{text.requirements}</h3>
+                        <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1">
+                          {item.requirements.map((req) => <li key={req}>{req}</li>)}
+                        </ul>
+                      </div>
+                    ) : null}
+                    {item.applicationSteps?.length > 0 ? (
+                      <div>
+                        <h3 className="text-sm font-bold text-primary-900 mb-1">{text.steps}</h3>
+                        <ol className="list-decimal pl-5 text-sm text-gray-700 space-y-1">
+                          {item.applicationSteps.map((step) => <li key={step}>{step}</li>)}
+                        </ol>
+                      </div>
+                    ) : null}
+                  </div>
                 ) : null}
               </article>
             ))}

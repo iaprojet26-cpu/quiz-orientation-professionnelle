@@ -893,6 +893,7 @@ export const createStudyProgram = async (formData) => {
         city: formData.city || null,
         degree_level: formData.degree_level || null,
         duration_months: formData.duration_months ? parseInt(formData.duration_months, 10) : null,
+        source_url: formData.source_url || null,
         is_active: formData.is_active !== false
       })
       .select()
@@ -932,6 +933,7 @@ export const updateStudyProgram = async (id, formData) => {
         city: formData.city || null,
         degree_level: formData.degree_level || null,
         duration_months: formData.duration_months ? parseInt(formData.duration_months, 10) : null,
+        source_url: formData.source_url || null,
         is_active: formData.is_active !== false
       })
       .eq('id', id)
