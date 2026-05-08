@@ -1641,12 +1641,10 @@ const loadArticlesFromMarkdown = async (language = 'fr') => {
                 }
                 
                 // Fallback sur l'image par défaut si pas trouvée ou invalide
-                // TOUJOURS utiliser default-generic.svg pour tous les articles
-                if (!image || image === '' || !image.startsWith('/')) {
-                  image = `/assets/blog/default-generic.svg`
-                } else {
-                  // Même si une image est spécifiée, vérifier qu'elle existe
-                  // Pour simplifier, on utilise toujours default-generic.svg
+                // Autoriser image locale (/assets/...) ou URL externe (http/https)
+                const isValidLocal = typeof image === 'string' && image.startsWith('/')
+                const isValidExternal = typeof image === 'string' && /^https?:\/\//i.test(image)
+                if (!image || image === '' || (!isValidLocal && !isValidExternal)) {
                   image = `/assets/blog/default-generic.svg`
                 }
                 

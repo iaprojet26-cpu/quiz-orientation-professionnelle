@@ -7,6 +7,7 @@ import { getArticleBySlug } from '../services/blogService'
 import SEOHead from '../components/SEOHead'
 import { trackArticleView } from '../utils/analytics'
 import { getArticleSchema } from '../services/seoService'
+import OptimizedImage from '../components/OptimizedImage'
 
 function BlogArticle() {
   const { slug: rawSlug } = useParams()
@@ -18,6 +19,7 @@ function BlogArticle() {
   const [error, setError] = useState(null)
   const isMountedRef = useRef(true)
   const language = i18n.language || 'fr'
+  const defaultArticleImage = '/assets/blog/default-generic.svg'
 
   const parseFrontMatter = (rawText) => {
     const match = rawText.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/)
@@ -367,6 +369,17 @@ function BlogArticle() {
         </Link>
 
         <header className="mb-8">
+          <div className="rounded-lg overflow-hidden mb-5 bg-gradient-to-br from-primary-100 to-primary-200">
+            <OptimizedImage
+              src={article.image || defaultArticleImage}
+              alt={article.title}
+              className="w-full h-72 object-cover"
+              lazy={false}
+              onError={(e) => {
+                e.currentTarget.src = defaultArticleImage
+              }}
+            />
+          </div>
           <div className="text-sm text-gray-500 mb-4">
             {new Date(article.date).toLocaleDateString(language === 'fr' ? 'fr-FR' : language === 'en' ? 'en-US' : 'ar-MA', {
               year: 'numeric',

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { getAllArticles } from '../services/blogService'
 import SEOHead from '../components/SEOHead'
+import OptimizedImage from '../components/OptimizedImage'
 
 function BlogList() {
   const { t, i18n } = useTranslation()
@@ -18,6 +19,7 @@ function BlogList() {
     language = 'fr'
   }
   const langPrefix = `/${language}`
+  const defaultArticleImage = '/assets/blog/default-generic.svg'
 
   const isMountedRef = useRef(true)
   
@@ -170,31 +172,15 @@ function BlogList() {
               aria-label={`Lire l'article: ${article.title}`}
             >
               <div className="h-48 bg-gradient-to-br from-primary-100 to-primary-200 flex items-center justify-center overflow-hidden relative">
-                {(() => {
-                  // TOUJOURS utiliser l'image générique par défaut pour tous les articles
-                  const imageUrl = '/assets/blog/default-generic.svg'
-                  
-                  return (
-                    <img
-                      src={imageUrl}
-                      alt={article.title}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                      onError={(e) => {
-                        console.error('❌ Erreur chargement image:', imageUrl, 'pour article:', article.title)
-                        // Fallback sur emoji si l'image échoue
-                        e.target.style.display = 'none'
-                        const parent = e.target.closest('div')
-                        if (parent && !parent.querySelector('.fallback-emoji')) {
-                          const emoji = document.createElement('span')
-                          emoji.className = 'fallback-emoji text-6xl'
-                          emoji.textContent = '📚'
-                          parent.appendChild(emoji)
-                        }
-                      }}
-                    />
-                  )
-                })()}
+                <OptimizedImage
+                  src={article.image || defaultArticleImage}
+                  alt={article.title}
+                  className="w-full h-full object-cover"
+                  lazy={true}
+                  onError={(e) => {
+                    e.currentTarget.src = defaultArticleImage
+                  }}
+                />
               </div>
               <div className="p-6">
                 <div className="text-sm text-gray-500 mb-2">
