@@ -1804,106 +1804,33 @@ export const getArticleBySlug = async (slug, language = 'fr') => {
     }
   }
 
-  // Essayer de charger depuis les fichiers markdown dans articles-seo/
-  const basePath = (import.meta.env?.BASE_URL || '/').replace(/\/$/, '')
-  for (let i = 1; i <= 60; i++) {
-    const articleNum = i.toString().padStart(2, '0')
-    const metadataPath = `${basePath}/articles-seo/article-${articleNum}/metadata.json`
-    
-    try {
-      const metadataResponse = await fetchWithTimeout(metadataPath, { cache: 'no-cache' }, 5000)
-      if (metadataResponse.ok) {
-        const metadata = await metadataResponse.json()
-        
-        // Chercher le slug dans toutes les langues (fr, en, ar)
-        const allSlugs = {
-          fr: metadata.slug_fr,
-          en: metadata.slug_en,
-          ar: metadata.slug_ar
-        }
-        
-        // Normaliser le slug recherché
-        const normalizedSlug = decodeURIComponent(slug)
-        
-        // Vérifier si le slug correspond à n'importe quelle langue
-        let matchingLang = null
-        for (const [lang, articleSlug] of Object.entries(allSlugs)) {
-          if (!articleSlug) continue
-          const normalizedArticleSlug = decodeURIComponent(articleSlug)
-          if (articleSlug === slug || normalizedArticleSlug === normalizedSlug || 
-              articleSlug === normalizedSlug || normalizedArticleSlug === slug) {
-            matchingLang = lang
-            break
-          }
-        }
-        
-        // Si on a trouvé une correspondance, utiliser la langue correspondante ou la langue demandée
-        if (matchingLang) {
-          // Utiliser la langue demandée si disponible, sinon utiliser la langue du slug trouvé
-          const finalLang = (metadata[`title_${language}`] && metadata[`slug_${language}`]) ? language : matchingLang
-          const slugKey = `slug_${finalLang}`
-          const titleKey = `title_${finalLang}`
-          const descriptionKey = `description_${finalLang}`
-          
-          // Charger le contenu markdown dans la langue finale
-          const markdownPath = `${basePath}/articles-seo/article-${articleNum}/${finalLang}.md`
-          let content = ''
-          
-          try {
-            const contentResponse = await fetchWithTimeout(markdownPath, { cache: 'no-cache' }, 5000)
-            if (contentResponse.ok) {
-              const rawText = await contentResponse.text()
-              
-              // Parser le front matter et extraire le contenu
-              const frontMatterMatch = rawText.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/)
-              if (frontMatterMatch) {
-                // Extraire le contenu après le front matter
-                content = rawText.slice(frontMatterMatch[0].length).trim()
-              } else {
-                // Si pas de front matter, utiliser tout le contenu
-                content = rawText.trim()
-              }
-              
-              // Vérifier que le contenu n'est pas un placeholder
-              if (content.includes('[Contenu à compléter') || content.includes('Contenu à compléter')) {
-                console.warn(`Article ${articleNum} contient un placeholder, article ignoré`)
-                // Ne pas retourner cet article
-                continue
-              }
-              
-              // Vérifier que le contenu a une longueur minimale (sauf pour les articles CV qui sont en cours de rédaction)
-              // Les articles CV peuvent avoir un contenu plus court car ils sont en cours de rédaction
-              if (content.length < 200 && metadata.category !== 'cv') {
-                console.warn(`Article ${articleNum} a un contenu trop court (${content.length} caractères), article ignoré`)
-                continue
-              }
-              
-              // Pour les articles CV, on accepte même avec un contenu court (templates)
-              // Pour les autres articles, on vérifie qu'ils ont au moins 200 caractères
-              if (metadata.category !== 'cv' && content.length < 200) {
-                console.warn(`Article ${articleNum} a un contenu trop court (${content.length} caractères), article ignoré`)
-                continue
-              }
-            }
-          } catch (err) {
-            console.error('Erreur chargement markdown:', err)
-          }
-          
-          return {
-            slug: metadata[slugKey],
-            title: metadata[titleKey] || metadata.title_fr,
-            description: metadata[descriptionKey] || metadata.description_fr,
-            date: metadata.datePublication || metadata.date || '2025-01-01',
-            image: metadata.image || `/assets/blog/default-${metadata.category || 'blog'}.svg`,
-            keywords: metadata[`keywords_${finalLang}`] || metadata.keywords_fr || [],
-            category: metadata.category || 'blog',
-            content: content
-          }
-        }
+  // Fallback rapide: charger l'index markdown (cache + parallélisé) puis retrouver le slug.
+  // Le contenu complet sera chargé dans BlogArticle (fetchMarkdownContent), pour éviter les boucles lentes.
+  try {
+    const markdownArticles = await loadArticlesFromMarkdown(language)
+    const decodedSlug = (() => {
+      try {
+        return decodeURIComponent(slug)
+      } catch {
+        return slug
       }
-    } catch (err) {
-      continue
+    })()
+    const fromMarkdown = (markdownArticles || []).find((a) => {
+      if (!a?.slug) return false
+      try {
+        return a.slug === slug || decodeURIComponent(a.slug) === decodedSlug
+      } catch {
+        return a.slug === slug
+      }
+    })
+    if (fromMarkdown) {
+      return {
+        ...fromMarkdown,
+        content: ''
+      }
     }
+  } catch (error) {
+    console.error('Erreur lookup markdown article:', error)
   }
 
   // Fallback sur articles statiques
