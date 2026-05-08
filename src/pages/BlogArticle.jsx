@@ -21,6 +21,10 @@ function BlogArticle() {
   const language = i18n.language || 'fr'
   const defaultArticleImage = '/assets/blog/default-generic.svg'
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+  }, [slug, language])
+
   const parseFrontMatter = (rawText) => {
     const match = rawText.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/)
     if (!match) {

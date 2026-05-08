@@ -1563,7 +1563,13 @@ const mapSupabaseArticle = (article, language = 'fr') => ({
   title: article[`title_${language}`] || article.title_fr,
   description: article[`description_${language}`] || article.description_fr,
   date: article.published_at || article.created_at,
-  image: article.image,
+  image: (() => {
+    const raw = (article.image || '').trim()
+    if (!raw) return '/assets/blog/default-generic.svg'
+    if (raw.startsWith('/')) return raw
+    if (/^https?:\/\//i.test(raw)) return raw
+    return `https://${raw}`
+  })(),
   keywords: article[`keywords_${language}`] || article.keywords_fr || [],
   category: article.category
 })
