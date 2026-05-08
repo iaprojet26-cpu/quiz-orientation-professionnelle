@@ -209,67 +209,8 @@ function BlogArticle() {
         
         if (!isMountedRef.current) return
         
-        let markdownContent = ''
-
         if (articleData?.title) {
           trackArticleView(articleData.title)
-        }
-
-        if (!articleData || !articleData.content) {
-          try {
-            // Utiliser la langue normalisée pour charger le bon fichier markdown
-            const rawText = await fetchMarkdownContent(slug, normalizedLang)
-            
-            if (!isMountedRef.current) return
-            
-            const { frontMatter, body } = parseFrontMatter(rawText)
-            
-            // Vérifier que le contenu n'est pas un placeholder
-            if (body && (body.includes('[Contenu à compléter') || body.includes('Contenu à compléter'))) {
-              throw new Error('Article en cours de rédaction')
-            }
-            
-            if (body && body.trim().length > 0 && !body.trim().startsWith('<!')) {
-              markdownContent = body
-
-              if (!articleData) {
-                articleData = {
-                  slug,
-                  title: frontMatter.title || slug,
-                  description: frontMatter.description || '',
-                  date: frontMatter.date || new Date().toISOString(),
-                  image: frontMatter.image || `/assets/blog/default-${frontMatter.category || 'blog'}.svg`,
-                  keywords: frontMatter.keywords || [],
-                  category: frontMatter.category || 'blog'
-                }
-              } else {
-                // Mettre à jour l'image si elle n'est pas définie
-                if (!articleData.image && frontMatter.image) {
-                  articleData.image = frontMatter.image
-                }
-              }
-            } else {
-              throw new Error('Contenu markdown invalide')
-            }
-          } catch (fetchError) {
-            if (!isMountedRef.current) return
-            
-            // Si l'article n'existe pas, on lance une erreur pour afficher la page 404
-            if (!articleData) {
-              throw new Error('Article non trouvé')
-            }
-            
-            // Si l'article existe mais le contenu markdown n'est pas disponible,
-            // on utilise le contenu de la base de données ou on affiche une erreur
-            if (articleData.content) {
-              markdownContent = articleData.content
-            } else {
-              // Fallback robuste: ne pas bloquer l'affichage si le markdown externe n'est pas accessible.
-              markdownContent = `## ${articleData.title || slug}\n\n${articleData.description || ''}`.trim()
-            }
-          }
-        } else {
-          markdownContent = articleData.content
         }
 
         if (!isMountedRef.current) return
@@ -277,13 +218,31 @@ function BlogArticle() {
         if (!articleData) {
           throw new Error('Article non trouvé')
         }
-        
+
+        // Toujours afficher une version minimale immédiatement pour éviter toute page blanche.
+        const immediateContent = (articleData.content && articleData.content.trim().length > 0)
+          ? articleData.content
+          : `## ${articleData.title || slug}\n\n${articleData.description || t('blog.article_default', { defaultValue: 'Contenu en cours de mise a jour.' })}`
+
         setArticle(articleData)
-        if (markdownContent && !markdownContent.trim().startsWith('<!') && markdownContent.trim().length > 0) {
-          setContent(markdownContent)
-        } else {
-          // Fallback final pour éviter la page bloquée sur des articles partiellement remplis.
-          setContent(`# ${articleData.title || slug}\n\n${articleData.description || t('blog.article_default', { defaultValue: 'Contenu en cours de mise a jour.' })}`)
+        setContent(immediateContent)
+
+        // Puis tenter d'enrichir avec le markdown complet en arrière-plan.
+        if (!articleData.content || articleData.content.trim().length === 0) {
+          try {
+            const rawText = await fetchMarkdownContent(slug, normalizedLang)
+            if (!isMountedRef.current) return
+            const { frontMatter, body } = parseFrontMatter(rawText)
+
+            if (body && body.trim().length > 0 && !body.trim().startsWith('<!') && !body.includes('Contenu à compléter')) {
+              if (!articleData.image && frontMatter.image) {
+                setArticle((prev) => prev ? { ...prev, image: frontMatter.image } : prev)
+              }
+              setContent(body)
+            }
+          } catch {
+            // On garde le contenu minimal déjà affiché.
+          }
         }
       } catch (error) {
         if (!isMountedRef.current) return

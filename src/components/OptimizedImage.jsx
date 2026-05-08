@@ -75,7 +75,7 @@ function OptimizedImage({
   return (
     <picture>
       {/* Source WebP si disponible */}
-      {webpSrc && !imageError && (
+      {webpSrc && (
         <source
           srcSet={webpSrc}
           type="image/webp"
