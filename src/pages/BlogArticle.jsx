@@ -1,17 +1,24 @@
 import { useEffect, useState, useRef } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, Navigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
-import { getArticleBySlug } from '../services/blogService'
+import { getArticleBySlug, getAllArticles } from '../services/blogService'
 import SEOHead from '../components/SEOHead'
 import { trackArticleView } from '../utils/analytics'
 import { getArticleSchema } from '../services/seoService'
 import OptimizedImage from '../components/OptimizedImage'
 
 function BlogArticle() {
-  const { slug: rawSlug } = useParams()
-  const slug = decodeURIComponent(rawSlug || '')
+  const { slug: rawSlug, lang: routeLang } = useParams()
+  const safeDecodeURIComponent = (value = '') => {
+    try {
+      return decodeURIComponent(value)
+    } catch {
+      return value
+    }
+  }
+  const slug = safeDecodeURIComponent(rawSlug || '')
   const { t, i18n } = useTranslation()
   const [article, setArticle] = useState(null)
   const [content, setContent] = useState('')
@@ -181,11 +188,24 @@ function BlogArticle() {
           normalizedLang = 'fr'
         }
         
-        let articleData = await withTimeout(
-          getArticleBySlug(slug, normalizedLang),
-          10000,
-          'Chargement de l\'article trop long'
-        )
+        let articleData = null
+        try {
+          articleData = await withTimeout(
+            getArticleBySlug(slug, normalizedLang),
+            10000,
+            'Chargement de l\'article trop long'
+          )
+        } catch {
+          // Plan B: si la résolution par slug est lente/instable, tenter via la liste d'articles.
+          const allArticles = await withTimeout(
+            getAllArticles(normalizedLang),
+            8000,
+            'Chargement alternatif trop long'
+          )
+          articleData = Array.isArray(allArticles)
+            ? allArticles.find((a) => a?.slug === slug) || null
+            : null
+        }
         
         if (!isMountedRef.current) return
         
@@ -375,6 +395,10 @@ function BlogArticle() {
         </div>
       </div>
     )
+  }
+
+  if (routeLang && !['fr', 'en', 'ar'].includes(routeLang)) {
+    return <Navigate to={`/fr/blog/${slug}`} replace />
   }
 
   return (
