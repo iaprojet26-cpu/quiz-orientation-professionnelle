@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { getAllArticles } from '../services/blogService'
 import SEOHead from '../components/SEOHead'
-import OptimizedImage from '../components/OptimizedImage'
 
 function BlogList() {
   const { t, i18n } = useTranslation()
@@ -171,17 +170,14 @@ function BlogList() {
               className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
               aria-label={`Lire l'article: ${article.title}`}
             >
-              <div className="h-48 bg-gradient-to-br from-primary-100 to-primary-200 flex items-center justify-center overflow-hidden relative">
-                <OptimizedImage
-                  src={article.image || defaultArticleImage}
-                  alt={article.title}
-                  className="w-full h-full object-cover"
-                  lazy={true}
-                  onError={(e) => {
-                    e.currentTarget.src = defaultArticleImage
-                  }}
-                />
-              </div>
+              <div
+                className="h-48 bg-gradient-to-br from-primary-100 to-primary-200 overflow-hidden relative bg-center bg-cover"
+                style={{
+                  backgroundImage: `url("${article.image || ''}"), url("${defaultArticleImage}")`
+                }}
+                role="img"
+                aria-label={article.title}
+              />
               <div className="p-6">
                 <div className="text-sm text-gray-500 mb-2">
                   {new Date(article.date).toLocaleDateString(language === 'fr' ? 'fr-FR' : language === 'en' ? 'en-US' : 'ar-MA', {

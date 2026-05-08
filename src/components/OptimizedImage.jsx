@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 /**
  * Composant Image Optimisé avec lazy-loading et support WebP
@@ -14,10 +14,20 @@ function OptimizedImage({
   className = '', 
   style = {},
   lazy = true,
+  fallbackSrc = '',
+  onError: externalOnError,
+  onLoad: externalOnLoad,
   ...props 
 }) {
-  const [imageError, setImageError] = useState(false)
+  const [activeSrc, setActiveSrc] = useState(src)
+  const [triedOriginal, setTriedOriginal] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
+
+  useEffect(() => {
+    setActiveSrc(src)
+    setTriedOriginal(false)
+    setIsLoaded(false)
+  }, [src])
 
   // Générer le chemin WebP si possible
   const getWebPSrc = (originalSrc) => {
@@ -34,21 +44,32 @@ function OptimizedImage({
     return webpSrc
   }
 
-  const webpSrc = getWebPSrc(src)
-  const finalSrc = imageError ? src : (webpSrc || src)
+  const webpSrc = getWebPSrc(activeSrc)
+  const finalSrc = triedOriginal ? activeSrc : (webpSrc || activeSrc)
 
-  const handleError = () => {
-    // Si WebP échoue, essayer l'original
-    if (webpSrc && !imageError) {
-      setImageError(true)
+  const handleError = (e) => {
+    // 1) Si WebP échoue, essayer l'image originale
+    if (!triedOriginal && webpSrc) {
+      setTriedOriginal(true)
       return
     }
-    // Si l'image originale échoue aussi, afficher un placeholder
-    console.warn('Image failed to load:', src)
+
+    // 2) Si l'original échoue, essayer un fallback explicite
+    if (fallbackSrc && activeSrc !== fallbackSrc) {
+      setActiveSrc(fallbackSrc)
+      setTriedOriginal(true)
+      return
+    }
+
+    // 3) Dernier recours: laisser visible (éviter bloc vide)
+    setIsLoaded(true)
+    console.warn('Image failed to load:', activeSrc)
+    if (typeof externalOnError === 'function') externalOnError(e)
   }
 
-  const handleLoad = () => {
+  const handleLoad = (e) => {
     setIsLoaded(true)
+    if (typeof externalOnLoad === 'function') externalOnLoad(e)
   }
 
   return (
@@ -65,7 +86,7 @@ function OptimizedImage({
       <img
         src={finalSrc}
         alt={alt || 'Image'}
-        className={`${className} ${isLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}
+        className={`${className} ${isLoaded ? 'opacity-100' : 'opacity-100'} transition-opacity duration-300`}
         style={{
           ...style,
           width: style?.width || '100%',
