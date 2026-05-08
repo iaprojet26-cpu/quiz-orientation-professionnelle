@@ -301,9 +301,9 @@ function Home() {
     const organization = {
       '@type': 'Organization',
       name: 'QuizOrientation',
-      url: 'https://quizorientation.online',
+      url: 'https://www.quizorientation.online',
       email: 'oocopcmcsm@gmail.com',
-      sameAs: ['https://quizorientation.online'],
+      sameAs: ['https://www.quizorientation.online'],
       contactPoint: [
         {
           '@type': 'ContactPoint',

@@ -4,13 +4,15 @@ import { useLocation } from 'react-router-dom'
 import { getHomepageSEO, getResultPageSEO, getOGTags, getTwitterTags, getHomepageSchema, getResultPageSchema, getArticleSchema, getCVPageSEO, getCVPageSchema } from '../services/seoService'
 
 /**
- * Fonction pour normaliser une URL en version canonique (sans www, avec trailing slash si nécessaire)
+ * Fonction pour normaliser une URL en version canonique (avec www, avec trailing slash si nécessaire)
  */
 function normalizeCanonicalUrl(url) {
   try {
     const urlObj = new URL(url)
-    // Toujours utiliser la version sans www
-    urlObj.hostname = urlObj.hostname.replace(/^www\./, '')
+    // Toujours utiliser la version avec www
+    if (!urlObj.hostname.startsWith('www.')) {
+      urlObj.hostname = `www.${urlObj.hostname}`
+    }
     
     // Normaliser le pathname
     let pathname = urlObj.pathname
@@ -153,7 +155,7 @@ function SEOHead({
     schemaScript.textContent = JSON.stringify(finalSchema)
 
     // Construire l'URL canonical basée sur l'URL actuelle
-    const baseUrl = 'https://quizorientation.online' // Toujours sans www
+    const baseUrl = 'https://www.quizorientation.online' // Toujours avec www
     let canonicalUrl = baseUrl
     
     // Normaliser la langue
@@ -203,7 +205,7 @@ function SEOHead({
       }
     }
     
-    // Normaliser l'URL (s'assurer qu'elle est sans www et correctement formatée)
+    // Normaliser l'URL (s'assurer qu'elle est avec www et correctement formatée)
     canonicalUrl = normalizeCanonicalUrl(canonicalUrl)
     
     // Supprimer les balises canonical existantes SAUF celle de la homepage (statique dans index.html)
@@ -212,7 +214,7 @@ function SEOHead({
     existingCanonicals.forEach(link => {
       // Ne pas supprimer le canonical statique de la homepage
       const href = link.getAttribute('href')
-      if (href && href === 'https://quizorientation.online/') {
+      if (href && href === 'https://www.quizorientation.online/') {
         // C'est le canonical statique de la homepage, on le garde
         return
       }

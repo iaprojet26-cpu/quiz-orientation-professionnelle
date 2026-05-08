@@ -96,8 +96,8 @@ export const getOGTags = (language = 'fr') => {
   return {
     title: content.title || 'Quiz d\'Orientation Professionnelle',
     description: content.description || 'Découvrez votre profil professionnel',
-    image: 'https://quizorientation.online/og-image.jpg',
-    url: 'https://quizorientation.online',
+    image: 'https://www.quizorientation.online/og-image.jpg',
+    url: 'https://www.quizorientation.online',
     type: 'website',
     imageAlt: content.image_alt || 'Quiz d\'orientation professionnelle'
   }
@@ -122,7 +122,7 @@ export const getTwitterTags = (language = 'fr') => {
  * Obtenir le Schema.org JSON-LD pour la homepage
  */
 export const getHomepageSchema = (language = 'fr') => {
-  const baseUrl = 'https://quizorientation.online'
+  const baseUrl = 'https://www.quizorientation.online'
   const lang = ['fr', 'en', 'ar'].includes(language) ? language : 'fr'
   
   return {
@@ -179,7 +179,7 @@ export const getHomepageSchema = (language = 'fr') => {
  * Obtenir le Schema.org JSON-LD pour la page de résultats
  */
 export const getResultPageSchema = (language = 'fr', profileName = '') => {
-  const baseUrl = 'https://quizorientation.online'
+  const baseUrl = 'https://www.quizorientation.online'
   const lang = ['fr', 'en', 'ar'].includes(language) ? language : 'fr'
   
   return {
@@ -201,7 +201,7 @@ export const getResultPageSchema = (language = 'fr', profileName = '') => {
 export const getArticleSchema = (article) => {
   if (!article) return null
   
-  const baseUrl = 'https://quizorientation.online'
+  const baseUrl = 'https://www.quizorientation.online'
   const publishedDate = article.date ? new Date(article.date).toISOString() : new Date().toISOString()
   
   return {
@@ -279,7 +279,7 @@ export const getCVPageSEO = (language = 'fr') => {
  * Obtenir le Schema.org JSON-LD pour la page CV
  */
 export const getCVPageSchema = (language = 'fr') => {
-  const baseUrl = 'https://quizorientation.online'
+  const baseUrl = 'https://www.quizorientation.online'
   const lang = ['fr', 'en', 'ar'].includes(language) ? language : 'fr'
   
   return {

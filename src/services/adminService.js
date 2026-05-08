@@ -255,30 +255,30 @@ export const generateSitemap = async () => {
     
     // URLs de base
     const baseUrls = [
-      { loc: 'https://quizorientation.online/fr/', priority: '1.0', changefreq: 'weekly' },
-      { loc: 'https://quizorientation.online/en/', priority: '1.0', changefreq: 'weekly' },
-      { loc: 'https://quizorientation.online/ar/', priority: '1.0', changefreq: 'weekly' },
-      { loc: 'https://quizorientation.online/fr/quiz', priority: '0.9', changefreq: 'weekly' },
-      { loc: 'https://quizorientation.online/en/quiz', priority: '0.9', changefreq: 'weekly' },
-      { loc: 'https://quizorientation.online/ar/quiz', priority: '0.9', changefreq: 'weekly' },
-      { loc: 'https://quizorientation.online/fr/blog', priority: '0.7', changefreq: 'weekly' },
-      { loc: 'https://quizorientation.online/en/blog', priority: '0.7', changefreq: 'weekly' },
-      { loc: 'https://quizorientation.online/ar/blog', priority: '0.7', changefreq: 'weekly' },
-      { loc: 'https://quizorientation.online/fr/career-paths', priority: '0.8', changefreq: 'weekly' },
-      { loc: 'https://quizorientation.online/en/career-paths', priority: '0.8', changefreq: 'weekly' },
-      { loc: 'https://quizorientation.online/ar/career-paths', priority: '0.8', changefreq: 'weekly' },
-      { loc: 'https://quizorientation.online/fr/opportunities', priority: '0.8', changefreq: 'daily' },
-      { loc: 'https://quizorientation.online/en/opportunities', priority: '0.8', changefreq: 'daily' },
-      { loc: 'https://quizorientation.online/ar/opportunities', priority: '0.8', changefreq: 'daily' },
-      { loc: 'https://quizorientation.online/fr/study-in-morocco', priority: '0.8', changefreq: 'weekly' },
-      { loc: 'https://quizorientation.online/en/study-in-morocco', priority: '0.8', changefreq: 'weekly' },
-      { loc: 'https://quizorientation.online/ar/study-in-morocco', priority: '0.8', changefreq: 'weekly' },
-      { loc: 'https://quizorientation.online/fr/career-guides', priority: '0.8', changefreq: 'weekly' },
-      { loc: 'https://quizorientation.online/en/career-guides', priority: '0.8', changefreq: 'weekly' },
-      { loc: 'https://quizorientation.online/ar/career-guides', priority: '0.8', changefreq: 'weekly' },
-      { loc: 'https://quizorientation.online/fr/career-matching', priority: '0.7', changefreq: 'weekly' },
-      { loc: 'https://quizorientation.online/en/career-matching', priority: '0.7', changefreq: 'weekly' },
-      { loc: 'https://quizorientation.online/ar/career-matching', priority: '0.7', changefreq: 'weekly' }
+      { loc: 'https://www.quizorientation.online/fr/', priority: '1.0', changefreq: 'weekly' },
+      { loc: 'https://www.quizorientation.online/en/', priority: '1.0', changefreq: 'weekly' },
+      { loc: 'https://www.quizorientation.online/ar/', priority: '1.0', changefreq: 'weekly' },
+      { loc: 'https://www.quizorientation.online/fr/quiz', priority: '0.9', changefreq: 'weekly' },
+      { loc: 'https://www.quizorientation.online/en/quiz', priority: '0.9', changefreq: 'weekly' },
+      { loc: 'https://www.quizorientation.online/ar/quiz', priority: '0.9', changefreq: 'weekly' },
+      { loc: 'https://www.quizorientation.online/fr/blog', priority: '0.7', changefreq: 'weekly' },
+      { loc: 'https://www.quizorientation.online/en/blog', priority: '0.7', changefreq: 'weekly' },
+      { loc: 'https://www.quizorientation.online/ar/blog', priority: '0.7', changefreq: 'weekly' },
+      { loc: 'https://www.quizorientation.online/fr/career-paths', priority: '0.8', changefreq: 'weekly' },
+      { loc: 'https://www.quizorientation.online/en/career-paths', priority: '0.8', changefreq: 'weekly' },
+      { loc: 'https://www.quizorientation.online/ar/career-paths', priority: '0.8', changefreq: 'weekly' },
+      { loc: 'https://www.quizorientation.online/fr/opportunities', priority: '0.8', changefreq: 'daily' },
+      { loc: 'https://www.quizorientation.online/en/opportunities', priority: '0.8', changefreq: 'daily' },
+      { loc: 'https://www.quizorientation.online/ar/opportunities', priority: '0.8', changefreq: 'daily' },
+      { loc: 'https://www.quizorientation.online/fr/study-in-morocco', priority: '0.8', changefreq: 'weekly' },
+      { loc: 'https://www.quizorientation.online/en/study-in-morocco', priority: '0.8', changefreq: 'weekly' },
+      { loc: 'https://www.quizorientation.online/ar/study-in-morocco', priority: '0.8', changefreq: 'weekly' },
+      { loc: 'https://www.quizorientation.online/fr/career-guides', priority: '0.8', changefreq: 'weekly' },
+      { loc: 'https://www.quizorientation.online/en/career-guides', priority: '0.8', changefreq: 'weekly' },
+      { loc: 'https://www.quizorientation.online/ar/career-guides', priority: '0.8', changefreq: 'weekly' },
+      { loc: 'https://www.quizorientation.online/fr/career-matching', priority: '0.7', changefreq: 'weekly' },
+      { loc: 'https://www.quizorientation.online/en/career-matching', priority: '0.7', changefreq: 'weekly' },
+      { loc: 'https://www.quizorientation.online/ar/career-matching', priority: '0.7', changefreq: 'weekly' }
     ]
 
     // URLs des articles
@@ -287,7 +287,7 @@ export const generateSitemap = async () => {
       const lastmod = article.updated_at ? new Date(article.updated_at).toISOString().split('T')[0] : today
       ;['fr', 'en', 'ar'].forEach(lang => {
         articleUrls.push({
-          loc: `https://quizorientation.online/${lang}/blog/${article.slug}`,
+          loc: `https://www.quizorientation.online/${lang}/blog/${article.slug}`,
           lastmod,
           priority: '0.8',
           changefreq: 'monthly'
@@ -301,7 +301,7 @@ export const generateSitemap = async () => {
       const lastmod = item.updated_at ? new Date(item.updated_at).toISOString().split('T')[0] : today
       ;['fr', 'en', 'ar'].forEach((lang) => {
         hubDetailUrls.push({
-          loc: `https://quizorientation.online/${lang}/career-paths#${item.slug}`,
+          loc: `https://www.quizorientation.online/${lang}/career-paths#${item.slug}`,
           lastmod,
           priority: '0.7',
           changefreq: 'monthly'
@@ -312,7 +312,7 @@ export const generateSitemap = async () => {
       const lastmod = item.updated_at ? new Date(item.updated_at).toISOString().split('T')[0] : today
       ;['fr', 'en', 'ar'].forEach((lang) => {
         hubDetailUrls.push({
-          loc: `https://quizorientation.online/${lang}/study-in-morocco#${item.slug}`,
+          loc: `https://www.quizorientation.online/${lang}/study-in-morocco#${item.slug}`,
           lastmod,
           priority: '0.7',
           changefreq: 'monthly'
@@ -323,7 +323,7 @@ export const generateSitemap = async () => {
       const lastmod = item.updated_at ? new Date(item.updated_at).toISOString().split('T')[0] : today
       ;['fr', 'en', 'ar'].forEach((lang) => {
         hubDetailUrls.push({
-          loc: `https://quizorientation.online/${lang}/career-guides#${item.slug}`,
+          loc: `https://www.quizorientation.online/${lang}/career-guides#${item.slug}`,
           lastmod,
           priority: '0.7',
           changefreq: 'monthly'
@@ -334,7 +334,7 @@ export const generateSitemap = async () => {
       const lastmod = item.updated_at ? new Date(item.updated_at).toISOString().split('T')[0] : today
       ;['fr', 'en', 'ar'].forEach((lang) => {
         hubDetailUrls.push({
-          loc: `https://quizorientation.online/${lang}/opportunities#op-${item.id}`,
+          loc: `https://www.quizorientation.online/${lang}/opportunities#op-${item.id}`,
           lastmod,
           priority: '0.7',
           changefreq: 'weekly'
