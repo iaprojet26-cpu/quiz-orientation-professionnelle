@@ -11,6 +11,16 @@ const supabaseEnabled = (
   Boolean(import.meta?.env?.VITE_SUPABASE_URL && import.meta?.env?.VITE_SUPABASE_ANON_KEY)
 )
 
+const fetchWithTimeout = async (resource, options = {}, timeoutMs = 7000) => {
+  const controller = new AbortController()
+  const timer = setTimeout(() => controller.abort(), timeoutMs)
+  try {
+    return await fetch(resource, { ...options, signal: controller.signal })
+  } finally {
+    clearTimeout(timer)
+  }
+}
+
 // Articles statiques (fallback si Supabase non disponible)
 const staticArticles = [
   {
@@ -1601,7 +1611,7 @@ const loadArticlesFromMarkdown = async (language = 'fr') => {
       const metadataPath = `${basePath}/articles-seo/article-${articleNum}/metadata.json`
       
       promises.push(
-        fetch(metadataPath, { cache: 'default' })
+        fetchWithTimeout(metadataPath, { cache: 'default' }, 5000)
           .then(async (response) => {
             if (!response.ok) return null
             try {
@@ -1627,7 +1637,7 @@ const loadArticlesFromMarkdown = async (language = 'fr') => {
                 if (!image) {
                   try {
                     const markdownPath = `${basePath}/articles-seo/article-${articleNum}/${language}.md`
-                    const markdownResponse = await fetch(markdownPath, { cache: 'default' })
+                    const markdownResponse = await fetchWithTimeout(markdownPath, { cache: 'default' }, 5000)
                     if (markdownResponse.ok) {
                       const markdownText = await markdownResponse.text()
                       // Chercher l'image dans le front matter (format YAML)
@@ -1801,7 +1811,7 @@ export const getArticleBySlug = async (slug, language = 'fr') => {
     const metadataPath = `${basePath}/articles-seo/article-${articleNum}/metadata.json`
     
     try {
-      const metadataResponse = await fetch(metadataPath, { cache: 'no-cache' })
+      const metadataResponse = await fetchWithTimeout(metadataPath, { cache: 'no-cache' }, 5000)
       if (metadataResponse.ok) {
         const metadata = await metadataResponse.json()
         
@@ -1840,7 +1850,7 @@ export const getArticleBySlug = async (slug, language = 'fr') => {
           let content = ''
           
           try {
-            const contentResponse = await fetch(markdownPath, { cache: 'no-cache' })
+            const contentResponse = await fetchWithTimeout(markdownPath, { cache: 'no-cache' }, 5000)
             if (contentResponse.ok) {
               const rawText = await contentResponse.text()
               

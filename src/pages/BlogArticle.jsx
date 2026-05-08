@@ -29,6 +29,11 @@ function BlogArticle() {
       clearTimeout(timer)
     }
   }
+  const withTimeout = (promise, timeoutMs = 10000, message = 'Timeout de chargement') =>
+    Promise.race([
+      promise,
+      new Promise((_, reject) => setTimeout(() => reject(new Error(message)), timeoutMs))
+    ])
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
@@ -176,7 +181,11 @@ function BlogArticle() {
           normalizedLang = 'fr'
         }
         
-        let articleData = await getArticleBySlug(slug, normalizedLang)
+        let articleData = await withTimeout(
+          getArticleBySlug(slug, normalizedLang),
+          10000,
+          'Chargement de l\'article trop long'
+        )
         
         if (!isMountedRef.current) return
         
