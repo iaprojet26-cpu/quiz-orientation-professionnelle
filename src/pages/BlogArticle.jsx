@@ -20,6 +20,15 @@ function BlogArticle() {
   const isMountedRef = useRef(true)
   const language = i18n.language || 'fr'
   const defaultArticleImage = '/assets/blog/default-generic.svg'
+  const fetchWithTimeout = async (resource, options = {}, timeoutMs = 8000) => {
+    const controller = new AbortController()
+    const timer = setTimeout(() => controller.abort(), timeoutMs)
+    try {
+      return await fetch(resource, { ...options, signal: controller.signal })
+    } finally {
+      clearTimeout(timer)
+    }
+  }
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
@@ -76,7 +85,7 @@ function BlogArticle() {
       const metadataPath = `${basePath}/articles-seo/article-${articleNum}/metadata.json`
       
       promises.push(
-        fetch(metadataPath, { cache: 'default' })
+        fetchWithTimeout(metadataPath, { cache: 'default' }, 6000)
           .then(async (metadataResponse) => {
             if (!metadataResponse.ok) return null
             try {
@@ -86,7 +95,7 @@ function BlogArticle() {
               if (metadata[slugKey] === slugToFetch) {
                 // Charger le contenu markdown dans la bonne langue
                 const markdownPath = `${basePath}/articles-seo/article-${articleNum}/${lang}.md`
-                const contentResponse = await fetch(markdownPath, { cache: 'default' })
+                const contentResponse = await fetchWithTimeout(markdownPath, { cache: 'default' }, 6000)
                 
                 if (contentResponse.ok) {
                   const text = await contentResponse.text()
@@ -128,7 +137,7 @@ function BlogArticle() {
 
     for (const path of candidatePaths) {
       try {
-        const response = await fetch(path, { cache: 'no-cache' })
+        const response = await fetchWithTimeout(path, { cache: 'no-cache' }, 6000)
         
         if (response.ok) {
           const text = await response.text()
@@ -226,7 +235,8 @@ function BlogArticle() {
             if (articleData.content) {
               markdownContent = articleData.content
             } else {
-              throw new Error('Contenu de l\'article non disponible')
+              // Fallback robuste: ne pas bloquer l'affichage si le markdown externe n'est pas accessible.
+              markdownContent = `## ${articleData.title || slug}\n\n${articleData.description || ''}`.trim()
             }
           }
         } else {
@@ -243,8 +253,8 @@ function BlogArticle() {
         if (markdownContent && !markdownContent.trim().startsWith('<!') && markdownContent.trim().length > 0) {
           setContent(markdownContent)
         } else {
-          // Si pas de contenu valide, on lance une erreur pour afficher la page 404
-          throw new Error('Contenu de l\'article non disponible')
+          // Fallback final pour éviter la page bloquée sur des articles partiellement remplis.
+          setContent(`# ${articleData.title || slug}\n\n${articleData.description || t('blog.article_default', { defaultValue: 'Contenu en cours de mise a jour.' })}`)
         }
       } catch (error) {
         if (!isMountedRef.current) return
