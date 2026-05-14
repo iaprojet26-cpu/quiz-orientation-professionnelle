@@ -208,18 +208,9 @@ function SEOHead({
     // Normaliser l'URL (s'assurer qu'elle est avec www et correctement formatée)
     canonicalUrl = normalizeCanonicalUrl(canonicalUrl)
     
-    // Supprimer les balises canonical existantes SAUF celle de la homepage (statique dans index.html)
-    // On garde le canonical statique de la homepage pour que Google le détecte même sans JS
-    const existingCanonicals = document.querySelectorAll('link[rel="canonical"]')
-    existingCanonicals.forEach(link => {
-      // Ne pas supprimer le canonical statique de la homepage
-      const href = link.getAttribute('href')
-      if (href && href === 'https://www.quizorientation.online/') {
-        // C'est le canonical statique de la homepage, on le garde
-        return
-      }
-      link.remove()
-    })
+    // Supprimer toutes les balises canonical (y compris le placeholder index.html).
+    // Sinon sur /en/ ou /ar/ on se retrouve avec 2 canonicals (/) + (/en/) et Google signale des doublons.
+    document.querySelectorAll('link[rel="canonical"]').forEach((link) => link.remove())
     
     // Créer la nouvelle balise canonical
     const canonicalLink = document.createElement('link')

@@ -8,10 +8,22 @@
     <!-- Meta tag AdSense retirée temporairement jusqu'à l'approbation du site -->
     <!-- <meta name="google-adsense-account" content="ca-pub-1569648268532720"> -->
     
-    <!-- SEO: Canonical statique pour la homepage (pour que Google le détecte même sans JS) -->
-    <link rel="canonical" href="https://www.quizorientation.online/" />
+    <!-- SEO: canonical initial (corrigé tout de suite selon l'URL, avant React) -->
+    <link rel="canonical" id="initial-canonical" href="https://www.quizorientation.online/" />
+    <script>
+      (function () {
+        var base = 'https://www.quizorientation.online';
+        var p = window.location.pathname || '/';
+        var href = base + '/';
+        if (p === '/en' || p.startsWith('/en/')) href = base + '/en/';
+        else if (p === '/ar' || p.startsWith('/ar/')) href = base + '/ar/';
+        else if (p === '/fr' || p.startsWith('/fr/')) href = base + '/';
+        var el = document.getElementById('initial-canonical');
+        if (el) el.setAttribute('href', href);
+      })();
+    </script>
     
-    <!-- SEO: Hreflang (la balise canonical sera gérée dynamiquement par SEOHead pour les autres pages) -->
+    <!-- SEO: Hreflang (canonical complet par page via SEOHead au chargement) -->
     <link rel="alternate" hreflang="fr" href="https://www.quizorientation.online/" />
     <link rel="alternate" hreflang="en" href="https://www.quizorientation.online/en/" />
     <link rel="alternate" hreflang="ar" href="https://www.quizorientation.online/ar/" />
