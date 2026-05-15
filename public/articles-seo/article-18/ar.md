@@ -1,36 +1,35 @@
 ---
 title: "كيف تحسن تواصلك المهني في 2025"
 date: "2025-02-01"
-description: "undefined"
-image: "/assets/blog/default-compétences.svg"
+description: "تحسين التواصل المهني في المغرب: شفهي، كتابي، اجتماعات، ملاحظات."
+image: "/assets/blog/default-orientation.svg"
 keywords:
-  - "compétences"
-  - "orientation professionnelle"
-  - "2025"
+  - "التواصل المهني"
 slug: "تحسين-التواصل-المهني-2025"
 ---
 
 # كيف تحسن تواصلك المهني في 2025
 
-[Contenu à compléter - 900-1400 mots]
+**التواصل المهني** من أكثر المطالب ذكراً لدى المُوظِّفين في **المغرب**.
 
-## FAQ
+## القنوات الأربع
 
-**Question 1 ?**
-Réponse...
+شفهي، كتابي، لغة الجسد، **الاستماع**.
 
-**Question 2 ?**
-Réponse...
+## قواعد البريد الإلكتروني
 
-**Question 3 ?**
-Réponse...
+موضوع واضح، تحية رسمية، 3 فقرات، مرفقات بأسماء واضحة، متابعة لبقة بعد 5–7 أيام عمل.
 
-**Question 4 ?**
-Réponse...
+[رسالة التحفيز](/tools/cover-letter) · [السيرة الذاتية](/cv)
 
-**Question 5 ?**
-Réponse...
+## التواصل الشفهي
 
-## Conclusion
+مقدمة — نقطة — مثال — خاتمة. تدرب عبر [تحضير المقابلة](/tools/interview-prep).
 
-Découvrez votre profil professionnel avec notre [test d'orientation gratuit](https://quizorientation.online/quiz).
+## خطة 30 يوماً
+
+أسبوع 1: تصحيح رسائل قديمة · أسبوع 2: عرض 5 دقائق · أسبوع 3: ملاحظات المشرف · أسبوع 4: محاكاة مقابلة
+
+## الخلاصة
+
+[القابلية للتوظيف](/blog/employabilite-marche-travail-2025) · [أدوات مجانية](/free-tools)

@@ -1,36 +1,32 @@
 ---
-title: "كيف تكتب سيرة ذاتية مثالية: دليل شامل مع نماذج 2025"
+title: "كيف تكتب سيرة ذاتية مثالية: دليل 2025"
 date: "2025-02-02"
-description: "undefined"
+description: "كتابة سيرة ذاتية فعالة في المغرب 2025: هيكلة، كلمات ATS، أخطاء شائعة."
 image: "/assets/blog/default-conseils.svg"
 keywords:
-  - "conseils"
-  - "orientation professionnelle"
-  - "2025"
+  - "سيرة ذاتية"
+  - "CV المغرب"
 slug: "كتابة-سيرة-ذاتية-مثالية-2025"
 ---
 
-# كيف تكتب سيرة ذاتية مثالية: دليل شامل مع نماذج 2025
+# كيف تكتب سيرة ذاتية مثالية: دليل 2025
 
-[Contenu à compléter - 900-1400 mots]
+**السيرة المثالية** = **مناسبة للمنصب**. في **المغرب**، أنظمة **ATS** تجعل الهيكلة والكلمات المفتاحية حاسمة.
 
-## FAQ
+## 7 قواعد
 
-**Question 1 ?**
-Réponse...
+1. صفحة واحدة للمبتدئين  
+2. تنسيق واضح، PDF باسم احترافي  
+3. رأس: اتصال + LinkedIn  
+4. عنوان مستهدف (سطران)  
+5. خبرات بـ**نتائج**  
+6. مهارات مطابقة للإعلان — [درجة ATS](/tools/ats-score)  
+7. تكوين وشهادات
 
-**Question 2 ?**
-Réponse...
+## أخطاء
 
-**Question 3 ?**
-Réponse...
+أخطاء إملائية، سيرة واحدة لكل الإعلانات، كذب في اللغات، ملف اسمه CV.pdf فقط.
 
-**Question 4 ?**
-Réponse...
+## الخلاصة
 
-**Question 5 ?**
-Réponse...
-
-## Conclusion
-
-Découvrez votre profil professionnel avec notre [test d'orientation gratuit](https://quizorientation.online/quiz).
+[منشئ السيرة](/cv) · [رسالة التحفيز](/blog/رسالة-التحفيز-2025)

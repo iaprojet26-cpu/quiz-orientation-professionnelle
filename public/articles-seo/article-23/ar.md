@@ -1,36 +1,32 @@
 ---
-title: "كيف تعزز قابليتك للتوظيف في 2025: استراتيجيات فعالة"
+title: "كيف تعزز قابليتك للتوظيف في 2025"
 date: "2025-02-06"
-description: "undefined"
+description: "تعزيز القابلية للتوظيف في المغرب 2025: مهارات، سيرة، شبكة، شهادات."
 image: "/assets/blog/default-conseils.svg"
 keywords:
-  - "conseils"
-  - "orientation professionnelle"
-  - "2025"
+  - "القابلية للتوظيف"
 slug: "تعزيز-قابلية-التوظيف-2025"
 ---
 
-# كيف تعزز قابليتك للتوظيف في 2025: استراتيجيات فعالة
+# كيف تعزز قابليتك للتوظيف في 2025
 
-[Contenu à compléter - 900-1400 mots]
+**القابلية للتوظيف** هي قدرتك على الحصول على فرص — لا مجرد حيازة شهادة.
 
-## FAQ
+## 6 روافع
 
-**Question 1 ?**
-Réponse...
+1. مشروع واضح — [اختبار](/) · [تحديد المشروع](/blog/تحديد-المشروع-المهني)  
+2. [سيرة](/blog/كتابة-سيرة-ذاتية-مثالية-2025) و[رسالة](/blog/رسالة-التحفيز-2025)  
+3. [رقمية](/blog/المهارات-الرقمية-الخريجين-2025) و[ناعمة](/blog/soft-skills-competences-professionnelles-essentielles)  
+4. خبرة (تدريب، مشروع)  
+5. شبكة — [الفرص](/opportunities)  
+6. متابعة السوق — [القطاعات](/blog/القطاعات-التوظيف-المغرب-2025)
 
-**Question 2 ?**
-Réponse...
+## خطة 90 يوماً
 
-**Question 3 ?**
-Réponse...
+شهر 1: جرد وتحديث السيرة · شهر 2: شهادة أو portfolio · شهر 3: مقابلات
 
-**Question 4 ?**
-Réponse...
+تفاصيل: [دليل القابلية](/blog/employabilite-marche-travail-2025)
 
-**Question 5 ?**
-Réponse...
+## الخلاصة
 
-## Conclusion
-
-Découvrez votre profil professionnel avec notre [test d'orientation gratuit](https://quizorientation.online/quiz).
+[أدوات مجانية](/free-tools)

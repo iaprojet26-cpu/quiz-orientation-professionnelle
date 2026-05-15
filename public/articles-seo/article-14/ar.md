@@ -1,36 +1,35 @@
 ---
-title: "كيف تنجح في تدريبك الأول: دليل الطالب الشامل 2025"
+title: "كيف تنجح في تدريبك الأول: دليل الطالب 2025"
 date: "2025-01-28"
-description: "undefined"
+description: "النجاح في التدريب الأول بالمغرب 2025: التحضير، السلوك المهني، توثيق الإنجازات للسيرة الذاتية."
 image: "/assets/blog/default-orientation.svg"
 keywords:
-  - "orientation"
-  - "orientation professionnelle"
-  - "2025"
+  - "التدريب الأول"
+  - "تدريب طالب المغرب"
 slug: "النجاح-في-التدريب-الأول-2025"
 ---
 
-# كيف تنجح في تدريبك الأول: دليل الطالب الشامل 2025
+# كيف تنجح في تدريبك الأول: دليل الطالب 2025
 
-[Contenu à compléter - 900-1400 mots]
+**التدريب الأول** قد يكون نقطة انطلاق مسيرتك في **المغرب** — أو تجربة محبطة إن لم يُدار جيداً.
 
-## FAQ
+## قبل التدريب
 
-**Question 1 ?**
-Réponse...
+حدد أهداف التعلم؛ جهّز [السيرة الذاتية](/cv) و[رسالة التحفيز](/tools/cover-letter)؛ ابحث عن المؤسسة؛ ثبّت المدة والمشرف.
 
-**Question 2 ?**
-Réponse...
+## أثناء التدريب
 
-**Question 3 ?**
-Réponse...
+الأسبوع الأول: الالتزام، دفتر ملاحظات، أهداف مع المشرف.  
+الموقف: استماع، احترام السرية، مبادرات بسيطة مفيدة.
 
-**Question 4 ?**
-Réponse...
+## بعد كل مهمة
 
-**Question 5 ?**
-Réponse...
+وثّق السياق، دورك، **النتيجة الرقمية** إن أمكن.
 
-## Conclusion
+## نهاية التدريب
 
-Découvrez votre profil professionnel avec notre [test d'orientation gratuit](https://quizorientation.online/quiz).
+اطلب تقييماً؛ توصية LinkedIn؛ حدّث السيرة خلال 48 ساعة.
+
+## الخلاصة
+
+[القابلية للتوظيف](/blog/employabilite-marche-travail-2025) · [المهارات الناعمة](/blog/soft-skills-competences-professionnelles-essentielles)

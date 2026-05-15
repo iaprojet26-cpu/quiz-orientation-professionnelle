@@ -1,36 +1,33 @@
 ---
 title: "المهن التي ستنفجر بفضل الذكاء الاصطناعي في 2025-2030"
 date: "2025-02-08"
-description: "undefined"
-image: "/assets/blog/default-futur.svg"
+description: "نمو الوظائف المرتبطة بالذكاء الاصطناعي في المغرب: بيانات، أمن، تحول رقمي."
+image: "/assets/blog/default-orientation.svg"
 keywords:
-  - "futur"
-  - "orientation professionnelle"
-  - "2025"
+  - "مهن الذكاء الاصطناعي"
 slug: "مهن-تنفجر-الذكاء-الاصطناعي-2025"
 ---
 
 # المهن التي ستنفجر بفضل الذكاء الاصطناعي في 2025-2030
 
-[Contenu à compléter - 900-1400 mots]
+**الذكاء الاصطناعي** يخلق طلباً على من **يدمج، يؤمّن ويحكم** الحلول — لا المبرمجين فقط.
 
-## FAQ
+## أدوار في نمو
 
-**Question 1 ?**
-Réponse...
+محلل بيانات، مهندس بيانات، أمن سيبراني، استشاري تحول رقمي، متخصص ذكاء اصطناعي توليدي، مالك منتج رقمي، مطور full-stack / سحابة.
 
-**Question 2 ?**
-Réponse...
+## مهارات أساسية
 
-**Question 3 ?**
-Réponse...
+إحصاء، نقد نتائج الذكاء الاصطناعي، أخلاقيات، تواصل، إنجليزية تقنية.
 
-**Question 4 ?**
-Réponse...
+[مهارات رقمية](/blog/المهارات-الرقمية-الخريجين-2025) · [الدراسة في المغرب](/study-in-morocco)
 
-**Question 5 ?**
-Réponse...
+## أضف طبقة ذكاء اصطناعي لمهنتك الحالية
 
-## Conclusion
+مبيعات + CRM، موارد بشرية + فرز مساعد، مراجعة بشرية للمسودات.
 
-Découvrez votre profil professionnel avec notre [test d'orientation gratuit](https://quizorientation.online/quiz).
+[مهن في تراجع](/blog/مهن-ستختفي-2030)
+
+## الخلاصة
+
+[اختبار التوجيه](/) · [المدونة](/blog)

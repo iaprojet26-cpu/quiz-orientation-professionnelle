@@ -1,36 +1,35 @@
 ---
 title: "كيف تكتشف إمكانياتك المهنية: دليل شامل"
 date: "2025-02-10"
-description: "undefined"
+description: "اكتشاف الإمكانيات المهنية: طرق، اختبار، ملاحظات، تجربة ميدانية."
 image: "/assets/blog/default-orientation.svg"
 keywords:
-  - "orientation"
-  - "orientation professionnelle"
-  - "2025"
+  - "الإمكانيات المهنية"
 slug: "اكتشاف-الإمكانيات-المهنية"
 ---
 
 # كيف تكتشف إمكانياتك المهنية: دليل شامل
 
-[Contenu à compléter - 900-1400 mots]
+**الإمكانية المهنية** = قدرتك على النمو في سياق معيّن — ليست موهبة نادرة.
 
-## FAQ
+## 5 مصادر
 
-**Question 1 ?**
-Réponse...
+1. [اختبار منظم](/)  
+2. ملاحظات الآخرين  
+3. تجارب (تدريب، مشاريع)  
+4. بحث مهني — [المسارات](/career-paths)  
+5. واقع السوق — [القطاعات](/blog/القطاعات-التوظيف-المغرب-2025)
 
-**Question 2 ?**
-Réponse...
+## شبكة تقييم ذاتي (1–5)
 
-**Question 3 ?**
-Réponse...
+تحليل، إبداع، علاقات، تنظيم، ريادة — ثم **تحقق ميدانياً**.
 
-**Question 4 ?**
-Réponse...
+## من الاكتشاف إلى القرار
 
-**Question 5 ?**
-Réponse...
+استكشف → جرّب → تخصص → عدّل
 
-## Conclusion
+[تحديد المشروع](/blog/تحديد-المشروع-المهني) · [أخطاء التوجيه](/blog/أخطاء-التوجيه-2025)
 
-Découvrez votre profil professionnel avec notre [test d'orientation gratuit](https://quizorientation.online/quiz).
+## الخلاصة
+
+[الاختبار](/) · [دليل 2025](/blog/guide-complet-orientation-professionnelle-2025)

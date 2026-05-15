@@ -1,36 +1,30 @@
 ---
 title: "أفضل 10 مهارات ناعمة مطلوبة في الشركات في 2025"
 date: "2025-01-30"
-description: "undefined"
-image: "/assets/blog/default-compétences.svg"
+description: "أهم المهارات الناعمة لدى أصحاب العمل في المغرب 2025 وكيفية تطويرها."
+image: "/assets/blog/soft-skills-essentielles.svg"
 keywords:
-  - "compétences"
-  - "orientation professionnelle"
-  - "2025"
+  - "مهارات ناعمة"
+  - "التوظيف المغرب"
 slug: "أفضل-10-مهارات-ناعمة-2025"
 ---
 
 # أفضل 10 مهارات ناعمة مطلوبة في الشركات في 2025
 
-[Contenu à compléter - 900-1400 mots]
+في **المغرب**، أصحاب العمل يميزون المرشحين غالباً بـ**المهارات الناعمة** عند تشابه الملف التقني.
 
-## FAQ
+## العشرة الأوائل
 
-**Question 1 ?**
-Réponse...
+1. التواصل · 2. العمل الجماعي · 3. التكيف · 4. الاستقلالية · 5. حل المشكلات · 6. إدارة الوقت · 7. الذكاء العاطفي · 8. التفكير النقدي · 9. القيادة · 10. الموثوقية
 
-**Question 2 ?**
-Réponse...
+دليل موسّع: [المهارات الناعمة الأساسية](/blog/soft-skills-competences-professionnelles-essentielles).
 
-**Question 3 ?**
-Réponse...
+## إثباتها في السيرة الذاتية
 
-**Question 4 ?**
-Réponse...
+فعل + سياق + نتيجة — لا قوائم فارغة («جدي، ديناميكي»).
 
-**Question 5 ?**
-Réponse...
+[السيرة الذاتية](/cv) · [درجة ATS](/tools/ats-score)
 
-## Conclusion
+## الخلاصة
 
-Découvrez votre profil professionnel avec notre [test d'orientation gratuit](https://quizorientation.online/quiz).
+[الاختبار](/) · [الفرص](/opportunities)

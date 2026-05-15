@@ -1,36 +1,38 @@
 ---
 title: "اختبار التوجيه المهني: كيف يعمل في 2025"
 date: "2025-02-11"
-description: "undefined"
+description: "كيف يعمل اختبار التوجيه المهني؟ حدوده، اختبار QuizOrientation، الخطوات التالية."
 image: "/assets/blog/default-orientation.svg"
 keywords:
-  - "orientation"
-  - "orientation professionnelle"
-  - "2025"
+  - "اختبار التوجيه"
 slug: "اختبار-التوجيه-المهني-2025"
 ---
 
 # اختبار التوجيه المهني: كيف يعمل في 2025
 
-[Contenu à compléter - 900-1400 mots]
+**اختبار التوجيه** ينظّم التفكير في الاهتمامات وأنماط العمل و**أفكار مهن** — ليس حكماً نهائياً.
 
-## FAQ
+## ماذا يفيد؟
 
-**Question 1 ?**
-Réponse...
+يوضح الحدس؛ يسمّي ملفاً؛ يقترح مهناً؛ يجهّز حواراً مع المرشد أو العائلة.
 
-**Question 2 ?**
-Réponse...
+## اختبار QuizOrientation
 
-**Question 3 ?**
-Réponse...
+أسئلة → ملف (خمسة محاور) → أمثلة مهن → روابط [مدونة](/blog)، [دراسة](/study-in-morocco)، [أدوات](/free-tools).
 
-**Question 4 ?**
-Réponse...
+[ابدأ الاختبار المجاني](/)
 
-**Question 5 ?**
-Réponse...
+## بعد النتائج (4 خطوات)
 
-## Conclusion
+1. اقرأ دون حصر نفسك  
+2. اختر 3 مهناً للبحث  
+3. جرّب واحداً ميدانياً  
+4. [مشروع مهني](/blog/تحديد-المشروع-المهني)
 
-Découvrez votre profil professionnel avec notre [test d'orientation gratuit](https://quizorientation.online/quiz).
+## حدود
+
+مزاج اليوم، ضغط عائلي، مهن ناشئة — **التحقق الميداني ضروري**.
+
+## الخلاصة
+
+[دليل التوجيه الشامل](/blog/guide-complet-orientation-professionnelle-2025)

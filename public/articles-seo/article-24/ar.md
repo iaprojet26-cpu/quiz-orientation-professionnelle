@@ -1,36 +1,35 @@
 ---
 title: "المهن التي ستختفي بحلول 2030: تحليل وبدائل"
 date: "2025-02-07"
-description: "undefined"
-image: "/assets/blog/default-futur.svg"
+description: "مهن ومهام في تراجع بحلول 2030: أتمتة، ذكاء اصطناعي، بدائل في المغرب."
+image: "/assets/blog/default-orientation.svg"
 keywords:
-  - "futur"
-  - "orientation professionnelle"
-  - "2025"
+  - "مهن في تراجع"
 slug: "مهن-ستختفي-2030"
 ---
 
 # المهن التي ستختفي بحلول 2030: تحليل وبدائل
 
-[Contenu à compléter - 900-1400 mots]
+«اختفاء المهن» غالباً يعني **أتمتة مهام** وليس اختفاء كل المهنة. بحلول **2030**، الرقمنة والذكاء الاصطناعي يغيّران عملاً متكرراً — مع فرص جديدة.
 
-## FAQ
+## أسباب التراجع
 
-**Question 1 ?**
-Réponse...
+أتمتة إدارية، ذكاء اصطناعي للمهام البسيطة، خدمات رقمية ذاتية، تحولات بيئية.
 
-**Question 2 ?**
-Réponse...
+## مهام تحت ضغط
 
-**Question 3 ?**
-Réponse...
+إدخال بيانات ثقيل، مراكز اتصال نصية جداً، إنتاج بسيط متكرر، محاسبة إدخال أولي.
 
-**Question 4 ?**
-Réponse...
+## ما يبقى إنسانياً
 
-**Question 5 ?**
-Réponse...
+رعاية، تعليم، إصلاح معقد، قيادة، أمن سيبراني، بيانات، قرارات ميدانية.
 
-## Conclusion
+[مهن المستقبل](/blog/metiers-davenir-2025-2030) · [مهن الذكاء الاصطناعي](/blog/مهن-تنفجر-الذكاء-الاصطناعي-2025)
 
-Découvrez votre profil professionnel avec notre [test d'orientation gratuit](https://quizorientation.online/quiz).
+## ماذا تفعل؟
+
+جرد المهام القابلة للأتمتة؛ رفع المهارة؛ [إعادة التوجيه](/blog/reconversion-professionnelle-guide-complet).
+
+## الخلاصة
+
+[الاختبار](/) · [دليل التوجيه](/blog/guide-complet-orientation-professionnelle-2025)

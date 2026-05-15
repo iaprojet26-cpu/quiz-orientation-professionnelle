@@ -1,36 +1,46 @@
 ---
 title: "المهارات الرقمية الأساسية للخريجين الشباب في 2025"
 date: "2025-01-31"
-description: "undefined"
-image: "/assets/blog/default-compétences.svg"
+description: "المهارات الرقمية للخريجين في المغرب 2025: مكتبية، تعاون، بيانات، أمن معلوماتي."
+image: "/assets/blog/default-orientation.svg"
 keywords:
-  - "compétences"
-  - "orientation professionnelle"
-  - "2025"
+  - "مهارات رقمية"
+  - "خريجون المغرب"
 slug: "المهارات-الرقمية-الخريجين-2025"
 ---
 
 # المهارات الرقمية الأساسية للخريجين الشباب في 2025
 
-[Contenu à compléter - 900-1400 mots]
+**التحول الرقمي** يمس كل القطاعات في **المغرب**. لل**خريجين الشباب**، الأساسيات الرقمية شرط **للتوظيف**.
 
-## FAQ
+## المستوى 1 — المكتبية المتقدمة
 
-**Question 1 ?**
-Réponse...
+Excel (صيغ، جداول محورية)، Word، عروض تقديمية، PDF احترافي.
 
-**Question 2 ?**
-Réponse...
+## المستوى 2 — التعاون عن بُعد
 
-**Question 3 ?**
-Réponse...
+Google Workspace أو Microsoft 365، اجتماعات مرئية، أدوات مهام (Trello، Notion).
 
-**Question 4 ?**
-Réponse...
+## المستوى 3 — الحضور المهني على الإنترنت
 
-**Question 5 ?**
-Réponse...
+**LinkedIn** مكتمل، بريد مهني، سمعة رقمية.
 
-## Conclusion
+## المستوى 4 — بيانات وأتمتة
 
-Découvrez votre profil professionnel avec notre [test d'orientation gratuit](https://quizorientation.online/quiz).
+CSV، مبادئ SQL، ذكاء اصطناعي توليدي **بروح نقدية**.
+
+[مهن المستقبل](/blog/metiers-davenir-2025-2030)
+
+## المستوى 5 — الأمن السيبراني
+
+كلمات مرور قوية، تحقق ثنائي، الحذر من التصيّد.
+
+## خطة 3 أشهر
+
+شهر 1: Excel · شهر 2: تعاون + LinkedIn · شهر 3: SQL أو أداة قطاعك
+
+[الدراسة في المغرب](/study-in-morocco)
+
+## الخلاصة
+
+[أفضل 10 مهارات ناعمة](/blog/أفضل-10-مهارات-ناعمة-2025)
