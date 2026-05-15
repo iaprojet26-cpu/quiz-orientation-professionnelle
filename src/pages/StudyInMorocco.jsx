@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next'
 import SEOHead from '../components/SEOHead'
 import { getStudyPrograms } from '../services/hubService'
 import RelatedHubLinks from '../components/RelatedHubLinks'
+import HubEditorialSection from '../components/HubEditorialSection'
+import { studyEditorial } from '../content/hubEditorialContent'
 
 function StudyInMorocco() {
   const { i18n } = useTranslation()
@@ -71,6 +73,8 @@ function StudyInMorocco() {
       <main id="main-content" className="container mx-auto px-4 py-8 max-w-5xl">
         <h1 className="text-4xl font-bold text-primary-900 mb-4">{text.h1}</h1>
         <p className="text-gray-700 mb-8">{text.intro}</p>
+
+        <HubEditorialSection content={studyEditorial[language]} langPrefix={langPrefix} />
 
         {loading ? (
           <div className="text-center py-8 text-gray-600">Chargement...</div>

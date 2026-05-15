@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { getAllArticles } from '../services/blogService'
 import SEOHead from '../components/SEOHead'
+import { blogFeaturedTopics } from '../content/hubEditorialContent'
 
 function BlogList() {
   const { t, i18n } = useTranslation()
@@ -112,6 +113,30 @@ function BlogList() {
                 : 'محتوى واضح وموجه للتطبيق العملي'}
             </li>
           </ul>
+        </section>
+
+        <section className="max-w-6xl mx-auto mb-10">
+          <h2 className="text-2xl font-bold text-primary-900 mb-4 text-center">
+            {language === 'fr'
+              ? 'Thématiques à la une'
+              : language === 'en'
+              ? 'Featured topics'
+              : 'مواضيع مميزة'}
+          </h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {(blogFeaturedTopics[language] || blogFeaturedTopics.fr).map((topic) => (
+              <Link
+                key={topic.slug}
+                to={`${langPrefix}/blog/${topic.slug}`}
+                className="bg-white border border-primary-100 rounded-lg p-4 hover:shadow-md transition-shadow"
+              >
+                <h3 className="font-semibold text-primary-900 text-sm">{topic.title}</h3>
+                <span className="text-primary-600 text-sm font-medium mt-2 inline-block">
+                  {language === 'fr' ? 'Lire →' : language === 'en' ? 'Read →' : 'اقرأ →'}
+                </span>
+              </Link>
+            ))}
+          </div>
         </section>
 
         {/* Contenu statique pour SEO - Visible même sans JavaScript */}

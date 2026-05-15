@@ -472,6 +472,22 @@ function Home() {
 
         {!quizCompleted && (
           <section className="mt-8 max-w-6xl mx-auto">
+            <article className="bg-white rounded-xl shadow-md p-6 md:p-8 border border-primary-100">
+              <h2 className="text-2xl font-bold text-primary-900 mb-4">
+                {language === 'fr' ? 'Notre mission et notre méthode' : language === 'en' ? 'Our mission and approach' : 'مهمتنا ومنهجيتنا'}
+              </h2>
+              <p className="text-gray-700 mb-4 leading-relaxed">{seoContent.intro1}</p>
+              <p className="text-gray-700 mb-4 leading-relaxed">{seoContent.intro2}</p>
+              <h3 className="text-lg font-bold text-primary-900 mb-2">{seoContent.whyTitle}</h3>
+              <p className="text-gray-700 mb-4 leading-relaxed">{seoContent.whyText}</p>
+              <h3 className="text-lg font-bold text-primary-900 mb-2">{seoContent.howTitle}</h3>
+              <p className="text-gray-700 leading-relaxed">{seoContent.howText}</p>
+            </article>
+          </section>
+        )}
+
+        {!quizCompleted && (
+          <section className="mt-8 max-w-6xl mx-auto">
             <div className="bg-white rounded-xl shadow-md p-6 md:p-8">
               <h2 className="text-2xl font-bold text-primary-900 mb-2">
                 {language === 'fr' ? 'Commencer selon votre situation' : language === 'en' ? 'Start from your situation' : 'ابدأ حسب وضعيتك'}
