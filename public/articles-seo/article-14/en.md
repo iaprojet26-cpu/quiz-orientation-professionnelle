@@ -1,36 +1,39 @@
 ---
 title: "How to Succeed in Your First Internship: Complete Student Guide 2025"
 date: "2025-01-28"
-description: "Complete guide to succeed in your first internship in 2025: preparation, behavior, missions, valorization. Make your internship a professional springboard."
+description: "Succeed in your first internship in Morocco 2025: preparation, professional behavior, documenting results for your CV."
 image: "/assets/blog/default-orientation.svg"
 keywords:
-  - "orientation"
-  - "orientation professionnelle"
-  - "2025"
+  - "first internship"
+  - "student internship Morocco"
 slug: "succeed-first-internship-2025"
 ---
 
 # How to Succeed in Your First Internship: Complete Student Guide 2025
 
-[Contenu à compléter - 900-1400 mots]
+Your **first internship** can launch your career — or discourage you if poorly managed. This practical guide helps **Moroccan students** turn any internship into a CV and network asset.
 
-## FAQ
+## Before the internship
 
-**Question 1 ?**
-Réponse...
+Define learning goals; tailor [CV](/cv) and [cover letter](/tools/cover-letter); research the company; confirm duration, supervisor and tasks.
 
-**Question 2 ?**
-Réponse...
+## During the internship
 
-**Question 3 ?**
-Réponse...
+Week 1: punctuality, logbook, align goals with supervisor.  
+Daily: listen, ask questions, respect confidentiality, propose small improvements when appropriate.
 
-**Question 4 ?**
-Réponse...
+## After each task
 
-**Question 5 ?**
-Réponse...
+Document context, your role, and **measurable results** for interviews — [interview prep](/tools/interview-prep).
+
+## End of internship
+
+Request feedback; ask for LinkedIn recommendation if appropriate; update CV within 48 hours.
+
+## Mistakes to avoid
+
+Phone use, criticizing the company online, disappearing without thank-you or debrief.
 
 ## Conclusion
 
-Découvrez votre profil professionnel avec notre [test d'orientation gratuit](https://quizorientation.online/quiz).
+[Employability](/blog/employabilite-marche-travail-2025) · [Soft skills](/blog/soft-skills-competences-professionnelles-essentielles) · [Contact](/contact)

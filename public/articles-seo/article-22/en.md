@@ -1,36 +1,37 @@
 ---
 title: "How to Prepare for a Job Interview: Complete Guide 2025"
 date: "2025-02-05"
-description: "Complete guide prepare for a job interview in 2025: preparation, common questions, techniques, mistakes to avoid. Succeed in your interview."
+description: "Prepare for job interviews in Morocco: company research, STAR method, dress code, follow-up. Complete 2025 guide."
 image: "/assets/blog/default-conseils.svg"
 keywords:
-  - "conseils"
-  - "orientation professionnelle"
-  - "2025"
+  - "job interview"
+  - "interview preparation"
 slug: "prepare-job-interview-2025"
 ---
 
 # How to Prepare for a Job Interview: Complete Guide 2025
 
-[Contenu à compléter - 900-1400 mots]
+The **job interview** checks whether your CV matches someone who can **perform and integrate**. This 2025 guide covers before, during and after — for **Moroccan** employers from SMEs to multinationals.
 
-## FAQ
+## Before (J-7 to J-1)
 
-**Question 1 ?**
-Réponse...
+Research company and role; map 5 skills to STAR stories; mock interviews; [interview prep tool](/tools/interview-prep); logistics (dress, route, documents).
 
-**Question 2 ?**
-Réponse...
+## During
 
-**Question 3 ?**
-Réponse...
+Punctual, structured answers, honest about gaps + learning plan, smart questions at the end.
 
-**Question 4 ?**
-Réponse...
+## After
 
-**Question 5 ?**
-Réponse...
+Thank-you email within 24h; polite follow-up after ~10 business days if no reply.
+
+## vs admission interview
+
+| | School admission | Job interview |
+|---|------------------|---------------|
+| Focus | Training motivation | Role performance |
+| Guide | [Admission interview](/blog/succeed-admission-interview-2025) | This guide |
 
 ## Conclusion
 
-Découvrez votre profil professionnel avec notre [test d'orientation gratuit](https://quizorientation.online/quiz).
+[CV guide](/blog/write-perfect-cv-templates-2025) · [Employability](/blog/employabilite-marche-travail-2025)

@@ -1,36 +1,43 @@
 ---
 title: "Career Orientation Test: How It Works in 2025"
 date: "2025-02-11"
-description: "Complete guide career orientation test in 2025: functioning, reliability, result interpretation. Understand orientation tests."
+description: "How career orientation tests work in 2025: limits, QuizOrientation quiz, next steps after results."
 image: "/assets/blog/default-orientation.svg"
 keywords:
-  - "orientation"
-  - "orientation professionnelle"
-  - "2025"
+  - "career orientation test"
+  - "orientation quiz"
 slug: "career-orientation-test-2025"
 ---
 
 # Career Orientation Test: How It Works in 2025
 
-[Contenu à compléter - 900-1400 mots]
+A **career orientation test** structures reflection on interests, work style and **job ideas**. It is a starting point — not a final verdict.
 
-## FAQ
+## What a good test does
 
-**Question 1 ?**
-Réponse...
+Clarifies intuitions, names a profile, suggests careers to explore, prepares talks with advisors or family.
 
-**Question 2 ?**
-Réponse...
+## How our QuizOrientation quiz works
 
-**Question 3 ?**
-Réponse...
+Questions → profile (five axes) → job ideas → links to [blog](/blog), [Study in Morocco](/study-in-morocco), [tools](/free-tools).
 
-**Question 4 ?**
-Réponse...
+[Take the free quiz](/)
 
-**Question 5 ?**
-Réponse...
+## After the test (4 steps)
+
+1. Read results openly  
+2. Pick 3 careers to research  
+3. Field test one (internship, interview)  
+4. Build [professional project](/blog/define-professional-project-a-z)
+
+## Limits
+
+Mood bias, family pressure, emerging jobs missing — always validate on the ground.
+
+## Online vs human advisor
+
+Online = fast start; advisor = depth for complex cases — complementary.
 
 ## Conclusion
 
-Découvrez votre profil professionnel avec notre [test d'orientation gratuit](https://quizorientation.online/quiz).
+[Complete orientation guide](/blog/guide-complet-orientation-professionnelle-2025) · [About](/a-propos)

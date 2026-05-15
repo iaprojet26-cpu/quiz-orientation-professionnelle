@@ -1,36 +1,47 @@
 ---
 title: "How to Write a Perfect CV: Complete Guide with Templates 2025"
 date: "2025-02-02"
-description: "Complete guide write a perfect CV in 2025: structure, content, mistakes to avoid, templates. Create a CV that attracts recruiters."
+description: "Write a perfect CV in Morocco 2025: structure, ATS keywords, mistakes. Link to free CV builder."
 image: "/assets/blog/default-conseils.svg"
 keywords:
-  - "conseils"
-  - "orientation professionnelle"
-  - "2025"
+  - "perfect CV"
+  - "CV Morocco 2025"
+  - "ATS CV"
 slug: "write-perfect-cv-templates-2025"
 ---
 
 # How to Write a Perfect CV: Complete Guide with Templates 2025
 
-[Contenu à compléter - 900-1400 mots]
+A **perfect CV** means **perfectly matched** to the role, sector and experience level. In **Morocco**, **ATS** filters make structure and keywords essential.
 
-## FAQ
+## 7 rules
 
-**Question 1 ?**
-Réponse...
+1. One page for juniors  
+2. Readable layout, export PDF with clear filename  
+3. Clear header (contact, LinkedIn)  
+4. Targeted headline (2 lines max)  
+5. Experiences with **results**, not task lists  
+6. Skills aligned with the job ad — [ATS score](/tools/ats-score)  
+7. Education and certifications listed clearly
 
-**Question 2 ?**
-Réponse...
+## ATS tips
 
-**Question 3 ?**
-Réponse...
+Standard section titles, keyword mirroring, avoid text-only images for core content.
 
-**Question 4 ?**
-Réponse...
+## Profile-specific focus
 
-**Question 5 ?**
-Réponse...
+| Profile | Emphasize |
+|---------|-----------|
+| Student | Projects, associations, languages |
+| Graduate | Internships, metrics |
+| Career change | Transferable skills + recent training |
+
+[Career change](/blog/reconversion-professionnelle-guide-complet) · [First internship](/blog/reussir-premier-stage-2025).
+
+## Mistakes
+
+Spelling errors, identical CV for every job, lying on languages, file named only `CV.pdf`.
 
 ## Conclusion
 
-Découvrez votre profil professionnel avec notre [test d'orientation gratuit](https://quizorientation.online/quiz).
+Build your CV at [QuizOrientation](/cv) · [Cover letter](/blog/lettre-motivation-guide-exemples-2025)

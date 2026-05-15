@@ -1,36 +1,36 @@
 ---
 title: "How to Discover Your Professional Potential: Complete Guide"
 date: "2025-02-10"
-description: "Complete guide discover your professional potential: methods, tools, tests, advice. Identify your talents and build your professional project."
+description: "Discover your professional potential: methods, quiz, feedback, field experience. Morocco 2025."
 image: "/assets/blog/default-orientation.svg"
 keywords:
-  - "orientation"
-  - "orientation professionnelle"
-  - "2025"
+  - "professional potential"
+  - "self-knowledge career"
 slug: "discover-professional-potential"
 ---
 
 # How to Discover Your Professional Potential: Complete Guide
 
-[Contenu à compléter - 900-1400 mots]
+**Professional potential** is your capacity to grow in a given context — not a fixed talent for a few.
 
-## FAQ
+## Five sources
 
-**Question 1 ?**
-Réponse...
+1. Structured tests — [free quiz](/)  
+2. External feedback (teachers, supervisors)  
+3. Concrete experiences (internships, projects)  
+4. Career research — [career paths](/career-paths)  
+5. Market reality — [hiring sectors](/blog/secteurs-recrutent-maroc-2025)
 
-**Question 2 ?**
-Réponse...
+## Self-rating grid (1–5)
 
-**Question 3 ?**
-Réponse...
+Analysis, creativity, people skills, organization, entrepreneurship — validate in the field.
 
-**Question 4 ?**
-Réponse...
+## From discovery to decision
 
-**Question 5 ?**
-Réponse...
+Explore → test → specialize → adjust.
+
+[Define your project](/blog/define-professional-project-a-z) · [mistakes to avoid](/blog/orientation-mistakes-avoid-2025).
 
 ## Conclusion
 
-Découvrez votre profil professionnel avec notre [test d'orientation gratuit](https://quizorientation.online/quiz).
+[Quiz](/) · [Guide 2025](/blog/guide-complet-orientation-professionnelle-2025)

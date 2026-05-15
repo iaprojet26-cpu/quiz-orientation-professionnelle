@@ -105,24 +105,30 @@ function BlogArticle() {
               const slugKey = `slug_${lang}`
               
               if (metadata[slugKey] === slugToFetch) {
-                // Charger le contenu markdown dans la bonne langue
-                const markdownPath = `${basePath}/articles-seo/article-${articleNum}/${lang}.md`
-                const contentResponse = await fetchWithTimeout(markdownPath, { cache: 'default' }, 6000)
-                
-                if (contentResponse.ok) {
+                const isPlaceholder = (raw) =>
+                  raw.includes('[Contenu à compléter') || raw.includes('Contenu à compléter')
+
+                const loadMarkdown = async (fileLang) => {
+                  const markdownPath = `${basePath}/articles-seo/article-${articleNum}/${fileLang}.md`
+                  const contentResponse = await fetchWithTimeout(markdownPath, { cache: 'default' }, 6000)
+                  if (!contentResponse.ok) return null
                   const text = await contentResponse.text()
-                  
                   if (text.trim().startsWith('<!doctype') || text.trim().startsWith('<!DOCTYPE') || text.trim().startsWith('<html')) {
                     return null
                   }
-                  
-                  // Vérifier que ce n'est pas un placeholder
-                  if (text.includes('[Contenu à compléter') || text.includes('Contenu à compléter')) {
-                    throw new Error(`Article ${articleNum} contient un placeholder`)
-                  }
-                  
+                  if (isPlaceholder(text)) return null
                   return text
                 }
+
+                const localized = await loadMarkdown(lang)
+                if (localized) return localized
+
+                if (lang !== 'fr') {
+                  const fallbackFr = await loadMarkdown('fr')
+                  if (fallbackFr) return fallbackFr
+                }
+
+                throw new Error(`Article ${articleNum} contient un placeholder`)
               }
               return null
             } catch (err) {
@@ -143,6 +149,7 @@ function BlogArticle() {
     
     // Fallback sur les anciens chemins
     const candidatePaths = [
+      ...(lang !== 'fr' ? [`${basePath}/blog/${slugToFetch}.${lang}.md`] : []),
       `${basePath}/blog/${slugToFetch}.md`,
       `${basePath}/articles/${slugToFetch}.md`
     ]
