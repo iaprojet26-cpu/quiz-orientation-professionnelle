@@ -1,36 +1,23 @@
 ---
-title: "مساعد إداري: المهارات الأساسية والفرص 2025"
+title: "المساعد الإداري: المهارات والآفاق 2025"
 date: "2025-01-22"
-description: "undefined"
-image: "/assets/blog/default-métiers.svg"
+description: "المساعد الإداري في المغرب 2025: التنظيم، المكتبية، الاستقبال."
+image: "/assets/blog/default-metiers.svg"
 keywords:
-  - "métiers"
-  - "orientation professionnelle"
-  - "2025"
+  - "مساعد إداري"
 slug: "مساعد-إداري-2025"
 ---
 
-# مساعد إداري: المهارات الأساسية والفرص 2025
+# المساعد الإداري: المهارات والآفاق 2025
 
-[Contenu à compléter - 900-1400 mots]
+**المساعد الإداري** ينظم مكتب الشركة: استقبال، بريد، جداول، ملفات، Excel.
 
-## FAQ
+## المهارات
 
-**Question 1 ?**
-Réponse...
+Word/Excel، دقة، سرية، التزام بالمواعيد.
 
-**Question 2 ?**
-Réponse...
+## التطور
 
-**Question 3 ?**
-Réponse...
+مساعد → مساعد مدير → office manager.
 
-**Question 4 ?**
-Réponse...
-
-**Question 5 ?**
-Réponse...
-
-## Conclusion
-
-Découvrez votre profil professionnel avec notre [test d'orientation gratuit](https://quizorientation.online/quiz).
+[السيرة](/blog/كتابة-سيرة-ذاتية-مثالية-2025) · [الفرص](/opportunities)

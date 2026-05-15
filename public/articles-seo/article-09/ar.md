@@ -1,36 +1,23 @@
 ---
-title: "مدير المجتمع: دليل شامل من المبتدئ إلى الخبير في 2025"
+title: "مدير المجتمع: دليل شامل 2025"
 date: "2025-01-23"
-description: "undefined"
-image: "/assets/blog/default-métiers.svg"
+description: "مدير المجتمع في المغرب 2025: شبكات التواصل، المحتوى، الإعلانات."
+image: "/assets/blog/default-metiers.svg"
 keywords:
-  - "métiers"
-  - "orientation professionnelle"
-  - "2025"
+  - "مدير مجتمع المغرب"
 slug: "مدير-المجتمع-2025"
 ---
 
-# مدير المجتمع: دليل شامل من المبتدئ إلى الخبير في 2025
+# مدير المجتمع: دليل شامل 2025
 
-[Contenu à compléter - 900-1400 mots]
+**مدير المجتمع** يدير **حسابات التواصل** للعلامة: محتوى، تفاعل، إعلانات، تقارير.
 
-## FAQ
+## المهام
 
-**Question 1 ?**
-Réponse...
+تقويم تحريري، نصوص، صور، تفاعل الجمهور، مؤشرات أداء.
 
-**Question 2 ?**
-Réponse...
+## المهارات
 
-**Question 3 ?**
-Réponse...
+كتابة، إبداع بصري، أدوات جدولة، تحليل.
 
-**Question 4 ?**
-Réponse...
-
-**Question 5 ?**
-Réponse...
-
-## Conclusion
-
-Découvrez votre profil professionnel avec notre [test d'orientation gratuit](https://quizorientation.online/quiz).
+[التواصل](/blog/تحسين-التواصل-المهني-2025) · [اختبار](/)

@@ -1,36 +1,28 @@
 ---
-title: "Construction Jobs: The Most Recruited in 2025"
+title: "Construction Jobs: Top Hiring Roles in 2025"
 date: "2025-01-24"
-description: "Complete guide construction jobs recruiting in 2025: training, salaries, skills, opportunities. Discover opportunities in construction and public works."
-image: "/assets/blog/default-métiers.svg"
+description: "Construction jobs hiring in Morocco 2025: trades, site management, training paths."
+image: "/assets/blog/default-metiers.svg"
 keywords:
-  - "métiers"
-  - "orientation professionnelle"
-  - "2025"
+  - "construction jobs Morocco"
 slug: "construction-jobs-recruiting-2025"
 ---
 
-# Construction Jobs: The Most Recruited in 2025
+# Construction Jobs: Top Hiring Roles in 2025
 
-[Contenu à compléter - 900-1400 mots]
+**Construction (BTP)** employs many workers in **Morocco**: housing, infrastructure, tourism projects. Roles often accessible via **vocational training** and on-site experience.
 
-## FAQ
+## Hiring trades
 
-**Question 1 ?**
-Réponse...
+Mason, electrician, plumber, site supervisor, equipment operators, BIM technicians, QHSE on site.
 
-**Question 2 ?**
-Réponse...
+## Training
 
-**Question 3 ?**
-Réponse...
+Vocational schools (OFPPT), technical diplomas, engineering for management roles. **Safety** training essential.
 
-**Question 4 ?**
-Réponse...
+## Pros and cons
 
-**Question 5 ?**
-Réponse...
++ Local jobs, path to supervision  
+− Physical work, seasonality, travel
 
-## Conclusion
-
-Découvrez votre profil professionnel avec notre [test d'orientation gratuit](https://quizorientation.online/quiz).
+[Sectors hiring](/blog/sectors-recruiting-morocco-2025) · [Quiz](/) · [Study in Morocco](/study-in-morocco)

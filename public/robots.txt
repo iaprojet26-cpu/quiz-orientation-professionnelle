@@ -5,5 +5,5 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://quizorientation.online/sitemap.xml
+Sitemap: https://www.quizorientation.online/sitemap.xml
 

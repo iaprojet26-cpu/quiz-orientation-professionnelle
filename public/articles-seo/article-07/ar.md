@@ -1,36 +1,25 @@
 ---
-title: "فني الشبكات والأمن السيبراني: المسار المهني الكامل والتدريب 2025"
+title: "فني الشبكات والأمن السيبراني: المسار 2025"
 date: "2025-01-21"
-description: "undefined"
-image: "/assets/blog/default-métiers.svg"
+description: "فني شبكات وأمن معلومات في المغرب 2025: المهارات والشهادات والرواتب."
+image: "/assets/blog/default-metiers.svg"
 keywords:
-  - "métiers"
-  - "orientation professionnelle"
-  - "2025"
+  - "أمن سيبراني المغرب"
 slug: "فني-الشبكات-الأمن-2025"
 ---
 
-# فني الشبكات والأمن السيبراني: المسار المهني الكامل والتدريب 2025
+# فني الشبكات والأمن السيبراني: المسار 2025
 
-[Contenu à compléter - 900-1400 mots]
+**فني الشبكات والأمن** يضمن استقرار وأمان الأنظمة. في **المغرب** الطلب مرتفع مع التحول الرقمي والتهديدات الإلكترونية.
 
-## FAQ
+## المهام
 
-**Question 1 ?**
-Réponse...
+تركيب شبكات، مراقبة، تحديثات، نسخ احتياطي، حوادث أمنية.
 
-**Question 2 ?**
-Réponse...
+## المهارات
 
-**Question 3 ?**
-Réponse...
+TCP/IP، Linux/Windows، جدران نارية، أساسيات الأمن.
 
-**Question 4 ?**
-Réponse...
+## الخلاصة
 
-**Question 5 ?**
-Réponse...
-
-## Conclusion
-
-Découvrez votre profil professionnel avec notre [test d'orientation gratuit](https://quizorientation.online/quiz).
+[القطاعات الرقمية](/blog/القطاعات-التوظيف-المغرب-2025) · [اختبار](/)

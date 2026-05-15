@@ -1,36 +1,44 @@
 ---
 title: "Nurse in 2025: Career Path, Opportunities, Salaries and Training"
 date: "2025-01-17"
-description: "Complete guide on the nursing profession in 2025: training path, career opportunities, salaries, specializations. Everything about this essential profession."
-image: "/assets/blog/default-métiers.svg"
+description: "Nursing career in Morocco 2025: training paths, specializations, salaries and hospital opportunities."
+image: "/assets/blog/default-metiers.svg"
 keywords:
-  - "métiers"
-  - "orientation professionnelle"
-  - "2025"
+  - "nurse Morocco"
+  - "nursing training"
 slug: "nurse-2025-career-opportunities-salaries"
 ---
 
 # Nurse in 2025: Career Path, Opportunities, Salaries and Training
 
-[Contenu à compléter - 900-1400 mots]
+**Nursing** is essential and in constant demand in **Morocco**: public and private hospitals, clinics, home care. Regulated, demanding training, strong job security and purpose.
 
-## FAQ
+## Missions
 
-**Question 1 ?**
-Réponse...
+Patient care, clinical monitoring, teamwork with doctors, hygiene and safety, patient education.
 
-**Question 2 ?**
-Réponse...
+## Qualities
 
-**Question 3 ?**
-Réponse...
+Empathy, stress resilience, rigor, teamwork, flexible schedules.
 
-**Question 4 ?**
-Réponse...
+## Training in Morocco
 
-**Question 5 ?**
-Réponse...
+Nursing institutes (IFI), university paths (IUP), mandatory clinical internships. Verify **accreditation** and admission requirements.
+
+[Study in Morocco](/study-in-morocco)
+
+## Opportunities
+
+Public hospital, private clinic, specialized units, corporate health services, NGOs.
+
+## Salaries
+
+Vary by public/private sector and experience — check current grids and benefits.
+
+## Next steps
+
+[Quiz](/) · observation internship · [admission interview](/blog/succeed-admission-interview-2025)
 
 ## Conclusion
 
-Découvrez votre profil professionnel avec notre [test d'orientation gratuit](https://quizorientation.online/quiz).
+[Healthcare sectors](/blog/sectors-recruiting-morocco-2025) · [Blog](/blog)

@@ -1,36 +1,27 @@
 ---
-title: "Community Manager: Complete Guide from Beginner to Expert in 2025"
+title: "Community Manager: Complete Guide from Beginner to Expert 2025"
 date: "2025-01-23"
-description: "Complete Community Manager guide in 2025: skills, training, tools, strategies, salaries. Become an expert in online community management."
-image: "/assets/blog/default-métiers.svg"
+description: "Community manager in Morocco 2025: social media, content, ads, KPIs and digital salaries."
+image: "/assets/blog/default-metiers.svg"
 keywords:
-  - "métiers"
-  - "orientation professionnelle"
-  - "2025"
+  - "community manager Morocco"
 slug: "community-manager-complete-guide-2025"
 ---
 
-# Community Manager: Complete Guide from Beginner to Expert in 2025
+# Community Manager: Complete Guide from Beginner to Expert 2025
 
-[Contenu à compléter - 900-1400 mots]
+A **community manager** runs brand **social media**: content, moderation, ads, analytics. Strong demand in **Moroccan** SMEs, agencies and e-commerce.
 
-## FAQ
+## Missions
 
-**Question 1 ?**
-Réponse...
+Editorial calendar, copy, visuals, engagement, basic paid ads, KPI reporting.
 
-**Question 2 ?**
-Réponse...
+## Skills
 
-**Question 3 ?**
-Réponse...
+Writing, visual taste, scheduling tools, analytics — [communication](/blog/improve-professional-communication-2025).
 
-**Question 4 ?**
-Réponse...
+## Portfolio
 
-**Question 5 ?**
-Réponse...
+3 case studies with metrics.
 
-## Conclusion
-
-Découvrez votre profil professionnel avec notre [test d'orientation gratuit](https://quizorientation.online/quiz).
+[Digital jobs](/blog/jobs-explode-ai-2025-2030) · [Quiz](/) · [CV](/cv)

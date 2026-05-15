@@ -1,36 +1,25 @@
 ---
 title: "مهن البناء: الأكثر توظيفاً في 2025"
 date: "2025-01-24"
-description: "undefined"
-image: "/assets/blog/default-métiers.svg"
+description: "مهن البناء والأشغال العمومية في المغرب 2025: تكوين وفرص."
+image: "/assets/blog/default-metiers.svg"
 keywords:
-  - "métiers"
-  - "orientation professionnelle"
-  - "2025"
+  - "بناء المغرب"
 slug: "مهن-البناء-2025"
 ---
 
 # مهن البناء: الأكثر توظيفاً في 2025
 
-[Contenu à compléter - 900-1400 mots]
+قطاع **البناء** يوظف أعداداً كبيرة في **المغرب**: سكن، بنيات تحتية، سياحة.
 
-## FAQ
+## مهن مطلوبة
 
-**Question 1 ?**
-Réponse...
+بناء، كهرباء، سباكة، مشرف ورشة، سائقو آليات، BIM، سلامة موقع.
 
-**Question 2 ?**
-Réponse...
+## التكوين
 
-**Question 3 ?**
-Réponse...
+OFPPT، دبلومات تقنية، هندسة للإشراف. **السلامة** أساسية.
 
-**Question 4 ?**
-Réponse...
+## الخلاصة
 
-**Question 5 ?**
-Réponse...
-
-## Conclusion
-
-Découvrez votre profil professionnel avec notre [test d'orientation gratuit](https://quizorientation.online/quiz).
+[القطاعات](/blog/القطاعات-التوظيف-المغرب-2025) · [اختبار](/)

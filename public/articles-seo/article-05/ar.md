@@ -1,36 +1,27 @@
 ---
-title: "مدير الموارد البشرية: وصف الوظيفة الكامل والمهارات والراتب 2025"
+title: "مدير الموارد البشرية: المهام والمهارات 2025"
 date: "2025-01-19"
-description: "undefined"
-image: "/assets/blog/default-métiers.svg"
+description: "موارد بشرية في المغرب 2025: التوظيف، الإدارة، المهارات والرواتب."
+image: "/assets/blog/default-metiers.svg"
 keywords:
-  - "métiers"
-  - "orientation professionnelle"
-  - "2025"
+  - "موارد بشرية المغرب"
 slug: "مدير-الموارد-البشرية-2025"
 ---
 
-# مدير الموارد البشرية: وصف الوظيفة الكامل والمهارات والراتب 2025
+# مدير الموارد البشرية: المهام والمهارات 2025
 
-[Contenu à compléter - 900-1400 mots]
+**مسؤول الموارد البشرية** يدير **التوظيف** وملفات الموظفين والتكوين. في **المغرب**، المقاولات المتوسطة والكبرى تحتاج ملفات متوافقة مع قانون الشغل.
 
-## FAQ
+## المهام
 
-**Question 1 ?**
-Réponse...
+عروض العمل، فرز، مقابلات، إدماج، ملفات إدارية.
 
-**Question 2 ?**
-Réponse...
+## المهارات
 
-**Question 3 ?**
-Réponse...
+أساسيات قانون الشغل، Excel/SIRH، سرية، تواصل.
 
-**Question 4 ?**
-Réponse...
+[مهارات ناعمة](/blog/soft-skills-competences-professionnelles-essentielles)
 
-**Question 5 ?**
-Réponse...
+## الخلاصة
 
-## Conclusion
-
-Découvrez votre profil professionnel avec notre [test d'orientation gratuit](https://quizorientation.online/quiz).
+[اختبار](/) · [الفرص](/opportunities)

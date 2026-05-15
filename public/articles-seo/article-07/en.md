@@ -1,36 +1,27 @@
 ---
-title: "Network and Cybersecurity Technician: Complete Career Path and Training 2025"
+title: "Network and Cybersecurity Technician: Complete Path 2025"
 date: "2025-01-21"
-description: "Complete guide network and cybersecurity technician in 2025: training, certifications, skills, salaries. Everything about IT security professions."
-image: "/assets/blog/default-métiers.svg"
+description: "Network and cybersecurity technician in Morocco 2025: CCNA, Linux, SOC roles and salaries."
+image: "/assets/blog/default-metiers.svg"
 keywords:
-  - "métiers"
-  - "orientation professionnelle"
-  - "2025"
+  - "cybersecurity Morocco"
 slug: "network-cybersecurity-technician-2025"
 ---
 
-# Network and Cybersecurity Technician: Complete Career Path and Training 2025
+# Network and Cybersecurity Technician: Complete Path 2025
 
-[Contenu à compléter - 900-1400 mots]
+**Network and security technicians** keep systems available and protected. In **Morocco**, digitalization and cyber threats drive strong hiring.
 
-## FAQ
+## Missions
 
-**Question 1 ?**
-Réponse...
+Network setup, monitoring, patches, backups, incident response, user awareness.
 
-**Question 2 ?**
-Réponse...
+## Skills
 
-**Question 3 ?**
-Réponse...
+TCP/IP, Linux/Windows, firewalls, VPN, security basics. Certifications: CCNA, Security+ (examples).
 
-**Question 4 ?**
-Réponse...
+## Path
 
-**Question 5 ?**
-Réponse...
+IT diploma → helpdesk internship → NOC/SOC → specialization.
 
-## Conclusion
-
-Découvrez votre profil professionnel avec notre [test d'orientation gratuit](https://quizorientation.online/quiz).
+[Digital sectors](/blog/sectors-recruiting-morocco-2025) · [Quiz](/)

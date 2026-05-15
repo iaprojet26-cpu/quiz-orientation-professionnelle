@@ -1,36 +1,33 @@
 ---
 title: "HR Manager: Complete Job Description, Skills and Salary 2025"
 date: "2025-01-19"
-description: "Complete HR manager job description in 2025: missions, skills, training, salaries, career evolution. Everything about human resources."
-image: "/assets/blog/default-métiers.svg"
+description: "HR manager in Morocco 2025: recruitment, payroll basics, labor law, skills and career path."
+image: "/assets/blog/default-metiers.svg"
 keywords:
-  - "métiers"
-  - "orientation professionnelle"
-  - "2025"
+  - "HR manager Morocco"
 slug: "hr-manager-job-description-2025"
 ---
 
 # HR Manager: Complete Job Description, Skills and Salary 2025
 
-[Contenu à compléter - 900-1400 mots]
+An **HR manager** handles **recruitment**, employee administration, training and sometimes payroll. In **Morocco**, growing companies need HR aligned with local labor rules and employer branding.
 
-## FAQ
+## Missions
 
-**Question 1 ?**
-Réponse...
+Job posts, screening, interviews, onboarding, HR files, internal training.
 
-**Question 2 ?**
-Réponse...
+## Skills
 
-**Question 3 ?**
-Réponse...
+Labor law basics, HRIS/Excel, confidentiality, communication — [soft skills](/blog/soft-skills-competences-professionnelles-essentielles).
 
-**Question 4 ?**
-Réponse...
+## Path
 
-**Question 5 ?**
-Réponse...
+HR degree → internship → HR generalist → HR lead.
 
-## Conclusion
+## Salaries (indicative)
 
-Découvrez votre profil professionnel avec notre [test d'orientation gratuit](https://quizorientation.online/quiz).
+Junior ~5,500–8,500 MAD/month; experienced higher in large firms.
+
+## Start
+
+[Quiz](/) · [CV guide](/blog/write-perfect-cv-templates-2025) · [Opportunities](/opportunities)

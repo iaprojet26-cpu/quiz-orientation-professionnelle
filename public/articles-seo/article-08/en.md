@@ -1,36 +1,27 @@
 ---
 title: "Administrative Assistant: Essential Skills and Opportunities 2025"
 date: "2025-01-22"
-description: "Complete guide administrative assistant in 2025: essential skills, training, missions, salaries, opportunities. Everything about this versatile profession."
-image: "/assets/blog/default-métiers.svg"
+description: "Administrative assistant in Morocco 2025: office skills, organization, career progression."
+image: "/assets/blog/default-metiers.svg"
 keywords:
-  - "métiers"
-  - "orientation professionnelle"
-  - "2025"
+  - "administrative assistant Morocco"
 slug: "administrative-assistant-skills-2025"
 ---
 
 # Administrative Assistant: Essential Skills and Opportunities 2025
 
-[Contenu à compléter - 900-1400 mots]
+An **administrative assistant** runs office operations: reception, mail, schedules, files, Excel reports. Common entry role in **Moroccan** SMEs and corporations.
 
-## FAQ
+## Skills
 
-**Question 1 ?**
-Réponse...
+Excel/Word, spelling, discretion, punctuality, collaboration tools.
 
-**Question 2 ?**
-Réponse...
+## Path
 
-**Question 3 ?**
-Réponse...
+Vocational diploma → SME internship → executive assistant track.
 
-**Question 4 ?**
-Réponse...
+## Salaries (indicative)
 
-**Question 5 ?**
-Réponse...
+Starter ~4,000–6,500 MAD/month.
 
-## Conclusion
-
-Découvrez votre profil professionnel avec notre [test d'orientation gratuit](https://quizorientation.online/quiz).
+[CV guide](/blog/write-perfect-cv-templates-2025) · [Opportunities](/opportunities) · [Quiz](/)

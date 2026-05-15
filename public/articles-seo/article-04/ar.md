@@ -1,36 +1,31 @@
 ---
-title: "مهندس الذكاء الاصطناعي: لماذا هي مهنة المستقبل في 2025"
+title: "مهندس الذكاء الاصطناعي: مهنة المستقبل 2025"
 date: "2025-01-18"
-description: "undefined"
-image: "/assets/blog/default-métiers.svg"
+description: "مهندس الذكاء الاصطناعي في المغرب 2025: المهام، التكوين، Python والقطاعات."
+image: "/assets/blog/default-metiers.svg"
 keywords:
-  - "métiers"
-  - "orientation professionnelle"
-  - "2025"
+  - "مهندس ذكاء اصطناعي"
 slug: "مهندس-الذكاء-الاصطناعي-2025"
 ---
 
-# مهندس الذكاء الاصطناعي: لماذا هي مهنة المستقبل في 2025
+# مهندس الذكاء الاصطناعي: مهنة المستقبل 2025
 
-[Contenu à compléter - 900-1400 mots]
+**مهندس الذكاء الاصطناعي** يبني نماذج تعلم آلة لأتمتة أو تحسين أعمال المؤسسة. في **المغرب**، الاستثمار في الذكاء الاصطناعي ينمو في الاتصالات والبنوك والشركات الناشئة.
 
-## FAQ
+## المهام
 
-**Question 1 ?**
-Réponse...
+تحضير البيانات، تدريب النماذج، نشرها، العمل مع فرق الأعمال.
 
-**Question 2 ?**
-Réponse...
+## المهارات
 
-**Question 3 ?**
-Réponse...
+Python، أطر ML، SQL، سحابة، إحصاء، نقد الأ biases.
 
-**Question 4 ?**
-Réponse...
+[مهن الذكاء الاصطناعي](/blog/مهن-تنفجر-الذكاء-الاصطناعي-2025)
 
-**Question 5 ?**
-Réponse...
+## التكوين
 
-## Conclusion
+مدرسة مهندسين، ماستر data/IA، مسار علمي قوي.
 
-Découvrez votre profil professionnel avec notre [test d'orientation gratuit](https://quizorientation.online/quiz).
+## الخلاصة
+
+[اختبار](/) · [مهن المستقبل](/blog/metiers-davenir-2025-2030)
