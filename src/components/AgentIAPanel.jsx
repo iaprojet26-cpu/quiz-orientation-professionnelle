@@ -79,7 +79,12 @@ function AgentIAPanel({ onEditItem }) {
       setMessage(`API ${providerLabel} connectée (${ping.model || 'modèle par défaut'}).`)
     } catch (e) {
       setApiOk(false)
-      setError(e.message)
+      const msg = e.message || ''
+      setError(
+        /Anthropic épuisés/i.test(msg)
+          ? 'Erreur affichée obsolète ou mauvais déploiement. Vérifiez GEMINI_API_KEY + AI_PROVIDER=gemini sur Vercel, puis Redeploy. Si ça continue, videz le cache du navigateur (Ctrl+F5).'
+          : msg
+      )
     } finally {
       setLoading(false)
     }

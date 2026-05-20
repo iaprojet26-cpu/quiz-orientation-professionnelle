@@ -67,44 +67,54 @@ function resolveProvider() {
 
 function getModelName(providerId) {
   if (providerId === 'gemini') {
-    return process.env.GEMINI_MODEL || 'gemini-2.0-flash'
+    return process.env.GEMINI_MODEL || 'gemini-1.5-flash'
   }
   return process.env.ANTHROPIC_MODEL || 'claude-sonnet-4-20250514'
 }
 
-function parseApiError(status, errText, providerId) {
-  let friendly = `Erreur API ${providerId} (${status})`
+function extractErrorMessage(errText) {
   try {
     const parsed = JSON.parse(errText)
-    const msg =
-      parsed?.error?.message ||
+    return (
       parsed?.error?.message ||
       parsed?.message ||
       (Array.isArray(parsed?.error?.details) ? parsed.error.details[0]?.message : '') ||
       ''
-    if (/credit balance|billing|purchase credits/i.test(msg)) {
-      friendly =
-        'Crédits Anthropic épuisés. Rechargez sur console.anthropic.com → Plans & Billing, ou utilisez GEMINI_API_KEY.'
-    } else if (/quota|rate limit|RESOURCE_EXHAUSTED/i.test(msg + errText)) {
-      friendly =
-        'Quota Gemini atteint. Réessayez plus tard ou vérifiez aistudio.google.com (limites gratuites).'
-    } else if (/API key not valid|API_KEY_INVALID/i.test(msg + errText)) {
-      friendly = 'Clé API invalide. Vérifiez GEMINI_API_KEY sur Vercel (sans espace, Production coché).'
-    } else if (msg) {
-      friendly = msg
-    }
+    )
   } catch {
-    if (/credit balance/i.test(errText)) {
-      friendly = 'Crédits Anthropic épuisés. Passez à Gemini (GEMINI_API_KEY) sur Vercel.'
-    }
+    return errText.slice(0, 300)
   }
-  return friendly
 }
 
-async function callGemini(apiKey, system, user, maxTokens = 4096) {
-  const model = getModelName('gemini')
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(apiKey)}`
+function parseApiError(status, errText, providerId) {
+  const msg = extractErrorMessage(errText)
+  const raw = msg || errText.slice(0, 300)
 
+  if (providerId === 'Claude') {
+    if (/credit balance|purchase credits/i.test(raw)) {
+      return 'Crédits Anthropic épuisés. Utilisez GEMINI_API_KEY sur Vercel (AI_PROVIDER=gemini).'
+    }
+    return raw || `Erreur Claude API (${status})`
+  }
+
+  // Erreurs Gemini (ne plus afficher le message Anthropic par erreur)
+  if (/API key not valid|API_KEY_INVALID|PERMISSION_DENIED/i.test(raw + errText)) {
+    return 'Clé Gemini invalide : recréez une clé sur aistudio.google.com/apikey et mettez à jour GEMINI_API_KEY sur Vercel, puis Redeploy.'
+  }
+  if (/quota|rate limit|RESOURCE_EXHAUSTED|429/i.test(raw + errText)) {
+    return 'Quota Gemini atteint. Réessayez dans quelques minutes (aistudio.google.com).'
+  }
+  if (/billing|enable.*api/i.test(raw + errText)) {
+    return 'API Gemini : vérifiez que la clé AI Studio est active (aistudio.google.com/apikey). Si besoin, créez une nouvelle clé gratuite.'
+  }
+  if (/not found|NOT_FOUND|model/i.test(raw + errText)) {
+    return `Modèle Gemini indisponible. Ajoutez sur Vercel : GEMINI_MODEL=gemini-1.5-flash puis Redeploy. Détail : ${raw}`
+  }
+  return raw || `Erreur Gemini API (${status})`
+}
+
+async function callGeminiOnce(apiKey, model, system, user, maxTokens) {
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(apiKey)}`
   const res = await fetch(url, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -117,18 +127,34 @@ async function callGemini(apiKey, system, user, maxTokens = 4096) {
       }
     })
   })
+  return res
+}
 
-  if (!res.ok) {
+async function callGemini(apiKey, system, user, maxTokens = 4096) {
+  const primary = getModelName('gemini')
+  const fallbacks = [primary, 'gemini-1.5-flash', 'gemini-2.0-flash'].filter(
+    (m, i, arr) => arr.indexOf(m) === i
+  )
+
+  let lastError = 'Erreur Gemini inconnue'
+  for (const model of fallbacks) {
+    const res = await callGeminiOnce(apiKey, model, system, user, maxTokens)
+    if (res.ok) {
+      const data = await res.json()
+      const text = data.candidates?.[0]?.content?.parts?.map((p) => p.text).join('') || ''
+      if (!text.trim()) {
+        lastError = 'Réponse Gemini vide. Réessayez.'
+        continue
+      }
+      return text.trim()
+    }
     const errText = await res.text()
-    throw new Error(parseApiError(res.status, errText, 'Gemini'))
+    lastError = parseApiError(res.status, errText, 'Gemini')
+    if (!/not found|NOT_FOUND|404/i.test(errText + lastError)) {
+      throw new Error(lastError)
+    }
   }
-
-  const data = await res.json()
-  const text = data.candidates?.[0]?.content?.parts?.map((p) => p.text).join('') || ''
-  if (!text.trim()) {
-    throw new Error('Réponse Gemini vide (filtre de sécurité ou quota). Réessayez avec un autre sujet.')
-  }
-  return text.trim()
+  throw new Error(lastError)
 }
 
 async function callClaude(apiKey, system, user, maxTokens = 4096) {
@@ -292,7 +318,10 @@ Réponds UNIQUEMENT avec le markdown du corps (pas de front matter).`
 
     return res.status(400).json({ error: 'Action inconnue' })
   } catch (e) {
-    console.error('ai-agent error:', e)
-    return res.status(500).json({ error: e.message || 'Erreur serveur' })
+    console.error('ai-agent error:', provider?.id, e)
+    return res.status(500).json({
+      error: e.message || 'Erreur serveur',
+      provider: provider?.id || null
+    })
   }
 }
