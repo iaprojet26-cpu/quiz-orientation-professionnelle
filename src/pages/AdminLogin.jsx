@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { checkAdminAuth, checkAdminRecoveryToken } from '../services/adminService'
+import { setAdminPasswordForAI } from '../services/aiAgentService'
 
 function AdminLogin() {
   const [password, setPassword] = useState('')
@@ -26,6 +27,7 @@ function AdminLogin() {
     try {
       const authenticated = await checkAdminAuth(password)
       if (authenticated) {
+        setAdminPasswordForAI(password)
         navigate('/admin')
       } else {
         setError('Mot de passe incorrect')

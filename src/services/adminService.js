@@ -144,6 +144,10 @@ export const createArticle = async (articleData) => {
       articleData.published_at = new Date().toISOString()
     }
 
+    if (articleData.published && !articleData.workflow_status) {
+      articleData.workflow_status = 'published'
+    }
+
     const { data, error } = await supabase
       .from('blog_articles')
       .insert(articleData)
@@ -156,6 +160,61 @@ export const createArticle = async (articleData) => {
     console.error('Erreur lors de la création de l\'article:', error)
     throw error
   }
+}
+
+/**
+ * File Agent IA — articles non publiés (workflow)
+ */
+export const getAgentQueueArticles = async () => {
+  if (!supabase) return []
+
+  try {
+    const { data, error } = await supabase
+      .from('blog_articles')
+      .select('*')
+      .eq('published', false)
+      .order('updated_at', { ascending: false })
+
+    if (error) throw error
+    return data || []
+  } catch (error) {
+    console.error('Erreur file Agent IA:', error)
+    return []
+  }
+}
+
+/**
+ * Mettre à jour le statut workflow (colonnes optionnelles — exécuter ai_agent_workflow.sql)
+ */
+export const updateArticleWorkflow = async (id, patch) => {
+  if (!supabase) return null
+
+  try {
+    const { data, error } = await supabase
+      .from('blog_articles')
+      .update(patch)
+      .eq('id', id)
+      .select()
+      .single()
+
+    if (error) throw error
+    return data
+  } catch (error) {
+    console.error('Erreur workflow:', error)
+    throw error
+  }
+}
+
+/**
+ * Publier après validation admin (ne passe jamais par l'IA seule)
+ */
+export const publishArticleFromQueue = async (id) => {
+  const now = new Date().toISOString()
+  return updateArticleWorkflow(id, {
+    published: true,
+    published_at: now,
+    workflow_status: 'published'
+  })
 }
 
 /**
@@ -629,7 +688,11 @@ export const createCareerPath = async (formData) => {
       level_group: formData.level_group || null,
       salary_min_monthly: formData.salary_min_monthly ? parseInt(formData.salary_min_monthly, 10) : null,
       salary_max_monthly: formData.salary_max_monthly ? parseInt(formData.salary_max_monthly, 10) : null,
-      active: formData.active !== false
+      active: formData.active !== false,
+      workflow_status: formData.workflow_status || 'manual',
+      ai_source: formData.ai_source || 'manual',
+      brief_json: formData.brief_json || null,
+      admin_notes: formData.admin_notes || null
     }
 
     const { data: created, error: createError } = await supabase
@@ -765,7 +828,11 @@ export const createOpportunity = async (formData) => {
       source_url: formData.source_url || null,
       application_deadline: formData.application_deadline || null,
       is_remote: !!formData.is_remote,
-      is_active: formData.is_active !== false
+      is_active: formData.is_active !== false,
+      workflow_status: formData.workflow_status || 'manual',
+      ai_source: formData.ai_source || 'manual',
+      brief_json: formData.brief_json || null,
+      admin_notes: formData.admin_notes || null
     }
     const { data: created, error: createError } = await supabase
       .from('opportunities')
@@ -894,7 +961,11 @@ export const createStudyProgram = async (formData) => {
         degree_level: formData.degree_level || null,
         duration_months: formData.duration_months ? parseInt(formData.duration_months, 10) : null,
         source_url: formData.source_url || null,
-        is_active: formData.is_active !== false
+        is_active: formData.is_active !== false,
+        workflow_status: formData.workflow_status || 'manual',
+        ai_source: formData.ai_source || 'manual',
+        brief_json: formData.brief_json || null,
+        admin_notes: formData.admin_notes || null
       })
       .select()
       .single()
@@ -1007,7 +1078,11 @@ export const createCareerGuide = async (formData) => {
         category: formData.category || 'skills',
         reading_minutes: formData.reading_minutes ? parseInt(formData.reading_minutes, 10) : 6,
         is_published: isPublished,
-        published_at: isPublished ? (formData.published_at || new Date().toISOString()) : null
+        published_at: isPublished ? (formData.published_at || new Date().toISOString()) : null,
+        workflow_status: formData.workflow_status || 'manual',
+        ai_source: formData.ai_source || 'manual',
+        brief_json: formData.brief_json || null,
+        admin_notes: formData.admin_notes || null
       })
       .select()
       .single()

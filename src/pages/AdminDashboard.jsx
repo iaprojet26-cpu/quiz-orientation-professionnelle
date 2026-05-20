@@ -23,6 +23,7 @@ import CareerPathEditor from '../components/CareerPathEditor'
 import OpportunityEditor from '../components/OpportunityEditor'
 import StudyProgramEditor from '../components/StudyProgramEditor'
 import CareerGuideEditor from '../components/CareerGuideEditor'
+import AgentIAPanel from '../components/AgentIAPanel'
 
 function AdminDashboard() {
   const [activeTab, setActiveTab] = useState('articles')
@@ -40,6 +41,7 @@ function AdminDashboard() {
   const [editingStudyProgram, setEditingStudyProgram] = useState(null)
   const [editingCareerGuide, setEditingCareerGuide] = useState(null)
   const [showEditor, setShowEditor] = useState(false)
+  const [agentEditType, setAgentEditType] = useState('article')
   const [sitemapGenerating, setSitemapGenerating] = useState(false)
   const navigate = useNavigate()
 
@@ -50,6 +52,10 @@ function AdminDashboard() {
       return
     }
 
+    if (activeTab === 'agentIA') {
+      setLoading(false)
+      return
+    }
     if (activeTab === 'articles') loadArticles()
     else if (activeTab === 'jobs') loadJobs()
     else if (activeTab === 'careerPaths') loadCareerPaths()
@@ -330,11 +336,37 @@ function AdminDashboard() {
     else alert('Erreur lors de la suppression')
   }
 
-  const handleEditorClose = () => {
-    setShowEditor(false)
+  const handleEditFromAgent = (item) => {
+    const type = item.contentType || 'article'
+    setAgentEditType(type)
     setEditingArticle(null)
     setEditingJob(null)
+    setEditingCareerPath(null)
+    setEditingOpportunity(null)
+    setEditingStudyProgram(null)
+    setEditingCareerGuide(null)
+
+    if (type === 'article') setEditingArticle(item.raw || item)
+    else if (type === 'job') setEditingJob(item.raw || item)
+    else if (type === 'career_path') setEditingCareerPath(item.raw || item)
+    else if (type === 'opportunity') setEditingOpportunity(item.raw || item)
+    else if (type === 'study_program') setEditingStudyProgram(item.raw || item)
+    else if (type === 'career_guide') setEditingCareerGuide(item.raw || item)
+
+    setShowEditor(true)
+  }
+
+  const handleEditorClose = () => {
+    setShowEditor(false)
+    setAgentEditType('article')
+    setEditingArticle(null)
+    setEditingJob(null)
+    setEditingCareerPath(null)
+    setEditingOpportunity(null)
+    setEditingStudyProgram(null)
+    setEditingCareerGuide(null)
     // Recharger la liste selon l'onglet actif
+    if (activeTab === 'agentIA') return
     if (activeTab === 'articles') loadArticles()
     else if (activeTab === 'jobs') loadJobs()
     else if (activeTab === 'careerPaths') loadCareerPaths()
@@ -369,6 +401,26 @@ function AdminDashboard() {
   }
 
   if (showEditor) {
+    if (activeTab === 'agentIA') {
+      if (agentEditType === 'article') {
+        return <ArticleEditor article={editingArticle} onClose={handleEditorClose} onSave={handleEditorClose} />
+      }
+      if (agentEditType === 'job') {
+        return <JobEditor job={editingJob} onClose={handleEditorClose} onSave={handleEditorClose} />
+      }
+      if (agentEditType === 'career_path') {
+        return <CareerPathEditor item={editingCareerPath} onClose={handleEditorClose} onSave={handleEditorClose} />
+      }
+      if (agentEditType === 'opportunity') {
+        return <OpportunityEditor item={editingOpportunity} onClose={handleEditorClose} onSave={handleEditorClose} />
+      }
+      if (agentEditType === 'study_program') {
+        return <StudyProgramEditor item={editingStudyProgram} onClose={handleEditorClose} onSave={handleEditorClose} />
+      }
+      if (agentEditType === 'career_guide') {
+        return <CareerGuideEditor item={editingCareerGuide} onClose={handleEditorClose} onSave={handleEditorClose} />
+      }
+    }
     if (activeTab === 'articles') {
       return (
         <ArticleEditor
@@ -442,6 +494,16 @@ function AdminDashboard() {
               📝 Articles ({articles.length})
             </button>
             <button
+              onClick={() => setActiveTab('agentIA')}
+              className={`py-4 px-1 border-b-2 font-medium text-sm ${
+                activeTab === 'agentIA'
+                  ? 'border-indigo-500 text-indigo-600'
+                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+              }`}
+            >
+              🤖 Agent IA
+            </button>
+            <button
               onClick={() => {
                 setActiveTab('jobs')
                 loadJobs()
@@ -470,6 +532,7 @@ function AdminDashboard() {
         </div>
 
         {/* Actions */}
+        {activeTab !== 'agentIA' && (
         <div className="mb-6 flex justify-between items-center">
           <h2 className="text-xl font-semibold text-gray-900">
             {activeTab === 'articles' 
@@ -504,6 +567,7 @@ function AdminDashboard() {
             + {activeTab === 'articles' ? 'Nouvel Article' : activeTab === 'jobs' ? 'Nouveau Métier' : activeTab === 'careerPaths' ? 'Nouveau Career Path' : activeTab === 'opportunities' ? 'Nouvelle Opportunity' : activeTab === 'studyPrograms' ? 'Nouveau Study Program' : 'Nouveau Career Guide'}
           </button>
         </div>
+        )}
 
         {/* Messages d'erreur */}
         {error && (
@@ -522,8 +586,10 @@ function AdminDashboard() {
           </div>
         )}
 
-        {/* Liste des articles ou métiers */}
-        {loading ? (
+        {/* Agent IA ou listes */}
+        {activeTab === 'agentIA' ? (
+          <AgentIAPanel onEditItem={handleEditFromAgent} />
+        ) : loading ? (
           <div className="text-center py-12">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mx-auto mb-4"></div>
             <p className="text-gray-600">Chargement...</p>
