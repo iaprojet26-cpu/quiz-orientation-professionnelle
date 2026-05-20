@@ -130,38 +130,30 @@ async function callGeminiOnce(apiKey, model, system, user, maxTokens) {
   return res
 }
 
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
-
 async function callGemini(apiKey, system, user, maxTokens = 4096) {
+  // gemini-1.5-flash : le plus fiable en niveau sans frais (évite 404 sur 2.0)
   const primary = getModelName('gemini')
-  const fallbacks = [primary, 'gemini-1.5-flash', 'gemini-2.0-flash'].filter(
-    (m, i, arr) => arr.indexOf(m) === i
-  )
+  const fallbacks = [primary, 'gemini-1.5-flash'].filter((m, i, arr) => arr.indexOf(m) === i)
 
   let lastError = 'Erreur Gemini inconnue'
   for (const model of fallbacks) {
-    for (let attempt = 0; attempt < 3; attempt++) {
-      const res = await callGeminiOnce(apiKey, model, system, user, maxTokens)
-      if (res.ok) {
-        const data = await res.json()
-        const text = data.candidates?.[0]?.content?.parts?.map((p) => p.text).join('') || ''
-        if (!text.trim()) {
-          lastError = 'Réponse Gemini vide. Réessayez.'
-          break
-        }
-        return text.trim()
-      }
-      const errText = await res.text()
-      lastError = parseApiError(res.status, errText, 'Gemini')
-      const isRateLimit = res.status === 429 || /quota|rate limit|RESOURCE_EXHAUSTED/i.test(errText + lastError)
-      if (isRateLimit && attempt < 2) {
-        await sleep(4000 * (attempt + 1))
+    const res = await callGeminiOnce(apiKey, model, system, user, maxTokens)
+    if (res.ok) {
+      const data = await res.json()
+      const text = data.candidates?.[0]?.content?.parts?.map((p) => p.text).join('') || ''
+      if (!text.trim()) {
+        lastError = 'Réponse Gemini vide. Réessayez.'
         continue
       }
-      if (!/not found|NOT_FOUND|404/i.test(errText + lastError)) {
-        throw new Error(lastError)
-      }
-      break
+      return text.trim()
+    }
+    const errText = await res.text()
+    lastError = parseApiError(res.status, errText, 'Gemini')
+    const isRateLimit = res.status === 429 || /quota|rate limit|RESOURCE_EXHAUSTED/i.test(errText + lastError)
+    // Ne pas ré-enfiler des requêtes sur 429 (aggrave le quota — visible dans AI Studio)
+    if (isRateLimit) throw new Error(lastError)
+    if (!/not found|NOT_FOUND|404/i.test(errText + lastError)) {
+      throw new Error(lastError)
     }
   }
   throw new Error(lastError)
