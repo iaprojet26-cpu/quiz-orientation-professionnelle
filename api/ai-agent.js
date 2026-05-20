@@ -68,7 +68,23 @@ async function callClaude(apiKey, system, user, maxTokens = 4096) {
 
   if (!res.ok) {
     const errText = await res.text()
-    throw new Error(`Claude API ${res.status}: ${errText.slice(0, 200)}`)
+    let friendly = `Erreur Claude API (${res.status})`
+    try {
+      const parsed = JSON.parse(errText)
+      const msg = parsed?.error?.message || ''
+      if (/credit balance|billing|purchase credits/i.test(msg)) {
+        friendly =
+          'Crédits Anthropic épuisés. Allez sur console.anthropic.com → Plans & Billing pour recharger, puis réessayez.'
+      } else if (msg) {
+        friendly = msg
+      }
+    } catch {
+      if (/credit balance/i.test(errText)) {
+        friendly =
+          'Crédits Anthropic épuisés. Rechargez sur console.anthropic.com → Plans & Billing.'
+      }
+    }
+    throw new Error(friendly)
   }
 
   const data = await res.json()
