@@ -102,7 +102,7 @@ function parseApiError(status, errText, providerId) {
     return 'Clé Gemini invalide : recréez une clé sur aistudio.google.com/apikey et mettez à jour GEMINI_API_KEY sur Vercel, puis Redeploy.'
   }
   if (/quota|rate limit|RESOURCE_EXHAUSTED|429/i.test(raw + errText)) {
-    return 'Quota Gemini atteint. Réessayez dans quelques minutes (aistudio.google.com).'
+    return 'Quota Gemini gratuit atteint (limite par minute ou par jour). Attendez 5–15 min, faites une seule action à la fois, ou consultez aistudio.google.com → usage.'
   }
   if (/billing|enable.*api/i.test(raw + errText)) {
     return 'API Gemini : vérifiez que la clé AI Studio est active (aistudio.google.com/apikey). Si besoin, créez une nouvelle clé gratuite.'
@@ -130,6 +130,8 @@ async function callGeminiOnce(apiKey, model, system, user, maxTokens) {
   return res
 }
 
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
+
 async function callGemini(apiKey, system, user, maxTokens = 4096) {
   const primary = getModelName('gemini')
   const fallbacks = [primary, 'gemini-1.5-flash', 'gemini-2.0-flash'].filter(
@@ -138,20 +140,28 @@ async function callGemini(apiKey, system, user, maxTokens = 4096) {
 
   let lastError = 'Erreur Gemini inconnue'
   for (const model of fallbacks) {
-    const res = await callGeminiOnce(apiKey, model, system, user, maxTokens)
-    if (res.ok) {
-      const data = await res.json()
-      const text = data.candidates?.[0]?.content?.parts?.map((p) => p.text).join('') || ''
-      if (!text.trim()) {
-        lastError = 'Réponse Gemini vide. Réessayez.'
+    for (let attempt = 0; attempt < 3; attempt++) {
+      const res = await callGeminiOnce(apiKey, model, system, user, maxTokens)
+      if (res.ok) {
+        const data = await res.json()
+        const text = data.candidates?.[0]?.content?.parts?.map((p) => p.text).join('') || ''
+        if (!text.trim()) {
+          lastError = 'Réponse Gemini vide. Réessayez.'
+          break
+        }
+        return text.trim()
+      }
+      const errText = await res.text()
+      lastError = parseApiError(res.status, errText, 'Gemini')
+      const isRateLimit = res.status === 429 || /quota|rate limit|RESOURCE_EXHAUSTED/i.test(errText + lastError)
+      if (isRateLimit && attempt < 2) {
+        await sleep(4000 * (attempt + 1))
         continue
       }
-      return text.trim()
-    }
-    const errText = await res.text()
-    lastError = parseApiError(res.status, errText, 'Gemini')
-    if (!/not found|NOT_FOUND|404/i.test(errText + lastError)) {
-      throw new Error(lastError)
+      if (!/not found|NOT_FOUND|404/i.test(errText + lastError)) {
+        throw new Error(lastError)
+      }
+      break
     }
   }
   throw new Error(lastError)
