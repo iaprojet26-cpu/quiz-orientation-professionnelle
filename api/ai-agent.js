@@ -67,7 +67,10 @@ function resolveProvider() {
 
 function getModelName(providerId) {
   if (providerId === 'gemini') {
-    return process.env.GEMINI_MODEL || 'gemini-1.5-flash'
+    // Niveau sans frais : gemini-1.5-flash (évite 404 sur gemini-2.0)
+    const fromEnv = (process.env.GEMINI_MODEL || '').trim()
+    if (fromEnv.startsWith('gemini-1.5')) return fromEnv
+    return 'gemini-1.5-flash'
   }
   return process.env.ANTHROPIC_MODEL || 'claude-sonnet-4-20250514'
 }
@@ -131,32 +134,16 @@ async function callGeminiOnce(apiKey, model, system, user, maxTokens) {
 }
 
 async function callGemini(apiKey, system, user, maxTokens = 4096) {
-  // gemini-1.5-flash : le plus fiable en niveau sans frais (évite 404 sur 2.0)
-  const primary = getModelName('gemini')
-  const fallbacks = [primary, 'gemini-1.5-flash'].filter((m, i, arr) => arr.indexOf(m) === i)
-
-  let lastError = 'Erreur Gemini inconnue'
-  for (const model of fallbacks) {
-    const res = await callGeminiOnce(apiKey, model, system, user, maxTokens)
-    if (res.ok) {
-      const data = await res.json()
-      const text = data.candidates?.[0]?.content?.parts?.map((p) => p.text).join('') || ''
-      if (!text.trim()) {
-        lastError = 'Réponse Gemini vide. Réessayez.'
-        continue
-      }
-      return text.trim()
-    }
-    const errText = await res.text()
-    lastError = parseApiError(res.status, errText, 'Gemini')
-    const isRateLimit = res.status === 429 || /quota|rate limit|RESOURCE_EXHAUSTED/i.test(errText + lastError)
-    // Ne pas ré-enfiler des requêtes sur 429 (aggrave le quota — visible dans AI Studio)
-    if (isRateLimit) throw new Error(lastError)
-    if (!/not found|NOT_FOUND|404/i.test(errText + lastError)) {
-      throw new Error(lastError)
-    }
+  const model = getModelName('gemini')
+  const res = await callGeminiOnce(apiKey, model, system, user, maxTokens)
+  if (res.ok) {
+    const data = await res.json()
+    const text = data.candidates?.[0]?.content?.parts?.map((p) => p.text).join('') || ''
+    if (!text.trim()) throw new Error('Réponse Gemini vide. Réessayez.')
+    return text.trim()
   }
-  throw new Error(lastError)
+  const errText = await res.text()
+  throw new Error(parseApiError(res.status, errText, 'Gemini'))
 }
 
 async function callClaude(apiKey, system, user, maxTokens = 4096) {

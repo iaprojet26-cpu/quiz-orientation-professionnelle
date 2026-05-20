@@ -40,9 +40,10 @@ VARIABLES OPTIONNELLES (mais recommandées)
    Valeur : gemini
    Environnements : Production, Preview
 
-4b3. GEMINI_MODEL (optionnel)
-   Valeur : gemini-2.0-flash
+4b3. GEMINI_MODEL (recommandé — niveau sans frais)
+   Valeur : gemini-1.5-flash
    Environnements : Production, Preview
+   (Si absent, le code utilise gemini-1.5-flash par défaut)
 
 4c. ANTHROPIC_API_KEY (optionnel — payant)
    Valeur : sk-ant-api03-... (si vous préférez Claude)
