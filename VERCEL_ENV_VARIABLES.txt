@@ -29,6 +29,21 @@ VARIABLES OPTIONNELLES (mais recommandées)
    Valeur à remplacer : VotreMotDePasseSecurise2025!
    Environnements : Production, Preview
 
+--- AGENT IA (obligatoire pour l'onglet Agent IA) ---
+
+4b. ANTHROPIC_API_KEY
+   Valeur : sk-ant-api03-... (console.anthropic.com → API Keys)
+   Environnements : Production, Preview
+   ATTENTION : pas de préfixe VITE_ (secret serveur uniquement)
+
+4c. ADMIN_PASSWORD
+   Valeur : EXACTEMENT le même mot de passe que VITE_ADMIN_PASSWORD
+   Environnements : Production, Preview
+
+4d. ANTHROPIC_MODEL (optionnel)
+   Valeur : claude-sonnet-4-20250514
+   Environnements : Production, Preview
+
 5. VITE_MONETAG_ENABLED
    Valeur : true
    Environnements : Production, Preview

@@ -124,7 +124,14 @@ export default async function handler(req, res) {
 
   try {
     if (action === 'ping') {
-      return res.status(200).json({ ok: true, model: process.env.ANTHROPIC_MODEL || 'claude-sonnet-4-20250514' })
+      const hasKey = !!(process.env.ANTHROPIC_API_KEY || '').trim()
+      const hasAdmin = !!((process.env.ADMIN_PASSWORD || process.env.VITE_ADMIN_PASSWORD || '').trim())
+      return res.status(200).json({
+        ok: hasKey && hasAdmin,
+        anthropicConfigured: hasKey,
+        adminPasswordConfigured: hasAdmin,
+        model: process.env.ANTHROPIC_MODEL || 'claude-sonnet-4-20250514'
+      })
     }
 
     if (action === 'suggest_topics') {

@@ -63,7 +63,17 @@ function AgentIAPanel({ onEditItem }) {
     setLoading(true)
     try {
       handleSavePassword()
-      await pingAIAgent()
+      const ping = await pingAIAgent()
+      if (!ping.anthropicConfigured) {
+        setApiOk(false)
+        setError('ANTHROPIC_API_KEY manquante sur Vercel → Settings → Environment Variables → Production + Preview → Redeploy.')
+        return
+      }
+      if (!ping.adminPasswordConfigured) {
+        setApiOk(false)
+        setError('ADMIN_PASSWORD manquant sur Vercel (même valeur que VITE_ADMIN_PASSWORD).')
+        return
+      }
       setApiOk(true)
       setMessage('API Claude connectée.')
     } catch (e) {
