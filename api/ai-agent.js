@@ -1,8 +1,7 @@
 /**
- * API Vercel — Agent IA rédaction (Claude)
- * Clé ANTHROPIC_API_KEY uniquement côté serveur.
- * Auth: body.adminPassword === ADMIN_PASSWORD
- * contentType: article | job | career_path | opportunity | study_program | career_guide
+ * API Vercel — Agent IA rédaction
+ * Providers: gemini (recommandé gratuit) | anthropic (Claude)
+ * Variables: GEMINI_API_KEY + AI_PROVIDER=gemini  OU  ANTHROPIC_API_KEY
  */
 
 const SITE_CONTEXT = `QuizOrientation (quizorientation.online) — orientation professionnelle au Maroc.
@@ -50,6 +49,84 @@ const CONTENT_META = {
   }
 }
 
+function resolveProvider() {
+  const forced = (process.env.AI_PROVIDER || '').trim().toLowerCase()
+  const hasGemini = !!(process.env.GEMINI_API_KEY || '').trim()
+  const hasAnthropic = !!(process.env.ANTHROPIC_API_KEY || '').trim()
+
+  if (forced === 'gemini' && hasGemini) return { id: 'gemini', apiKey: process.env.GEMINI_API_KEY.trim() }
+  if (forced === 'anthropic' && hasAnthropic) return { id: 'anthropic', apiKey: process.env.ANTHROPIC_API_KEY.trim() }
+  if (hasGemini) return { id: 'gemini', apiKey: process.env.GEMINI_API_KEY.trim() }
+  if (hasAnthropic) return { id: 'anthropic', apiKey: process.env.ANTHROPIC_API_KEY.trim() }
+  return null
+}
+
+function getModelName(providerId) {
+  if (providerId === 'gemini') {
+    return process.env.GEMINI_MODEL || 'gemini-2.0-flash'
+  }
+  return process.env.ANTHROPIC_MODEL || 'claude-sonnet-4-20250514'
+}
+
+function parseApiError(status, errText, providerId) {
+  let friendly = `Erreur API ${providerId} (${status})`
+  try {
+    const parsed = JSON.parse(errText)
+    const msg =
+      parsed?.error?.message ||
+      parsed?.error?.message ||
+      parsed?.message ||
+      (Array.isArray(parsed?.error?.details) ? parsed.error.details[0]?.message : '') ||
+      ''
+    if (/credit balance|billing|purchase credits/i.test(msg)) {
+      friendly =
+        'Crédits Anthropic épuisés. Rechargez sur console.anthropic.com → Plans & Billing, ou utilisez GEMINI_API_KEY.'
+    } else if (/quota|rate limit|RESOURCE_EXHAUSTED/i.test(msg + errText)) {
+      friendly =
+        'Quota Gemini atteint. Réessayez plus tard ou vérifiez aistudio.google.com (limites gratuites).'
+    } else if (/API key not valid|API_KEY_INVALID/i.test(msg + errText)) {
+      friendly = 'Clé API invalide. Vérifiez GEMINI_API_KEY sur Vercel (sans espace, Production coché).'
+    } else if (msg) {
+      friendly = msg
+    }
+  } catch {
+    if (/credit balance/i.test(errText)) {
+      friendly = 'Crédits Anthropic épuisés. Passez à Gemini (GEMINI_API_KEY) sur Vercel.'
+    }
+  }
+  return friendly
+}
+
+async function callGemini(apiKey, system, user, maxTokens = 4096) {
+  const model = getModelName('gemini')
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(apiKey)}`
+
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      systemInstruction: { parts: [{ text: system }] },
+      contents: [{ role: 'user', parts: [{ text: user }] }],
+      generationConfig: {
+        maxOutputTokens: maxTokens,
+        temperature: 0.7
+      }
+    })
+  })
+
+  if (!res.ok) {
+    const errText = await res.text()
+    throw new Error(parseApiError(res.status, errText, 'Gemini'))
+  }
+
+  const data = await res.json()
+  const text = data.candidates?.[0]?.content?.parts?.map((p) => p.text).join('') || ''
+  if (!text.trim()) {
+    throw new Error('Réponse Gemini vide (filtre de sécurité ou quota). Réessayez avec un autre sujet.')
+  }
+  return text.trim()
+}
+
 async function callClaude(apiKey, system, user, maxTokens = 4096) {
   const res = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
@@ -59,7 +136,7 @@ async function callClaude(apiKey, system, user, maxTokens = 4096) {
       'anthropic-version': '2023-06-01'
     },
     body: JSON.stringify({
-      model: process.env.ANTHROPIC_MODEL || 'claude-sonnet-4-20250514',
+      model: getModelName('anthropic'),
       max_tokens: maxTokens,
       system,
       messages: [{ role: 'user', content: user }]
@@ -68,28 +145,17 @@ async function callClaude(apiKey, system, user, maxTokens = 4096) {
 
   if (!res.ok) {
     const errText = await res.text()
-    let friendly = `Erreur Claude API (${res.status})`
-    try {
-      const parsed = JSON.parse(errText)
-      const msg = parsed?.error?.message || ''
-      if (/credit balance|billing|purchase credits/i.test(msg)) {
-        friendly =
-          'Crédits Anthropic épuisés. Allez sur console.anthropic.com → Plans & Billing pour recharger, puis réessayez.'
-      } else if (msg) {
-        friendly = msg
-      }
-    } catch {
-      if (/credit balance/i.test(errText)) {
-        friendly =
-          'Crédits Anthropic épuisés. Rechargez sur console.anthropic.com → Plans & Billing.'
-      }
-    }
-    throw new Error(friendly)
+    throw new Error(parseApiError(res.status, errText, 'Claude'))
   }
 
   const data = await res.json()
   const text = data.content?.find((b) => b.type === 'text')?.text || ''
   return text.trim()
+}
+
+async function callLLM(provider, system, user, maxTokens) {
+  if (provider.id === 'gemini') return callGemini(provider.apiKey, system, user, maxTokens)
+  return callClaude(provider.apiKey, system, user, maxTokens)
 }
 
 function checkAuth(body) {
@@ -116,9 +182,12 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
-  const apiKey = process.env.ANTHROPIC_API_KEY
-  if (!apiKey) {
-    return res.status(503).json({ error: 'ANTHROPIC_API_KEY non configurée sur le serveur (Vercel).' })
+  const provider = resolveProvider()
+  if (!provider) {
+    return res.status(503).json({
+      error:
+        'Aucune clé IA configurée. Ajoutez GEMINI_API_KEY (recommandé) ou ANTHROPIC_API_KEY sur Vercel, puis redeploy.'
+    })
   }
 
   let body = req.body
@@ -140,13 +209,18 @@ export default async function handler(req, res) {
 
   try {
     if (action === 'ping') {
-      const hasKey = !!(process.env.ANTHROPIC_API_KEY || '').trim()
+      const hasGemini = !!(process.env.GEMINI_API_KEY || '').trim()
+      const hasAnthropic = !!(process.env.ANTHROPIC_API_KEY || '').trim()
       const hasAdmin = !!((process.env.ADMIN_PASSWORD || process.env.VITE_ADMIN_PASSWORD || '').trim())
+      const active = resolveProvider()
       return res.status(200).json({
-        ok: hasKey && hasAdmin,
-        anthropicConfigured: hasKey,
+        ok: !!active && hasAdmin,
+        provider: active?.id || null,
+        llmConfigured: !!active,
+        geminiConfigured: hasGemini,
+        anthropicConfigured: hasAnthropic,
         adminPasswordConfigured: hasAdmin,
-        model: process.env.ANTHROPIC_MODEL || 'claude-sonnet-4-20250514'
+        model: active ? getModelName(active.id) : null
       })
     }
 
@@ -159,9 +233,9 @@ Contexte: ${meta.suggestHint}.
 Réponds UNIQUEMENT en JSON array:
 [{"title":"...","category":"...","angle":"...","keyword":"...","whyNow":"..."}]`
 
-      const text = await callClaude(apiKey, SITE_CONTEXT, user, 2048)
+      const text = await callLLM(provider, SITE_CONTEXT, user, 2048)
       const topics = parseJsonFromText(text)
-      return res.status(200).json({ topics })
+      return res.status(200).json({ topics, provider: provider.id })
     }
 
     if (action === 'generate_brief') {
@@ -173,9 +247,9 @@ Angle: ${angle || 'Maroc 2025'}
 Format JSON:
 ${meta.briefSchema}`
 
-      const text = await callClaude(apiKey, SITE_CONTEXT, user, 2048)
+      const text = await callLLM(provider, SITE_CONTEXT, user, 2048)
       const brief = parseJsonFromText(text)
-      return res.status(200).json({ brief })
+      return res.status(200).json({ brief, provider: provider.id })
     }
 
     if (action === 'generate_article') {
@@ -190,9 +264,9 @@ ${contentType === 'article' ? 'Structure article blog: markdown ## H2, ## FAQ, c
 Réponds en JSON:
 ${meta.draftSchema}`
 
-      const text = await callClaude(apiKey, SITE_CONTEXT, user, 8192)
+      const text = await callLLM(provider, SITE_CONTEXT, user, 8192)
       const article = parseJsonFromText(text)
-      return res.status(200).json({ article })
+      return res.status(200).json({ article, provider: provider.id })
     }
 
     if (action === 'humanize') {
@@ -205,8 +279,8 @@ ${content_fr}
 
 Réponds UNIQUEMENT avec le markdown du corps (pas de front matter).`
 
-      const text = await callClaude(apiKey, SITE_CONTEXT, user, 8192)
-      return res.status(200).json({ content_fr: text })
+      const text = await callLLM(provider, SITE_CONTEXT, user, 8192)
+      return res.status(200).json({ content_fr: text, provider: provider.id })
     }
 
     return res.status(400).json({ error: 'Action inconnue' })

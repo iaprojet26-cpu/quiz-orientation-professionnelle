@@ -64,9 +64,9 @@ function AgentIAPanel({ onEditItem }) {
     try {
       handleSavePassword()
       const ping = await pingAIAgent()
-      if (!ping.anthropicConfigured) {
+      if (!ping.llmConfigured && !ping.geminiConfigured && !ping.anthropicConfigured) {
         setApiOk(false)
-        setError('ANTHROPIC_API_KEY manquante sur Vercel → Settings → Environment Variables → Production + Preview → Redeploy.')
+        setError('GEMINI_API_KEY manquante sur Vercel → Settings → Environment Variables → Production + Preview → Redeploy.')
         return
       }
       if (!ping.adminPasswordConfigured) {
@@ -75,7 +75,8 @@ function AgentIAPanel({ onEditItem }) {
         return
       }
       setApiOk(true)
-      setMessage('API Claude connectée.')
+      const providerLabel = ping.provider === 'gemini' ? 'Gemini' : ping.provider === 'anthropic' ? 'Claude' : 'IA'
+      setMessage(`API ${providerLabel} connectée (${ping.model || 'modèle par défaut'}).`)
     } catch (e) {
       setApiOk(false)
       setError(e.message)
@@ -344,7 +345,7 @@ function AgentIAPanel({ onEditItem }) {
       <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-sm text-yellow-900">
         <p className="font-semibold mb-2">Configuration</p>
         <ul className="list-disc list-inside space-y-1">
-          <li>Vercel : <code>ANTHROPIC_API_KEY</code>, <code>ADMIN_PASSWORD</code></li>
+          <li>Vercel : <code>GEMINI_API_KEY</code> (recommandé), <code>AI_PROVIDER=gemini</code>, <code>ADMIN_PASSWORD</code></li>
           <li>Supabase : exécuter <code>database/ai_agent_workflow.sql</code> (toutes les tables)</li>
         </ul>
       </div>

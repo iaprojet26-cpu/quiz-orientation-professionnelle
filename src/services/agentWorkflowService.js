@@ -75,6 +75,7 @@ const trFr = (translations, field = 'title') => {
 
 const isAgentDraft = (row) =>
   row?.ai_source === 'claude' ||
+  row?.ai_source === 'gemini' ||
   (row?.workflow_status && !['manual', 'published'].includes(row.workflow_status))
 
 /** @returns {Promise<Array<{contentType, id, title, slug, workflow_status, brief_json, raw, humanizeText, category}>>} */
@@ -240,7 +241,7 @@ export const getExistingTitlesForType = async (contentType) => {
 
 const workflowPatch = (topic) => ({
   workflow_status: 'idea',
-  ai_source: 'claude',
+  ai_source: 'gemini',
   brief_json: topic,
   admin_notes: topic.whyNow || ''
 })
@@ -379,7 +380,7 @@ export const applyDraftFromAI = async (item, draft) => {
     case 'article':
       return updateArticleWorkflow(id, {
         workflow_status: 'draft_ia',
-        ai_source: 'claude',
+        ai_source: 'gemini',
         title_fr: draft.title_fr || raw.title_fr,
         description_fr: draft.description_fr || raw.description_fr,
         slug: draft.slug || raw.slug,
@@ -390,7 +391,7 @@ export const applyDraftFromAI = async (item, draft) => {
     case 'job':
       return updateJob(id, {
         workflow_status: 'draft_ia',
-        ai_source: 'claude',
+        ai_source: 'gemini',
         nom: draft.nom || draft.title_fr || raw.nom,
         description: draft.description || draft.content_fr || '',
         description_en: draft.description_en || '',
@@ -404,7 +405,7 @@ export const applyDraftFromAI = async (item, draft) => {
       })
 
     case 'career_path': {
-      await updateWorkflowItem('career_path', id, { workflow_status: 'draft_ia', ai_source: 'claude', brief_json: draft })
+      await updateWorkflowItem('career_path', id, { workflow_status: 'draft_ia', ai_source: 'gemini', brief_json: draft })
       const slug = draft.slug || draft.slug_fr || raw.slug
       return updateCareerPath(id, {
         slug,
@@ -419,7 +420,7 @@ export const applyDraftFromAI = async (item, draft) => {
     }
 
     case 'opportunity': {
-      await updateWorkflowItem('opportunity', id, { workflow_status: 'draft_ia', ai_source: 'claude', brief_json: draft })
+      await updateWorkflowItem('opportunity', id, { workflow_status: 'draft_ia', ai_source: 'gemini', brief_json: draft })
       return updateOpportunity(id, {
         type: draft.type || raw.type || 'job',
         company_name: draft.company_name || raw.company_name,
@@ -433,7 +434,7 @@ export const applyDraftFromAI = async (item, draft) => {
     }
 
     case 'study_program': {
-      await updateWorkflowItem('study_program', id, { workflow_status: 'draft_ia', ai_source: 'claude', brief_json: draft })
+      await updateWorkflowItem('study_program', id, { workflow_status: 'draft_ia', ai_source: 'gemini', brief_json: draft })
       return updateStudyProgram(id, {
         slug: draft.slug || draft.slug_fr || raw.slug,
         institution_name: draft.institution_name || raw.institution_name || 'Maroc',
@@ -448,7 +449,7 @@ export const applyDraftFromAI = async (item, draft) => {
     }
 
     case 'career_guide': {
-      await updateWorkflowItem('career_guide', id, { workflow_status: 'draft_ia', ai_source: 'claude', brief_json: draft })
+      await updateWorkflowItem('career_guide', id, { workflow_status: 'draft_ia', ai_source: 'gemini', brief_json: draft })
       return updateCareerGuide(id, {
         slug: draft.slug || draft.slug_fr || raw.slug,
         category: draft.category || raw.category || 'skills',
@@ -473,7 +474,7 @@ export const applyHumanize = async (item, content) => {
     case 'job':
       return updateJob(id, { workflow_status: 'review', description: content, actif: false })
     case 'career_path':
-      await updateWorkflowItem('career_path', id, { workflow_status: 'review', ai_source: 'claude' })
+      await updateWorkflowItem('career_path', id, { workflow_status: 'review', ai_source: 'gemini' })
       return updateCareerPath(id, {
         active: false,
         long_description_fr: content,
@@ -481,14 +482,14 @@ export const applyHumanize = async (item, content) => {
         short_description_fr: trFr(item.raw.career_path_translations, 'short_description') || item.title
       })
     case 'opportunity':
-      await updateWorkflowItem('opportunity', id, { workflow_status: 'review', ai_source: 'claude' })
+      await updateWorkflowItem('opportunity', id, { workflow_status: 'review', ai_source: 'gemini' })
       return updateOpportunity(id, {
         is_active: false,
         description_fr: content,
         title_fr: item.title
       })
     case 'study_program':
-      await updateWorkflowItem('study_program', id, { workflow_status: 'review', ai_source: 'claude' })
+      await updateWorkflowItem('study_program', id, { workflow_status: 'review', ai_source: 'gemini' })
       return updateStudyProgram(id, {
         is_active: false,
         description_fr: content,
@@ -496,7 +497,7 @@ export const applyHumanize = async (item, content) => {
         slug: item.slug
       })
     case 'career_guide':
-      await updateWorkflowItem('career_guide', id, { workflow_status: 'review', ai_source: 'claude' })
+      await updateWorkflowItem('career_guide', id, { workflow_status: 'review', ai_source: 'gemini' })
       return updateCareerGuide(id, {
         is_published: false,
         body_markdown_fr: content,
@@ -516,7 +517,7 @@ export const publishWorkflowItem = async (item) => {
     case 'article':
       return publishArticleFromQueue(id)
     case 'job':
-      return updateJob(id, { actif: true, workflow_status: 'published', ai_source: 'claude' })
+      return updateJob(id, { actif: true, workflow_status: 'published', ai_source: 'gemini' })
     case 'career_path':
       await updateWorkflowItem('career_path', id, { workflow_status: 'published', active: true })
       return updateCareerPath(id, {

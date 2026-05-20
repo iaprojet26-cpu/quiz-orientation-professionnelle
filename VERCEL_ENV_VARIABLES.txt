@@ -31,17 +31,25 @@ VARIABLES OPTIONNELLES (mais recommandées)
 
 --- AGENT IA (obligatoire pour l'onglet Agent IA) ---
 
-4b. ANTHROPIC_API_KEY
-   Valeur : sk-ant-api03-... (console.anthropic.com → API Keys)
+4b. GEMINI_API_KEY (recommandé — gratuit)
+   Valeur : clé depuis https://aistudio.google.com/apikey
    Environnements : Production, Preview
    ATTENTION : pas de préfixe VITE_ (secret serveur uniquement)
 
-4c. ADMIN_PASSWORD
-   Valeur : EXACTEMENT le même mot de passe que VITE_ADMIN_PASSWORD
+4b2. AI_PROVIDER (recommandé)
+   Valeur : gemini
    Environnements : Production, Preview
 
-4d. ANTHROPIC_MODEL (optionnel)
-   Valeur : claude-sonnet-4-20250514
+4b3. GEMINI_MODEL (optionnel)
+   Valeur : gemini-2.0-flash
+   Environnements : Production, Preview
+
+4c. ANTHROPIC_API_KEY (optionnel — payant)
+   Valeur : sk-ant-api03-... (si vous préférez Claude)
+   Environnements : Production, Preview
+
+4d. ADMIN_PASSWORD
+   Valeur : EXACTEMENT le même mot de passe que VITE_ADMIN_PASSWORD
    Environnements : Production, Preview
 
 5. VITE_MONETAG_ENABLED
