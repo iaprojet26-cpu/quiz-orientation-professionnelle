@@ -50,14 +50,18 @@ const CONTENT_META = {
 }
 
 function resolveProvider() {
-  const forced = (process.env.AI_PROVIDER || '').trim().toLowerCase()
+  const forced = (process.env.AI_PROVIDER || 'gemini').trim().toLowerCase()
   const hasGemini = !!(process.env.GEMINI_API_KEY || '').trim()
   const hasAnthropic = !!(process.env.ANTHROPIC_API_KEY || '').trim()
 
-  if (forced === 'gemini' && hasGemini) return { id: 'gemini', apiKey: process.env.GEMINI_API_KEY.trim() }
-  if (forced === 'anthropic' && hasAnthropic) return { id: 'anthropic', apiKey: process.env.ANTHROPIC_API_KEY.trim() }
-  if (hasGemini) return { id: 'gemini', apiKey: process.env.GEMINI_API_KEY.trim() }
+  // Par défaut : Gemini uniquement (évite Claude sans crédits)
+  if (forced !== 'anthropic') {
+    if (hasGemini) return { id: 'gemini', apiKey: process.env.GEMINI_API_KEY.trim() }
+    return null
+  }
+
   if (hasAnthropic) return { id: 'anthropic', apiKey: process.env.ANTHROPIC_API_KEY.trim() }
+  if (hasGemini) return { id: 'gemini', apiKey: process.env.GEMINI_API_KEY.trim() }
   return null
 }
 
@@ -184,9 +188,12 @@ export default async function handler(req, res) {
 
   const provider = resolveProvider()
   if (!provider) {
+    const hasAnthropicOnly =
+      !!(process.env.ANTHROPIC_API_KEY || '').trim() && !(process.env.GEMINI_API_KEY || '').trim()
     return res.status(503).json({
-      error:
-        'Aucune clé IA configurée. Ajoutez GEMINI_API_KEY (recommandé) ou ANTHROPIC_API_KEY sur Vercel, puis redeploy.'
+      error: hasAnthropicOnly
+        ? 'GEMINI_API_KEY manquante sur Vercel. Ajoutez votre clé Google AI Studio (GEMINI_API_KEY) + AI_PROVIDER=gemini, puis Redeploy. Vous pouvez supprimer ANTHROPIC_API_KEY.'
+        : 'GEMINI_API_KEY manquante. Vercel → Settings → Environment Variables → GEMINI_API_KEY + AI_PROVIDER=gemini → Redeploy.'
     })
   }
 
