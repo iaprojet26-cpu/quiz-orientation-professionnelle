@@ -350,7 +350,7 @@ function AgentIAPanel({ onEditItem }) {
       <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-sm text-yellow-900">
         <p className="font-semibold mb-2">Configuration</p>
         <ul className="list-disc list-inside space-y-1">
-          <li>Vercel : <code>GEMINI_API_KEY</code>, <code>AI_PROVIDER=gemini</code>, <code>GEMINI_MODEL=gemini-1.5-flash</code>, <code>ADMIN_PASSWORD</code></li>
+          <li>Vercel : <code>GEMINI_API_KEY</code>, <code>AI_PROVIDER=gemini</code>, <code>GEMINI_MODEL=gemini-2.0-flash</code> (ou vide), <code>ADMIN_PASSWORD</code></li>
           <li>Supabase : exécuter <code>database/ai_agent_workflow.sql</code> (toutes les tables)</li>
         </ul>
       </div>

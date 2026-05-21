@@ -65,12 +65,26 @@ function resolveProvider() {
   return null
 }
 
+/** Modèles essayés dans l'ordre (1.5-flash nu est souvent indisponible sur comptes récents) */
+const GEMINI_MODEL_CANDIDATES = [
+  'gemini-2.0-flash',
+  'gemini-2.5-flash',
+  'gemini-2.5-flash-preview-05-20',
+  'gemini-1.5-flash-8b',
+  'gemini-1.5-flash-latest'
+]
+
+function getGeminiModelsToTry() {
+  const fromEnv = (process.env.GEMINI_MODEL || '').trim()
+  if (fromEnv) {
+    return [fromEnv, ...GEMINI_MODEL_CANDIDATES].filter((m, i, arr) => arr.indexOf(m) === i)
+  }
+  return [...GEMINI_MODEL_CANDIDATES]
+}
+
 function getModelName(providerId) {
   if (providerId === 'gemini') {
-    // Niveau sans frais : gemini-1.5-flash (évite 404 sur gemini-2.0)
-    const fromEnv = (process.env.GEMINI_MODEL || '').trim()
-    if (fromEnv.startsWith('gemini-1.5')) return fromEnv
-    return 'gemini-1.5-flash'
+    return getGeminiModelsToTry()[0]
   }
   return process.env.ANTHROPIC_MODEL || 'claude-sonnet-4-20250514'
 }
@@ -111,7 +125,7 @@ function parseApiError(status, errText, providerId) {
     return 'API Gemini : vérifiez que la clé AI Studio est active (aistudio.google.com/apikey). Si besoin, créez une nouvelle clé gratuite.'
   }
   if (/not found|NOT_FOUND|model/i.test(raw + errText)) {
-    return `Modèle Gemini indisponible. Ajoutez sur Vercel : GEMINI_MODEL=gemini-1.5-flash puis Redeploy. Détail : ${raw}`
+    return `Modèle Gemini indisponible pour votre compte. Sur Vercel : GEMINI_MODEL=gemini-2.0-flash (ou supprimez GEMINI_MODEL). Détail : ${raw}`
   }
   return raw || `Erreur Gemini API (${status})`
 }
@@ -134,16 +148,29 @@ async function callGeminiOnce(apiKey, model, system, user, maxTokens) {
 }
 
 async function callGemini(apiKey, system, user, maxTokens = 4096) {
-  const model = getModelName('gemini')
-  const res = await callGeminiOnce(apiKey, model, system, user, maxTokens)
-  if (res.ok) {
-    const data = await res.json()
-    const text = data.candidates?.[0]?.content?.parts?.map((p) => p.text).join('') || ''
-    if (!text.trim()) throw new Error('Réponse Gemini vide. Réessayez.')
-    return text.trim()
+  const models = getGeminiModelsToTry()
+  let lastError = 'Aucun modèle Gemini disponible pour ce compte.'
+
+  for (const model of models) {
+    const res = await callGeminiOnce(apiKey, model, system, user, maxTokens)
+    if (res.ok) {
+      const data = await res.json()
+      const text = data.candidates?.[0]?.content?.parts?.map((p) => p.text).join('') || ''
+      if (!text.trim()) {
+        lastError = 'Réponse Gemini vide. Réessayez.'
+        continue
+      }
+      return text.trim()
+    }
+    const errText = await res.text()
+    lastError = parseApiError(res.status, errText, 'Gemini')
+    const isRateLimit = res.status === 429 || /quota|rate limit|RESOURCE_EXHAUSTED/i.test(errText + lastError)
+    if (isRateLimit) throw new Error(lastError)
+    const isModelMissing = res.status === 404 || /not found|NOT_FOUND/i.test(errText + lastError)
+    if (isModelMissing) continue
+    throw new Error(lastError)
   }
-  const errText = await res.text()
-  throw new Error(parseApiError(res.status, errText, 'Gemini'))
+  throw new Error(lastError)
 }
 
 async function callClaude(apiKey, system, user, maxTokens = 4096) {
